@@ -91,7 +91,7 @@ void NTUPLE::fillHists(std::map<string, TH1F* > & TH1Fs){
        wt=commonWeight();
        if (mySample=="data") wt=1.0;
        //further selections
-       string mySelection, name, var, vartype;
+       string mySelection, regionname,name, var, vartype;
        size_t pos=0;
        //cout<<"tau_tight_1: "<<tau_tight_1<<endl;
        //cout<<"tau_btag70_1: "<<tau_btag70_1<<endl;
@@ -101,8 +101,9 @@ void NTUPLE::fillHists(std::map<string, TH1F* > & TH1Fs){
            if(applySelections(mySelection)){//apply selections
               for(std::map<string, TH1F*>::iterator it=TH1Fs.begin();it!=TH1Fs.end();it++){ 
                   name=it->first;
-                  if(name.find(mySelection)==string::npos) continue; //only fill current region of course!
                   pos=name.find("_");
+                  regionname=name.substr(0,pos);
+                  if(regionname != mySelection) continue; //only fill current region of course!
                   var=name.substr(pos+1, name.length()-3-pos);//the name is defined as 'regionname_varname_vartype'
                   //if(var=="lep_Pt_0") TH1Fs[it->first]->Fill(lep_Pt_0/GeV,wt);
                   vartype=name.substr(name.length()-1);
