@@ -1,0 +1,12 @@
+#Plan to submit jobs and run over samples in parallel, now it takes 6~8 hours to run all the samples in sequence.
+#It can run in RootCore or just plain root env
+source setup.sh
+#add your selections in Root/applySelections.cxx and util/makehists.cfg (regions)
+#compile
+make
+#All the hists are defined in hists.def. Once compiled, no need to compile again and just add hists in util/hists.def (note the variables must be existing in ntuples). Currently, only TH1F and one algorithm (fillHists) are implemented. Later can implement more stuff, and get all of them in one run.
+
+myRun util/makehists.cfg
+
+#make plots, the step produces all the hists in hists/ (you may want to modify input samples and variables in the beginning)
+python util/Plot_dataMC.py

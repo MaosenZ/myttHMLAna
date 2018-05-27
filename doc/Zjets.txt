@@ -1,0 +1,2 @@
+/global/projecta/projectdirs/atlas/weiming/testareaSL5/AxAODsData/tthAnaTop/Hist/25ns_v2901PLICFTSkimNew/MytthAnaSkim_zljets_merged.root
+mc_norm*mcWeightOrg*pileupEventWeight_090*bTagSF_weight_Continuous*lepSFObjTight*((!dilep_type||!total_charge)*lepSFTrigTight+(dilep_type&&total_charge)*lepSFTrigLoose)*tauSFTight*JVT_EventWeight*SherpaNJetWeight*((quadlep_type>0)/lep_SFIsoLoose_0/lep_SFIsoLoose_1+(onelep_type>0)/lep_SFObjLoose_0*(mc_channel_number>0?(tau_truth_0+tau_truth_1)>1:1)+(!quadlep_type&&!onelep_type))

@@ -1,0 +1,36 @@
+
+bkgs=("ttbar","ttbargamma","diboson","Vjets","ttV","rare")
+region='1l2tauLTM'
+histname="%s_MVA1l2tau_weight_F" % region
+print histname
+
+import ROOT
+from ROOT import TFile, TH1
+from ROOT import gROOT
+import mytools
+from mytools import calentries, medianZ
+
+def countbkgs():
+    '''count all bkg entries'''
+    total_bkg=0
+    for bkg in bkgs:
+        histfile=TFile("hists/%s.root" % bkg)
+        hist=histfile.Get(histname)
+        hist.SetDirectory(0)
+        total_bkg += calentries(hist)
+    return total_bkg
+
+sigfile=TFile("hists/tth.root")
+hist_sig=sigfile.Get(histname)
+hist_sig.SetDirectory(0)
+count_sig=calentries(hist_sig)
+
+datafile=TFile("hists/data.root")
+hist_data=datafile.Get(histname)
+hist_data.SetDirectory(0)
+count_data=calentries(hist_data)
+count_bkg=countbkgs()
+Z=medianZ(count_sig, count_bkg)
+
+print "region           S               B               Z"
+print "%s	    %s		  %s	  	   %s" %(region, count_sig, count_bkg,Z)
