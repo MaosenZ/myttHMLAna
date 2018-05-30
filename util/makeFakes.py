@@ -5,7 +5,7 @@ import mytools
 from mytools import calentries
 
 #fakes = SS(data)-SS(real)+OS(real)
-#regions={'SS':'1l2tauSS','truthSS':'1l2tauSStruth','truthOS':'1l2tauSRtruth'}
+#regions={'SS':'1l2tauSS','truthSS':'1l2tauSStruth','truthOS':'1l2tauSRtruth','OS':'1l2tauSR'}
 regions={'SS':'1l2taulowBDTSS','truthSS':'1l2taulowBDTSStruth','truthOS':'1l2taulowBDTOStruth','OS':'1l2taulowBDTOS'}
 
 bkgs=("ttbar","ttbargamma","diboson","Vjets","ttV","rare")

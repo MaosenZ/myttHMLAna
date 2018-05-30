@@ -17,6 +17,7 @@ namespace Declarations{
       std::vector<double> vec_d;
    };
 
+   std::map< std::string, Branch_Types > output_branches;
    //
    float                 GeV(1000);
    bool                debug(false);

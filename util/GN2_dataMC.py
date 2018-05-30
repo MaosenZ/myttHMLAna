@@ -185,7 +185,6 @@ def makeRatio(hist_data, mchists, hs):
         h_ratio.SetBinError(ibin+1, ratio_err)
     return h_bkg, h_ratio, h_ratio_err, upArrowBins
 
-regions=['ttbarCR']
 def draw():
     hists=allHists()
     for region in regions:

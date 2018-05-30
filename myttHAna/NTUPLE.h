@@ -194,8 +194,8 @@ public :
    virtual Int_t    GetEntry(Long64_t entry);
    virtual Long64_t LoadTree(Long64_t entry);
    virtual void     Init(TTree *tree);
-   virtual void     makeMiniTree();
-   virtual void     fillHists(std::map<string, TH1F* > & TH1Fs);
+   //virtual void     makeMiniTree();
+   virtual void     fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree);
    virtual void     cutFlow();
    virtual bool     commonSelections();
    virtual double   commonWeight();
