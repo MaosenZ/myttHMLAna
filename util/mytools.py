@@ -12,10 +12,12 @@ from ROOT import SetAtlasStyle, ATLAS_LABEL, myText
 
 def calentries(hist):
     total=0
+    err2=0
     Nbins=hist.GetNbinsX()
     for idx in range(Nbins+2):
         total += hist.GetBinContent(idx)
-    return total
+        err2 += pow(hist.GetBinError(idx),2)
+    return total, sqrt(err2)
 
 def medianZ(s,b):
     '''calculate meidan Z0 for discovery'''

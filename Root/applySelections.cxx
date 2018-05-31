@@ -45,6 +45,17 @@ bool NTUPLE::applySelections(string selection){
       passed=true;
   }
 
+  if(selection=="OneL2tauSSnoBDT"){
+     if(onelep_type>0 && ( abs(input_branches["lep_ID_0"].f)==13 ||
+     ((abs(input_branches["lep_ID_0"].f)==11)&&input_branches["lep_isTightLH_0"].c)) &&
+     lep_isTrigMatch_0 && input_branches["lep_Pt_0"].f>27e3 && input_branches["lep_isolationFixedCutLoose_0"].i&&
+     input_branches["tau_charge_0"].f*input_branches["tau_charge_1"].f>0 && nTaus_OR_Pt25==2 &&
+     input_branches["tau_tight_0"].f && input_branches["tau_tight_1"].f  &&
+     tau_btag70_0==0 && tau_btag70_1==0 &&
+     input_branches["nJets_OR_T"].i>=3 && input_branches["nJets_OR_T_MV2c10_70"].i>=1 )
+      passed=true;
+  }
+
   if(selection=="OneL2tauSRtruth"){//signal region, but tau is truth matched
      if(onelep_type>0 && ( abs(input_branches["lep_ID_0"].f)==13 ||
      ((abs(input_branches["lep_ID_0"].f)==11)&&input_branches["lep_isTightLH_0"].c)) &&
