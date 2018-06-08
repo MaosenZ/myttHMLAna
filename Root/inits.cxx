@@ -33,7 +33,7 @@ void initHists(std::map<string, TH1F* > & TH1Fs, std::vector<string> regions,  c
 void initTree(TTree * tree, std::vector<string> regions, const char* histspath){
     //define region variables here
     for(unsigned int i=0; i<regions.size();i++){
-      tree->Branch((regions[i]).c_str(), &output_branches[regions[i]].c);
+      tree->Branch((regions[i]).c_str(), &output_branches[regions[i]].i);
     }
     //weight
     tree->Branch("weight", &output_branches["weight"].d);

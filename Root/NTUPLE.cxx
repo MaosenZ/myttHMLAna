@@ -47,9 +47,10 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
        for(unsigned int ir=0;ir<numRegions;ir++){//fill various regions/selections
       
            mySelection=m_Regions[ir];
+           output_branches[mySelection].i=0;//init
            if(applySelections(mySelection)){//apply selections
       
-              output_branches[mySelection].c=true;
+              output_branches[mySelection].i=1;
       
               for(std::map<string, TH1F*>::iterator it=TH1Fs.begin();it!=TH1Fs.end();it++){ 
        
