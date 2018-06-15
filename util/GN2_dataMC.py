@@ -49,8 +49,8 @@ import os, math
 from math import sqrt, isnan, fabs
 from mytools import calentries
 
-gROOT.LoadMacro("/afs/cern.ch/user/m/mzhou/work/private/myttHAna/util/AtlasStyle.C")
-gROOT.LoadMacro("/afs/cern.ch/user/m/mzhou/work/private/myttHAna/util/AtlasUtils.C")
+gROOT.LoadMacro("/Users/mason/Desktop/myWork/PlotUtils/AtlasStyle.C")
+gROOT.LoadMacro("/Users/mason/Desktop/myWork/PlotUtils/AtlasUtils.C")
 
 from ROOT import SetAtlasStyle, ATLAS_LABEL, myText
 SetAtlasStyle()

@@ -49,7 +49,34 @@ def createCanvasPads():
   pad2.Draw()
   return c, pad1, pad2
 
+def createCanvas():
+  c = TCanvas("c", "canvas", 900, 700)
+  return c
+
 def createLabels():
   ATLAS_LABEL(0.2,0.85,kBlack)
   myText(0.35,0.85, kBlack,"Internal")
   myText(0.20,0.75,kBlack,"#int Ldt = 80 fb^{-1}, #sqrt{s}=13 TeV")
+
+def getRegionsVars(samp):
+    """ Get processed regions from hists produced """
+    f=TFile("hists/%s.root" % samp)
+    keys=[name.GetName() for name in f.GetListOfKeys()]
+    #first get all the region and var names of hists
+    dupregions=[]
+    dupvars=[]
+    for key in keys:
+      pos=key.find('_')
+      dupregions.append(key[0:pos])
+      dupvars.append(key[pos+1:len(key)]) #hist name is regionname_var_vartype
+    #strip out the repeated region names
+    regions=[]
+    for x in dupregions:
+      if x not in regions:
+         regions.append(x)
+    #strip out the repeated var names
+    varnames=[]
+    for x in dupvars:
+      if x not in varnames and x != 'minitree':
+         varnames.append(x)
+    return regions, varnames

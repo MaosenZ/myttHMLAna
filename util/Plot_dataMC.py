@@ -35,8 +35,8 @@ from ROOT import gROOT, gStyle
 import os, math
 from math import sqrt, isnan, fabs
 
-gROOT.LoadMacro("/global/homes/m/mszhou/work/ttHML/myttHAna/util/AtlasStyle.C")
-gROOT.LoadMacro("/global/homes/m/mszhou/work/ttHML/myttHAna/util/AtlasUtils.C")
+gROOT.LoadMacro("/Users/mason/Desktop/myWork/PlotUtils/AtlasStyle.C")
+gROOT.LoadMacro("/Users/mason/Desktop/myWork/PlotUtils/AtlasUtils.C")
 
 from ROOT import SetAtlasStyle, ATLAS_LABEL, myText
 SetAtlasStyle()
