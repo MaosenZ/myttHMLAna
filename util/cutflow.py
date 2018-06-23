@@ -3,6 +3,6 @@ from ROOT import gSystem
 gSystem.Load('Root/NTUPLE_cxx')
 from ROOT import NTUPLE
 
-ntuple=NTUPLE('ttbar')
+ntuple=NTUPLE('tth')
 
 ntuple.cutFlow()

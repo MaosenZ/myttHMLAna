@@ -23,7 +23,7 @@ namespace Declarations{
    bool                debug(false);
    TString             mySample;
    std::string         prefix("/afs/cern.ch/user/m/mzhou/work/private/myttHAna/doc/"); //define prefix for input sample list
-   std::string         prepath("/eos/atlas/atlascerngroupdisk/phys-higgs/HSG8/multilepton_Run2_Summer18/GN2/v5_newTightDefs/");
+   std::string         prepath("/eos/atlas/atlascerngroupdisk/phys-higgs/HSG8/multilepton_Run2_Summer18/GN2/v6_02/");
    TString             m_treeName("nominal");
 
    std::vector<std::string> m_Algorithms;
