@@ -110,9 +110,8 @@ def drawNorm():
         leg.SetNColumns(2)
         leg.SetFillStyle(0);
         leg.SetBorderSize(0);
-        leg.AddEntry(hist_data, "data", "l")
+        leg.AddEntry(hist_data, "data", "pe")
         leg.AddEntry(hist_signal, "tth", "l")
-        #leg.AddEntry(h_bkg,"uncertainty",'f')
         #normalize individual hist
         mchists_norm={}
         for i in mchists:
@@ -121,6 +120,7 @@ def drawNorm():
         hs_norm=makeStack(mchists_norm)
         for i in mchists:
              leg.AddEntry(mchists_norm[i], i, "f")
+        leg.AddEntry(h_bkg,"uncertainty",'f')
         #draw
         hs_norm.SetTitle("")
         hs_norm.SetMaximum(3*hist_data.GetBinContent(hist_data.GetMaximumBin())/hist_data.Integral())
@@ -131,11 +131,14 @@ def drawNorm():
         hs_norm.GetXaxis().SetTitle(XTitle)
         #hs_norm.GetXaxis().SetTitleSize(0.)
         #hs_norm.GetXaxis().SetLabelSize(0.)
-        #h_bkg.DrawNormalized("E2 same")
-        #hist_data.SetMarkerStyle(20)
-        #hist_data.SetMarkerSize(0.8)
-        hist_data.SetLineColor(kBlack)
-        hist_data.DrawNormalized("hist same")
+        h_bkg.SetFillStyle(3253)
+        h_bkg.SetFillColor(13)
+        h_bkg.SetLineColor(13)
+        h_bkg.DrawNormalized("E2 same")
+        hist_data.SetMarkerStyle(20)
+        hist_data.SetMarkerSize(0.8)
+        #hist_data.SetLineColor(kBlack)
+        hist_data.DrawNormalized("e x0 same")
         hist_signal.SetLineColor(kRed)
         hist_signal.SetLineStyle(kDashed)
         hist_signal.DrawNormalized("hist same")
