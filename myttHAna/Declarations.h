@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "TString.h"
+#include <map>
 
 namespace Declarations{
    struct Branch_Types {
@@ -24,6 +25,7 @@ namespace Declarations{
    TString             mySample;
    std::string         prefix("/afs/cern.ch/user/m/mzhou/work/private/myttHAna/doc/"); //define prefix for input sample list
    std::string         prepath("/eos/atlas/atlascerngroupdisk/phys-higgs/HSG8/multilepton_Run2_Summer18/GN2/v6_02/");
+   std::string	       outpath("/eos/atlas/user/m/mzhou/ttHMLSamps/v6_02/"); //skimed samples go here
    TString             m_treeName("nominal");
 
    std::vector<std::string> m_Algorithms;
