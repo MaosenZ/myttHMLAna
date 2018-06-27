@@ -1,6 +1,6 @@
 
 bkgs=("ttbar","ttbargamma","diboson","Vjets","ttV","rare")
-region='1l2tauLTM'
+region='OneL2tauTTT'
 histname="%s_MVA1l2tau_weight_F" % region
 print histname
 
@@ -8,7 +8,7 @@ import ROOT
 from ROOT import TFile, TH1
 from ROOT import gROOT
 import mytools
-from mytools import calentries, medianZ
+from mytools import * 
 
 def countbkgs():
     '''count all bkg entries'''
@@ -36,4 +36,4 @@ count_bkg, err_bkg=countbkgs()
 Z=medianZ(count_sig, count_bkg)
 
 print "region           S               B               Z"
-print "%s	    %.2f$\pm$%.2f      %.2f$\pm$%.2f   %.2f$\pm$%.2f	   %.2f" %(region, count_sig, err_sig, count_bkg,err_bkg, Z)
+print "%s	    %.2f$\pm$%.2f      %.2f$\pm$%.2f   %.2f" %(region, count_sig, err_sig, count_bkg,err_bkg, Z)

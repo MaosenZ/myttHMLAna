@@ -5,8 +5,8 @@ from ROOT import gROOT, gStyle
 import math
 from math import sqrt,log
 
-gROOT.LoadMacro("/Users/mason/Desktop/myWork/PlotUtils/AtlasStyle.C")
-gROOT.LoadMacro("/Users/mason/Desktop/myWork/PlotUtils/AtlasUtils.C")
+gROOT.LoadMacro("/Users/mason/Desktop/myWork/myttHMLAna/util/AtlasStyle.C")
+gROOT.LoadMacro("/Users/mason/Desktop/myWork/myttHMLAna/util/AtlasUtils.C")
 
 from ROOT import SetAtlasStyle, ATLAS_LABEL, myText
 
@@ -17,6 +17,8 @@ def calentries(hist):
     for idx in range(Nbins+2):
         total += hist.GetBinContent(idx)
         err2 += pow(hist.GetBinError(idx),2)
+    #total += hist.GetBinContent(4)
+    #err2 += pow(hist.GetBinError(4),2)
     return total, sqrt(err2)
 
 def medianZ(s,b):
@@ -36,7 +38,7 @@ def makeStack(mchists):
     return stack
 
 def createCanvasPads():
-  c = TCanvas("c", "canvas", 900, 700)
+  c = TCanvas("c", "canvas", 600, 600)
   # Upper histogram plot is pad1
   pad1 = TPad("pad1", "pad1", 0, 0.25, 1, 1.0)
   #pad1.SetBottomMargin(0)  # joins upper and lower plot
@@ -50,7 +52,7 @@ def createCanvasPads():
   return c, pad1, pad2
 
 def createCanvas():
-  c = TCanvas("c", "canvas", 900, 700)
+  c = TCanvas("c", "canvas", 800, 600)
   return c
 
 def createLabels():

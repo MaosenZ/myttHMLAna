@@ -6,53 +6,15 @@ __author__     = "Maosen Zhou"
 __email__      = "maosen.zhou@cern.ch"
 __maintainer__ = "Maosen Zhou"
 
-#input sample lists
-inputsamples=("data","ttbar","ttbargamma","diboson","tth","Vjets","ttV","rare")
-#input sample lists that going to be plotted
-processes={'data':"data",\
-           'ttbar':"ttbar",\
-           'ttbargamma':"ttbargamma",\
-           'diboson':"diboson",\
-           'tth':"tth",\
-           'Vjets':"Vjets",\
-           'ttV':"ttV",\
-           'rare':"rare"}
-
-#define plot titles here
-titles={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Normalized'), \
-        'tau_pt_0':('p^{T}_{#tau_{1}} [GeV]', 'Normalized'), \
-        'tau_pt_1':('p^{T}_{#tau_{2}} [GeV]', 'Normalized'), \
-        'MVA1l2tau_weight':('BDT score', 'Normalized'), \
-        'nJets_OR_T':('nJets_OR_T', 'Normalized'), \
-        'nJets_OR_T_MV2c10_70':('nJets_OR_T_MV2c10_70', 'Normalized'), \
-        'HT_jets':('HT_jets [GeV]', 'Normalized'), \
-        'jjdrmin_1l2tau':('#Delta R_{min}(jj)', 'Normalized'), \
-        'mtautau_1l2tau':('M(#tau_{had}#tau_{had})', 'Normalized'), \
-        'njets_1l2tau':('njets_1l2tau', 'Normalized'), \
-        'nbjets_1l2tau':('nbjets_1l2tau', 'Normalized'), \
-        'htjets_1l2tau':('htjets_1l2tau', 'Normalized'), \
-        'tau_BDTJetScore_0':('#tau_{1} BDTJetScore', 'Normalized'), \
-        'tau_BDTJetScore_1':('#tau_{2} BDTJetScore', 'Normalized'), \
-        'tau_tight_0':('tau_tight_0', 'Normalized'), \
-        'tau_tight_1':('tau_tight_1', 'Normalized'), \
-        'tau_truthType_0':('tau_truthType_0','Normalized'),\
-        'tau_truthType_1':('tau_truthType_1','Normalized'),\
-        'tau_truthOrigin_1':('tau_truthOrigin_1','Normalized'),\
-        'tau_truthOrigin_0':('tau_truthOrigin_0','Normalized'),\
-         }
-
-import ROOT, mytools
+import ROOT, mytools, commonPlotting
 from ROOT import TFile, THStack, TH1, kBlack, kDashed, kRed
 from ROOT import TCanvas, TPad, TLegend, TLine, TArrow
 from ROOT import gROOT, gStyle
 import os, math
 from math import sqrt, isnan, fabs
-from mytools import calentries, getRegionsVars, createCanvas
+from mytools import calentries, getRegionsVars, createCanvas, SetAtlasStyle, createLabels 
+from commonPlotting import *
 
-gROOT.LoadMacro("/Users/mason/Desktop/myWork/myttHMLAna/util/AtlasStyle.C")
-gROOT.LoadMacro("/Users/mason/Desktop/myWork/myttHMLAna/util/AtlasUtils.C")
-
-from ROOT import SetAtlasStyle, ATLAS_LABEL, myText
 SetAtlasStyle()
 
 regions, variables=getRegionsVars('ttbar')
@@ -86,14 +48,9 @@ def makeStack(mchists):
          index += 1
     return stack
 
-def createLabels():
-  ATLAS_LABEL(0.2,0.85,kBlack)
-  myText(0.35,0.85, kBlack,"Internal")
-  myText(0.20,0.75,kBlack,"#int Ldt = 80 fb^{-1}, #sqrt{s}=13 TeV")
-
 def drawNorm():
     hists=allHists()
-    os.mkdir("plots/%s" % region)
+    os.mkdir("plots/%s_norm" % region)
     for variable in variables:
         hist_data=hists[region+"_"+variable+"_data"]
         hist_signal=hists[region+"_"+variable+"_tth"]
@@ -144,7 +101,7 @@ def drawNorm():
         hist_signal.DrawNormalized("hist same")
         createLabels()
         leg.Draw("same")
-        c.SaveAs("plots/%s/%s_norm.pdf" %(region, variable))
+        c.SaveAs("plots/%s_norm/%s.pdf" %(region, variable))
 
 gROOT.SetBatch(True)
 drawNorm()

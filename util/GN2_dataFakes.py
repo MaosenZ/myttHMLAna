@@ -1,11 +1,6 @@
 #!/usr/bin/env python
 
-""" Plot_dataMC.py: make data/mc comparison plot """
-
-__author__     = "Maosen Zhou"
-__email__      = "maosen.zhou@cern.ch"
-__maintainer__ = "Maosen Zhou"
-
+""" Plot_dataFakes.py: make data/mc comparison plot including data-driven tau fakes"""
 #input sample lists
 inputsamples=("data","ttbar","ttbargamma","diboson","tth","Vjets","ttV","rare","fakes")
 #input sample lists that going to be plotted
@@ -17,62 +12,38 @@ bkgs=["ttbar",\
            "rare",\
            "fakes"]
 
-#define plot titles here
-titles={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Events'), \
-        'tau_pt_0':('p^{T}_{#tau_{1}} [GeV]', 'Events'), \
-        'tau_pt_1':('p^{T}_{#tau_{2}} [GeV]', 'Events'), \
-        'MVA1l2tau_weight':('BDT score', 'Events'), \
-        'nJets_OR_T':('nJets_OR_T', 'Events'), \
-        'nJets_OR_T_MV2c10_70':('nJets_OR_T_MV2c10_70', 'Events'), \
-        'HT_jets':('HT_jets [GeV]', 'Events'), \
-        'jjdrmin_1l2tau':('#Delta R_{min}(jj)', 'Events'), \
-        'mtautau_1l2tau':('#M(#tau_{had}#tau_{had})', 'Events'), \
-        'njets_1l2tau':('njets_1l2tau', 'Events'), \
-        'nbjets_1l2tau':('nbjets_1l2tau', 'Events'), \
-        'htjets_1l2tau':('htjets_1l2tau', 'Events'), \
-        'tau_BDTJetScore_0':('#tau_{1} BDTJetScore', 'Events'), \
-        'tau_BDTJetScore_1':('#tau_{2} BDTJetScore', 'Events'), \
-        'tau_tight_0':('tau_tight_0', 'Events'), \
-        'tau_tight_1':('tau_tight_1', 'Events'), \
-        'tau_truthType_0':('tau_truthType_0','Events'),\
-        'tau_truthType_1':('tau_truthType_1','Events'),\
-        'tau_truthOrigin_1':('tau_truthOrigin_1','Events'),\
-        'tau_truthOrigin_0':('tau_truthOrigin_0','Events'),\
-         }
-
-import ROOT, mytools
+import ROOT, mytools, commonPlotting
 from ROOT import TFile, TH1, THStack, kBlack, kDashed, kRed
 from ROOT import TCanvas, TPad, TLegend, TLine, TArrow
 from ROOT import gROOT, gStyle
 import os, math
 from math import sqrt, isnan, fabs
-#from mytools import calentries, createCanvasPads, makeStack, createLabels 
 from mytools import *
+from commonPlotting import *
 
 SetAtlasStyle()
 
-def getVars():
-    """ Get processed regions from hists produced """
-    f=TFile("hists/%s.root" % inputsamples[0])
-    keys=[name.GetName() for name in f.GetListOfKeys()]
-    #first get all the region and var names of hists
-    dupvars=[]
-    for key in keys:
-      pos=key.find('_')
-      dupvars.append(key[pos+1:len(key)]) #hist name is regionname_var_vartype
-    #strip out the repeated var names
-    varnames=[]
-    for x in dupvars:
-      if x not in varnames:
-         varnames.append(x)
-    return varnames
+#def getVars():
+#    """ Get processed regions from hists produced """
+#    f=TFile("hists/%s.root" % inputsamples[0])
+#    keys=[name.GetName() for name in f.GetListOfKeys()]
+#    #first get all the region and var names of hists
+#    dupvars=[]
+#    for key in keys:
+#      pos=key.find('_')
+#      dupvars.append(key[pos+1:len(key)]) #hist name is regionname_var_vartype
+#    #strip out the repeated var names
+#    varnames=[]
+#    for x in dupvars:
+#      if x not in varnames:
+#         varnames.append(x)
+#    return varnames
 
-variables=getVars()
+regions, variables=getRegionsVars("ttbar")
 
 def getHists(samp,region):
     '''get all hists in one region of stored sample'''
     fdata=TFile("hists/%s.root" %samp)
-    variables=getVars()
     hists=[]
     for idx in variables:
         hist=fdata.Get("%s_%s" %(region, idx))
@@ -105,23 +76,23 @@ def makeRatio(hist_data, mchists, hs):
         h_ratio_err.SetBinContent(ibin+1, 1.)
         h_bkg.SetBinError(ibin+1,err_bkg)
         ratio, ratio_err=0,0
-        if N_bkg != 0:
+        if N_bkg != 0.0:
            ratio=N_data/N_bkg
            ratio_err=err_data/N_bkg
-           if N_data > max(N_bkg*2, 0) : upArrowBins.append(ibin+1)
-        else :
-           if N_data >= 1 : #
-              ratio=N_data+1
-              ratio_err=err_data
-              if fabs(err_data-N_data)>=1 : upArrowBins.append(ibin+1)
+           if N_data > max(N_bkg*2, 0.) and ratio-ratio_err>2: upArrowBins.append(ibin+1)
+           h_ratio.SetBinContent(ibin+1, ratio)
+           h_ratio.SetBinError(ibin+1, ratio_err)
+        else:
+           h_ratio.SetBinContent(ibin+1, N_data/0.0001)
+           h_ratio.SetBinError(ibin+1, err_data/0.0001)
         h_ratio.SetBinContent(ibin+1, ratio)
         h_ratio.SetBinError(ibin+1, ratio_err)
     return h_bkg, h_ratio, h_ratio_err, upArrowBins
 
 def draw():
       os.mkdir("plots/lowBDTOSFakes")
-      hists_data=getHists("data","1l2taulowBDTOS")
-      hists_signal=getHists("tth","1l2taulowBDTOS")
+      hists_data=getHists("data","OneL2taulowBDTOS")
+      hists_signal=getHists("tth","OneL2taulowBDTOS")
       for idy in range(len(variables)):
           variable=variables[idy]
           hist_data=hists_data[idy]
@@ -129,8 +100,8 @@ def draw():
           mchists=[]
           temps=[]
           for i in range(len(bkgs)):
-              if bkgs[i]=='fakes' : temps=getHists(bkgs[i],"1l2taulowBDTSS")
-              else: temps=getHists(bkgs[i],"1l2taulowBDTOStruth")
+              if bkgs[i]=='fakes' : temps=getHists(bkgs[i],"OneL2taulowBDTSS")
+              else: temps=getHists(bkgs[i],"OneL2taulowBDTOStruth")
               mchists.append(temps[idy])
           hs=makeStack(mchists)
           h_bkg, h_ratio, h_ratio_err, upArrowBins= makeRatio(hist_data, mchists, hs)
@@ -164,7 +135,7 @@ def draw():
           hist_data.Draw("e x0 same")
           hist_signal.SetLineColor(kRed)
           hist_signal.SetLineStyle(kDashed)
-          hist_signal.Scale(calentries(hist_data)/calentries(hist_signal)) #scale to data
+          hist_signal.Scale(hist_data.Integral()/hist_signal.Integral()) #scale to data
           hist_signal.Draw("hist same")
           createLabels()
           leg.Draw("same")
