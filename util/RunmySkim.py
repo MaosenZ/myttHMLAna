@@ -9,7 +9,7 @@ prepath="/eos/atlas/atlascerngroupdisk/phys-higgs/HSG8/multilepton_Run2_Summer18
 outpath="/eos/atlas/user/m/mzhou/ttHMLSamps/v6_02/"
 
 #samps=('tth','diboson','rare','ttV')
-samps=("ttbar",)
+samps=("tth",)
 trees=("nominal",)
 Noexists=[]
 
@@ -36,5 +36,6 @@ for tree in trees:
         with open(filename, "r") as myfile:
              dsids=myfile.read().splitlines()
              for dsid in dsids:
+                 if dsid[0]=='#': continue
                  print 'Tree: %s, skimming (copying) %s of %s' % (tree, dsid, samp)
                  Skim(dsid, tree)
