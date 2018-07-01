@@ -215,6 +215,7 @@ NTUPLE::NTUPLE(string inputSample) : fChain(0)
    ifstream inputfile(inputlist.c_str(), ifstream::in);
    string line;
    while (getline(inputfile, line)){
+          if (line[0]=='#') continue;
           TString ifile=prepath+line;
           chain->Add(ifile);    
  
