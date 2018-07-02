@@ -64,14 +64,17 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
                   //if(var=="lep_Pt_0") TH1Fs[it->first]->Fill(lep_Pt_0/GeV,wt);
                   vartype=name.substr(name.length()-1);
        
-                  if(vartype=="I") { TH1Fs[name]->Fill( input_branches[var].i, wt);
+                  if(vartype=="I") { 
+                     if(var.find("tagWeightBin")!=string::npos) 
+                        input_branches[var].i=input_branches[var].i<0?0:input_branches[var].i;
+                     TH1Fs[name]->Fill( input_branches[var].i, wt);
                      output_branches[var].i=input_branches[var].i;
                   }
        
                   if(vartype=="F") {
                      if(var.find("weight")!=string::npos || var.find("dr")!=string::npos
                         || var.find("nj")!=string::npos || var.find("nb")!=string::npos || 
-                        var.find("tight")!=string::npos) 
+                        var.find("tight")!=string::npos || var.find("eta")!=string::npos) 
                         {TH1Fs[name]->Fill( input_branches[var].f, wt);
                          output_branches[var].f=input_branches[var].f;
 			}
