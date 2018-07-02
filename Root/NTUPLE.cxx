@@ -1,5 +1,6 @@
 #define NTUPLE_cxx
 #include "../myttHAna/NTUPLE.h"
+#include "../myttHAna/BDTcalculation.h"
 #include "TH2.h"
 #include "TStyle.h"
 #include "TCanvas.h"
@@ -131,4 +132,37 @@ void NTUPLE::cutFlow(){
   cout<<numtrigmatch<<setw(20)<<numwttrigmatch<<endl;
   cout<<numNtau<<setw(20)<<numwtNtau<<endl;
   cout<<numTightL<<setw(20)<<numwtTightL<<endl; 
+}
+
+void NTUPLE::applyBDT(TTree *outtree){
+
+  TString BDT_tth1l2tau = "doc/TMVAClassification_BDTG.weights10varbtagtaupt25Triglept27tauTTbvetoWT_R21.xml";
+  std::cout<<" which BDT ? "<<BDT_tth1l2tau<<std::endl;
+  initialiseTMVA_tth1l2tau(BDT_tth1l2tau);
+
+  outtree = fChain->GetTree()->CloneTree(0);
+  Double_t myBDT;
+  outtree->Branch("Mybdt", &myBDT);
+  myBDT = -2.;
+
+  Long64_t nentries = fChain->GetEntries();
+ 
+  for(Long64_t jentry=0; jentry<nentries;jentry++){
+
+      fChain->GetEntry(jentry);
+
+      tmva1l2tau_njets25 = input_branches["njets_1l2tau"].i ;
+      tmva1l2tau_nbjets25 = input_branches["nbjets_1l2tau"].i;
+      tmva1l2tau_htjets = input_branches["HT_jets"].f;
+      tmva1l2tau_leadtaupt = input_branches["tau_pt_0"].f/GeV;
+      tmva1l2tau_subtaupt = input_branches["tau_pt_1"].f/GeV;
+      tmva1l2tau_mtautau = input_branches["mtautau_1l2tau"].f/GeV;
+      tmva1l2tau_jjdr = input_branches["jjdrmin_1l2tau"].f;
+      tmva1l2tau_etamax = fabs(input_branches["tau_eta_0"].f)>fabs(input_branches["tau_eta_1"].f)? fabs(input_branches["tau_eta_0"].f): fabs(input_branches["tau_eta_1"].f);
+      tmva1l2tau_leadtaubtagbin = input_branches["tau_tagWeightBin_0"].i;
+      tmva1l2tau_subtaubtagbin = input_branches["tau_tagWeightBin_1"].i;
+      myBDT = reader_tth1l2tau->EvaluateMVA("BDT_tth1l2tau");
+      myBDT =myBDT<1.0?myBDT:0.99;
+      outtree->Fill();
+  }
 }

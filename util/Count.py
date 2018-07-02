@@ -23,7 +23,7 @@ def countbkgs():
         err2_bkg += pow(err_count, 2)
     return total_bkg, sqrt(err2_bkg)
 
-sigfile=TFile("hists/tth.root")
+sigfile=TFile("hists/tth_oldall.root")
 hist_sig=sigfile.Get(histname)
 hist_sig.SetDirectory(0)
 count_sig, err_sig=calentries(hist_sig)
