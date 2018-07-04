@@ -118,7 +118,7 @@ void NTUPLE::cutFlow(){
           numNlepton++; numwtNlepton+=wt;
        if(!lep_isTrigMatch_0) continue;
           numtrigmatch++; numwttrigmatch+=wt;
-       if(!(nTaus_OR_Pt25==2&&input_branches["tau_charge_0"].f*input_branches["tau_charge_1"].f<0)) continue;
+       if(!(nTaus_OR_Pt25==2&&input_branches["tau_charge_0"].f*input_branches["tau_charge_1"].f>0)) continue;
           numNtau++; numwtNtau+=wt;
        if(!((abs(input_branches["lep_ID_0"].f)==11&&input_branches["lep_isolationFixedCutLoose_0"].i&&input_branches["lep_isTightLH_0"].c&&input_branches["lep_promptLeptonVeto_TagWeight_0"].f<-0.7&&(int)(input_branches["lep_ambiguityType_0"].c)==0)||(abs(input_branches["lep_ID_0"].f)==13&&input_branches["lep_promptLeptonVeto_TagWeight_0"].f<-0.5&&input_branches["lep_isolationFixedCutLoose_0"].i))) continue;
           numTightL++; numwtTightL+=wt;
@@ -139,7 +139,7 @@ void NTUPLE::applyBDT(TTree *outtree){
   TString BDT_tth1l2tau = "doc/TMVAClassification_BDTG.weights10varbtagtaupt25Triglept27tauTTbvetoWT_R21.xml";
   std::cout<<" which BDT ? "<<BDT_tth1l2tau<<std::endl;
   initialiseTMVA_tth1l2tau(BDT_tth1l2tau);
-
+  fChain->LoadTree(0);
   outtree = fChain->GetTree()->CloneTree(0);
   Double_t myBDT;
   outtree->Branch("Mybdt", &myBDT);
@@ -163,6 +163,7 @@ void NTUPLE::applyBDT(TTree *outtree){
       tmva1l2tau_subtaubtagbin = input_branches["tau_tagWeightBin_1"].i;
       myBDT = reader_tth1l2tau->EvaluateMVA("BDT_tth1l2tau");
       myBDT =myBDT<1.0?myBDT:0.99;
+      std::cout<<myBDT<<std::endl;
       outtree->Fill();
   }
 }

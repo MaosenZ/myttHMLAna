@@ -211,15 +211,19 @@ public :
 NTUPLE::NTUPLE(string inputSample) : fChain(0) 
 {
    TChain *chain=new TChain(m_treeName);
-   chain->Add(TString("/Users/mason/Desktop/myWork/ttHMLSamps/v6_02/nominal/")+inputSample+".root");
-   /*string inputlist=prefix+inputSample+".list";
+
+   //for special
+   /*TString cpath="/eos/atlas/user/m/mzhou/ttHMLSamps/v6_02/nominal/";
+   cpath += inputSample+".root";
+   chain->Add(cpath);*/
+   string inputlist=prefix+inputSample+".list";
    ifstream inputfile(inputlist.c_str(), ifstream::in);
    string line;
    while (getline(inputfile, line)){
           if (line[0]=='#') continue;
           TString ifile=prepath+line;
           chain->Add(ifile);    
-   }*/
+   }
    Init(chain);
    tree_number=0; 
    mySample=inputSample;

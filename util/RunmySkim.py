@@ -8,8 +8,8 @@ from ROOT import TFile, TTree, gSystem, kFileExists
 prepath="/eos/atlas/atlascerngroupdisk/phys-higgs/HSG8/multilepton_Run2_Summer18/GN2/v6_02/"
 outpath="/eos/atlas/user/m/mzhou/ttHMLSamps/v6_02/"
 
-#samps=('tth','diboson','rare','ttV')
-samps=("tth",)
+samps=('tth','diboson','rare','ttV','data')
+#samps=("tth",)
 trees=("nominal",)
 Noexists=[]
 
