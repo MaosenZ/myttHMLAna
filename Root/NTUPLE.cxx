@@ -76,8 +76,14 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
                      if(var.find("weight")!=string::npos || var.find("dr")!=string::npos
                         || var.find("nj")!=string::npos || var.find("nb")!=string::npos || 
                         var.find("tight")!=string::npos || var.find("eta")!=string::npos) 
-                        {TH1Fs[name]->Fill( input_branches[var].f, wt);
-                         output_branches[var].f=input_branches[var].f;
+                        { if(var=="maxeta") {
+                             TH1Fs[name]->Fill(fabs(input_branches["tau_eta_0"].f)>fabs(input_branches["tau_eta_1"].f)?fabs(input_branches["tau_eta_0"].f):fabs(input_branches["tau_eta_1"].f), wt);
+                             output_branches[var].f=fabs(input_branches["tau_eta_0"].f)>fabs(input_branches["tau_eta_1"].f)?fabs(input_branches["tau_eta_0"].f):fabs(input_branches["tau_eta_1"].f);                                 
+                          }
+                          else{
+                             TH1Fs[name]->Fill( input_branches[var].f, wt);
+                             output_branches[var].f=input_branches[var].f;
+                          }
 			}
                      else {TH1Fs[name]->Fill( (input_branches[var].f)/GeV, wt);
                           output_branches[var].f=(input_branches[var].f)/GeV;
