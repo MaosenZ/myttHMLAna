@@ -197,7 +197,7 @@ public :
    //virtual void     makeMiniTree();
    virtual void     fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree);
    virtual void     cutFlow();
-   virtual void     applyBDT(TTree *outtree);
+   virtual void     applyBDT();
    virtual bool     commonSelections();
    virtual double   commonWeight();
    virtual bool     applySelections(string selection);
@@ -210,20 +210,21 @@ public :
 #ifdef NTUPLE_cxx
 NTUPLE::NTUPLE(string inputSample) : fChain(0) 
 {
-   TChain *chain=new TChain(m_treeName);
+   //TChain *chain=new TChain(m_treeName);
 
    //for special
-   /*TString cpath="/eos/atlas/user/m/mzhou/ttHMLSamps/v6_02/nominal/";
+   TString cpath="/Users/mason/Desktop/myWork/ttHMLSamps/v6_02/data/";
    cpath += inputSample+".root";
-   chain->Add(cpath);*/
-   string inputlist=prefix+inputSample+".list";
+   TFile *inputfile=new TFile(cpath);
+   TTree *chain=(TTree*)inputfile->Get(m_treeName);
+   /*string inputlist=prefix+inputSample+".list";
    ifstream inputfile(inputlist.c_str(), ifstream::in);
    string line;
    while (getline(inputfile, line)){
           if (line[0]=='#') continue;
           TString ifile=prepath+line;
           chain->Add(ifile);    
-   }
+   }*/
    Init(chain);
    tree_number=0; 
    mySample=inputSample;

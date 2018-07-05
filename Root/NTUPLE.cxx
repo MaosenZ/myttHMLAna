@@ -134,13 +134,18 @@ void NTUPLE::cutFlow(){
   cout<<numTightL<<setw(20)<<numwtTightL<<endl; 
 }
 
-void NTUPLE::applyBDT(TTree *outtree){
+void NTUPLE::applyBDT(){
 
-  TString BDT_tth1l2tau = "doc/TMVAClassification_BDTG.weights10varbtagtaupt25Triglept27tauTTbvetoWT_R21.xml";
+  TString BDT_tth1l2tau = "doc/TMVAClassification_BDTG.weights8varbtagtaupt25Triglept27tauTTbvetoWT_R21.xml";
   std::cout<<" which BDT ? "<<BDT_tth1l2tau<<std::endl;
   initialiseTMVA_tth1l2tau(BDT_tth1l2tau);
+  TString path="/Users/mason/Desktop/myWork/ttHMLSamps/v6_02/data/";
+  path += mySample+"_bdt.root";
+  TFile *outfile=new TFile(path,"recreate");
+  TTree *outtree=new TTree("nominal","");
   fChain->LoadTree(0);
-  outtree = fChain->GetTree()->CloneTree(0);
+  //outtree = fChain->GetTree()->CloneTree(0);
+  outtree = fChain->CloneTree(0);
   Double_t myBDT;
   outtree->Branch("Mybdt", &myBDT);
   myBDT = -2.;
@@ -163,7 +168,8 @@ void NTUPLE::applyBDT(TTree *outtree){
       tmva1l2tau_subtaubtagbin = input_branches["tau_tagWeightBin_1"].i;
       myBDT = reader_tth1l2tau->EvaluateMVA("BDT_tth1l2tau");
       myBDT =myBDT<1.0?myBDT:0.99;
-      std::cout<<myBDT<<std::endl;
       outtree->Fill();
   }
+  outtree->Write();
+  outfile->Close();
 }

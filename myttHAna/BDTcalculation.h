@@ -186,8 +186,8 @@ void initialiseTMVA_tth1l2tau( TString weights, TString myMethodList = "" )
   reader_tth1l2tau->AddVariable( "Mtautau"   ,&tmva1l2tau_mtautau );
   reader_tth1l2tau->AddVariable( "Jjdr"   ,&tmva1l2tau_jjdr );
   reader_tth1l2tau->AddVariable( "fabs(Etamax)"   ,&tmva1l2tau_etamax );
-  reader_tth1l2tau->AddVariable( "LeadtaubtagBin<0?0.:LeadtaubtagBin"   ,&tmva1l2tau_leadtaubtagbin);
-  reader_tth1l2tau->AddVariable( "SubtaubtagBin<0?0.:SubtaubtagBin"   ,&tmva1l2tau_subtaubtagbin);
+  //reader_tth1l2tau->AddVariable( "LeadtaubtagBin<0?0.:LeadtaubtagBin"   ,&tmva1l2tau_leadtaubtagbin);
+  //reader_tth1l2tau->AddVariable( "SubtaubtagBin<0?0.:SubtaubtagBin"   ,&tmva1l2tau_subtaubtagbin);
   //reader_tth1l2tau->AddVariable( "Leadtaubdtjetscore"   ,&tmva1l2tau_leadtaubdtjetsigtrans);
   //reader_tth1l2tau->AddVariable( "Subtaubdtjetscore"   ,&tmva1l2tau_subtaubdtjetsigtrans);
   //reader_tth1l2tau->AddVariable( "Leadtauptv"   ,&tmva1l2tau_leadtauptv);

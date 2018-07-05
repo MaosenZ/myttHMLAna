@@ -1,6 +1,6 @@
 
 bkgs=("ttbar","ttbargamma","diboson","Vjets","ttV","rare")
-region='OneL2tauTTT'
+region='OneL2tauOSnoBDT'
 histname="%s_MVA1l2tau_weight_F" % region
 print histname
 
@@ -23,7 +23,7 @@ def countbkgs():
         err2_bkg += pow(err_count, 2)
     return total_bkg, sqrt(err2_bkg)
 
-sigfile=TFile("hists/tth_oldall.root")
+sigfile=TFile("hists/tth.root")
 hist_sig=sigfile.Get(histname)
 hist_sig.SetDirectory(0)
 count_sig, err_sig=calentries(hist_sig)

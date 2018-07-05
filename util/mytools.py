@@ -1,8 +1,9 @@
 import ROOT
-from ROOT import TFile, TH1, THStack, kBlack, kDashed, kRed
+from ROOT import TFile, TH1, THStack, kDashed, TH1F
 from ROOT import TCanvas, TPad, TLegend, TLine, TArrow
 from ROOT import gROOT, gStyle
-import math
+from ROOT import kBlue, kBlack, kRed
+import math, os
 from math import sqrt,log
 
 gROOT.LoadMacro("/Users/mason/Desktop/myWork/myttHMLAna/util/AtlasStyle.C")
@@ -14,11 +15,11 @@ def calentries(hist):
     total=0
     err2=0
     Nbins=hist.GetNbinsX()
-    #for idx in range(Nbins+2):
-    #    total += hist.GetBinContent(idx)
-    #    err2 += pow(hist.GetBinError(idx),2)
-    total += hist.GetBinContent(4)
-    err2 += pow(hist.GetBinError(4),2)
+    for idx in range(Nbins+2):
+        total += hist.GetBinContent(idx)
+        err2 += pow(hist.GetBinError(idx),2)
+    #total += hist.GetBinContent(4)
+    #err2 += pow(hist.GetBinError(4),2)
     return total, sqrt(err2)
 
 def medianZ(s,b):

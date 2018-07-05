@@ -2,17 +2,20 @@
 
 void ApplyBDT(){
 //string samps[]={"tth","diboson","rare","ttV"};
-string samps[]={"tth"};
+string samps[]={"data"};
 
-for(int i=0;i<1;i++){
-    
+for(unsigned int i=0;i<1;i++){
+    std::cout<<samps[i]<<std::endl;
     NTUPLE *ntuple=new NTUPLE(samps[i]);
-    TString path="/eos/atlas/user/m/mzhou/ttHMLSamps/v6_02/nominal/";
-    path += samps[i]+"_bdt.root";
-    TFile *outfile=new TFile(path,"recreate");
-    TTree *tree=new TTree("nominal","nominal");
-    ntuple->applyBDT(tree);
-    tree->Write();
-    outfile->Close();
+
+    //TString path="/Users/mason/Desktop/myWork/ttHMLSamps/v6_02/nominal/";
+    //path += samps[i]+"_bdt.root";
+    //TFile *outfile=new TFile(path,"recreate");
+    //TTree *tree=new TTree("nominal","");
+    
+    ntuple->applyBDT();
+
+    //tree->Write();
+    //outfile->Close();
 }
 }

@@ -32,3 +32,25 @@ titles={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Events'), \
         'tau_truthOrigin_1':('tau_truthOrigin_1','Events'),\
         'tau_truthOrigin_0':('tau_truthOrigin_0','Events'),\
          }
+
+titles_norm={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Normalized'), \
+        'tau_pt_0':('p^{T}_{#tau_{1}} [GeV]', 'Normalized'), \
+        'tau_pt_1':('p^{T}_{#tau_{2}} [GeV]', 'Normalized'), \
+        'MVA1l2tau_weight':('BDT score', 'Normalized'), \
+        'nJets_OR_T':('nJets_OR_T', 'Normalized'), \
+        'nJets_OR_T_MV2c10_70':('nJets_OR_T_MV2c10_70', 'Normalized'), \
+        'HT_jets':('HT_jets [GeV]', 'Normalized'), \
+        'jjdrmin_1l2tau':('#Delta R_{min}(jj)', 'Normalized'), \
+        'mtautau_1l2tau':('M(#tau_{had}#tau_{had})', 'Normalized'), \
+        'njets_1l2tau':('njets_1l2tau', 'Normalized'), \
+        'nbjets_1l2tau':('nbjets_1l2tau', 'Normalized'), \
+        'htjets_1l2tau':('htjets_1l2tau', 'Normalized'), \
+        'tau_BDTJetScore_0':('#tau_{1} BDTJetScore', 'Normalized'), \
+        'tau_BDTJetScore_1':('#tau_{2} BDTJetScore', 'Normalized'), \
+        'tau_tight_0':('tau_tight_0', 'Normalized'), \
+        'tau_tight_1':('tau_tight_1', 'Normalized'), \
+        'tau_truthType_0':('tau_truthType_0','Normalized'),\
+        'tau_truthType_1':('tau_truthType_1','Normalized'),\
+        'tau_truthOrigin_1':('tau_truthOrigin_1','Normalized'),\
+        'tau_truthOrigin_0':('tau_truthOrigin_0','Normalized'),\
+         }
