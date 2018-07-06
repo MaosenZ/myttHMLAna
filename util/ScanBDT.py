@@ -7,13 +7,18 @@ from mytools import *
 
 def scan(samp, bdt):
 
-    inputfile=TFile("/Users/mason/Desktop/myWork/ttHMLSamps/v6_02/nominal/%s.root" %samp)
+    inputfile=TFile("/Users/mason/Desktop/myWork/ttHMLSamps/v6_02/nominal/%s_bdt.root" %samp)
     tree=inputfile.Get("nominal")
-
     passed=0
     for evt in tree:
-        weight=evt.scale_nom*evt.pileupEventWeight_090 *evt.JVT_EventWeight*evt.MV2c10_Continuous_EventWeight*evt.SherpaNJetWeight*( 36074.6*(evt.RunYear < 2016.5) +  43813.7*(evt.RunYear > 2016.5) )
-        if evt.MVA1l2tau_weight>bdt and evt.tau_charge_0*evt.tau_charge_1<0:
+        lumi=1.0
+        if evt.RunYear < 2016.5: lumi=36074.6
+        if evt.RunYear > 2016.5: lumi=43813.7
+        #weight=evt.scale_nom*evt.pileupEventWeight_090 *evt.JVT_EventWeight*evt.MV2c10_Continuous_EventWeight*evt.SherpaNJetWeight*( 36074.6*(evt.RunYear < 2016.5) +  43813.7*(evt.RunYear > 2016.5) )
+        if evt.nTaus_OR_Pt25<=0 : evt.tauSFTight=1.0
+        weight=evt.scale_nom*evt.pileupEventWeight_090 *evt.JVT_EventWeight*evt.MV2c10_Continuous_EventWeight*evt.SherpaNJetWeight*evt.lepSFObjLoose*evt.tauSFTight*lumi
+        #if evt.MVA1l2tau_weight>bdt and evt.tau_charge_0*evt.tau_charge_1<0:
+        if evt.Mybdt>bdt and evt.tau_charge_0*evt.tau_charge_1<0:
            passed += weight
     return passed
 
@@ -38,4 +43,4 @@ gr.GetXaxis().SetTitle("BDT score")
 gr.GetYaxis().SetTitle("Z0")
 c=createCanvas()
 gr.Draw("ALP")
-c.SaveAs("plots/bdt_scan.pdf")
+c.SaveAs("plots/newbdt_scan.pdf")

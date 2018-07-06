@@ -18,7 +18,7 @@ from commonPlotting import *
 SetAtlasStyle()
 
 regions, variables=getRegionsVars('ttbar')
-region="OneL2taulowBDTSS"
+region="OneL2tauSSnoBDT"
 
 def addHists(region, variable, components):
     """read the hists from the same sample and add them together"""

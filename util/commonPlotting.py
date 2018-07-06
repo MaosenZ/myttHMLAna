@@ -31,6 +31,11 @@ titles={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Events'), \
         'tau_truthType_1':('tau_truthType_1','Events'),\
         'tau_truthOrigin_1':('tau_truthOrigin_1','Events'),\
         'tau_truthOrigin_0':('tau_truthOrigin_0','Events'),\
+        'maxeta':('#eta_{max}',"Events"),\
+        'tau_eta_0':('#eta_{#tau0}',"Events"),\
+        'tau_eta_1':('#eta_{#tau1}',"Events"),\
+        'tau_tagWeightBin_0':("tau_tagWeightBin_0","Events"),\
+        'tau_tagWeightBin_1':("tau_tagWeightBin_1","Events")
          }
 
 titles_norm={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Normalized'), \
@@ -53,4 +58,9 @@ titles_norm={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Normalized'), \
         'tau_truthType_1':('tau_truthType_1','Normalized'),\
         'tau_truthOrigin_1':('tau_truthOrigin_1','Normalized'),\
         'tau_truthOrigin_0':('tau_truthOrigin_0','Normalized'),\
+        'maxeta':('#eta_{max}',"Normalized"),\
+        'tau_eta_0':('#eta_{#tau0}',"Normalized"),\
+        'tau_eta_1':('#eta_{#tau1}',"Normalized"),\
+        'tau_tagWeightBin_0':("tau_tagWeightBin_0","Normalized"),\
+        'tau_tagWeightBin_1':("tau_tagWeightBin_1","Normalized")
          }

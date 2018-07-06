@@ -1,6 +1,6 @@
 
 bkgs=("ttbar","ttbargamma","diboson","Vjets","ttV","rare")
-region='OneL2tauOSnoBDT'
+region='OneL2tauTTM'
 histname="%s_MVA1l2tau_weight_F" % region
 print histname
 
