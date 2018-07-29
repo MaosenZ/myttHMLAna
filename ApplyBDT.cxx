@@ -1,10 +1,10 @@
 #include "Root/NTUPLE.cxx"
 
 void ApplyBDT(){
-string samps[]={"tth","diboson","rare","ttV"};
+string samps[]={"tth","diboson","rare","ttV","ttbar"};
 //string samps[]={"data"};
 
-for(unsigned int i=0;i<4;i++){
+for(unsigned int i=4;i<5;i++){
     std::cout<<samps[i]<<std::endl;
     NTUPLE *ntuple=new NTUPLE(samps[i]);
 

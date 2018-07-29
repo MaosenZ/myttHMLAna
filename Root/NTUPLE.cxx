@@ -142,10 +142,10 @@ void NTUPLE::cutFlow(){
 
 void NTUPLE::applyBDT(){
 
-  TString BDT_tth1l2tau = "doc/TMVAClassification_BDTG.weights8varbtagtaupt25Triglept27tauTTbvetoWT_R21.xml";
+  TString BDT_tth1l2tau = "doc/TMVAClassification_BDTG.weights8varbtagtaupt25Triglept27tauTTbvetoWTfix_R21.xml";
   std::cout<<" which BDT ? "<<BDT_tth1l2tau<<std::endl;
   initialiseTMVA_tth1l2tau(BDT_tth1l2tau);
-  TString path="/Users/mason/Desktop/myWork/ttHMLSamps/v6_02/data/";
+  TString path="/Users/mason/Desktop/myWork/ttHMLSamps/v6_02/nominal/";
   path += mySample+"_bdt.root";
   TFile *outfile=new TFile(path,"recreate");
   TTree *outtree=new TTree("nominal","");

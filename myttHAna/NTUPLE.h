@@ -210,21 +210,21 @@ public :
 #ifdef NTUPLE_cxx
 NTUPLE::NTUPLE(string inputSample) : fChain(0) 
 {
-   TChain *chain=new TChain(m_treeName);
+   //TChain *chain=new TChain(m_treeName);
 
    //for special
-   /*TString cpath="/Users/mason/Desktop/myWork/ttHMLSamps/v6_02/data/";
+   TString cpath="/Users/mason/Desktop/myWork/ttHMLSamps/v6_02/nominal/";
    cpath += inputSample+".root";
    TFile *inputfile=new TFile(cpath);
-   TTree *chain=(TTree*)inputfile->Get(m_treeName);*/
-   string inputlist=prefix+inputSample+".list";
+   TTree *chain=(TTree*)inputfile->Get(m_treeName);
+   /*string inputlist=prefix+inputSample+".list";
    ifstream inputfile(inputlist.c_str(), ifstream::in);
    string line;
    while (getline(inputfile, line)){
           if (line[0]=='#') continue;
           TString ifile=prepath+line;
           chain->Add(ifile);    
-   }
+   }*/
    Init(chain);
    tree_number=0; 
    mySample=inputSample;
