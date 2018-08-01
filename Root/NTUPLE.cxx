@@ -140,15 +140,15 @@ void NTUPLE::cutFlow(){
   cout<<numTightL<<setw(20)<<numwtTightL<<endl; 
 }
 
-void NTUPLE::applyBDT(){
+void NTUPLE::applyBDT(TString treename){
 
   TString BDT_tth1l2tau = "doc/TMVAClassification_BDTG.weights8varbtagtaupt25Triglept27tauTTbvetoWT_R21.xml";
   std::cout<<" which BDT ? "<<BDT_tth1l2tau<<std::endl;
   initialiseTMVA_tth1l2tau(BDT_tth1l2tau);
-  TString path="/Users/mason/Desktop/myWork/ttHMLSamps/v6_02/data/";
+  TString path="/Users/mason/Desktop/myWork/ttHMLSamps/v6_04/systematics/";
   path += mySample+"_bdt.root";
-  TFile *outfile=new TFile(path,"recreate");
-  TTree *outtree=new TTree("nominal","");
+  TFile *outfile=new TFile(path,"update");
+  TTree *outtree=new TTree(treename,"");
   fChain->LoadTree(0);
   //outtree = fChain->GetTree()->CloneTree(0);
   outtree = fChain->CloneTree(0);

@@ -197,7 +197,7 @@ public :
    //virtual void     makeMiniTree();
    virtual void     fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree);
    virtual void     cutFlow();
-   virtual void     applyBDT();
+   virtual void     applyBDT(TString treename);
    virtual bool     commonSelections();
    virtual double   commonWeight();
    virtual bool     applySelections(string selection);

@@ -2,7 +2,7 @@
 
 void ApplyBDT(){
 string samps[]={"tth","diboson","rare","ttV"};
-//string samps[]={"data"};
+//string samps[]={"data","ttbar"};
 
 for(unsigned int i=0;i<4;i++){
     std::cout<<samps[i]<<std::endl;
