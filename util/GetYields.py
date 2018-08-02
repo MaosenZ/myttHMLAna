@@ -5,7 +5,7 @@ from ROOT import TFile, TTree, TGraphErrors, TGraph, gROOT
 from array import array
 from mytools import *
 
-bdt_low, bdt_high = -1, 1
+bdt_low, bdt_high = -1, 0.6
 bkgs=["ttbar",\
            "diboson",\
            "ttV",\
@@ -13,13 +13,13 @@ bkgs=["ttbar",\
 
 def scan(samp, bdt_low, bdt_high, isOS):
 
-    inputfile=TFile("/Users/mason/Desktop/myWork/ttHMLSamps/v6_02/nominal/%s_bdt.root" %samp)
+    inputfile=TFile("/Users/mason/Desktop/myWork/ttHMLSamps/v6_04/data/%s_bdt.root" %samp)
     tree=inputfile.Get("nominal")
     passed, passed_err2=0, 0
     for evt in tree:
         if (isOS==True and evt.tau_charge_0*evt.tau_charge_1<0) or (isOS==False and evt.tau_charge_0*evt.tau_charge_1>0):
            if samp == "data":
-              if evt.Mybdt>bdt_low and evt.Mybdt<bdt_high :
+              if evt.Mybdt>bdt_low and evt.Mybdt<bdt_high and evt.tau_fromPV_0 and evt.tau_fromPV_1:
                  passed += 1
                  passed_err2 += 1
            else : 
@@ -34,6 +34,7 @@ def scan(samp, bdt_low, bdt_high, isOS):
                  passed_err2 += weight*weight
     return passed, sqrt(passed_err2)
 
+#print scan('data',bdt_low, bdt_high, True)
 #signal yield
 evt_tth, err_tth=scan("tth",bdt_low,bdt_high,True)
 #ttV

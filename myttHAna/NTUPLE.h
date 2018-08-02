@@ -188,7 +188,7 @@ public :
    Float_t        tau_btag70_1;
    Int_t           tau_truth_1;
 
-   NTUPLE(string inputSample);
+   NTUPLE(string inputSample, string treename);
    virtual ~NTUPLE();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
@@ -197,7 +197,7 @@ public :
    //virtual void     makeMiniTree();
    virtual void     fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree);
    virtual void     cutFlow();
-   virtual void     applyBDT(TString treename);
+   virtual void     applyBDT();
    virtual bool     commonSelections();
    virtual double   commonWeight();
    virtual bool     applySelections(string selection);
@@ -208,14 +208,15 @@ public :
 #endif
 
 #ifdef NTUPLE_cxx
-NTUPLE::NTUPLE(string inputSample) : fChain(0) 
+NTUPLE::NTUPLE(string inputSample, string treename) : fChain(0) 
 {
    TChain *chain=new TChain(m_treeName);
 
    //for special
-   /*TString cpath="/Users/mason/Desktop/myWork/ttHMLSamps/v6_02/data/";
+   /*TString cpath="/Users/mason/Desktop/myWork/ttHMLSamps/v6_04/nominal/";
    cpath += inputSample+".root";
    TFile *inputfile=new TFile(cpath);
+   m_treeName=treename;
    TTree *chain=(TTree*)inputfile->Get(m_treeName);*/
    string inputlist=prefix+inputSample+".list";
    ifstream inputfile(inputlist.c_str(), ifstream::in);
@@ -223,6 +224,7 @@ NTUPLE::NTUPLE(string inputSample) : fChain(0)
    while (getline(inputfile, line)){
           if (line[0]=='#') continue;
           TString ifile=prepath+line;
+          std::cout<<ifile<<std::endl;
           chain->Add(ifile);    
    }
    Init(chain);
