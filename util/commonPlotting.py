@@ -15,6 +15,8 @@ titles={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Events'), \
         'tau_pt_0':('p^{T}_{#tau_{1}} [GeV]', 'Events'), \
         'tau_pt_1':('p^{T}_{#tau_{2}} [GeV]', 'Events'), \
         'MVA1l2tau_weight':('BDT score', 'Events'), \
+        'Mybdt':('BDT score', 'Events'), \
+        'Mybdtx':('BDT score', 'Events'), \
         'nJets_OR_T':('nJets_OR_T', 'Events'), \
         'nJets_OR_T_MV2c10_70':('nJets_OR_T_MV2c10_70', 'Events'), \
         'HT_jets':('HT_jets [GeV]', 'Events'), \
@@ -42,6 +44,8 @@ titles_norm={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Normalized'), \
         'tau_pt_0':('p^{T}_{#tau_{1}} [GeV]', 'Normalized'), \
         'tau_pt_1':('p^{T}_{#tau_{2}} [GeV]', 'Normalized'), \
         'MVA1l2tau_weight':('BDT score', 'Normalized'), \
+        'Mybdt':('BDT score', 'Normalized'), \
+        'Mybdtx':('BDT score', 'Normalized'), \
         'nJets_OR_T':('nJets_OR_T', 'Normalized'), \
         'nJets_OR_T_MV2c10_70':('nJets_OR_T_MV2c10_70', 'Normalized'), \
         'HT_jets':('HT_jets [GeV]', 'Normalized'), \

@@ -49,6 +49,7 @@ Float_t tmva1l2tau_subtaubdtjetsigtrans;
 Float_t tmva1l2tau_leadtauptv;
 Float_t tmva1l2tau_subtauptv;
 Float_t tmva1l2tau_etamax;
+Float_t tmva1l2tau_drltautau;
 Float_t tmva1l2tau_pttautau;
 Float_t tmva1l2tau_sumtautight;
 Float_t tmva1l2tau_leadtaubtagbin;
@@ -131,7 +132,7 @@ void initialiseTMVA_tthssltau( TString weights, TString myMethodList = "" )
 }
 
 
-void initialiseTMVA_tth1l2tau( TString weights, TString myMethodList = "" )
+void initialiseTMVA_tth1l2tau( TString weights,TString weights_even="", TString weights_odd="",TString myMethodList = "" )
 {
 #ifdef __CINT__
   gROOT->ProcessLine( ".O0" ); // turn off optimization in CINT 
@@ -186,15 +187,21 @@ void initialiseTMVA_tth1l2tau( TString weights, TString myMethodList = "" )
   reader_tth1l2tau->AddVariable( "Mtautau"   ,&tmva1l2tau_mtautau );
   reader_tth1l2tau->AddVariable( "Jjdr"   ,&tmva1l2tau_jjdr );
   reader_tth1l2tau->AddVariable( "fabs(Etamax)"   ,&tmva1l2tau_etamax );
+  //reader_tth1l2tau->AddVariable( "Drltautau"   ,&tmva1l2tau_drltautau );
   //reader_tth1l2tau->AddVariable( "LeadtaubtagBin<0?0.:LeadtaubtagBin"   ,&tmva1l2tau_leadtaubtagbin);
   //reader_tth1l2tau->AddVariable( "SubtaubtagBin<0?0.:SubtaubtagBin"   ,&tmva1l2tau_subtaubtagbin);
   //reader_tth1l2tau->AddVariable( "Leadtaubdtjetscore"   ,&tmva1l2tau_leadtaubdtjetsigtrans);
   //reader_tth1l2tau->AddVariable( "Subtaubdtjetscore"   ,&tmva1l2tau_subtaubdtjetsigtrans);
   //reader_tth1l2tau->AddVariable( "Leadtauptv"   ,&tmva1l2tau_leadtauptv);
   //reader_tth1l2tau->AddVariable( "Subtauptv"   ,&tmva1l2tau_subtauptv);
-
-  reader_tth1l2tau->BookMVA("BDT_tth1l2tau", weights);
-
+  if(weights_even==""||weights_odd==""){ 
+    reader_tth1l2tau->BookMVA("BDT_tth1l2tau", weights); // trained with random number 
+  }
+  else{
+    reader_tth1l2tau->BookMVA("BDT_tth1l2tau", weights); // trained with random number  
+    reader_tth1l2tau->BookMVA("BDT_tth1l2tauEven", weights_even); // trained with even number 
+    reader_tth1l2tau->BookMVA("BDT_tth1l2tauOdd", weights_odd); // trained with odd number 
+  }
 }
 
 // 2lss35j                                                                                                                  

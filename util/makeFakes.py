@@ -60,7 +60,8 @@ num_fake, err_fake=calentries(hists_fake[0])
 num_ostruth, err_ostruth=calentries(histsOS_truth[0])
 num_exp=num_ssdata-num_sstruth+num_ostruth
 err_exp=sqrt(pow(err_ssdata,2)+pow(err_sstruth,2)+pow(err_ostruth,2))
-num_ratio=num_osdata/num_exp
+#num_ratio=num_osdata/num_exp
+num_ratio=num_exp/num_osdata
 err_ratio=num_ratio*sqrt(pow(err_exp/num_exp,2))
 
 print '&SSData     &SSMC     &SStruth      &OSMC       &OStruth	     &Exp.	&OSData		&Ratio \\\\'

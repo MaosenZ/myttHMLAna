@@ -141,7 +141,7 @@ public :
    Char_t          matchDLTll13;
    Char_t          matchDLTll23;
   
-   std::vector<std::string> event_input_vars={"Mll01/F", "Ptll01/F", "DRll01/F", "Mlll012/F", "Mllll0123/F","Mlll013/F","Mll02/F", "Ptll02/F", "DRll02/F", "Mlll023/F","Mll03/F", "Ptll03/F", "DRll03/F", "Mll12/F", "Ptll12/F", "DRll12/F", "Mlll123/F", "Mll13/F", "Ptll13/F", "DRll13/F", "Mll23/F", "Ptll23/F", "DRll23/F", "best_Z_Mll/F", "best_Z_other_Mll/F", "minOSSFMll/F", "minOSMll","HT/F","HT_lep/F","HT_jets/F","htjets_1l2tau/F","jjdrmin_1l2tau/F","mtautau_1l2tau/F","njets_1l2tau/F","nbjets_1l2tau/F","nJets_OR_T/I","nJets_OR_T_MV2c20_70/I","nJets_OR_T_MV2c10_70/I","MVA1l2tau_weight/F"};
+   std::vector<std::string> event_input_vars={"Mll01/F", "Ptll01/F", "DRll01/F", "Mlll012/F", "Mllll0123/F","Mlll013/F","Mll02/F", "Ptll02/F", "DRll02/F", "Mlll023/F","Mll03/F", "Ptll03/F", "DRll03/F", "Mll12/F", "Ptll12/F", "DRll12/F", "Mlll123/F", "Mll13/F", "Ptll13/F", "DRll13/F", "Mll23/F", "Ptll23/F", "DRll23/F", "best_Z_Mll/F", "best_Z_other_Mll/F", "minOSSFMll/F", "minOSMll","HT/F","HT_lep/F","HT_jets/F","htjets_1l2tau/F","jjdrmin_1l2tau/F","mtautau_1l2tau/F","njets_1l2tau/F","nbjets_1l2tau/F","nJets_OR_T/I","nJets_OR_T_MV2c20_70/I","nJets_OR_T_MV2c10_70/I","MVA1l2tau_weight/F","Mybdt/D","Mybdtx/D"};
    Int_t           nJets_OR;
    Int_t           nJets_OR_T_MV2c20_60;
    Int_t           nJets_OR_T_MV2c20_77;
@@ -188,7 +188,8 @@ public :
    Float_t        tau_btag70_1;
    Int_t           tau_truth_1;
 
-   NTUPLE(string inputSample, string treename);
+   //NTUPLE(string inputSample, string treename);
+   NTUPLE(string inputSample);
    virtual ~NTUPLE();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
@@ -208,8 +209,10 @@ public :
 #endif
 
 #ifdef NTUPLE_cxx
-NTUPLE::NTUPLE(string inputSample, string treename) : fChain(0) 
+//NTUPLE::NTUPLE(string inputSample, string treename) : fChain(0) 
+NTUPLE::NTUPLE(string inputSample) : fChain(0) 
 {
+     // m_treeName=treename;
    TChain *chain=new TChain(m_treeName);
 
    //for special
@@ -218,6 +221,7 @@ NTUPLE::NTUPLE(string inputSample, string treename) : fChain(0)
    TFile *inputfile=new TFile(cpath);
    m_treeName=treename;
    TTree *chain=(TTree*)inputfile->Get(m_treeName);*/
+   //m_treeName=treename;
    string inputlist=prefix+inputSample+".list";
    ifstream inputfile(inputlist.c_str(), ifstream::in);
    string line;

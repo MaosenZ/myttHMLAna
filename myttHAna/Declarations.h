@@ -26,8 +26,8 @@ namespace Declarations{
    //std::string         prefix("/afs/cern.ch/user/m/mzhou/work/private/myttHAna/doc/"); //define prefix for input sample list
    std::string         prefix("/Users/mason/Desktop/myWork/myttHMLAna/doc/"); //define prefix for input sample list
    //std::string         prepath("/eos/atlas/atlascerngroupdisk/phys-higgs/HSG8/multilepton_Run2_Summer18/GN2/v6_04/");
-   std::string         prepath("/Users/mason/Desktop/myWork/ttHMLSamps/v6_04/");
-   std::string	       outpath("/eos/atlas/user/m/mzhou/ttHMLSamps/v6_04/"); //skimed samples go here
+   std::string         prepath("/Users/mason/Desktop/myWork/ttHMLSamps/v7_01/");
+   std::string	       outpath("/eos/atlas/user/m/mzhou/ttHMLSamps/v7_01/"); //skimed samples go here
    TString             m_treeName("nominal");
 
    std::vector<std::string> m_Algorithms;

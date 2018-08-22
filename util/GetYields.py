@@ -5,7 +5,7 @@ from ROOT import TFile, TTree, TGraphErrors, TGraph, gROOT
 from array import array
 from mytools import *
 
-bdt_low, bdt_high = -1, 0.6
+bdt_low, bdt_high = 0.6,1
 bkgs=["ttbar",\
            "diboson",\
            "ttV",\
@@ -13,7 +13,7 @@ bkgs=["ttbar",\
 
 def scan(samp, bdt_low, bdt_high, isOS):
 
-    inputfile=TFile("/Users/mason/Desktop/myWork/ttHMLSamps/v6_04/data/%s_bdt.root" %samp)
+    inputfile=TFile("/Users/mason/Desktop/myWork/ttHMLSamps/v6_04/all/%s_bdt.root" %samp)
     tree=inputfile.Get("nominal")
     passed, passed_err2=0, 0
     for evt in tree:

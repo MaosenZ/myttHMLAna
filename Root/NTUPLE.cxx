@@ -75,7 +75,7 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
                   if(vartype=="F") {
                      if(var.find("weight")!=string::npos || var.find("dr")!=string::npos
                         || var.find("nj")!=string::npos || var.find("nb")!=string::npos || 
-                        var.find("tight")!=string::npos || var.find("eta")!=string::npos) 
+                        var.find("tight")!=string::npos || var.find("eta")!=string::npos ) 
                         { if(var=="maxeta") {
                              TH1Fs[name]->Fill(fabs(input_branches["tau_eta_0"].f)>fabs(input_branches["tau_eta_1"].f)?fabs(input_branches["tau_eta_0"].f):fabs(input_branches["tau_eta_1"].f), wt);
                              output_branches[var].f=fabs(input_branches["tau_eta_0"].f)>fabs(input_branches["tau_eta_1"].f)?fabs(input_branches["tau_eta_0"].f):fabs(input_branches["tau_eta_1"].f);                                 
@@ -88,6 +88,12 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
                      else {TH1Fs[name]->Fill( (input_branches[var].f)/GeV, wt);
                           output_branches[var].f=(input_branches[var].f)/GeV;
 		     }
+                  }
+
+                  if(vartype=="D") {
+                     TH1Fs[name]->Fill( input_branches[var].d, wt);
+                     output_branches[var].d=input_branches[var].d;
+                     std::cout<<"Mybdtx: "<<input_branches["Mybdtx"].d<<std::endl;
                   }
               }//end of loop hists map
            }//end of basic selections
@@ -143,18 +149,22 @@ void NTUPLE::cutFlow(){
 void NTUPLE::applyBDT(){
 
   TString BDT_tth1l2tau = "doc/TMVAClassification_BDTG.weights8varbtagtaupt25Triglept27tauTTbvetoWTfix_R21.xml";
+  TString BDT_tth1l2tauEven ="doc/TMVAClassification_BDTG.weights8varbtagtaupt25Triglept27tauTTbvetoWTfixTrainEven_R21.xml";
+  TString BDT_tth1l2tauOdd ="doc/TMVAClassification_BDTG.weights8varbtagtaupt25Triglept27tauTTbvetoWTfixTrainOdd_R21.xml";
   std::cout<<" which BDT ? "<<BDT_tth1l2tau<<std::endl;
-  initialiseTMVA_tth1l2tau(BDT_tth1l2tau);
-  TString path="/Users/mason/Desktop/myWork/ttHMLSamps/v6_04/nominal/";
-  path += mySample+"_bdt.root";
+  initialiseTMVA_tth1l2tau(BDT_tth1l2tau, BDT_tth1l2tauEven,BDT_tth1l2tauOdd);
+  TString path="/Users/mason/Desktop/myWork/ttHMLSamps/v7_01/all/";
+  path += mySample+"_bdtx.root";
   TFile *outfile=new TFile(path,"update");
   TTree *outtree=new TTree(m_treeName,"");
   fChain->LoadTree(0);
   //outtree = fChain->GetTree()->CloneTree(0);
   outtree = fChain->CloneTree(0);
-  Double_t myBDT;
+  Double_t myBDT, myBDTx;
   outtree->Branch("Mybdt", &myBDT);
+  outtree->Branch("Mybdtx", &myBDTx);
   myBDT = -2.;
+  myBDTx = -2.;
 
   Long64_t nentries = fChain->GetEntries();
  
@@ -174,6 +184,14 @@ void NTUPLE::applyBDT(){
       tmva1l2tau_subtaubtagbin = input_branches["tau_tagWeightBin_1"].i;
       myBDT = reader_tth1l2tau->EvaluateMVA("BDT_tth1l2tau");
       myBDT =myBDT<1.0?myBDT:0.99;
+      if(EventNumber%2==1){ // odd events
+          myBDTx = reader_tth1l2tau->EvaluateMVA("BDT_tth1l2tauEven");
+          myBDTx =myBDTx<1.0?myBDTx:0.99;
+      }
+      else{ // even events
+          myBDTx = reader_tth1l2tau->EvaluateMVA("BDT_tth1l2tauOdd");
+          myBDTx =myBDTx<1.0?myBDTx:0.99;
+      }
       outtree->Fill();
   }
   outtree->Write();

@@ -41,7 +41,7 @@ bool NTUPLE::applySelections(string selection){
      input_branches["tau_tight_0"].f && input_branches["tau_tight_1"].f  &&
      tau_btag70_0==0 && tau_btag70_1==0 &&
      input_branches["nJets_OR_T"].i>=3 && input_branches["nJets_OR_T_MV2c10_70"].i>=1 &&
-     input_branches["MVA1l2tau_weight"].f>0.5)
+     input_branches["Mybdtx"].d>0.5)
       passed=true;
   }
 
@@ -75,7 +75,7 @@ bool NTUPLE::applySelections(string selection){
      input_branches["tau_tight_0"].f && input_branches["tau_tight_1"].f  &&
      tau_btag70_0==0 && tau_btag70_1==0 &&
      input_branches["nJets_OR_T"].i>=3 && input_branches["nJets_OR_T_MV2c10_70"].i>=1 &&
-     input_branches["MVA1l2tau_weight"].f>0.5 &&
+     input_branches["Mybdtx"].d>0.5 &&
      input_branches["tau_truthType_0"].i==10 && input_branches["tau_truthType_1"].i==10)
       passed=true;
   }
@@ -88,7 +88,7 @@ bool NTUPLE::applySelections(string selection){
      input_branches["tau_tight_0"].f && input_branches["tau_tight_1"].f  &&
      tau_btag70_0==0 && tau_btag70_1==0 &&
      input_branches["nJets_OR_T"].i>=3 && input_branches["nJets_OR_T_MV2c10_70"].i>=1 &&
-     input_branches["MVA1l2tau_weight"].f>0.5)
+     input_branches["Mybdtx"].d>0.5)
        passed=true;
   }
 
@@ -100,7 +100,7 @@ bool NTUPLE::applySelections(string selection){
      input_branches["tau_tight_0"].f && input_branches["tau_tight_1"].f  &&
      tau_btag70_0==0 && tau_btag70_1==0 &&
      input_branches["nJets_OR_T"].i>=3 && input_branches["nJets_OR_T_MV2c10_70"].i>=1 &&
-     input_branches["MVA1l2tau_weight"].f>0.5 &&
+     input_branches["Mybdtx"].d>0.5 &&
      input_branches["tau_truthType_0"].i==10 && input_branches["tau_truthType_1"].i==10)
        passed=true;
   }
@@ -113,7 +113,7 @@ bool NTUPLE::applySelections(string selection){
      input_branches["tau_tight_0"].f && input_branches["tau_tight_1"].f  &&
      tau_btag70_0==0 && tau_btag70_1==0 &&
      input_branches["nJets_OR_T"].i>=3 && input_branches["nJets_OR_T_MV2c10_70"].i>=1 &&
-     input_branches["MVA1l2tau_weight"].f<0.5)
+     input_branches["Mybdtx"].d<0.5)
        passed=true;
   }
 
@@ -125,7 +125,7 @@ bool NTUPLE::applySelections(string selection){
      input_branches["tau_tight_0"].f && input_branches["tau_tight_1"].f  &&
      tau_btag70_0==0 && tau_btag70_1==0 &&
      input_branches["nJets_OR_T"].i>=3 && input_branches["nJets_OR_T_MV2c10_70"].i>=1 &&
-     input_branches["MVA1l2tau_weight"].f<0.5 &&
+     input_branches["Mybdtx"].d<0.5 &&
      input_branches["tau_truthType_0"].i==10 && input_branches["tau_truthType_1"].i==10)
        passed=true;
   }
@@ -138,7 +138,7 @@ bool NTUPLE::applySelections(string selection){
      input_branches["tau_tight_0"].f && input_branches["tau_tight_1"].f  &&
      tau_btag70_0==0 && tau_btag70_1==0 &&
      input_branches["nJets_OR_T"].i>=3 && input_branches["nJets_OR_T_MV2c10_70"].i>=1 &&
-     input_branches["MVA1l2tau_weight"].f<0.5)
+     input_branches["Mybdtx"].d<0.5)
        passed=true;
   }
 
@@ -150,7 +150,7 @@ bool NTUPLE::applySelections(string selection){
      input_branches["tau_tight_0"].f && input_branches["tau_tight_1"].f  &&
      tau_btag70_0==0 && tau_btag70_1==0 &&
      input_branches["nJets_OR_T"].i>=3 && input_branches["nJets_OR_T_MV2c10_70"].i>=1 &&
-     input_branches["MVA1l2tau_weight"].f<0.5 &&
+     input_branches["Mybdtx"].d<0.5 &&
      input_branches["tau_truthType_0"].i==10 && input_branches["tau_truthType_1"].i==10)
        passed=true;
   }
@@ -163,7 +163,7 @@ bool NTUPLE::applySelections(string selection){
      input_branches["tau_tight_0"].f  && input_branches["lep_ID_0"].f*input_branches["tau_charge_0"].f>0 &&
      tau_btag70_0==0 && tau_btag70_1==0 &&
      input_branches["nJets_OR_T"].i>=3 && input_branches["nJets_OR_T_MV2c10_70"].i>=1 &&
-     input_branches["MVA1l2tau_weight"].f>0.5)
+     input_branches["Mybdtx"].d>0.5)
        passed=true;
   }
 
@@ -175,7 +175,7 @@ bool NTUPLE::applySelections(string selection){
      input_branches["tau_tight_1"].f  && input_branches["lep_ID_0"].f*input_branches["tau_charge_1"].f>0 &&
      tau_btag70_0==0 && tau_btag70_1==0 &&
      input_branches["nJets_OR_T"].i>=3 && input_branches["nJets_OR_T_MV2c10_70"].i>=1 &&
-     input_branches["MVA1l2tau_weight"].f>0.5)
+     input_branches["Mybdtx"].d>0.5)
        passed=true;
   }
 
