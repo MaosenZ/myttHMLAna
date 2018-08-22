@@ -188,8 +188,8 @@ public :
    Float_t        tau_btag70_1;
    Int_t           tau_truth_1;
 
-   //NTUPLE(string inputSample, string treename);
-   NTUPLE(string inputSample);
+   NTUPLE(string inputSample, string treename);
+   //NTUPLE(string inputSample);
    virtual ~NTUPLE();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
@@ -209,10 +209,10 @@ public :
 #endif
 
 #ifdef NTUPLE_cxx
-//NTUPLE::NTUPLE(string inputSample, string treename) : fChain(0) 
-NTUPLE::NTUPLE(string inputSample) : fChain(0) 
+NTUPLE::NTUPLE(string inputSample, string treename) : fChain(0) 
+//NTUPLE::NTUPLE(string inputSample) : fChain(0) 
 {
-     // m_treeName=treename;
+   m_treeName=treename;
    TChain *chain=new TChain(m_treeName);
 
    //for special

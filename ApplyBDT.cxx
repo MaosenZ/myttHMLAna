@@ -1,15 +1,15 @@
 #include "Root/NTUPLE.cxx"
 
 void ApplyBDT(){
-  //string samps[]={"tth","diboson","rare","ttV"};
+  string samps[]={"tth","diboson","rare","ttV"};
   //string samps[]={"data","ttbar","Vjets","ttbargamma"};
-  string samps[]={"ttZ","tth_Gen","tth_af2","tth_semiaf2","tth_aMChwg"};
+  //string samps[]={"ttZ","tth_Gen","tth_af2","tth_semiaf2","tth_aMChwg"};
   
-  for(unsigned int i=4;i<5;i++){
+  for(unsigned int i=0;i<4;i++){
       std::cout<<samps[i]<<std::endl;
       string samp=samps[i];
-      string treenames[]={"nominal"};
-      /*string treenames[]={"nominal",
+      //string treenames[]={"nominal"};
+      string treenames[]={"nominal",
           "EG_RESOLUTION_ALL__1down",	
           "EG_RESOLUTION_ALL__1up",	
           "EG_SCALE_AF2__1down",	
@@ -92,10 +92,10 @@ void ApplyBDT(){
           "TAUS_TRUEHADTAU_SME_TES_INSITU__1down",	
           "TAUS_TRUEHADTAU_SME_TES_INSITU__1up",	
           "TAUS_TRUEHADTAU_SME_TES_MODEL__1down",	
-          "TAUS_TRUEHADTAU_SME_TES_MODEL__1up"};*/
+          "TAUS_TRUEHADTAU_SME_TES_MODEL__1up"};
      
-      //for (int index=0; index<84;index++){
-      for (int index=0; index<1;index++){
+      for (int index=0; index<84;index++){
+      //for (int index=0; index<1;index++){
            NTUPLE *ntuple=new NTUPLE(samp, treenames[index]);
            std::cout<<" samp:   "<<samp<<"   Tree:  "<<treenames[index]<<std::endl; 
            ntuple->applyBDT();

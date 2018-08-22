@@ -174,7 +174,7 @@ void NTUPLE::applyBDT(){
 
       tmva1l2tau_njets25 = input_branches["njets_1l2tau"].i ;
       tmva1l2tau_nbjets25 = input_branches["nbjets_1l2tau"].i;
-      tmva1l2tau_htjets = input_branches["HT_jets"].f;
+      tmva1l2tau_htjets = input_branches["htjets_1l2tau"].f;
       tmva1l2tau_leadtaupt = input_branches["tau_pt_0"].f/GeV;
       tmva1l2tau_subtaupt = input_branches["tau_pt_1"].f/GeV;
       tmva1l2tau_mtautau = input_branches["mtautau_1l2tau"].f/GeV;
