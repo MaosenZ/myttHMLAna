@@ -24,37 +24,9 @@ def scan(samp, bdt):
         if evt.nTaus_OR_Pt25<=0 : evt.tauSFTight=1.0
         weight=evt.scale_nom*evt.pileupEventWeight_090 *evt.JVT_EventWeight*evt.MV2c10_70_EventWeight*evt.SherpaNJetWeight*evt.lepSFObjLoose*evt.tauSFTight*lumi
         #if evt.MVA1l2tau_weight>bdt and evt.tau_charge_0*evt.tau_charge_1<0:
-        if evt.Mybdtx>bdt and evt.tau_charge_0*evt.tau_charge_1<0 and evt.tau_passMuonOLR_0==1 and evt.tau_passMuonOLR_1==1:
+        if evt.Mybdtx>bdt and evt.tau_charge_0*evt.tau_charge_1<0 and evt.tau_passMuonOLR_0==1 and evt.tau_passEleBDT_0==1 and evt.tau_passMuonOLR_1==1 and evt.tau_passEleBDT_1==1:
            passed += weight
+           print evt.RunNumber, evt.EventNumber, evt.Mybdtx, evt.lep_Pt_0, weight
     return passed
 
-bdts=(-0.9,-0.8,-0.7,-0.6,-0.5,-0.4,-0.3,-0.2,-0.1,0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9)
-points, points_errs=array('d'), array('d')
-sigs, errs=array('d'), array('d')
-for bdt in bdts:
-    s=scan("tth",bdt)
-    b=0
-    for bkg in bkgs:
-      b += scan(bkg, bdt)
-    Z0=medianZ(s, b)
-    points.append(bdt)
-    sigs.append(Z0)
-    #errs.append(ERR)
-    points_errs.append(0)
-    print "%.2f  %.2f"  % (bdt, Z0)
-SetAtlasStyle()
-gROOT.SetBatch(True)
-#gr=TGraphErrors(9, points, sigs, points_errs, errs)
-gr=TGraph(19, points, sigs)
-gr.GetXaxis().SetTitle("> BDT score")
-gr.GetYaxis().SetTitle("Z0")
-c=createCanvas()
-gr.Draw("ALP")
-gr.SetMaximum(2.0)
-gr.SetLineColor(kBlue)
-createLabels()
-myText(0.60,0.85, kBlack,"t#bar{t}H vs. All bkg (MC)")
-c.SaveAs("plots/bdtxMuonOLR_scan.pdf")
-outfile=TFile("scanbdtxMuonOLR.root","update")
-gr.Write()
-outfile.Close()
+scan('tth',0.6)

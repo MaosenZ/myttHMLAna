@@ -8,7 +8,7 @@ int main(int argc, char** argv){
 
   readConfig(config, m_Algorithms, m_Regions, m_Samples, m_commonSelections);
 
-  const char* histtxt="util/hists.def";
+  const char* histtxt="config/hists.def";
   for(unsigned int i=0;i<m_Samples.size();i++){
 
       cout<<"$$$$$$$$$$-------------------$$$$$$$$$$$$$$$"<<endl;

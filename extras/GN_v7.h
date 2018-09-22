@@ -1,12 +1,12 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Sun May 20 03:13:36 2018 by ROOT version 6.10/04
+// Tue Aug 14 14:35:37 2018 by ROOT version 6.12/06
 // from TTree nominal/Mini Ntuples
-// found on file: /eos/atlas/atlascerngroupdisk/phys-higgs/HSG8/multilepton_Run2_Summer18/GN2/v5_newTightDefs/data/data15/periodD.root
+// found on file: ../ttHMLSamps/v7_01/all/tth.root
 //////////////////////////////////////////////////////////
 
-#ifndef GN_v5_h
-#define GN_v5_h
+#ifndef GN_v7_h
+#define GN_v7_h
 
 #include <TROOT.h>
 #include <TChain.h>
@@ -17,7 +17,7 @@
 #include "vector"
 #include "vector"
 
-class GN_v5 {
+class GN_v7 {
 public :
    TTree          *fChain;   //!pointer to the analyzed TTree or TChain
    Int_t           fCurrent; //!current Tree number in a TChain
@@ -34,6 +34,7 @@ public :
    Bool_t          is3L;
    Bool_t          is3L1Tau;
    Bool_t          is4L;
+   Bool_t          is2lLowNJet0Tau;
    Bool_t          is2LSS0Tau_SR_Relaxed;
    Bool_t          is2LSS1Tau_SR_Relaxed;
    Bool_t          is3L0Tau_SR_Relaxed;
@@ -47,6 +48,10 @@ public :
    Bool_t          is2L_VR_ttW_ICHEP;
    Bool_t          is2L_VR_ttbarFakes_ICHEP;
    Bool_t          is4lCRttZRelaxed;
+   Bool_t          is2LOS1Tau_CR_ttbar;
+   Bool_t          is2LOS1Tau_CR_ttZ;
+   Bool_t          is2LOS1Tau_CR_W;
+   Bool_t          is3L1Tau_VR;
    Char_t          is2lOS0TauBaseline;
    Char_t          is2lOS0TauBaseline_ee;
    Char_t          is2lOS0TauBaseline_mm;
@@ -73,6 +78,9 @@ public :
    Char_t          is2lSS1TauBaseline_em;
    Char_t          is3lBaseline;
    Char_t          is3lBaselineNoZVeto;
+   Char_t          is2lss1tau_regionB;
+   Char_t          is2lss1tau_regionC;
+   Char_t          is2lss1tau_regionD;
    Bool_t          isGNv02;
    Float_t         minOSMll;
    Float_t         minOSSFMll;
@@ -80,14 +88,17 @@ public :
    Float_t         jet_flvWtOrdr_0_eta;
    Float_t         jet_flvWtOrdr_0_phi;
    Float_t         jet_flvWtOrdr_0_E;
+   Float_t         jet_flvWtOrdr_0_mv2c10;
    Float_t         jet_flvWtOrdr_1_pt;
    Float_t         jet_flvWtOrdr_1_eta;
    Float_t         jet_flvWtOrdr_1_phi;
    Float_t         jet_flvWtOrdr_1_E;
+   Float_t         jet_flvWtOrdr_1_mv2c10;
    Float_t         jet_flvWtOrdr_2_pt;
    Float_t         jet_flvWtOrdr_2_eta;
    Float_t         jet_flvWtOrdr_2_phi;
    Float_t         jet_flvWtOrdr_2_E;
+   Float_t         jet_flvWtOrdr_2_mv2c10;
    Float_t         DEtall01;
    Float_t         DEtall02;
    Float_t         DEtall12;
@@ -123,9 +134,17 @@ public :
    Float_t         FSF_4L_tot;
    Float_t         FSF_4L_tot_up;
    Float_t         FSF_4L_tot_down;
+   Int_t           FSF_category;
+   Float_t         FSF_4L_e_L;
+   Float_t         FSF_4L_e_H;
+   Float_t         FSF_4L_m;
+   Float_t         jet2_pt;
+   Float_t         jet2_eta;
+   Float_t         jet2_phi;
    Float_t         jet3_pt;
    Float_t         jet3_eta;
    Float_t         jet3_phi;
+   Int_t           jet0_tagWeightBin;
    Int_t           jet1_tagWeightBin;
    Int_t           jet2_tagWeightBin;
    Int_t           jet3_tagWeightBin;
@@ -140,6 +159,15 @@ public :
    Int_t           SignProduct2sslt;
    Float_t         TransverseMassLeadLepMET;
    Float_t         LD_HTmiss_ETmiss;
+   Float_t         Mjj_nonb;
+   Float_t         Mtop;
+   Float_t         MtopW;
+   Float_t         temptopoetcone20overpTlep0;
+   Float_t         temptopoetcone20overpTlep1;
+   Float_t         tempptvarcone20overpTlep0;
+   Float_t         tempptvarcone20overpTlep1;
+   Bool_t          lep_isAntiTight_0;
+   Bool_t          lep_isAntiTight_1;
    Float_t         tau_tight_0;
    Float_t         tau_tight_1;
    Float_t         tau_btag70_0;
@@ -166,12 +194,40 @@ public :
    Float_t         lead_BjetPt;
    Float_t         lead_jet_sumBEff;
    Float_t         sublead_jet_sumBEff;
+   Int_t           lead_jet_pass_FixedCutBEff_70;
+   Int_t           sublead_jet_pass_FixedCutBEff_70;
    Float_t         lead_jet_is_lead_antitag;
    Float_t         lead_jet_is_lead_tag;
    Float_t         lep_Pt_1_new;
    Float_t         lep_Pt_2_new;
    Float_t         lep_ID_1_new;
    Float_t         lep_ID_2_new;
+   Float_t         lep_isPrompt_1_new;
+   Float_t         lep_isPrompt_2_new;
+   Float_t         lep_truthOrigin_1_new;
+   Float_t         lep_truthOrigin_2_new;
+   Float_t         lep_truthParentPdgId_1_new;
+   Float_t         lep_truthParentPdgId_2_new;
+   Float_t         lep_truthParentType_1_new;
+   Float_t         lep_truthParentPdgId_2_new;
+   Float_t         lep_isQMisID_1_new;
+   Float_t         lep_isQMisID_2_new;
+   Float_t         lep_Eta_1_new;
+   Float_t         lep_Eta_2_new;
+   Float_t         lep_Phi_1_new;
+   Float_t         lep_Phi_2_new;
+   Float_t         lep_isolationFixedCutLoose_1_new;
+   Float_t         lep_isolationFixedCutLoose_2_new;
+   Float_t         lep_promptLeptonVeto_TagWeight_1_new;
+   Float_t         lep_promptLeptonVeto_TagWeight_2_new;
+   Float_t         lep_isTightLH_1_new;
+   Float_t         lep_isTightLH_2_new;
+   Float_t         lep_chargeIDBDTTight_1_new;
+   Float_t         lep_chargeIDBDTTight_2_new;
+   Float_t         lep_ambiguityType_1_new;
+   Float_t         lep_ambiguityType_2_new;
+   Float_t         lep_isMedium_1_new;
+   Float_t         lep_isMedium_2_new;
    Float_t         EventWeight;
    Char_t          lep_isTightSelected_0;
    Char_t          lep_isTightSelected_1;
@@ -192,8 +248,10 @@ public :
    Float_t         MVA2lSSMarseille_weight_ttbar;
    Float_t         MVA2lSSMarseille_weight_ttV_2;
    Float_t         MVA2lSSMarseille_weight_ttbar_2;
-   Float_t         MVA2lSS1tau_weight_random;
-   Float_t         MVA2lSS1tau_weight_CT;
+   Float_t         MVA2lSS1tau_weight_random_ttbar;
+   Float_t         MVA2lSS1tau_weight_CT_ttbar;
+   Float_t         MVA2lSS1tau_weight_random_nottbar;
+   Float_t         MVA2lSS1tau_weight_CT_nottbar;
    Float_t         MVA2lOS1tau_weight;
    Float_t         SumPtBJet;
    Float_t         SumPtJet;
@@ -209,6 +267,10 @@ public :
    Float_t         MVA3lCERN_weight_VV;
    Float_t         MVA3lCERN_weight_ttbar;
    Float_t         MVA3lCERN_category;
+   Float_t         MVA3lZZCERN_weight_ttH;
+   Float_t         MVA3lZZCERN_weight_ttZ;
+   Float_t         MVA3lZZCERN_weight_VV;
+   Float_t         MVA3lZZCERN_category;
    Float_t         MVA4lBonn_weight_ttZ;
    Float_t         fourLep_PME;
    Float_t         MVA1l2tau_weight;
@@ -219,22 +281,307 @@ public :
    Float_t         averageMW;
    vector<float>   *lepton_PromptLeptonIso_TagWeight;
    vector<float>   *lepton_ChargeIDBDTTight;
-   Bool_t          isLep2SS0tau_ee_QMisID;
-   Bool_t          isLep2SS0tau_OF_QMisID;
-   Bool_t          is2lttW_VR_ICHEP_QMisID;
-   Float_t         total_charge_QMisID;
-   Float_t         QMisID_EventWeight;
-   Float_t         QMisID_EventWeight_Up;
-   Float_t         QMisID_EventWeight_Dn;
-   Bool_t          isLep2SS1tau_QMisID;
-   Float_t         total_charge_2ltau_QMisID;
-   Float_t         QMisID_2ltau_EventWeight;
-   Float_t         QMisID_2ltau_EventWeight_Up;
-   Float_t         QMisID_2ltau_EventWeight_Dn;
+   Bool_t          CRB1_2lSStau_FF_Fake;
+   Bool_t          CRB1_2lSStau_FF_Prompt;
+   Bool_t          CRB2_2lSStau_FF_Fake;
+   Bool_t          CRB2_2lSStau_FF_RealTau;
+   Bool_t          CRB3_2lSStau_FF_Fake;
+   Bool_t          CRB3_2lSStau_FF_RealTau;
+   Bool_t          CRB3_2lSStau_FF_Prompt;
+   Float_t         CRB1_2lSStau_FF_EventWeight;
+   Float_t         CRB1_2lSStau_FF_elStat_Bin1Up_EventWeight;
+   Float_t         CRB1_2lSStau_FF_elStat_Bin1Dn_EventWeight;
+   Float_t         CRB1_2lSStau_FF_elStat_Bin2Up_EventWeight;
+   Float_t         CRB1_2lSStau_FF_elStat_Bin2Dn_EventWeight;
+   Float_t         CRB1_2lSStau_FF_elStat_Bin3Up_EventWeight;
+   Float_t         CRB1_2lSStau_FF_elStat_Bin3Dn_EventWeight;
+   Float_t         CRB1_2lSStau_FF_elStat_Bin4Up_EventWeight;
+   Float_t         CRB1_2lSStau_FF_elStat_Bin4Dn_EventWeight;
+   Float_t         CRB1_2lSStau_FF_elStat_Bin5Up_EventWeight;
+   Float_t         CRB1_2lSStau_FF_elStat_Bin5Dn_EventWeight;
+   Float_t         CRB1_2lSStau_FF_muStat_Bin1Up_EventWeight;
+   Float_t         CRB1_2lSStau_FF_muStat_Bin1Dn_EventWeight;
+   Float_t         CRB1_2lSStau_FF_muStat_Bin2Up_EventWeight;
+   Float_t         CRB1_2lSStau_FF_muStat_Bin2Dn_EventWeight;
+   Float_t         CRB1_2lSStau_FF_muStat_Bin3Up_EventWeight;
+   Float_t         CRB1_2lSStau_FF_muStat_Bin3Dn_EventWeight;
+   Float_t         CRB1_2lSStau_FF_muStat_Bin4Up_EventWeight;
+   Float_t         CRB1_2lSStau_FF_muStat_Bin4Dn_EventWeight;
+   Float_t         CRB1_2lSStau_FF_muStat_Bin5Up_EventWeight;
+   Float_t         CRB1_2lSStau_FF_muStat_Bin5Dn_EventWeight;
+   Float_t         CRB1_2lSStau_FF_ttwUp_EventWeight;
+   Float_t         CRB1_2lSStau_FF_ttwDn_EventWeight;
+   Float_t         CRB1_2lSStau_FF_ttzUp_EventWeight;
+   Float_t         CRB1_2lSStau_FF_ttzDn_EventWeight;
+   Float_t         CRB1_2lSStau_FF_vvUp_EventWeight;
+   Float_t         CRB1_2lSStau_FF_vvDn_EventWeight;
+   Float_t         CRB1_2lSStau_FF_rareUp_EventWeight;
+   Float_t         CRB1_2lSStau_FF_rareDn_EventWeight;
+   Float_t         CRB1_2lSStau_FF_tthUp_EventWeight;
+   Float_t         CRB1_2lSStau_FF_tthDn_EventWeight;
+   Float_t         CRB1_2lSStau_FF_QMisIdUp_EventWeight;
+   Float_t         CRB1_2lSStau_FF_QMisIdDn_EventWeight;
+   Float_t         CRB2_2lSStau_FF_EventWeight;
+   Float_t         CRB2_2lSStau_FF_RealtauUp_EventWeight;
+   Float_t         CRB2_2lSStau_FF_RealtauDn_EventWeight;
+   Float_t         CRB2_2lSStau_FF_tthUp_EventWeight;
+   Float_t         CRB2_2lSStau_FF_tthDn_EventWeight;
+   Float_t         CRB2_2lSStau_FF_QMisIdUp_EventWeight;
+   Float_t         CRB2_2lSStau_FF_QMisIdDn_EventWeight;
+   Float_t         CRB3_2lSStau_FF_EventWeight;
+   Float_t         CRB3_2lSStau_FF_RealtauUp_EventWeight;
+   Float_t         CRB3_2lSStau_FF_RealtauDn_EventWeight;
+   Float_t         CRB3_2lSStau_FF_ttwUp_EventWeight;
+   Float_t         CRB3_2lSStau_FF_ttwDn_EventWeight;
+   Float_t         CRB3_2lSStau_FF_ttzUp_EventWeight;
+   Float_t         CRB3_2lSStau_FF_ttzDn_EventWeight;
+   Float_t         CRB3_2lSStau_FF_vvUp_EventWeight;
+   Float_t         CRB3_2lSStau_FF_vvDn_EventWeight;
+   Float_t         CRB3_2lSStau_FF_rareUp_EventWeight;
+   Float_t         CRB3_2lSStau_FF_rareDn_EventWeight;
+   Float_t         CRB3_2lSStau_FF_tthUp_EventWeight;
+   Float_t         CRB3_2lSStau_FF_tthDn_EventWeight;
+   Float_t         CRB3_2lSStau_FF_QMisIdUp_EventWeight;
+   Float_t         CRB3_2lSStau_FF_QMisIdDn_EventWeight;
+   Bool_t          isttH;
+   Bool_t          isttZ;
+   Bool_t          isttW;
+   Bool_t          isVV;
+   Bool_t          istZ;
+   Bool_t          isWtZ;
+   Bool_t          istHjb;
+   Bool_t          isWtH;
+   Bool_t          isttWW;
+   Bool_t          isVH;
+   Bool_t          isVVV;
+   Bool_t          is3Tops;
+   Bool_t          is4Tops;
+   Bool_t          isttbar;
+   Bool_t          isttll;
+   Bool_t          israreTop;
+   Bool_t          isttGamma;
+   Bool_t          isttbarDilep;
    Char_t          passTrigger;
    Float_t         scale_nom;
    Float_t         scale_varA14up;
    Float_t         scale_varA14down;
+   Float_t         scale_varRup;
+   Float_t         scale_varRdown;
+   Float_t         scale_varFup;
+   Float_t         scale_varFdown;
+   Float_t         scale_varRFup;
+   Float_t         scale_varRFdown;
+   Double_t        pileupEventWeight_UP;
+   Double_t        pileupEventWeight_DOWN;
+   Double_t        JVT_EventWeight_UP;
+   Double_t        JVT_EventWeight_DOWN;
+   Double_t        bTagSF_weight_MV2c10_FixedCutBEff_70;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B0_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B0_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B1_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B1_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B2_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B2_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B3_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B3_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B4_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B4_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B5_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B5_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B6_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B6_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B7_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B7_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B8_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_B8_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_C0_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_C0_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_C1_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_C1_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_C2_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_C2_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_Light0_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_Light0_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_Light1_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_Light1_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_Light2_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_Light2_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_Light3_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_Light3_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_down;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_from_charm_up;
+   Float_t         bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_from_charm_down;
+   Float_t         lepSFTrigLoose_MU_SF_Trigger_SYST_UP;
+   Float_t         lepSFTrigTight_MU_SF_Trigger_SYST_UP;
+   Float_t         lepSFTrigTightLoose_MU_SF_Trigger_SYST_UP;
+   Float_t         lepSFTrigLooseTight_MU_SF_Trigger_SYST_UP;
+   Float_t         lepEffTrigLoose_MU_SF_Trigger_SYST_UP;
+   Float_t         lepEffTrigTight_MU_SF_Trigger_SYST_UP;
+   Float_t         lepEffTrigTightLoose_MU_SF_Trigger_SYST_UP;
+   Float_t         lepEffTrigLooseTight_MU_SF_Trigger_SYST_UP;
+   Float_t         lepDataEffTrigLoose_MU_SF_Trigger_SYST_UP;
+   Float_t         lepDataEffTrigTight_MU_SF_Trigger_SYST_UP;
+   Float_t         lepDataEffTrigTightLoose_MU_SF_Trigger_SYST_UP;
+   Float_t         lepDataEffTrigLooseTight_MU_SF_Trigger_SYST_UP;
+   Float_t         lepSFTrigLoose_MU_SF_Trigger_SYST_DOWN;
+   Float_t         lepSFTrigTight_MU_SF_Trigger_SYST_DOWN;
+   Float_t         lepSFTrigTightLoose_MU_SF_Trigger_SYST_DOWN;
+   Float_t         lepSFTrigLooseTight_MU_SF_Trigger_SYST_DOWN;
+   Float_t         lepEffTrigLoose_MU_SF_Trigger_SYST_DOWN;
+   Float_t         lepEffTrigTight_MU_SF_Trigger_SYST_DOWN;
+   Float_t         lepEffTrigTightLoose_MU_SF_Trigger_SYST_DOWN;
+   Float_t         lepEffTrigLooseTight_MU_SF_Trigger_SYST_DOWN;
+   Float_t         lepDataEffTrigLoose_MU_SF_Trigger_SYST_DOWN;
+   Float_t         lepDataEffTrigTight_MU_SF_Trigger_SYST_DOWN;
+   Float_t         lepDataEffTrigTightLoose_MU_SF_Trigger_SYST_DOWN;
+   Float_t         lepDataEffTrigLooseTight_MU_SF_Trigger_SYST_DOWN;
+   Float_t         lepSFTrigLoose_EL_SF_Trigger_UP;
+   Float_t         lepSFTrigTight_EL_SF_Trigger_UP;
+   Float_t         lepSFTrigTightLoose_EL_SF_Trigger_UP;
+   Float_t         lepSFTrigLooseTight_EL_SF_Trigger_UP;
+   Float_t         lepEffTrigLoose_EL_SF_Trigger_UP;
+   Float_t         lepEffTrigTight_EL_SF_Trigger_UP;
+   Float_t         lepEffTrigTightLoose_EL_SF_Trigger_UP;
+   Float_t         lepEffTrigLooseTight_EL_SF_Trigger_UP;
+   Float_t         lepDataEffTrigLoose_EL_SF_Trigger_UP;
+   Float_t         lepDataEffTrigTight_EL_SF_Trigger_UP;
+   Float_t         lepDataEffTrigTightLoose_EL_SF_Trigger_UP;
+   Float_t         lepDataEffTrigLooseTight_EL_SF_Trigger_UP;
+   Float_t         lepSFTrigLoose_EL_SF_Trigger_DOWN;
+   Float_t         lepSFTrigTight_EL_SF_Trigger_DOWN;
+   Float_t         lepSFTrigTightLoose_EL_SF_Trigger_DOWN;
+   Float_t         lepSFTrigLooseTight_EL_SF_Trigger_DOWN;
+   Float_t         lepEffTrigLoose_EL_SF_Trigger_DOWN;
+   Float_t         lepEffTrigTight_EL_SF_Trigger_DOWN;
+   Float_t         lepEffTrigTightLoose_EL_SF_Trigger_DOWN;
+   Float_t         lepEffTrigLooseTight_EL_SF_Trigger_DOWN;
+   Float_t         lepDataEffTrigLoose_EL_SF_Trigger_DOWN;
+   Float_t         lepDataEffTrigTight_EL_SF_Trigger_DOWN;
+   Float_t         lepDataEffTrigTightLoose_EL_SF_Trigger_DOWN;
+   Float_t         lepDataEffTrigLooseTight_EL_SF_Trigger_DOWN;
+   Float_t         lepSFTrigLoose_MU_SF_Trigger_STAT_UP;
+   Float_t         lepSFTrigTight_MU_SF_Trigger_STAT_UP;
+   Float_t         lepSFTrigTightLoose_MU_SF_Trigger_STAT_UP;
+   Float_t         lepSFTrigLooseTight_MU_SF_Trigger_STAT_UP;
+   Float_t         lepEffTrigLoose_MU_SF_Trigger_STAT_UP;
+   Float_t         lepEffTrigTight_MU_SF_Trigger_STAT_UP;
+   Float_t         lepEffTrigTightLoose_MU_SF_Trigger_STAT_UP;
+   Float_t         lepEffTrigLooseTight_MU_SF_Trigger_STAT_UP;
+   Float_t         lepDataEffTrigLoose_MU_SF_Trigger_STAT_UP;
+   Float_t         lepDataEffTrigTight_MU_SF_Trigger_STAT_UP;
+   Float_t         lepDataEffTrigTightLoose_MU_SF_Trigger_STAT_UP;
+   Float_t         lepDataEffTrigLooseTight_MU_SF_Trigger_STAT_UP;
+   Float_t         lepSFTrigLoose_MU_SF_Trigger_STAT_DOWN;
+   Float_t         lepSFTrigTight_MU_SF_Trigger_STAT_DOWN;
+   Float_t         lepSFTrigTightLoose_MU_SF_Trigger_STAT_DOWN;
+   Float_t         lepSFTrigLooseTight_MU_SF_Trigger_STAT_DOWN;
+   Float_t         lepEffTrigLoose_MU_SF_Trigger_STAT_DOWN;
+   Float_t         lepEffTrigTight_MU_SF_Trigger_STAT_DOWN;
+   Float_t         lepEffTrigTightLoose_MU_SF_Trigger_STAT_DOWN;
+   Float_t         lepEffTrigLooseTight_MU_SF_Trigger_STAT_DOWN;
+   Float_t         lepDataEffTrigLoose_MU_SF_Trigger_STAT_DOWN;
+   Float_t         lepDataEffTrigTight_MU_SF_Trigger_STAT_DOWN;
+   Float_t         lepDataEffTrigTightLoose_MU_SF_Trigger_STAT_DOWN;
+   Float_t         lepDataEffTrigLooseTight_MU_SF_Trigger_STAT_DOWN;
+   Float_t         lepSFTrigLoose_EL_EFF_Trigger_UP;
+   Float_t         lepSFTrigTight_EL_EFF_Trigger_UP;
+   Float_t         lepSFTrigTightLoose_EL_EFF_Trigger_UP;
+   Float_t         lepSFTrigLooseTight_EL_EFF_Trigger_UP;
+   Float_t         lepEffTrigLoose_EL_EFF_Trigger_UP;
+   Float_t         lepEffTrigTight_EL_EFF_Trigger_UP;
+   Float_t         lepEffTrigTightLoose_EL_EFF_Trigger_UP;
+   Float_t         lepEffTrigLooseTight_EL_EFF_Trigger_UP;
+   Float_t         lepDataEffTrigLoose_EL_EFF_Trigger_UP;
+   Float_t         lepDataEffTrigTight_EL_EFF_Trigger_UP;
+   Float_t         lepDataEffTrigTightLoose_EL_EFF_Trigger_UP;
+   Float_t         lepDataEffTrigLooseTight_EL_EFF_Trigger_UP;
+   Float_t         lepSFTrigLoose_EL_EFF_Trigger_DOWN;
+   Float_t         lepSFTrigTight_EL_EFF_Trigger_DOWN;
+   Float_t         lepSFTrigTightLoose_EL_EFF_Trigger_DOWN;
+   Float_t         lepSFTrigLooseTight_EL_EFF_Trigger_DOWN;
+   Float_t         lepEffTrigLoose_EL_EFF_Trigger_DOWN;
+   Float_t         lepEffTrigTight_EL_EFF_Trigger_DOWN;
+   Float_t         lepEffTrigTightLoose_EL_EFF_Trigger_DOWN;
+   Float_t         lepEffTrigLooseTight_EL_EFF_Trigger_DOWN;
+   Float_t         lepDataEffTrigLoose_EL_EFF_Trigger_DOWN;
+   Float_t         lepDataEffTrigTight_EL_EFF_Trigger_DOWN;
+   Float_t         lepDataEffTrigTightLoose_EL_EFF_Trigger_DOWN;
+   Float_t         lepDataEffTrigLooseTight_EL_EFF_Trigger_DOWN;
+   Float_t         lepSFObjLoose_EL_SF_Reco_UP;
+   Float_t         lepSFObjTight_EL_SF_Reco_UP;
+   Float_t         lepSFObjLoose_EL_SF_Reco_DOWN;
+   Float_t         lepSFObjTight_EL_SF_Reco_DOWN;
+   Float_t         lepSFObjLoose_EL_SF_ID_UP;
+   Float_t         lepSFObjTight_EL_SF_ID_UP;
+   Float_t         lepSFObjLoose_EL_SF_ID_DOWN;
+   Float_t         lepSFObjTight_EL_SF_ID_DOWN;
+   Float_t         lepSFObjLoose_EL_SF_Isol_UP;
+   Float_t         lepSFObjTight_EL_SF_Isol_UP;
+   Float_t         lepSFObjLoose_EL_SF_Isol_DOWN;
+   Float_t         lepSFObjTight_EL_SF_Isol_DOWN;
+   Float_t         lepSFObjLoose_MU_SF_ID_STAT_UP;
+   Float_t         lepSFObjTight_MU_SF_ID_STAT_UP;
+   Float_t         lepSFObjLoose_MU_SF_ID_STAT_DOWN;
+   Float_t         lepSFObjTight_MU_SF_ID_STAT_DOWN;
+   Float_t         lepSFObjLoose_MU_SF_ID_SYST_UP;
+   Float_t         lepSFObjTight_MU_SF_ID_SYST_UP;
+   Float_t         lepSFObjLoose_MU_SF_ID_SYST_DOWN;
+   Float_t         lepSFObjTight_MU_SF_ID_SYST_DOWN;
+   Float_t         lepSFObjLoose_MU_SF_ID_STAT_LOWPT_UP;
+   Float_t         lepSFObjTight_MU_SF_ID_STAT_LOWPT_UP;
+   Float_t         lepSFObjLoose_MU_SF_ID_STAT_LOWPT_DOWN;
+   Float_t         lepSFObjTight_MU_SF_ID_STAT_LOWPT_DOWN;
+   Float_t         lepSFObjLoose_MU_SF_ID_SYST_LOWPT_UP;
+   Float_t         lepSFObjTight_MU_SF_ID_SYST_LOWPT_UP;
+   Float_t         lepSFObjLoose_MU_SF_ID_SYST_LOWPT_DOWN;
+   Float_t         lepSFObjTight_MU_SF_ID_SYST_LOWPT_DOWN;
+   Float_t         lepSFObjLoose_MU_SF_Isol_STAT_UP;
+   Float_t         lepSFObjTight_MU_SF_Isol_STAT_UP;
+   Float_t         lepSFObjLoose_MU_SF_Isol_STAT_DOWN;
+   Float_t         lepSFObjTight_MU_SF_Isol_STAT_DOWN;
+   Float_t         lepSFObjLoose_MU_SF_Isol_SYST_UP;
+   Float_t         lepSFObjTight_MU_SF_Isol_SYST_UP;
+   Float_t         lepSFObjLoose_MU_SF_Isol_SYST_DOWN;
+   Float_t         lepSFObjTight_MU_SF_Isol_SYST_DOWN;
+   Float_t         lepSFObjLoose_MU_SF_TTVA_STAT_UP;
+   Float_t         lepSFObjTight_MU_SF_TTVA_STAT_UP;
+   Float_t         lepSFObjLoose_MU_SF_TTVA_STAT_DOWN;
+   Float_t         lepSFObjTight_MU_SF_TTVA_STAT_DOWN;
+   Float_t         lepSFObjLoose_MU_SF_TTVA_SYST_UP;
+   Float_t         lepSFObjTight_MU_SF_TTVA_SYST_UP;
+   Float_t         lepSFObjLoose_MU_SF_TTVA_SYST_DOWN;
+   Float_t         lepSFObjTight_MU_SF_TTVA_SYST_DOWN;
+   Float_t         tauSFTight_TAU_SF_ELEOLR_TOTAL_UP;
+   Float_t         tauSFLoose_TAU_SF_ELEOLR_TOTAL_UP;
+   Float_t         tauSFTight_TAU_SF_ELEOLR_TOTAL_DOWN;
+   Float_t         tauSFLoose_TAU_SF_ELEOLR_TOTAL_DOWN;
+   Float_t         tauSFTight_TAU_SF_JETID_TOTAL_UP;
+   Float_t         tauSFLoose_TAU_SF_JETID_TOTAL_UP;
+   Float_t         tauSFTight_TAU_SF_JETID_TOTAL_DOWN;
+   Float_t         tauSFLoose_TAU_SF_JETID_TOTAL_DOWN;
+   Float_t         tauSFTight_TAU_SF_RECO_TOTAL_UP;
+   Float_t         tauSFLoose_TAU_SF_RECO_TOTAL_UP;
+   Float_t         tauSFTight_TAU_SF_RECO_TOTAL_DOWN;
+   Float_t         tauSFLoose_TAU_SF_RECO_TOTAL_DOWN;
+   Float_t         tauSFTight_TAU_SF_JETID_HIGHPT_UP;
+   Float_t         tauSFLoose_TAU_SF_JETID_HIGHPT_UP;
+   Float_t         tauSFTight_TAU_SF_JETID_HIGHPT_DOWN;
+   Float_t         tauSFLoose_TAU_SF_JETID_HIGHPT_DOWN;
+   Float_t         tauSFTight_TAU_SF_RECO_HIGHPT_UP;
+   Float_t         tauSFLoose_TAU_SF_RECO_HIGHPT_UP;
+   Float_t         tauSFTight_TAU_SF_RECO_HIGHPT_DOWN;
+   Float_t         tauSFLoose_TAU_SF_RECO_HIGHPT_DOWN;
+   Float_t         tauSFTight_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_UP;
+   Float_t         tauSFLoose_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_UP;
+   Float_t         tauSFTight_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_DOWN;
+   Float_t         tauSFLoose_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_DOWN;
+   Char_t          forFit_promptSel;
+   Char_t          forFit_tightSel;
+   Char_t          forFit_3l0tauBaseLine;
+   Char_t          forFit_3l0tauFakesSel;
+   Char_t          forFit_2lss0tauBaseLine;
+   Char_t          forFit_2lssFakeQmisSel;
    Double_t        mcWeightOrg;
    Double_t        pileupEventWeight_090;
    Double_t        MV2c10_60_EventWeight;
@@ -325,6 +672,36 @@ public :
    Char_t          HLT_mu26_ivarmedium;
    Char_t          HLT_mu50;
    Char_t          HLT_2e17_lhvloose_nod0_L12EM15VHI;
+   Short_t         lep_promptLeptonInput_sv1_jf_ntrkv_0;
+   Short_t         lep_promptLeptonInput_sv1_jf_ntrkv_1;
+   Short_t         lep_promptLeptonInput_sv1_jf_ntrkv_2;
+   Short_t         lep_promptLeptonInput_TrackJetNTrack_0;
+   Short_t         lep_promptLeptonInput_TrackJetNTrack_1;
+   Short_t         lep_promptLeptonInput_TrackJetNTrack_2;
+   Float_t         lep_promptLeptonInput_DL1mu_0;
+   Float_t         lep_promptLeptonInput_DL1mu_1;
+   Float_t         lep_promptLeptonInput_DL1mu_2;
+   Float_t         lep_promptLeptonInput_DRlj_0;
+   Float_t         lep_promptLeptonInput_DRlj_1;
+   Float_t         lep_promptLeptonInput_DRlj_2;
+   Float_t         lep_promptLeptonInput_LepJetPtFrac_0;
+   Float_t         lep_promptLeptonInput_LepJetPtFrac_1;
+   Float_t         lep_promptLeptonInput_LepJetPtFrac_2;
+   Float_t         lep_promptLeptonInput_PtFrac_0;
+   Float_t         lep_promptLeptonInput_PtFrac_1;
+   Float_t         lep_promptLeptonInput_PtFrac_2;
+   Float_t         lep_promptLeptonInput_PtRel_0;
+   Float_t         lep_promptLeptonInput_PtRel_1;
+   Float_t         lep_promptLeptonInput_PtRel_2;
+   Float_t         lep_promptLeptonInput_ip2_0;
+   Float_t         lep_promptLeptonInput_ip2_1;
+   Float_t         lep_promptLeptonInput_ip2_2;
+   Float_t         lep_promptLeptonInput_ip3_0;
+   Float_t         lep_promptLeptonInput_ip3_1;
+   Float_t         lep_promptLeptonInput_ip3_2;
+   Float_t         lep_promptLeptonInput_rnnip_0;
+   Float_t         lep_promptLeptonInput_rnnip_1;
+   Float_t         lep_promptLeptonInput_rnnip_2;
    Float_t         lep_ID_0;
    Int_t           lep_Index_0;
    UChar_t         lep_ambiguityType_0;
@@ -716,6 +1093,7 @@ public :
    Char_t          matchDLTll23;
    Float_t         best_Z_Mll;
    Float_t         best_Z_other_Mll;
+   Float_t         best_Z_other_MtLepMet;
    Int_t           nJets_OR_T;
    Int_t           nJets_OR;
    Int_t           nJets_OR_T_MV2c20_60;
@@ -763,30 +1141,11 @@ public :
    Float_t         lepSFObjTight;
    Float_t         tauSFTight;
    Float_t         tauSFLoose;
-   Char_t          isMMSideband_TT;
-   Char_t          isMMSideband_TAntiT;
-   Char_t          isMMSideband_AntiTT;
-   Char_t          isMMSideband_AntiTAntiT;
-   Float_t         MM_EventWeight;
-   Float_t         MM_EventWeight_Real_El_Pt_Stat_Grouped_Up;
-   Float_t         MM_EventWeight_Real_El_Pt_Stat_Grouped_Dn;
-   Float_t         MM_EventWeight_Real_El_Pt_Sys_Grouped_Up;
-   Float_t         MM_EventWeight_Real_El_Pt_Sys_Grouped_Dn;
-   Float_t         MM_EventWeight_Real_Mu_Pt_Stat_Grouped_Up;
-   Float_t         MM_EventWeight_Real_Mu_Pt_Stat_Grouped_Dn;
-   Float_t         MM_EventWeight_Real_Mu_Pt_Sys_Grouped_Up;
-   Float_t         MM_EventWeight_Real_Mu_Pt_Sys_Grouped_Dn;
-   Float_t         MM_EventWeight_Fake_El_Pt_Stat_Grouped_Up;
-   Float_t         MM_EventWeight_Fake_El_Pt_Stat_Grouped_Dn;
-   Float_t         MM_EventWeight_Fake_El_Pt_Sys_Grouped_Up;
-   Float_t         MM_EventWeight_Fake_El_Pt_Sys_Grouped_Dn;
-   Float_t         MM_EventWeight_Fake_Mu_Pt_Stat_Grouped_Up;
-   Float_t         MM_EventWeight_Fake_Mu_Pt_Stat_Grouped_Dn;
-   Float_t         MM_EventWeight_Fake_Mu_Pt_Sys_Grouped_Up;
-   Float_t         MM_EventWeight_Fake_Mu_Pt_Sys_Grouped_Dn;
-   Float_t         QMisID_MM_EventWeight;
-   Float_t         QMisID_MM_EventWeight_Up;
-   Float_t         QMisID_MM_EventWeight_Dn;
+   Float_t         tauFakeSF_weight;
+   Float_t         tauFakeSF_weight_SYST_UP;
+   Float_t         tauFakeSF_weight_SYST_DOWN;
+   Float_t         tauFakeSF_weight_STAT_UP;
+   Float_t         tauFakeSF_weight_STAT_DOWN;
 
    // List of branches
    TBranch        *b_is1L2Tau;   //!
@@ -798,6 +1157,7 @@ public :
    TBranch        *b_is3L;   //!
    TBranch        *b_is3L1Tau;   //!
    TBranch        *b_is4L;   //!
+   TBranch        *b_is2lLowNJet0Tau;   //!
    TBranch        *b_is2LSS0Tau_SR_Relaxed;   //!
    TBranch        *b_is2LSS1Tau_SR_Relaxed;   //!
    TBranch        *b_is3L0Tau_SR_Relaxed;   //!
@@ -811,6 +1171,10 @@ public :
    TBranch        *b_is2L_VR_ttW_ICHEP;   //!
    TBranch        *b_is2L_VR_ttbarFakes_ICHEP;   //!
    TBranch        *b_is4lCRttZRelaxed;   //!
+   TBranch        *b_is2LOS1Tau_CR_ttbar;   //!
+   TBranch        *b_is2LOS1Tau_CR_ttZ;   //!
+   TBranch        *b_is2LOS1Tau_CR_W;   //!
+   TBranch        *b_is3L1Tau_VR;   //!
    TBranch        *b_is2lOS0TauBaseline;   //!
    TBranch        *b_is2lOS0TauBaseline_ee;   //!
    TBranch        *b_is2lOS0TauBaseline_mm;   //!
@@ -837,6 +1201,9 @@ public :
    TBranch        *b_is2lSS1TauBaseline_em;   //!
    TBranch        *b_is3lBaseline;   //!
    TBranch        *b_is3lBaselineNoZVeto;   //!
+   TBranch        *b_is2lss1tau_regionB;   //!
+   TBranch        *b_is2lss1tau_regionC;   //!
+   TBranch        *b_is2lss1tau_regionD;   //!
    TBranch        *b_isGNv02;   //!
    TBranch        *b_minOSMll;   //!
    TBranch        *b_minOSSFMll;   //!
@@ -844,14 +1211,17 @@ public :
    TBranch        *b_jet_flvWtOrdr_0_eta;   //!
    TBranch        *b_jet_flvWtOrdr_0_phi;   //!
    TBranch        *b_jet_flvWtOrdr_0_E;   //!
+   TBranch        *b_jet_flvWtOrdr_0_mv2c10;   //!
    TBranch        *b_jet_flvWtOrdr_1_pt;   //!
    TBranch        *b_jet_flvWtOrdr_1_eta;   //!
    TBranch        *b_jet_flvWtOrdr_1_phi;   //!
    TBranch        *b_jet_flvWtOrdr_1_E;   //!
+   TBranch        *b_jet_flvWtOrdr_1_mv2c10;   //!
    TBranch        *b_jet_flvWtOrdr_2_pt;   //!
    TBranch        *b_jet_flvWtOrdr_2_eta;   //!
    TBranch        *b_jet_flvWtOrdr_2_phi;   //!
    TBranch        *b_jet_flvWtOrdr_2_E;   //!
+   TBranch        *b_jet_flvWtOrdr_2_mv2c10;   //!
    TBranch        *b_DEtall01;   //!
    TBranch        *b_DEtall02;   //!
    TBranch        *b_DEtall12;   //!
@@ -887,9 +1257,17 @@ public :
    TBranch        *b_FSF_4L_tot;   //!
    TBranch        *b_FSF_4L_tot_up;   //!
    TBranch        *b_FSF_4L_tot_down;   //!
+   TBranch        *b_FSF_category;   //!
+   TBranch        *b_FSF_4L_e_L;   //!
+   TBranch        *b_FSF_4L_e_H;   //!
+   TBranch        *b_FSF_4L_m;   //!
+   TBranch        *b_jet2_pt;   //!
+   TBranch        *b_jet2_eta;   //!
+   TBranch        *b_jet2_phi;   //!
    TBranch        *b_jet3_pt;   //!
    TBranch        *b_jet3_eta;   //!
    TBranch        *b_jet3_phi;   //!
+   TBranch        *b_jet0_tagWeightBin;   //!
    TBranch        *b_jet1_tagWeightBin;   //!
    TBranch        *b_jet2_tagWeightBin;   //!
    TBranch        *b_jet3_tagWeightBin;   //!
@@ -904,6 +1282,15 @@ public :
    TBranch        *b_SignProduct2sslt;   //!
    TBranch        *b_TransverseMassLeadLepMET;   //!
    TBranch        *b_LD_HTmiss_ETmiss;   //!
+   TBranch        *b_Mjj_nonb;   //!
+   TBranch        *b_Mtop;   //!
+   TBranch        *b_MtopW;   //!
+   TBranch        *b_temptopoetcone20overpTlep0;   //!
+   TBranch        *b_temptopoetcone20overpTlep1;   //!
+   TBranch        *b_tempptvarcone20overpTlep0;   //!
+   TBranch        *b_tempptvarcone20overpTlep1;   //!
+   TBranch        *b_lep_isAntiTight_0;   //!
+   TBranch        *b_lep_isAntiTight_1;   //!
    TBranch        *b_tau_tight_0;   //!
    TBranch        *b_tau_tight_1;   //!
    TBranch        *b_tau_btag70_0;   //!
@@ -930,12 +1317,40 @@ public :
    TBranch        *b_lead_BjetPt;   //!
    TBranch        *b_lead_jet_sumBEff;   //!
    TBranch        *b_sublead_jet_sumBEff;   //!
+   TBranch        *b_lead_jet_pass_FixedCutBEff_70;   //!
+   TBranch        *b_sublead_jet_pass_FixedCutBEff_70;   //!
    TBranch        *b_lead_jet_is_lead_antitag;   //!
    TBranch        *b_lead_jet_is_lead_tag;   //!
    TBranch        *b_lep_Pt_1_new;   //!
    TBranch        *b_lep_Pt_2_new;   //!
    TBranch        *b_lep_ID_1_new;   //!
    TBranch        *b_lep_ID_2_new;   //!
+   TBranch        *b_lep_isPrompt_1_new;   //!
+   TBranch        *b_lep_isPrompt_2_new;   //!
+   TBranch        *b_lep_truthOrigin_1_new;   //!
+   TBranch        *b_lep_truthOrigin_2_new;   //!
+   TBranch        *b_lep_truthParentPdgId_1_new;   //!
+   TBranch        *b_lep_truthParentPdgId_2_new;   //!
+   TBranch        *b_lep_truthParentType_1_new;   //!
+   TBranch        *b_lep_truthParentPdgId_2_new;   //!
+   TBranch        *b_lep_isQMisID_1_new;   //!
+   TBranch        *b_lep_isQMisID_2_new;   //!
+   TBranch        *b_lep_Eta_1_new;   //!
+   TBranch        *b_lep_Eta_2_new;   //!
+   TBranch        *b_lep_Phi_1_new;   //!
+   TBranch        *b_lep_Phi_2_new;   //!
+   TBranch        *b_lep_isolationFixedCutLoose_1_new;   //!
+   TBranch        *b_lep_isolationFixedCutLoose_2_new;   //!
+   TBranch        *b_lep_promptLeptonVeto_TagWeight_1_new;   //!
+   TBranch        *b_lep_promptLeptonVeto_TagWeight_2_new;   //!
+   TBranch        *b_lep_isTightLH_1_new;   //!
+   TBranch        *b_lep_isTightLH_2_new;   //!
+   TBranch        *b_lep_chargeIDBDTTight_1_new;   //!
+   TBranch        *b_lep_chargeIDBDTTight_2_new;   //!
+   TBranch        *b_lep_ambiguityType_1_new;   //!
+   TBranch        *b_lep_ambiguityType_2_new;   //!
+   TBranch        *b_lep_isMedium_1_new;   //!
+   TBranch        *b_lep_isMedium_2_new;   //!
    TBranch        *b_EventWeight;   //!
    TBranch        *b_lep_isTightSelected_0;   //!
    TBranch        *b_lep_isTightSelected_1;   //!
@@ -956,8 +1371,10 @@ public :
    TBranch        *b_MVA2lSSMarseille_weight_ttbar;   //!
    TBranch        *b_MVA2lSSMarseille_weight_ttV_2;   //!
    TBranch        *b_MVA2lSSMarseille_weight_ttbar_2;   //!
-   TBranch        *b_MVA2lSS1tau_weight_random;   //!
-   TBranch        *b_MVA2lSS1tau_weight_CT;   //!
+   TBranch        *b_MVA2lSS1tau_weight_random_ttbar;   //!
+   TBranch        *b_MVA2lSS1tau_weight_CT_ttbar;   //!
+   TBranch        *b_MVA2lSS1tau_weight_random_nottbar;   //!
+   TBranch        *b_MVA2lSS1tau_weight_CT_nottbar;   //!
    TBranch        *b_MVA2lOS1tau_weight;   //!
    TBranch        *b_SumPtBJet;   //!
    TBranch        *b_SumPtJet;   //!
@@ -973,6 +1390,10 @@ public :
    TBranch        *b_MVA3lCERN_weight_VV;   //!
    TBranch        *b_MVA3lCERN_weight_ttbar;   //!
    TBranch        *b_MVA3lCERN_category;   //!
+   TBranch        *b_MVA3lZZCERN_weight_ttH;   //!
+   TBranch        *b_MVA3lZZCERN_weight_ttZ;   //!
+   TBranch        *b_MVA3lZZCERN_weight_VV;   //!
+   TBranch        *b_MVA3lZZCERN_category;   //!
    TBranch        *b_MVA4lBonn_weight_ttZ;   //!
    TBranch        *b_fourLep_PME;   //!
    TBranch        *b_MVA1l2tau_weight;   //!
@@ -983,22 +1404,307 @@ public :
    TBranch        *b_averageMW;   //!
    TBranch        *b_lepton_PromptLeptonIso_TagWeight;   //!
    TBranch        *b_lepton_ChargeIDBDTTight;   //!
-   TBranch        *b_isLep2SS0tau_ee_QMisID;   //!
-   TBranch        *b_isLep2SS0tau_OF_QMisID;   //!
-   TBranch        *b_is2lttW_VR_ICHEP_QMisID;   //!
-   TBranch        *b_total_charge_QMisID;   //!
-   TBranch        *b_QMisID_EventWeight;   //!
-   TBranch        *b_QMisID_EventWeight_Up;   //!
-   TBranch        *b_QMisID_EventWeight_Dn;   //!
-   TBranch        *b_isLep2SS1tau_QMisID;   //!
-   TBranch        *b_total_charge_2ltau_QMisID;   //!
-   TBranch        *b_QMisID_2ltau_EventWeight;   //!
-   TBranch        *b_QMisID_2ltau_EventWeight_Up;   //!
-   TBranch        *b_QMisID_2ltau_EventWeight_Dn;   //!
+   TBranch        *b_CRB1_2lSStau_FF_Fake;   //!
+   TBranch        *b_CRB1_2lSStau_FF_Prompt;   //!
+   TBranch        *b_CRB2_2lSStau_FF_Fake;   //!
+   TBranch        *b_CRB2_2lSStau_FF_RealTau;   //!
+   TBranch        *b_CRB3_2lSStau_FF_Fake;   //!
+   TBranch        *b_CRB3_2lSStau_FF_RealTau;   //!
+   TBranch        *b_CRB3_2lSStau_FF_Prompt;   //!
+   TBranch        *b_CRB1_2lSStau_FF_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_elStat_Bin1Up_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_elStat_Bin1Dn_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_elStat_Bin2Up_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_elStat_Bin2Dn_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_elStat_Bin3Up_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_elStat_Bin3Dn_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_elStat_Bin4Up_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_elStat_Bin4Dn_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_elStat_Bin5Up_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_elStat_Bin5Dn_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_muStat_Bin1Up_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_muStat_Bin1Dn_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_muStat_Bin2Up_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_muStat_Bin2Dn_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_muStat_Bin3Up_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_muStat_Bin3Dn_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_muStat_Bin4Up_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_muStat_Bin4Dn_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_muStat_Bin5Up_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_muStat_Bin5Dn_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_ttwUp_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_ttwDn_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_ttzUp_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_ttzDn_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_vvUp_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_vvDn_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_rareUp_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_rareDn_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_tthUp_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_tthDn_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_QMisIdUp_EventWeight;   //!
+   TBranch        *b_CRB1_2lSStau_FF_QMisIdDn_EventWeight;   //!
+   TBranch        *b_CRB2_2lSStau_FF_EventWeight;   //!
+   TBranch        *b_CRB2_2lSStau_FF_RealtauUp_EventWeight;   //!
+   TBranch        *b_CRB2_2lSStau_FF_RealtauDn_EventWeight;   //!
+   TBranch        *b_CRB2_2lSStau_FF_tthUp_EventWeight;   //!
+   TBranch        *b_CRB2_2lSStau_FF_tthDn_EventWeight;   //!
+   TBranch        *b_CRB2_2lSStau_FF_QMisIdUp_EventWeight;   //!
+   TBranch        *b_CRB2_2lSStau_FF_QMisIdDn_EventWeight;   //!
+   TBranch        *b_CRB3_2lSStau_FF_EventWeight;   //!
+   TBranch        *b_CRB3_2lSStau_FF_RealtauUp_EventWeight;   //!
+   TBranch        *b_CRB3_2lSStau_FF_RealtauDn_EventWeight;   //!
+   TBranch        *b_CRB3_2lSStau_FF_ttwUp_EventWeight;   //!
+   TBranch        *b_CRB3_2lSStau_FF_ttwDn_EventWeight;   //!
+   TBranch        *b_CRB3_2lSStau_FF_ttzUp_EventWeight;   //!
+   TBranch        *b_CRB3_2lSStau_FF_ttzDn_EventWeight;   //!
+   TBranch        *b_CRB3_2lSStau_FF_vvUp_EventWeight;   //!
+   TBranch        *b_CRB3_2lSStau_FF_vvDn_EventWeight;   //!
+   TBranch        *b_CRB3_2lSStau_FF_rareUp_EventWeight;   //!
+   TBranch        *b_CRB3_2lSStau_FF_rareDn_EventWeight;   //!
+   TBranch        *b_CRB3_2lSStau_FF_tthUp_EventWeight;   //!
+   TBranch        *b_CRB3_2lSStau_FF_tthDn_EventWeight;   //!
+   TBranch        *b_CRB3_2lSStau_FF_QMisIdUp_EventWeight;   //!
+   TBranch        *b_CRB3_2lSStau_FF_QMisIdDn_EventWeight;   //!
+   TBranch        *b_isttH;   //!
+   TBranch        *b_isttZ;   //!
+   TBranch        *b_isttW;   //!
+   TBranch        *b_isVV;   //!
+   TBranch        *b_istZ;   //!
+   TBranch        *b_isWtZ;   //!
+   TBranch        *b_istHjb;   //!
+   TBranch        *b_isWtH;   //!
+   TBranch        *b_isttWW;   //!
+   TBranch        *b_isVH;   //!
+   TBranch        *b_isVVV;   //!
+   TBranch        *b_is3Tops;   //!
+   TBranch        *b_is4Tops;   //!
+   TBranch        *b_isttbar;   //!
+   TBranch        *b_isttll;   //!
+   TBranch        *b_israreTop;   //!
+   TBranch        *b_isttGamma;   //!
+   TBranch        *b_isttbarDilep;   //!
    TBranch        *b_passTrigger;   //!
    TBranch        *b_scale_nom;   //!
    TBranch        *b_scale_varA14up;   //!
    TBranch        *b_scale_varA14down;   //!
+   TBranch        *b_scale_varRup;   //!
+   TBranch        *b_scale_varRdown;   //!
+   TBranch        *b_scale_varFup;   //!
+   TBranch        *b_scale_varFdown;   //!
+   TBranch        *b_scale_varRFup;   //!
+   TBranch        *b_scale_varRFdown;   //!
+   TBranch        *b_pileupEventWeight_UP;   //!
+   TBranch        *b_pileupEventWeight_DOWN;   //!
+   TBranch        *b_JVT_EventWeight_UP;   //!
+   TBranch        *b_JVT_EventWeight_DOWN;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B0_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B0_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B1_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B1_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B2_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B2_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B3_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B3_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B4_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B4_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B5_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B5_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B6_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B6_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B7_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B7_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B8_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_B8_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_C0_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_C0_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_C1_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_C1_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_C2_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_C2_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_Light0_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_Light0_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_Light1_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_Light1_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_Light2_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_Light2_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_Light3_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_Light3_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_down;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_from_charm_up;   //!
+   TBranch        *b_bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_from_charm_down;   //!
+   TBranch        *b_lepSFTrigLoose_MU_SF_Trigger_SYST_UP;   //!
+   TBranch        *b_lepSFTrigTight_MU_SF_Trigger_SYST_UP;   //!
+   TBranch        *b_lepSFTrigTightLoose_MU_SF_Trigger_SYST_UP;   //!
+   TBranch        *b_lepSFTrigLooseTight_MU_SF_Trigger_SYST_UP;   //!
+   TBranch        *b_lepEffTrigLoose_MU_SF_Trigger_SYST_UP;   //!
+   TBranch        *b_lepEffTrigTight_MU_SF_Trigger_SYST_UP;   //!
+   TBranch        *b_lepEffTrigTightLoose_MU_SF_Trigger_SYST_UP;   //!
+   TBranch        *b_lepEffTrigLooseTight_MU_SF_Trigger_SYST_UP;   //!
+   TBranch        *b_lepDataEffTrigLoose_MU_SF_Trigger_SYST_UP;   //!
+   TBranch        *b_lepDataEffTrigTight_MU_SF_Trigger_SYST_UP;   //!
+   TBranch        *b_lepDataEffTrigTightLoose_MU_SF_Trigger_SYST_UP;   //!
+   TBranch        *b_lepDataEffTrigLooseTight_MU_SF_Trigger_SYST_UP;   //!
+   TBranch        *b_lepSFTrigLoose_MU_SF_Trigger_SYST_DOWN;   //!
+   TBranch        *b_lepSFTrigTight_MU_SF_Trigger_SYST_DOWN;   //!
+   TBranch        *b_lepSFTrigTightLoose_MU_SF_Trigger_SYST_DOWN;   //!
+   TBranch        *b_lepSFTrigLooseTight_MU_SF_Trigger_SYST_DOWN;   //!
+   TBranch        *b_lepEffTrigLoose_MU_SF_Trigger_SYST_DOWN;   //!
+   TBranch        *b_lepEffTrigTight_MU_SF_Trigger_SYST_DOWN;   //!
+   TBranch        *b_lepEffTrigTightLoose_MU_SF_Trigger_SYST_DOWN;   //!
+   TBranch        *b_lepEffTrigLooseTight_MU_SF_Trigger_SYST_DOWN;   //!
+   TBranch        *b_lepDataEffTrigLoose_MU_SF_Trigger_SYST_DOWN;   //!
+   TBranch        *b_lepDataEffTrigTight_MU_SF_Trigger_SYST_DOWN;   //!
+   TBranch        *b_lepDataEffTrigTightLoose_MU_SF_Trigger_SYST_DOWN;   //!
+   TBranch        *b_lepDataEffTrigLooseTight_MU_SF_Trigger_SYST_DOWN;   //!
+   TBranch        *b_lepSFTrigLoose_EL_SF_Trigger_UP;   //!
+   TBranch        *b_lepSFTrigTight_EL_SF_Trigger_UP;   //!
+   TBranch        *b_lepSFTrigTightLoose_EL_SF_Trigger_UP;   //!
+   TBranch        *b_lepSFTrigLooseTight_EL_SF_Trigger_UP;   //!
+   TBranch        *b_lepEffTrigLoose_EL_SF_Trigger_UP;   //!
+   TBranch        *b_lepEffTrigTight_EL_SF_Trigger_UP;   //!
+   TBranch        *b_lepEffTrigTightLoose_EL_SF_Trigger_UP;   //!
+   TBranch        *b_lepEffTrigLooseTight_EL_SF_Trigger_UP;   //!
+   TBranch        *b_lepDataEffTrigLoose_EL_SF_Trigger_UP;   //!
+   TBranch        *b_lepDataEffTrigTight_EL_SF_Trigger_UP;   //!
+   TBranch        *b_lepDataEffTrigTightLoose_EL_SF_Trigger_UP;   //!
+   TBranch        *b_lepDataEffTrigLooseTight_EL_SF_Trigger_UP;   //!
+   TBranch        *b_lepSFTrigLoose_EL_SF_Trigger_DOWN;   //!
+   TBranch        *b_lepSFTrigTight_EL_SF_Trigger_DOWN;   //!
+   TBranch        *b_lepSFTrigTightLoose_EL_SF_Trigger_DOWN;   //!
+   TBranch        *b_lepSFTrigLooseTight_EL_SF_Trigger_DOWN;   //!
+   TBranch        *b_lepEffTrigLoose_EL_SF_Trigger_DOWN;   //!
+   TBranch        *b_lepEffTrigTight_EL_SF_Trigger_DOWN;   //!
+   TBranch        *b_lepEffTrigTightLoose_EL_SF_Trigger_DOWN;   //!
+   TBranch        *b_lepEffTrigLooseTight_EL_SF_Trigger_DOWN;   //!
+   TBranch        *b_lepDataEffTrigLoose_EL_SF_Trigger_DOWN;   //!
+   TBranch        *b_lepDataEffTrigTight_EL_SF_Trigger_DOWN;   //!
+   TBranch        *b_lepDataEffTrigTightLoose_EL_SF_Trigger_DOWN;   //!
+   TBranch        *b_lepDataEffTrigLooseTight_EL_SF_Trigger_DOWN;   //!
+   TBranch        *b_lepSFTrigLoose_MU_SF_Trigger_STAT_UP;   //!
+   TBranch        *b_lepSFTrigTight_MU_SF_Trigger_STAT_UP;   //!
+   TBranch        *b_lepSFTrigTightLoose_MU_SF_Trigger_STAT_UP;   //!
+   TBranch        *b_lepSFTrigLooseTight_MU_SF_Trigger_STAT_UP;   //!
+   TBranch        *b_lepEffTrigLoose_MU_SF_Trigger_STAT_UP;   //!
+   TBranch        *b_lepEffTrigTight_MU_SF_Trigger_STAT_UP;   //!
+   TBranch        *b_lepEffTrigTightLoose_MU_SF_Trigger_STAT_UP;   //!
+   TBranch        *b_lepEffTrigLooseTight_MU_SF_Trigger_STAT_UP;   //!
+   TBranch        *b_lepDataEffTrigLoose_MU_SF_Trigger_STAT_UP;   //!
+   TBranch        *b_lepDataEffTrigTight_MU_SF_Trigger_STAT_UP;   //!
+   TBranch        *b_lepDataEffTrigTightLoose_MU_SF_Trigger_STAT_UP;   //!
+   TBranch        *b_lepDataEffTrigLooseTight_MU_SF_Trigger_STAT_UP;   //!
+   TBranch        *b_lepSFTrigLoose_MU_SF_Trigger_STAT_DOWN;   //!
+   TBranch        *b_lepSFTrigTight_MU_SF_Trigger_STAT_DOWN;   //!
+   TBranch        *b_lepSFTrigTightLoose_MU_SF_Trigger_STAT_DOWN;   //!
+   TBranch        *b_lepSFTrigLooseTight_MU_SF_Trigger_STAT_DOWN;   //!
+   TBranch        *b_lepEffTrigLoose_MU_SF_Trigger_STAT_DOWN;   //!
+   TBranch        *b_lepEffTrigTight_MU_SF_Trigger_STAT_DOWN;   //!
+   TBranch        *b_lepEffTrigTightLoose_MU_SF_Trigger_STAT_DOWN;   //!
+   TBranch        *b_lepEffTrigLooseTight_MU_SF_Trigger_STAT_DOWN;   //!
+   TBranch        *b_lepDataEffTrigLoose_MU_SF_Trigger_STAT_DOWN;   //!
+   TBranch        *b_lepDataEffTrigTight_MU_SF_Trigger_STAT_DOWN;   //!
+   TBranch        *b_lepDataEffTrigTightLoose_MU_SF_Trigger_STAT_DOWN;   //!
+   TBranch        *b_lepDataEffTrigLooseTight_MU_SF_Trigger_STAT_DOWN;   //!
+   TBranch        *b_lepSFTrigLoose_EL_EFF_Trigger_UP;   //!
+   TBranch        *b_lepSFTrigTight_EL_EFF_Trigger_UP;   //!
+   TBranch        *b_lepSFTrigTightLoose_EL_EFF_Trigger_UP;   //!
+   TBranch        *b_lepSFTrigLooseTight_EL_EFF_Trigger_UP;   //!
+   TBranch        *b_lepEffTrigLoose_EL_EFF_Trigger_UP;   //!
+   TBranch        *b_lepEffTrigTight_EL_EFF_Trigger_UP;   //!
+   TBranch        *b_lepEffTrigTightLoose_EL_EFF_Trigger_UP;   //!
+   TBranch        *b_lepEffTrigLooseTight_EL_EFF_Trigger_UP;   //!
+   TBranch        *b_lepDataEffTrigLoose_EL_EFF_Trigger_UP;   //!
+   TBranch        *b_lepDataEffTrigTight_EL_EFF_Trigger_UP;   //!
+   TBranch        *b_lepDataEffTrigTightLoose_EL_EFF_Trigger_UP;   //!
+   TBranch        *b_lepDataEffTrigLooseTight_EL_EFF_Trigger_UP;   //!
+   TBranch        *b_lepSFTrigLoose_EL_EFF_Trigger_DOWN;   //!
+   TBranch        *b_lepSFTrigTight_EL_EFF_Trigger_DOWN;   //!
+   TBranch        *b_lepSFTrigTightLoose_EL_EFF_Trigger_DOWN;   //!
+   TBranch        *b_lepSFTrigLooseTight_EL_EFF_Trigger_DOWN;   //!
+   TBranch        *b_lepEffTrigLoose_EL_EFF_Trigger_DOWN;   //!
+   TBranch        *b_lepEffTrigTight_EL_EFF_Trigger_DOWN;   //!
+   TBranch        *b_lepEffTrigTightLoose_EL_EFF_Trigger_DOWN;   //!
+   TBranch        *b_lepEffTrigLooseTight_EL_EFF_Trigger_DOWN;   //!
+   TBranch        *b_lepDataEffTrigLoose_EL_EFF_Trigger_DOWN;   //!
+   TBranch        *b_lepDataEffTrigTight_EL_EFF_Trigger_DOWN;   //!
+   TBranch        *b_lepDataEffTrigTightLoose_EL_EFF_Trigger_DOWN;   //!
+   TBranch        *b_lepDataEffTrigLooseTight_EL_EFF_Trigger_DOWN;   //!
+   TBranch        *b_lepSFObjLoose_EL_SF_Reco_UP;   //!
+   TBranch        *b_lepSFObjTight_EL_SF_Reco_UP;   //!
+   TBranch        *b_lepSFObjLoose_EL_SF_Reco_DOWN;   //!
+   TBranch        *b_lepSFObjTight_EL_SF_Reco_DOWN;   //!
+   TBranch        *b_lepSFObjLoose_EL_SF_ID_UP;   //!
+   TBranch        *b_lepSFObjTight_EL_SF_ID_UP;   //!
+   TBranch        *b_lepSFObjLoose_EL_SF_ID_DOWN;   //!
+   TBranch        *b_lepSFObjTight_EL_SF_ID_DOWN;   //!
+   TBranch        *b_lepSFObjLoose_EL_SF_Isol_UP;   //!
+   TBranch        *b_lepSFObjTight_EL_SF_Isol_UP;   //!
+   TBranch        *b_lepSFObjLoose_EL_SF_Isol_DOWN;   //!
+   TBranch        *b_lepSFObjTight_EL_SF_Isol_DOWN;   //!
+   TBranch        *b_lepSFObjLoose_MU_SF_ID_STAT_UP;   //!
+   TBranch        *b_lepSFObjTight_MU_SF_ID_STAT_UP;   //!
+   TBranch        *b_lepSFObjLoose_MU_SF_ID_STAT_DOWN;   //!
+   TBranch        *b_lepSFObjTight_MU_SF_ID_STAT_DOWN;   //!
+   TBranch        *b_lepSFObjLoose_MU_SF_ID_SYST_UP;   //!
+   TBranch        *b_lepSFObjTight_MU_SF_ID_SYST_UP;   //!
+   TBranch        *b_lepSFObjLoose_MU_SF_ID_SYST_DOWN;   //!
+   TBranch        *b_lepSFObjTight_MU_SF_ID_SYST_DOWN;   //!
+   TBranch        *b_lepSFObjLoose_MU_SF_ID_STAT_LOWPT_UP;   //!
+   TBranch        *b_lepSFObjTight_MU_SF_ID_STAT_LOWPT_UP;   //!
+   TBranch        *b_lepSFObjLoose_MU_SF_ID_STAT_LOWPT_DOWN;   //!
+   TBranch        *b_lepSFObjTight_MU_SF_ID_STAT_LOWPT_DOWN;   //!
+   TBranch        *b_lepSFObjLoose_MU_SF_ID_SYST_LOWPT_UP;   //!
+   TBranch        *b_lepSFObjTight_MU_SF_ID_SYST_LOWPT_UP;   //!
+   TBranch        *b_lepSFObjLoose_MU_SF_ID_SYST_LOWPT_DOWN;   //!
+   TBranch        *b_lepSFObjTight_MU_SF_ID_SYST_LOWPT_DOWN;   //!
+   TBranch        *b_lepSFObjLoose_MU_SF_Isol_STAT_UP;   //!
+   TBranch        *b_lepSFObjTight_MU_SF_Isol_STAT_UP;   //!
+   TBranch        *b_lepSFObjLoose_MU_SF_Isol_STAT_DOWN;   //!
+   TBranch        *b_lepSFObjTight_MU_SF_Isol_STAT_DOWN;   //!
+   TBranch        *b_lepSFObjLoose_MU_SF_Isol_SYST_UP;   //!
+   TBranch        *b_lepSFObjTight_MU_SF_Isol_SYST_UP;   //!
+   TBranch        *b_lepSFObjLoose_MU_SF_Isol_SYST_DOWN;   //!
+   TBranch        *b_lepSFObjTight_MU_SF_Isol_SYST_DOWN;   //!
+   TBranch        *b_lepSFObjLoose_MU_SF_TTVA_STAT_UP;   //!
+   TBranch        *b_lepSFObjTight_MU_SF_TTVA_STAT_UP;   //!
+   TBranch        *b_lepSFObjLoose_MU_SF_TTVA_STAT_DOWN;   //!
+   TBranch        *b_lepSFObjTight_MU_SF_TTVA_STAT_DOWN;   //!
+   TBranch        *b_lepSFObjLoose_MU_SF_TTVA_SYST_UP;   //!
+   TBranch        *b_lepSFObjTight_MU_SF_TTVA_SYST_UP;   //!
+   TBranch        *b_lepSFObjLoose_MU_SF_TTVA_SYST_DOWN;   //!
+   TBranch        *b_lepSFObjTight_MU_SF_TTVA_SYST_DOWN;   //!
+   TBranch        *b_tauSFTight_TAU_SF_ELEOLR_TOTAL_UP;   //!
+   TBranch        *b_tauSFLoose_TAU_SF_ELEOLR_TOTAL_UP;   //!
+   TBranch        *b_tauSFTight_TAU_SF_ELEOLR_TOTAL_DOWN;   //!
+   TBranch        *b_tauSFLoose_TAU_SF_ELEOLR_TOTAL_DOWN;   //!
+   TBranch        *b_tauSFTight_TAU_SF_JETID_TOTAL_UP;   //!
+   TBranch        *b_tauSFLoose_TAU_SF_JETID_TOTAL_UP;   //!
+   TBranch        *b_tauSFTight_TAU_SF_JETID_TOTAL_DOWN;   //!
+   TBranch        *b_tauSFLoose_TAU_SF_JETID_TOTAL_DOWN;   //!
+   TBranch        *b_tauSFTight_TAU_SF_RECO_TOTAL_UP;   //!
+   TBranch        *b_tauSFLoose_TAU_SF_RECO_TOTAL_UP;   //!
+   TBranch        *b_tauSFTight_TAU_SF_RECO_TOTAL_DOWN;   //!
+   TBranch        *b_tauSFLoose_TAU_SF_RECO_TOTAL_DOWN;   //!
+   TBranch        *b_tauSFTight_TAU_SF_JETID_HIGHPT_UP;   //!
+   TBranch        *b_tauSFLoose_TAU_SF_JETID_HIGHPT_UP;   //!
+   TBranch        *b_tauSFTight_TAU_SF_JETID_HIGHPT_DOWN;   //!
+   TBranch        *b_tauSFLoose_TAU_SF_JETID_HIGHPT_DOWN;   //!
+   TBranch        *b_tauSFTight_TAU_SF_RECO_HIGHPT_UP;   //!
+   TBranch        *b_tauSFLoose_TAU_SF_RECO_HIGHPT_UP;   //!
+   TBranch        *b_tauSFTight_TAU_SF_RECO_HIGHPT_DOWN;   //!
+   TBranch        *b_tauSFLoose_TAU_SF_RECO_HIGHPT_DOWN;   //!
+   TBranch        *b_tauSFTight_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_UP;   //!
+   TBranch        *b_tauSFLoose_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_UP;   //!
+   TBranch        *b_tauSFTight_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_DOWN;   //!
+   TBranch        *b_tauSFLoose_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_DOWN;   //!
+   TBranch        *b_forFit_promptSel;   //!
+   TBranch        *b_forFit_tightSel;   //!
+   TBranch        *b_forFit_3l0tauBaseLine;   //!
+   TBranch        *b_forFit_3l0tauFakesSel;   //!
+   TBranch        *b_forFit_2lss0tauBaseLine;   //!
+   TBranch        *b_forFit_2lssFakeQmisSel;   //!
    TBranch        *b_mcWeightOrg;   //!
    TBranch        *b_pileupEventWeight_090;   //!
    TBranch        *b_MV2c10_60_EventWeight;   //!
@@ -1089,6 +1795,36 @@ public :
    TBranch        *b_HLT_mu26_ivarmedium;   //!
    TBranch        *b_HLT_mu50;   //!
    TBranch        *b_HLT_2e17_lhvloose_nod0_L12EM15VHI;   //!
+   TBranch        *b_lep_promptLeptonInput_sv1_jf_ntrkv_0;   //!
+   TBranch        *b_lep_promptLeptonInput_sv1_jf_ntrkv_1;   //!
+   TBranch        *b_lep_promptLeptonInput_sv1_jf_ntrkv_2;   //!
+   TBranch        *b_lep_promptLeptonInput_TrackJetNTrack_0;   //!
+   TBranch        *b_lep_promptLeptonInput_TrackJetNTrack_1;   //!
+   TBranch        *b_lep_promptLeptonInput_TrackJetNTrack_2;   //!
+   TBranch        *b_lep_promptLeptonInput_DL1mu_0;   //!
+   TBranch        *b_lep_promptLeptonInput_DL1mu_1;   //!
+   TBranch        *b_lep_promptLeptonInput_DL1mu_2;   //!
+   TBranch        *b_lep_promptLeptonInput_DRlj_0;   //!
+   TBranch        *b_lep_promptLeptonInput_DRlj_1;   //!
+   TBranch        *b_lep_promptLeptonInput_DRlj_2;   //!
+   TBranch        *b_lep_promptLeptonInput_LepJetPtFrac_0;   //!
+   TBranch        *b_lep_promptLeptonInput_LepJetPtFrac_1;   //!
+   TBranch        *b_lep_promptLeptonInput_LepJetPtFrac_2;   //!
+   TBranch        *b_lep_promptLeptonInput_PtFrac_0;   //!
+   TBranch        *b_lep_promptLeptonInput_PtFrac_1;   //!
+   TBranch        *b_lep_promptLeptonInput_PtFrac_2;   //!
+   TBranch        *b_lep_promptLeptonInput_PtRel_0;   //!
+   TBranch        *b_lep_promptLeptonInput_PtRel_1;   //!
+   TBranch        *b_lep_promptLeptonInput_PtRel_2;   //!
+   TBranch        *b_lep_promptLeptonInput_ip2_0;   //!
+   TBranch        *b_lep_promptLeptonInput_ip2_1;   //!
+   TBranch        *b_lep_promptLeptonInput_ip2_2;   //!
+   TBranch        *b_lep_promptLeptonInput_ip3_0;   //!
+   TBranch        *b_lep_promptLeptonInput_ip3_1;   //!
+   TBranch        *b_lep_promptLeptonInput_ip3_2;   //!
+   TBranch        *b_lep_promptLeptonInput_rnnip_0;   //!
+   TBranch        *b_lep_promptLeptonInput_rnnip_1;   //!
+   TBranch        *b_lep_promptLeptonInput_rnnip_2;   //!
    TBranch        *b_lep_ID_0;   //!
    TBranch        *b_lep_Index_0;   //!
    TBranch        *b_lep_ambiguityType_0;   //!
@@ -1480,6 +2216,7 @@ public :
    TBranch        *b_matchDLTll23;   //!
    TBranch        *b_best_Z_Mll;   //!
    TBranch        *b_best_Z_other_Mll;   //!
+   TBranch        *b_best_Z_other_MtLepMet;   //!
    TBranch        *b_nJets_OR_T;   //!
    TBranch        *b_nJets_OR;   //!
    TBranch        *b_nJets_OR_T_MV2c20_60;   //!
@@ -1527,33 +2264,14 @@ public :
    TBranch        *b_lepSFObjTight;   //!
    TBranch        *b_tauSFTight;   //!
    TBranch        *b_tauSFLoose;   //!
-   TBranch        *b_isMMSideband_TT;   //!
-   TBranch        *b_isMMSideband_TAntiT;   //!
-   TBranch        *b_isMMSideband_AntiTT;   //!
-   TBranch        *b_isMMSideband_AntiTAntiT;   //!
-   TBranch        *b_MM_EventWeight;   //!
-   TBranch        *b_MM_EventWeight_Real_El_Pt_Stat_Grouped_Up;   //!
-   TBranch        *b_MM_EventWeight_Real_El_Pt_Stat_Grouped_Dn;   //!
-   TBranch        *b_MM_EventWeight_Real_El_Pt_Sys_Grouped_Up;   //!
-   TBranch        *b_MM_EventWeight_Real_El_Pt_Sys_Grouped_Dn;   //!
-   TBranch        *b_MM_EventWeight_Real_Mu_Pt_Stat_Grouped_Up;   //!
-   TBranch        *b_MM_EventWeight_Real_Mu_Pt_Stat_Grouped_Dn;   //!
-   TBranch        *b_MM_EventWeight_Real_Mu_Pt_Sys_Grouped_Up;   //!
-   TBranch        *b_MM_EventWeight_Real_Mu_Pt_Sys_Grouped_Dn;   //!
-   TBranch        *b_MM_EventWeight_Fake_El_Pt_Stat_Grouped_Up;   //!
-   TBranch        *b_MM_EventWeight_Fake_El_Pt_Stat_Grouped_Dn;   //!
-   TBranch        *b_MM_EventWeight_Fake_El_Pt_Sys_Grouped_Up;   //!
-   TBranch        *b_MM_EventWeight_Fake_El_Pt_Sys_Grouped_Dn;   //!
-   TBranch        *b_MM_EventWeight_Fake_Mu_Pt_Stat_Grouped_Up;   //!
-   TBranch        *b_MM_EventWeight_Fake_Mu_Pt_Stat_Grouped_Dn;   //!
-   TBranch        *b_MM_EventWeight_Fake_Mu_Pt_Sys_Grouped_Up;   //!
-   TBranch        *b_MM_EventWeight_Fake_Mu_Pt_Sys_Grouped_Dn;   //!
-   TBranch        *b_QMisID_MM_EventWeight;   //!
-   TBranch        *b_QMisID_MM_EventWeight_Up;   //!
-   TBranch        *b_QMisID_MM_EventWeight_Dn;   //!
+   TBranch        *b_tauFakeSF_weight;   //!
+   TBranch        *b_tauFakeSF_weight_SYST_UP;   //!
+   TBranch        *b_tauFakeSF_weight_SYST_DOWN;   //!
+   TBranch        *b_tauFakeSF_weight_STAT_UP;   //!
+   TBranch        *b_tauFakeSF_weight_STAT_DOWN;   //!
 
-   GN_v5(TTree *tree=0);
-   virtual ~GN_v5();
+   GN_v7(TTree *tree=0);
+   virtual ~GN_v7();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
    virtual Long64_t LoadTree(Long64_t entry);
@@ -1565,15 +2283,15 @@ public :
 
 #endif
 
-#ifdef GN_v5_cxx
-GN_v5::GN_v5(TTree *tree) : fChain(0) 
+#ifdef GN_v7_cxx
+GN_v7::GN_v7(TTree *tree) : fChain(0) 
 {
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/eos/atlas/atlascerngroupdisk/phys-higgs/HSG8/multilepton_Run2_Summer18/GN2/v5_newTightDefs/data/data15/periodD.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("../ttHMLSamps/v7_01/all/tth.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("/eos/atlas/atlascerngroupdisk/phys-higgs/HSG8/multilepton_Run2_Summer18/GN2/v5_newTightDefs/data/data15/periodD.root");
+         f = new TFile("../ttHMLSamps/v7_01/all/tth.root");
       }
       f->GetObject("nominal",tree);
 
@@ -1581,19 +2299,19 @@ GN_v5::GN_v5(TTree *tree) : fChain(0)
    Init(tree);
 }
 
-GN_v5::~GN_v5()
+GN_v7::~GN_v7()
 {
    if (!fChain) return;
    delete fChain->GetCurrentFile();
 }
 
-Int_t GN_v5::GetEntry(Long64_t entry)
+Int_t GN_v7::GetEntry(Long64_t entry)
 {
 // Read contents of entry.
    if (!fChain) return 0;
    return fChain->GetEntry(entry);
 }
-Long64_t GN_v5::LoadTree(Long64_t entry)
+Long64_t GN_v7::LoadTree(Long64_t entry)
 {
 // Set the environment to read one entry
    if (!fChain) return -5;
@@ -1606,7 +2324,7 @@ Long64_t GN_v5::LoadTree(Long64_t entry)
    return centry;
 }
 
-void GN_v5::Init(TTree *tree)
+void GN_v7::Init(TTree *tree)
 {
    // The Init() function is called when the selector needs to initialize
    // a new tree or chain. Typically here the branch addresses and branch
@@ -1642,6 +2360,7 @@ void GN_v5::Init(TTree *tree)
    fChain->SetBranchAddress("is3L", &is3L, &b_is3L);
    fChain->SetBranchAddress("is3L1Tau", &is3L1Tau, &b_is3L1Tau);
    fChain->SetBranchAddress("is4L", &is4L, &b_is4L);
+   fChain->SetBranchAddress("is2lLowNJet0Tau", &is2lLowNJet0Tau, &b_is2lLowNJet0Tau);
    fChain->SetBranchAddress("is2LSS0Tau_SR_Relaxed", &is2LSS0Tau_SR_Relaxed, &b_is2LSS0Tau_SR_Relaxed);
    fChain->SetBranchAddress("is2LSS1Tau_SR_Relaxed", &is2LSS1Tau_SR_Relaxed, &b_is2LSS1Tau_SR_Relaxed);
    fChain->SetBranchAddress("is3L0Tau_SR_Relaxed", &is3L0Tau_SR_Relaxed, &b_is3L0Tau_SR_Relaxed);
@@ -1655,6 +2374,10 @@ void GN_v5::Init(TTree *tree)
    fChain->SetBranchAddress("is2L_VR_ttW_ICHEP", &is2L_VR_ttW_ICHEP, &b_is2L_VR_ttW_ICHEP);
    fChain->SetBranchAddress("is2L_VR_ttbarFakes_ICHEP", &is2L_VR_ttbarFakes_ICHEP, &b_is2L_VR_ttbarFakes_ICHEP);
    fChain->SetBranchAddress("is4lCRttZRelaxed", &is4lCRttZRelaxed, &b_is4lCRttZRelaxed);
+   fChain->SetBranchAddress("is2LOS1Tau_CR_ttbar", &is2LOS1Tau_CR_ttbar, &b_is2LOS1Tau_CR_ttbar);
+   fChain->SetBranchAddress("is2LOS1Tau_CR_ttZ", &is2LOS1Tau_CR_ttZ, &b_is2LOS1Tau_CR_ttZ);
+   fChain->SetBranchAddress("is2LOS1Tau_CR_W", &is2LOS1Tau_CR_W, &b_is2LOS1Tau_CR_W);
+   fChain->SetBranchAddress("is3L1Tau_VR", &is3L1Tau_VR, &b_is3L1Tau_VR);
    fChain->SetBranchAddress("is2lOS0TauBaseline", &is2lOS0TauBaseline, &b_is2lOS0TauBaseline);
    fChain->SetBranchAddress("is2lOS0TauBaseline_ee", &is2lOS0TauBaseline_ee, &b_is2lOS0TauBaseline_ee);
    fChain->SetBranchAddress("is2lOS0TauBaseline_mm", &is2lOS0TauBaseline_mm, &b_is2lOS0TauBaseline_mm);
@@ -1681,6 +2404,9 @@ void GN_v5::Init(TTree *tree)
    fChain->SetBranchAddress("is2lSS1TauBaseline_em", &is2lSS1TauBaseline_em, &b_is2lSS1TauBaseline_em);
    fChain->SetBranchAddress("is3lBaseline", &is3lBaseline, &b_is3lBaseline);
    fChain->SetBranchAddress("is3lBaselineNoZVeto", &is3lBaselineNoZVeto, &b_is3lBaselineNoZVeto);
+   fChain->SetBranchAddress("is2lss1tau_regionB", &is2lss1tau_regionB, &b_is2lss1tau_regionB);
+   fChain->SetBranchAddress("is2lss1tau_regionC", &is2lss1tau_regionC, &b_is2lss1tau_regionC);
+   fChain->SetBranchAddress("is2lss1tau_regionD", &is2lss1tau_regionD, &b_is2lss1tau_regionD);
    fChain->SetBranchAddress("isGNv02", &isGNv02, &b_isGNv02);
    fChain->SetBranchAddress("minOSMll", &minOSMll, &b_minOSMll);
    fChain->SetBranchAddress("minOSSFMll", &minOSSFMll, &b_minOSSFMll);
@@ -1688,14 +2414,17 @@ void GN_v5::Init(TTree *tree)
    fChain->SetBranchAddress("jet_flvWtOrdr_0_eta", &jet_flvWtOrdr_0_eta, &b_jet_flvWtOrdr_0_eta);
    fChain->SetBranchAddress("jet_flvWtOrdr_0_phi", &jet_flvWtOrdr_0_phi, &b_jet_flvWtOrdr_0_phi);
    fChain->SetBranchAddress("jet_flvWtOrdr_0_E", &jet_flvWtOrdr_0_E, &b_jet_flvWtOrdr_0_E);
+   fChain->SetBranchAddress("jet_flvWtOrdr_0_mv2c10", &jet_flvWtOrdr_0_mv2c10, &b_jet_flvWtOrdr_0_mv2c10);
    fChain->SetBranchAddress("jet_flvWtOrdr_1_pt", &jet_flvWtOrdr_1_pt, &b_jet_flvWtOrdr_1_pt);
    fChain->SetBranchAddress("jet_flvWtOrdr_1_eta", &jet_flvWtOrdr_1_eta, &b_jet_flvWtOrdr_1_eta);
    fChain->SetBranchAddress("jet_flvWtOrdr_1_phi", &jet_flvWtOrdr_1_phi, &b_jet_flvWtOrdr_1_phi);
    fChain->SetBranchAddress("jet_flvWtOrdr_1_E", &jet_flvWtOrdr_1_E, &b_jet_flvWtOrdr_1_E);
+   fChain->SetBranchAddress("jet_flvWtOrdr_1_mv2c10", &jet_flvWtOrdr_1_mv2c10, &b_jet_flvWtOrdr_1_mv2c10);
    fChain->SetBranchAddress("jet_flvWtOrdr_2_pt", &jet_flvWtOrdr_2_pt, &b_jet_flvWtOrdr_2_pt);
    fChain->SetBranchAddress("jet_flvWtOrdr_2_eta", &jet_flvWtOrdr_2_eta, &b_jet_flvWtOrdr_2_eta);
    fChain->SetBranchAddress("jet_flvWtOrdr_2_phi", &jet_flvWtOrdr_2_phi, &b_jet_flvWtOrdr_2_phi);
    fChain->SetBranchAddress("jet_flvWtOrdr_2_E", &jet_flvWtOrdr_2_E, &b_jet_flvWtOrdr_2_E);
+   fChain->SetBranchAddress("jet_flvWtOrdr_2_mv2c10", &jet_flvWtOrdr_2_mv2c10, &b_jet_flvWtOrdr_2_mv2c10);
    fChain->SetBranchAddress("DEtall01", &DEtall01, &b_DEtall01);
    fChain->SetBranchAddress("DEtall02", &DEtall02, &b_DEtall02);
    fChain->SetBranchAddress("DEtall12", &DEtall12, &b_DEtall12);
@@ -1731,9 +2460,17 @@ void GN_v5::Init(TTree *tree)
    fChain->SetBranchAddress("FSF_4L_tot", &FSF_4L_tot, &b_FSF_4L_tot);
    fChain->SetBranchAddress("FSF_4L_tot_up", &FSF_4L_tot_up, &b_FSF_4L_tot_up);
    fChain->SetBranchAddress("FSF_4L_tot_down", &FSF_4L_tot_down, &b_FSF_4L_tot_down);
+   fChain->SetBranchAddress("FSF_category", &FSF_category, &b_FSF_category);
+   fChain->SetBranchAddress("FSF_4L_e_L", &FSF_4L_e_L, &b_FSF_4L_e_L);
+   fChain->SetBranchAddress("FSF_4L_e_H", &FSF_4L_e_H, &b_FSF_4L_e_H);
+   fChain->SetBranchAddress("FSF_4L_m", &FSF_4L_m, &b_FSF_4L_m);
+   fChain->SetBranchAddress("jet2_pt", &jet2_pt, &b_jet2_pt);
+   fChain->SetBranchAddress("jet2_eta", &jet2_eta, &b_jet2_eta);
+   fChain->SetBranchAddress("jet2_phi", &jet2_phi, &b_jet2_phi);
    fChain->SetBranchAddress("jet3_pt", &jet3_pt, &b_jet3_pt);
    fChain->SetBranchAddress("jet3_eta", &jet3_eta, &b_jet3_eta);
    fChain->SetBranchAddress("jet3_phi", &jet3_phi, &b_jet3_phi);
+   fChain->SetBranchAddress("jet0_tagWeightBin", &jet0_tagWeightBin, &b_jet0_tagWeightBin);
    fChain->SetBranchAddress("jet1_tagWeightBin", &jet1_tagWeightBin, &b_jet1_tagWeightBin);
    fChain->SetBranchAddress("jet2_tagWeightBin", &jet2_tagWeightBin, &b_jet2_tagWeightBin);
    fChain->SetBranchAddress("jet3_tagWeightBin", &jet3_tagWeightBin, &b_jet3_tagWeightBin);
@@ -1748,6 +2485,15 @@ void GN_v5::Init(TTree *tree)
    fChain->SetBranchAddress("SignProduct2sslt", &SignProduct2sslt, &b_SignProduct2sslt);
    fChain->SetBranchAddress("TransverseMassLeadLepMET", &TransverseMassLeadLepMET, &b_TransverseMassLeadLepMET);
    fChain->SetBranchAddress("LD_HTmiss_ETmiss", &LD_HTmiss_ETmiss, &b_LD_HTmiss_ETmiss);
+   fChain->SetBranchAddress("Mjj_nonb", &Mjj_nonb, &b_Mjj_nonb);
+   fChain->SetBranchAddress("Mtop", &Mtop, &b_Mtop);
+   fChain->SetBranchAddress("MtopW", &MtopW, &b_MtopW);
+   fChain->SetBranchAddress("temptopoetcone20overpTlep0", &temptopoetcone20overpTlep0, &b_temptopoetcone20overpTlep0);
+   fChain->SetBranchAddress("temptopoetcone20overpTlep1", &temptopoetcone20overpTlep1, &b_temptopoetcone20overpTlep1);
+   fChain->SetBranchAddress("tempptvarcone20overpTlep0", &tempptvarcone20overpTlep0, &b_tempptvarcone20overpTlep0);
+   fChain->SetBranchAddress("tempptvarcone20overpTlep1", &tempptvarcone20overpTlep1, &b_tempptvarcone20overpTlep1);
+   fChain->SetBranchAddress("lep_isAntiTight_0", &lep_isAntiTight_0, &b_lep_isAntiTight_0);
+   fChain->SetBranchAddress("lep_isAntiTight_1", &lep_isAntiTight_1, &b_lep_isAntiTight_1);
    fChain->SetBranchAddress("tau_tight_0", &tau_tight_0, &b_tau_tight_0);
    fChain->SetBranchAddress("tau_tight_1", &tau_tight_1, &b_tau_tight_1);
    fChain->SetBranchAddress("tau_btag70_0", &tau_btag70_0, &b_tau_btag70_0);
@@ -1774,12 +2520,40 @@ void GN_v5::Init(TTree *tree)
    fChain->SetBranchAddress("lead_BjetPt", &lead_BjetPt, &b_lead_BjetPt);
    fChain->SetBranchAddress("lead_jet_sumBEff", &lead_jet_sumBEff, &b_lead_jet_sumBEff);
    fChain->SetBranchAddress("sublead_jet_sumBEff", &sublead_jet_sumBEff, &b_sublead_jet_sumBEff);
+   fChain->SetBranchAddress("lead_jet_pass_FixedCutBEff_70", &lead_jet_pass_FixedCutBEff_70, &b_lead_jet_pass_FixedCutBEff_70);
+   fChain->SetBranchAddress("sublead_jet_pass_FixedCutBEff_70", &sublead_jet_pass_FixedCutBEff_70, &b_sublead_jet_pass_FixedCutBEff_70);
    fChain->SetBranchAddress("lead_jet_is_lead_antitag", &lead_jet_is_lead_antitag, &b_lead_jet_is_lead_antitag);
    fChain->SetBranchAddress("lead_jet_is_lead_tag", &lead_jet_is_lead_tag, &b_lead_jet_is_lead_tag);
    fChain->SetBranchAddress("lep_Pt_1_new", &lep_Pt_1_new, &b_lep_Pt_1_new);
    fChain->SetBranchAddress("lep_Pt_2_new", &lep_Pt_2_new, &b_lep_Pt_2_new);
    fChain->SetBranchAddress("lep_ID_1_new", &lep_ID_1_new, &b_lep_ID_1_new);
    fChain->SetBranchAddress("lep_ID_2_new", &lep_ID_2_new, &b_lep_ID_2_new);
+   fChain->SetBranchAddress("lep_isPrompt_1_new", &lep_isPrompt_1_new, &b_lep_isPrompt_1_new);
+   fChain->SetBranchAddress("lep_isPrompt_2_new", &lep_isPrompt_2_new, &b_lep_isPrompt_2_new);
+   fChain->SetBranchAddress("lep_truthOrigin_1_new", &lep_truthOrigin_1_new, &b_lep_truthOrigin_1_new);
+   fChain->SetBranchAddress("lep_truthOrigin_2_new", &lep_truthOrigin_2_new, &b_lep_truthOrigin_2_new);
+   fChain->SetBranchAddress("lep_truthParentPdgId_1_new", &lep_truthParentPdgId_1_new, &b_lep_truthParentPdgId_1_new);
+   fChain->SetBranchAddress("lep_truthParentPdgId_2_new", &lep_truthParentPdgId_2_new, &b_lep_truthParentPdgId_2_new);
+   fChain->SetBranchAddress("lep_truthParentType_1_new", &lep_truthParentType_1_new, &b_lep_truthParentType_1_new);
+//    fChain->SetBranchAddress("lep_truthParentPdgId_2_new", &lep_truthParentPdgId_2_new, &b_lep_truthParentPdgId_2_new);
+   fChain->SetBranchAddress("lep_isQMisID_1_new", &lep_isQMisID_1_new, &b_lep_isQMisID_1_new);
+   fChain->SetBranchAddress("lep_isQMisID_2_new", &lep_isQMisID_2_new, &b_lep_isQMisID_2_new);
+   fChain->SetBranchAddress("lep_Eta_1_new", &lep_Eta_1_new, &b_lep_Eta_1_new);
+   fChain->SetBranchAddress("lep_Eta_2_new", &lep_Eta_2_new, &b_lep_Eta_2_new);
+   fChain->SetBranchAddress("lep_Phi_1_new", &lep_Phi_1_new, &b_lep_Phi_1_new);
+   fChain->SetBranchAddress("lep_Phi_2_new", &lep_Phi_2_new, &b_lep_Phi_2_new);
+   fChain->SetBranchAddress("lep_isolationFixedCutLoose_1_new", &lep_isolationFixedCutLoose_1_new, &b_lep_isolationFixedCutLoose_1_new);
+   fChain->SetBranchAddress("lep_isolationFixedCutLoose_2_new", &lep_isolationFixedCutLoose_2_new, &b_lep_isolationFixedCutLoose_2_new);
+   fChain->SetBranchAddress("lep_promptLeptonVeto_TagWeight_1_new", &lep_promptLeptonVeto_TagWeight_1_new, &b_lep_promptLeptonVeto_TagWeight_1_new);
+   fChain->SetBranchAddress("lep_promptLeptonVeto_TagWeight_2_new", &lep_promptLeptonVeto_TagWeight_2_new, &b_lep_promptLeptonVeto_TagWeight_2_new);
+   fChain->SetBranchAddress("lep_isTightLH_1_new", &lep_isTightLH_1_new, &b_lep_isTightLH_1_new);
+   fChain->SetBranchAddress("lep_isTightLH_2_new", &lep_isTightLH_2_new, &b_lep_isTightLH_2_new);
+   fChain->SetBranchAddress("lep_chargeIDBDTTight_1_new", &lep_chargeIDBDTTight_1_new, &b_lep_chargeIDBDTTight_1_new);
+   fChain->SetBranchAddress("lep_chargeIDBDTTight_2_new", &lep_chargeIDBDTTight_2_new, &b_lep_chargeIDBDTTight_2_new);
+   fChain->SetBranchAddress("lep_ambiguityType_1_new", &lep_ambiguityType_1_new, &b_lep_ambiguityType_1_new);
+   fChain->SetBranchAddress("lep_ambiguityType_2_new", &lep_ambiguityType_2_new, &b_lep_ambiguityType_2_new);
+   fChain->SetBranchAddress("lep_isMedium_1_new", &lep_isMedium_1_new, &b_lep_isMedium_1_new);
+   fChain->SetBranchAddress("lep_isMedium_2_new", &lep_isMedium_2_new, &b_lep_isMedium_2_new);
    fChain->SetBranchAddress("EventWeight", &EventWeight, &b_EventWeight);
    fChain->SetBranchAddress("lep_isTightSelected_0", &lep_isTightSelected_0, &b_lep_isTightSelected_0);
    fChain->SetBranchAddress("lep_isTightSelected_1", &lep_isTightSelected_1, &b_lep_isTightSelected_1);
@@ -1800,8 +2574,10 @@ void GN_v5::Init(TTree *tree)
    fChain->SetBranchAddress("MVA2lSSMarseille_weight_ttbar", &MVA2lSSMarseille_weight_ttbar, &b_MVA2lSSMarseille_weight_ttbar);
    fChain->SetBranchAddress("MVA2lSSMarseille_weight_ttV_2", &MVA2lSSMarseille_weight_ttV_2, &b_MVA2lSSMarseille_weight_ttV_2);
    fChain->SetBranchAddress("MVA2lSSMarseille_weight_ttbar_2", &MVA2lSSMarseille_weight_ttbar_2, &b_MVA2lSSMarseille_weight_ttbar_2);
-   fChain->SetBranchAddress("MVA2lSS1tau_weight_random", &MVA2lSS1tau_weight_random, &b_MVA2lSS1tau_weight_random);
-   fChain->SetBranchAddress("MVA2lSS1tau_weight_CT", &MVA2lSS1tau_weight_CT, &b_MVA2lSS1tau_weight_CT);
+   fChain->SetBranchAddress("MVA2lSS1tau_weight_random_ttbar", &MVA2lSS1tau_weight_random_ttbar, &b_MVA2lSS1tau_weight_random_ttbar);
+   fChain->SetBranchAddress("MVA2lSS1tau_weight_CT_ttbar", &MVA2lSS1tau_weight_CT_ttbar, &b_MVA2lSS1tau_weight_CT_ttbar);
+   fChain->SetBranchAddress("MVA2lSS1tau_weight_random_nottbar", &MVA2lSS1tau_weight_random_nottbar, &b_MVA2lSS1tau_weight_random_nottbar);
+   fChain->SetBranchAddress("MVA2lSS1tau_weight_CT_nottbar", &MVA2lSS1tau_weight_CT_nottbar, &b_MVA2lSS1tau_weight_CT_nottbar);
    fChain->SetBranchAddress("MVA2lOS1tau_weight", &MVA2lOS1tau_weight, &b_MVA2lOS1tau_weight);
    fChain->SetBranchAddress("SumPtBJet", &SumPtBJet, &b_SumPtBJet);
    fChain->SetBranchAddress("SumPtJet", &SumPtJet, &b_SumPtJet);
@@ -1817,6 +2593,10 @@ void GN_v5::Init(TTree *tree)
    fChain->SetBranchAddress("MVA3lCERN_weight_VV", &MVA3lCERN_weight_VV, &b_MVA3lCERN_weight_VV);
    fChain->SetBranchAddress("MVA3lCERN_weight_ttbar", &MVA3lCERN_weight_ttbar, &b_MVA3lCERN_weight_ttbar);
    fChain->SetBranchAddress("MVA3lCERN_category", &MVA3lCERN_category, &b_MVA3lCERN_category);
+   fChain->SetBranchAddress("MVA3lZZCERN_weight_ttH", &MVA3lZZCERN_weight_ttH, &b_MVA3lZZCERN_weight_ttH);
+   fChain->SetBranchAddress("MVA3lZZCERN_weight_ttZ", &MVA3lZZCERN_weight_ttZ, &b_MVA3lZZCERN_weight_ttZ);
+   fChain->SetBranchAddress("MVA3lZZCERN_weight_VV", &MVA3lZZCERN_weight_VV, &b_MVA3lZZCERN_weight_VV);
+   fChain->SetBranchAddress("MVA3lZZCERN_category", &MVA3lZZCERN_category, &b_MVA3lZZCERN_category);
    fChain->SetBranchAddress("MVA4lBonn_weight_ttZ", &MVA4lBonn_weight_ttZ, &b_MVA4lBonn_weight_ttZ);
    fChain->SetBranchAddress("fourLep_PME", &fourLep_PME, &b_fourLep_PME);
    fChain->SetBranchAddress("MVA1l2tau_weight", &MVA1l2tau_weight, &b_MVA1l2tau_weight);
@@ -1827,22 +2607,307 @@ void GN_v5::Init(TTree *tree)
    fChain->SetBranchAddress("averageMW", &averageMW, &b_averageMW);
    fChain->SetBranchAddress("lepton_PromptLeptonIso_TagWeight", &lepton_PromptLeptonIso_TagWeight, &b_lepton_PromptLeptonIso_TagWeight);
    fChain->SetBranchAddress("lepton_ChargeIDBDTTight", &lepton_ChargeIDBDTTight, &b_lepton_ChargeIDBDTTight);
-   fChain->SetBranchAddress("isLep2SS0tau_ee_QMisID", &isLep2SS0tau_ee_QMisID, &b_isLep2SS0tau_ee_QMisID);
-   fChain->SetBranchAddress("isLep2SS0tau_OF_QMisID", &isLep2SS0tau_OF_QMisID, &b_isLep2SS0tau_OF_QMisID);
-   fChain->SetBranchAddress("is2lttW_VR_ICHEP_QMisID", &is2lttW_VR_ICHEP_QMisID, &b_is2lttW_VR_ICHEP_QMisID);
-   fChain->SetBranchAddress("total_charge_QMisID", &total_charge_QMisID, &b_total_charge_QMisID);
-   fChain->SetBranchAddress("QMisID_EventWeight", &QMisID_EventWeight, &b_QMisID_EventWeight);
-   fChain->SetBranchAddress("QMisID_EventWeight_Up", &QMisID_EventWeight_Up, &b_QMisID_EventWeight_Up);
-   fChain->SetBranchAddress("QMisID_EventWeight_Dn", &QMisID_EventWeight_Dn, &b_QMisID_EventWeight_Dn);
-   fChain->SetBranchAddress("isLep2SS1tau_QMisID", &isLep2SS1tau_QMisID, &b_isLep2SS1tau_QMisID);
-   fChain->SetBranchAddress("total_charge_2ltau_QMisID", &total_charge_2ltau_QMisID, &b_total_charge_2ltau_QMisID);
-   fChain->SetBranchAddress("QMisID_2ltau_EventWeight", &QMisID_2ltau_EventWeight, &b_QMisID_2ltau_EventWeight);
-   fChain->SetBranchAddress("QMisID_2ltau_EventWeight_Up", &QMisID_2ltau_EventWeight_Up, &b_QMisID_2ltau_EventWeight_Up);
-   fChain->SetBranchAddress("QMisID_2ltau_EventWeight_Dn", &QMisID_2ltau_EventWeight_Dn, &b_QMisID_2ltau_EventWeight_Dn);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_Fake", &CRB1_2lSStau_FF_Fake, &b_CRB1_2lSStau_FF_Fake);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_Prompt", &CRB1_2lSStau_FF_Prompt, &b_CRB1_2lSStau_FF_Prompt);
+   fChain->SetBranchAddress("CRB2_2lSStau_FF_Fake", &CRB2_2lSStau_FF_Fake, &b_CRB2_2lSStau_FF_Fake);
+   fChain->SetBranchAddress("CRB2_2lSStau_FF_RealTau", &CRB2_2lSStau_FF_RealTau, &b_CRB2_2lSStau_FF_RealTau);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_Fake", &CRB3_2lSStau_FF_Fake, &b_CRB3_2lSStau_FF_Fake);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_RealTau", &CRB3_2lSStau_FF_RealTau, &b_CRB3_2lSStau_FF_RealTau);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_Prompt", &CRB3_2lSStau_FF_Prompt, &b_CRB3_2lSStau_FF_Prompt);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_EventWeight", &CRB1_2lSStau_FF_EventWeight, &b_CRB1_2lSStau_FF_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_elStat_Bin1Up_EventWeight", &CRB1_2lSStau_FF_elStat_Bin1Up_EventWeight, &b_CRB1_2lSStau_FF_elStat_Bin1Up_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_elStat_Bin1Dn_EventWeight", &CRB1_2lSStau_FF_elStat_Bin1Dn_EventWeight, &b_CRB1_2lSStau_FF_elStat_Bin1Dn_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_elStat_Bin2Up_EventWeight", &CRB1_2lSStau_FF_elStat_Bin2Up_EventWeight, &b_CRB1_2lSStau_FF_elStat_Bin2Up_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_elStat_Bin2Dn_EventWeight", &CRB1_2lSStau_FF_elStat_Bin2Dn_EventWeight, &b_CRB1_2lSStau_FF_elStat_Bin2Dn_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_elStat_Bin3Up_EventWeight", &CRB1_2lSStau_FF_elStat_Bin3Up_EventWeight, &b_CRB1_2lSStau_FF_elStat_Bin3Up_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_elStat_Bin3Dn_EventWeight", &CRB1_2lSStau_FF_elStat_Bin3Dn_EventWeight, &b_CRB1_2lSStau_FF_elStat_Bin3Dn_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_elStat_Bin4Up_EventWeight", &CRB1_2lSStau_FF_elStat_Bin4Up_EventWeight, &b_CRB1_2lSStau_FF_elStat_Bin4Up_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_elStat_Bin4Dn_EventWeight", &CRB1_2lSStau_FF_elStat_Bin4Dn_EventWeight, &b_CRB1_2lSStau_FF_elStat_Bin4Dn_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_elStat_Bin5Up_EventWeight", &CRB1_2lSStau_FF_elStat_Bin5Up_EventWeight, &b_CRB1_2lSStau_FF_elStat_Bin5Up_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_elStat_Bin5Dn_EventWeight", &CRB1_2lSStau_FF_elStat_Bin5Dn_EventWeight, &b_CRB1_2lSStau_FF_elStat_Bin5Dn_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_muStat_Bin1Up_EventWeight", &CRB1_2lSStau_FF_muStat_Bin1Up_EventWeight, &b_CRB1_2lSStau_FF_muStat_Bin1Up_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_muStat_Bin1Dn_EventWeight", &CRB1_2lSStau_FF_muStat_Bin1Dn_EventWeight, &b_CRB1_2lSStau_FF_muStat_Bin1Dn_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_muStat_Bin2Up_EventWeight", &CRB1_2lSStau_FF_muStat_Bin2Up_EventWeight, &b_CRB1_2lSStau_FF_muStat_Bin2Up_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_muStat_Bin2Dn_EventWeight", &CRB1_2lSStau_FF_muStat_Bin2Dn_EventWeight, &b_CRB1_2lSStau_FF_muStat_Bin2Dn_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_muStat_Bin3Up_EventWeight", &CRB1_2lSStau_FF_muStat_Bin3Up_EventWeight, &b_CRB1_2lSStau_FF_muStat_Bin3Up_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_muStat_Bin3Dn_EventWeight", &CRB1_2lSStau_FF_muStat_Bin3Dn_EventWeight, &b_CRB1_2lSStau_FF_muStat_Bin3Dn_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_muStat_Bin4Up_EventWeight", &CRB1_2lSStau_FF_muStat_Bin4Up_EventWeight, &b_CRB1_2lSStau_FF_muStat_Bin4Up_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_muStat_Bin4Dn_EventWeight", &CRB1_2lSStau_FF_muStat_Bin4Dn_EventWeight, &b_CRB1_2lSStau_FF_muStat_Bin4Dn_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_muStat_Bin5Up_EventWeight", &CRB1_2lSStau_FF_muStat_Bin5Up_EventWeight, &b_CRB1_2lSStau_FF_muStat_Bin5Up_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_muStat_Bin5Dn_EventWeight", &CRB1_2lSStau_FF_muStat_Bin5Dn_EventWeight, &b_CRB1_2lSStau_FF_muStat_Bin5Dn_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_ttwUp_EventWeight", &CRB1_2lSStau_FF_ttwUp_EventWeight, &b_CRB1_2lSStau_FF_ttwUp_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_ttwDn_EventWeight", &CRB1_2lSStau_FF_ttwDn_EventWeight, &b_CRB1_2lSStau_FF_ttwDn_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_ttzUp_EventWeight", &CRB1_2lSStau_FF_ttzUp_EventWeight, &b_CRB1_2lSStau_FF_ttzUp_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_ttzDn_EventWeight", &CRB1_2lSStau_FF_ttzDn_EventWeight, &b_CRB1_2lSStau_FF_ttzDn_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_vvUp_EventWeight", &CRB1_2lSStau_FF_vvUp_EventWeight, &b_CRB1_2lSStau_FF_vvUp_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_vvDn_EventWeight", &CRB1_2lSStau_FF_vvDn_EventWeight, &b_CRB1_2lSStau_FF_vvDn_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_rareUp_EventWeight", &CRB1_2lSStau_FF_rareUp_EventWeight, &b_CRB1_2lSStau_FF_rareUp_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_rareDn_EventWeight", &CRB1_2lSStau_FF_rareDn_EventWeight, &b_CRB1_2lSStau_FF_rareDn_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_tthUp_EventWeight", &CRB1_2lSStau_FF_tthUp_EventWeight, &b_CRB1_2lSStau_FF_tthUp_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_tthDn_EventWeight", &CRB1_2lSStau_FF_tthDn_EventWeight, &b_CRB1_2lSStau_FF_tthDn_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_QMisIdUp_EventWeight", &CRB1_2lSStau_FF_QMisIdUp_EventWeight, &b_CRB1_2lSStau_FF_QMisIdUp_EventWeight);
+   fChain->SetBranchAddress("CRB1_2lSStau_FF_QMisIdDn_EventWeight", &CRB1_2lSStau_FF_QMisIdDn_EventWeight, &b_CRB1_2lSStau_FF_QMisIdDn_EventWeight);
+   fChain->SetBranchAddress("CRB2_2lSStau_FF_EventWeight", &CRB2_2lSStau_FF_EventWeight, &b_CRB2_2lSStau_FF_EventWeight);
+   fChain->SetBranchAddress("CRB2_2lSStau_FF_RealtauUp_EventWeight", &CRB2_2lSStau_FF_RealtauUp_EventWeight, &b_CRB2_2lSStau_FF_RealtauUp_EventWeight);
+   fChain->SetBranchAddress("CRB2_2lSStau_FF_RealtauDn_EventWeight", &CRB2_2lSStau_FF_RealtauDn_EventWeight, &b_CRB2_2lSStau_FF_RealtauDn_EventWeight);
+   fChain->SetBranchAddress("CRB2_2lSStau_FF_tthUp_EventWeight", &CRB2_2lSStau_FF_tthUp_EventWeight, &b_CRB2_2lSStau_FF_tthUp_EventWeight);
+   fChain->SetBranchAddress("CRB2_2lSStau_FF_tthDn_EventWeight", &CRB2_2lSStau_FF_tthDn_EventWeight, &b_CRB2_2lSStau_FF_tthDn_EventWeight);
+   fChain->SetBranchAddress("CRB2_2lSStau_FF_QMisIdUp_EventWeight", &CRB2_2lSStau_FF_QMisIdUp_EventWeight, &b_CRB2_2lSStau_FF_QMisIdUp_EventWeight);
+   fChain->SetBranchAddress("CRB2_2lSStau_FF_QMisIdDn_EventWeight", &CRB2_2lSStau_FF_QMisIdDn_EventWeight, &b_CRB2_2lSStau_FF_QMisIdDn_EventWeight);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_EventWeight", &CRB3_2lSStau_FF_EventWeight, &b_CRB3_2lSStau_FF_EventWeight);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_RealtauUp_EventWeight", &CRB3_2lSStau_FF_RealtauUp_EventWeight, &b_CRB3_2lSStau_FF_RealtauUp_EventWeight);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_RealtauDn_EventWeight", &CRB3_2lSStau_FF_RealtauDn_EventWeight, &b_CRB3_2lSStau_FF_RealtauDn_EventWeight);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_ttwUp_EventWeight", &CRB3_2lSStau_FF_ttwUp_EventWeight, &b_CRB3_2lSStau_FF_ttwUp_EventWeight);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_ttwDn_EventWeight", &CRB3_2lSStau_FF_ttwDn_EventWeight, &b_CRB3_2lSStau_FF_ttwDn_EventWeight);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_ttzUp_EventWeight", &CRB3_2lSStau_FF_ttzUp_EventWeight, &b_CRB3_2lSStau_FF_ttzUp_EventWeight);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_ttzDn_EventWeight", &CRB3_2lSStau_FF_ttzDn_EventWeight, &b_CRB3_2lSStau_FF_ttzDn_EventWeight);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_vvUp_EventWeight", &CRB3_2lSStau_FF_vvUp_EventWeight, &b_CRB3_2lSStau_FF_vvUp_EventWeight);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_vvDn_EventWeight", &CRB3_2lSStau_FF_vvDn_EventWeight, &b_CRB3_2lSStau_FF_vvDn_EventWeight);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_rareUp_EventWeight", &CRB3_2lSStau_FF_rareUp_EventWeight, &b_CRB3_2lSStau_FF_rareUp_EventWeight);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_rareDn_EventWeight", &CRB3_2lSStau_FF_rareDn_EventWeight, &b_CRB3_2lSStau_FF_rareDn_EventWeight);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_tthUp_EventWeight", &CRB3_2lSStau_FF_tthUp_EventWeight, &b_CRB3_2lSStau_FF_tthUp_EventWeight);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_tthDn_EventWeight", &CRB3_2lSStau_FF_tthDn_EventWeight, &b_CRB3_2lSStau_FF_tthDn_EventWeight);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_QMisIdUp_EventWeight", &CRB3_2lSStau_FF_QMisIdUp_EventWeight, &b_CRB3_2lSStau_FF_QMisIdUp_EventWeight);
+   fChain->SetBranchAddress("CRB3_2lSStau_FF_QMisIdDn_EventWeight", &CRB3_2lSStau_FF_QMisIdDn_EventWeight, &b_CRB3_2lSStau_FF_QMisIdDn_EventWeight);
+   fChain->SetBranchAddress("isttH", &isttH, &b_isttH);
+   fChain->SetBranchAddress("isttZ", &isttZ, &b_isttZ);
+   fChain->SetBranchAddress("isttW", &isttW, &b_isttW);
+   fChain->SetBranchAddress("isVV", &isVV, &b_isVV);
+   fChain->SetBranchAddress("istZ", &istZ, &b_istZ);
+   fChain->SetBranchAddress("isWtZ", &isWtZ, &b_isWtZ);
+   fChain->SetBranchAddress("istHjb", &istHjb, &b_istHjb);
+   fChain->SetBranchAddress("isWtH", &isWtH, &b_isWtH);
+   fChain->SetBranchAddress("isttWW", &isttWW, &b_isttWW);
+   fChain->SetBranchAddress("isVH", &isVH, &b_isVH);
+   fChain->SetBranchAddress("isVVV", &isVVV, &b_isVVV);
+   fChain->SetBranchAddress("is3Tops", &is3Tops, &b_is3Tops);
+   fChain->SetBranchAddress("is4Tops", &is4Tops, &b_is4Tops);
+   fChain->SetBranchAddress("isttbar", &isttbar, &b_isttbar);
+   fChain->SetBranchAddress("isttll", &isttll, &b_isttll);
+   fChain->SetBranchAddress("israreTop", &israreTop, &b_israreTop);
+   fChain->SetBranchAddress("isttGamma", &isttGamma, &b_isttGamma);
+   fChain->SetBranchAddress("isttbarDilep", &isttbarDilep, &b_isttbarDilep);
    fChain->SetBranchAddress("passTrigger", &passTrigger, &b_passTrigger);
    fChain->SetBranchAddress("scale_nom", &scale_nom, &b_scale_nom);
    fChain->SetBranchAddress("scale_varA14up", &scale_varA14up, &b_scale_varA14up);
    fChain->SetBranchAddress("scale_varA14down", &scale_varA14down, &b_scale_varA14down);
+   fChain->SetBranchAddress("scale_varRup", &scale_varRup, &b_scale_varRup);
+   fChain->SetBranchAddress("scale_varRdown", &scale_varRdown, &b_scale_varRdown);
+   fChain->SetBranchAddress("scale_varFup", &scale_varFup, &b_scale_varFup);
+   fChain->SetBranchAddress("scale_varFdown", &scale_varFdown, &b_scale_varFdown);
+   fChain->SetBranchAddress("scale_varRFup", &scale_varRFup, &b_scale_varRFup);
+   fChain->SetBranchAddress("scale_varRFdown", &scale_varRFdown, &b_scale_varRFdown);
+   fChain->SetBranchAddress("pileupEventWeight_UP", &pileupEventWeight_UP, &b_pileupEventWeight_UP);
+   fChain->SetBranchAddress("pileupEventWeight_DOWN", &pileupEventWeight_DOWN, &b_pileupEventWeight_DOWN);
+   fChain->SetBranchAddress("JVT_EventWeight_UP", &JVT_EventWeight_UP, &b_JVT_EventWeight_UP);
+   fChain->SetBranchAddress("JVT_EventWeight_DOWN", &JVT_EventWeight_DOWN, &b_JVT_EventWeight_DOWN);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70", &bTagSF_weight_MV2c10_FixedCutBEff_70, &b_bTagSF_weight_MV2c10_FixedCutBEff_70);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B0_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_B0_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B0_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B0_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_B0_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B0_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B1_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_B1_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B1_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B1_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_B1_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B1_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B2_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_B2_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B2_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B2_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_B2_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B2_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B3_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_B3_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B3_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B3_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_B3_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B3_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B4_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_B4_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B4_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B4_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_B4_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B4_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B5_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_B5_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B5_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B5_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_B5_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B5_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B6_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_B6_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B6_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B6_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_B6_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B6_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B7_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_B7_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B7_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B7_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_B7_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B7_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B8_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_B8_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B8_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_B8_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_B8_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_B8_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_C0_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_C0_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_C0_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_C0_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_C0_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_C0_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_C1_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_C1_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_C1_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_C1_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_C1_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_C1_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_C2_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_C2_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_C2_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_C2_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_C2_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_C2_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_Light0_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_Light0_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_Light0_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_Light0_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_Light0_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_Light0_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_Light1_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_Light1_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_Light1_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_Light1_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_Light1_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_Light1_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_Light2_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_Light2_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_Light2_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_Light2_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_Light2_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_Light2_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_Light3_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_Light3_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_Light3_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_Light3_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_Light3_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_Light3_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_down);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_from_charm_up", &bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_from_charm_up, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_from_charm_up);
+   fChain->SetBranchAddress("bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_from_charm_down", &bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_from_charm_down, &b_bTagSF_weight_MV2c10_FixedCutBEff_70_extrapolation_from_charm_down);
+   fChain->SetBranchAddress("lepSFTrigLoose_MU_SF_Trigger_SYST_UP", &lepSFTrigLoose_MU_SF_Trigger_SYST_UP, &b_lepSFTrigLoose_MU_SF_Trigger_SYST_UP);
+   fChain->SetBranchAddress("lepSFTrigTight_MU_SF_Trigger_SYST_UP", &lepSFTrigTight_MU_SF_Trigger_SYST_UP, &b_lepSFTrigTight_MU_SF_Trigger_SYST_UP);
+   fChain->SetBranchAddress("lepSFTrigTightLoose_MU_SF_Trigger_SYST_UP", &lepSFTrigTightLoose_MU_SF_Trigger_SYST_UP, &b_lepSFTrigTightLoose_MU_SF_Trigger_SYST_UP);
+   fChain->SetBranchAddress("lepSFTrigLooseTight_MU_SF_Trigger_SYST_UP", &lepSFTrigLooseTight_MU_SF_Trigger_SYST_UP, &b_lepSFTrigLooseTight_MU_SF_Trigger_SYST_UP);
+   fChain->SetBranchAddress("lepEffTrigLoose_MU_SF_Trigger_SYST_UP", &lepEffTrigLoose_MU_SF_Trigger_SYST_UP, &b_lepEffTrigLoose_MU_SF_Trigger_SYST_UP);
+   fChain->SetBranchAddress("lepEffTrigTight_MU_SF_Trigger_SYST_UP", &lepEffTrigTight_MU_SF_Trigger_SYST_UP, &b_lepEffTrigTight_MU_SF_Trigger_SYST_UP);
+   fChain->SetBranchAddress("lepEffTrigTightLoose_MU_SF_Trigger_SYST_UP", &lepEffTrigTightLoose_MU_SF_Trigger_SYST_UP, &b_lepEffTrigTightLoose_MU_SF_Trigger_SYST_UP);
+   fChain->SetBranchAddress("lepEffTrigLooseTight_MU_SF_Trigger_SYST_UP", &lepEffTrigLooseTight_MU_SF_Trigger_SYST_UP, &b_lepEffTrigLooseTight_MU_SF_Trigger_SYST_UP);
+   fChain->SetBranchAddress("lepDataEffTrigLoose_MU_SF_Trigger_SYST_UP", &lepDataEffTrigLoose_MU_SF_Trigger_SYST_UP, &b_lepDataEffTrigLoose_MU_SF_Trigger_SYST_UP);
+   fChain->SetBranchAddress("lepDataEffTrigTight_MU_SF_Trigger_SYST_UP", &lepDataEffTrigTight_MU_SF_Trigger_SYST_UP, &b_lepDataEffTrigTight_MU_SF_Trigger_SYST_UP);
+   fChain->SetBranchAddress("lepDataEffTrigTightLoose_MU_SF_Trigger_SYST_UP", &lepDataEffTrigTightLoose_MU_SF_Trigger_SYST_UP, &b_lepDataEffTrigTightLoose_MU_SF_Trigger_SYST_UP);
+   fChain->SetBranchAddress("lepDataEffTrigLooseTight_MU_SF_Trigger_SYST_UP", &lepDataEffTrigLooseTight_MU_SF_Trigger_SYST_UP, &b_lepDataEffTrigLooseTight_MU_SF_Trigger_SYST_UP);
+   fChain->SetBranchAddress("lepSFTrigLoose_MU_SF_Trigger_SYST_DOWN", &lepSFTrigLoose_MU_SF_Trigger_SYST_DOWN, &b_lepSFTrigLoose_MU_SF_Trigger_SYST_DOWN);
+   fChain->SetBranchAddress("lepSFTrigTight_MU_SF_Trigger_SYST_DOWN", &lepSFTrigTight_MU_SF_Trigger_SYST_DOWN, &b_lepSFTrigTight_MU_SF_Trigger_SYST_DOWN);
+   fChain->SetBranchAddress("lepSFTrigTightLoose_MU_SF_Trigger_SYST_DOWN", &lepSFTrigTightLoose_MU_SF_Trigger_SYST_DOWN, &b_lepSFTrigTightLoose_MU_SF_Trigger_SYST_DOWN);
+   fChain->SetBranchAddress("lepSFTrigLooseTight_MU_SF_Trigger_SYST_DOWN", &lepSFTrigLooseTight_MU_SF_Trigger_SYST_DOWN, &b_lepSFTrigLooseTight_MU_SF_Trigger_SYST_DOWN);
+   fChain->SetBranchAddress("lepEffTrigLoose_MU_SF_Trigger_SYST_DOWN", &lepEffTrigLoose_MU_SF_Trigger_SYST_DOWN, &b_lepEffTrigLoose_MU_SF_Trigger_SYST_DOWN);
+   fChain->SetBranchAddress("lepEffTrigTight_MU_SF_Trigger_SYST_DOWN", &lepEffTrigTight_MU_SF_Trigger_SYST_DOWN, &b_lepEffTrigTight_MU_SF_Trigger_SYST_DOWN);
+   fChain->SetBranchAddress("lepEffTrigTightLoose_MU_SF_Trigger_SYST_DOWN", &lepEffTrigTightLoose_MU_SF_Trigger_SYST_DOWN, &b_lepEffTrigTightLoose_MU_SF_Trigger_SYST_DOWN);
+   fChain->SetBranchAddress("lepEffTrigLooseTight_MU_SF_Trigger_SYST_DOWN", &lepEffTrigLooseTight_MU_SF_Trigger_SYST_DOWN, &b_lepEffTrigLooseTight_MU_SF_Trigger_SYST_DOWN);
+   fChain->SetBranchAddress("lepDataEffTrigLoose_MU_SF_Trigger_SYST_DOWN", &lepDataEffTrigLoose_MU_SF_Trigger_SYST_DOWN, &b_lepDataEffTrigLoose_MU_SF_Trigger_SYST_DOWN);
+   fChain->SetBranchAddress("lepDataEffTrigTight_MU_SF_Trigger_SYST_DOWN", &lepDataEffTrigTight_MU_SF_Trigger_SYST_DOWN, &b_lepDataEffTrigTight_MU_SF_Trigger_SYST_DOWN);
+   fChain->SetBranchAddress("lepDataEffTrigTightLoose_MU_SF_Trigger_SYST_DOWN", &lepDataEffTrigTightLoose_MU_SF_Trigger_SYST_DOWN, &b_lepDataEffTrigTightLoose_MU_SF_Trigger_SYST_DOWN);
+   fChain->SetBranchAddress("lepDataEffTrigLooseTight_MU_SF_Trigger_SYST_DOWN", &lepDataEffTrigLooseTight_MU_SF_Trigger_SYST_DOWN, &b_lepDataEffTrigLooseTight_MU_SF_Trigger_SYST_DOWN);
+   fChain->SetBranchAddress("lepSFTrigLoose_EL_SF_Trigger_UP", &lepSFTrigLoose_EL_SF_Trigger_UP, &b_lepSFTrigLoose_EL_SF_Trigger_UP);
+   fChain->SetBranchAddress("lepSFTrigTight_EL_SF_Trigger_UP", &lepSFTrigTight_EL_SF_Trigger_UP, &b_lepSFTrigTight_EL_SF_Trigger_UP);
+   fChain->SetBranchAddress("lepSFTrigTightLoose_EL_SF_Trigger_UP", &lepSFTrigTightLoose_EL_SF_Trigger_UP, &b_lepSFTrigTightLoose_EL_SF_Trigger_UP);
+   fChain->SetBranchAddress("lepSFTrigLooseTight_EL_SF_Trigger_UP", &lepSFTrigLooseTight_EL_SF_Trigger_UP, &b_lepSFTrigLooseTight_EL_SF_Trigger_UP);
+   fChain->SetBranchAddress("lepEffTrigLoose_EL_SF_Trigger_UP", &lepEffTrigLoose_EL_SF_Trigger_UP, &b_lepEffTrigLoose_EL_SF_Trigger_UP);
+   fChain->SetBranchAddress("lepEffTrigTight_EL_SF_Trigger_UP", &lepEffTrigTight_EL_SF_Trigger_UP, &b_lepEffTrigTight_EL_SF_Trigger_UP);
+   fChain->SetBranchAddress("lepEffTrigTightLoose_EL_SF_Trigger_UP", &lepEffTrigTightLoose_EL_SF_Trigger_UP, &b_lepEffTrigTightLoose_EL_SF_Trigger_UP);
+   fChain->SetBranchAddress("lepEffTrigLooseTight_EL_SF_Trigger_UP", &lepEffTrigLooseTight_EL_SF_Trigger_UP, &b_lepEffTrigLooseTight_EL_SF_Trigger_UP);
+   fChain->SetBranchAddress("lepDataEffTrigLoose_EL_SF_Trigger_UP", &lepDataEffTrigLoose_EL_SF_Trigger_UP, &b_lepDataEffTrigLoose_EL_SF_Trigger_UP);
+   fChain->SetBranchAddress("lepDataEffTrigTight_EL_SF_Trigger_UP", &lepDataEffTrigTight_EL_SF_Trigger_UP, &b_lepDataEffTrigTight_EL_SF_Trigger_UP);
+   fChain->SetBranchAddress("lepDataEffTrigTightLoose_EL_SF_Trigger_UP", &lepDataEffTrigTightLoose_EL_SF_Trigger_UP, &b_lepDataEffTrigTightLoose_EL_SF_Trigger_UP);
+   fChain->SetBranchAddress("lepDataEffTrigLooseTight_EL_SF_Trigger_UP", &lepDataEffTrigLooseTight_EL_SF_Trigger_UP, &b_lepDataEffTrigLooseTight_EL_SF_Trigger_UP);
+   fChain->SetBranchAddress("lepSFTrigLoose_EL_SF_Trigger_DOWN", &lepSFTrigLoose_EL_SF_Trigger_DOWN, &b_lepSFTrigLoose_EL_SF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepSFTrigTight_EL_SF_Trigger_DOWN", &lepSFTrigTight_EL_SF_Trigger_DOWN, &b_lepSFTrigTight_EL_SF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepSFTrigTightLoose_EL_SF_Trigger_DOWN", &lepSFTrigTightLoose_EL_SF_Trigger_DOWN, &b_lepSFTrigTightLoose_EL_SF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepSFTrigLooseTight_EL_SF_Trigger_DOWN", &lepSFTrigLooseTight_EL_SF_Trigger_DOWN, &b_lepSFTrigLooseTight_EL_SF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepEffTrigLoose_EL_SF_Trigger_DOWN", &lepEffTrigLoose_EL_SF_Trigger_DOWN, &b_lepEffTrigLoose_EL_SF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepEffTrigTight_EL_SF_Trigger_DOWN", &lepEffTrigTight_EL_SF_Trigger_DOWN, &b_lepEffTrigTight_EL_SF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepEffTrigTightLoose_EL_SF_Trigger_DOWN", &lepEffTrigTightLoose_EL_SF_Trigger_DOWN, &b_lepEffTrigTightLoose_EL_SF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepEffTrigLooseTight_EL_SF_Trigger_DOWN", &lepEffTrigLooseTight_EL_SF_Trigger_DOWN, &b_lepEffTrigLooseTight_EL_SF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepDataEffTrigLoose_EL_SF_Trigger_DOWN", &lepDataEffTrigLoose_EL_SF_Trigger_DOWN, &b_lepDataEffTrigLoose_EL_SF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepDataEffTrigTight_EL_SF_Trigger_DOWN", &lepDataEffTrigTight_EL_SF_Trigger_DOWN, &b_lepDataEffTrigTight_EL_SF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepDataEffTrigTightLoose_EL_SF_Trigger_DOWN", &lepDataEffTrigTightLoose_EL_SF_Trigger_DOWN, &b_lepDataEffTrigTightLoose_EL_SF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepDataEffTrigLooseTight_EL_SF_Trigger_DOWN", &lepDataEffTrigLooseTight_EL_SF_Trigger_DOWN, &b_lepDataEffTrigLooseTight_EL_SF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepSFTrigLoose_MU_SF_Trigger_STAT_UP", &lepSFTrigLoose_MU_SF_Trigger_STAT_UP, &b_lepSFTrigLoose_MU_SF_Trigger_STAT_UP);
+   fChain->SetBranchAddress("lepSFTrigTight_MU_SF_Trigger_STAT_UP", &lepSFTrigTight_MU_SF_Trigger_STAT_UP, &b_lepSFTrigTight_MU_SF_Trigger_STAT_UP);
+   fChain->SetBranchAddress("lepSFTrigTightLoose_MU_SF_Trigger_STAT_UP", &lepSFTrigTightLoose_MU_SF_Trigger_STAT_UP, &b_lepSFTrigTightLoose_MU_SF_Trigger_STAT_UP);
+   fChain->SetBranchAddress("lepSFTrigLooseTight_MU_SF_Trigger_STAT_UP", &lepSFTrigLooseTight_MU_SF_Trigger_STAT_UP, &b_lepSFTrigLooseTight_MU_SF_Trigger_STAT_UP);
+   fChain->SetBranchAddress("lepEffTrigLoose_MU_SF_Trigger_STAT_UP", &lepEffTrigLoose_MU_SF_Trigger_STAT_UP, &b_lepEffTrigLoose_MU_SF_Trigger_STAT_UP);
+   fChain->SetBranchAddress("lepEffTrigTight_MU_SF_Trigger_STAT_UP", &lepEffTrigTight_MU_SF_Trigger_STAT_UP, &b_lepEffTrigTight_MU_SF_Trigger_STAT_UP);
+   fChain->SetBranchAddress("lepEffTrigTightLoose_MU_SF_Trigger_STAT_UP", &lepEffTrigTightLoose_MU_SF_Trigger_STAT_UP, &b_lepEffTrigTightLoose_MU_SF_Trigger_STAT_UP);
+   fChain->SetBranchAddress("lepEffTrigLooseTight_MU_SF_Trigger_STAT_UP", &lepEffTrigLooseTight_MU_SF_Trigger_STAT_UP, &b_lepEffTrigLooseTight_MU_SF_Trigger_STAT_UP);
+   fChain->SetBranchAddress("lepDataEffTrigLoose_MU_SF_Trigger_STAT_UP", &lepDataEffTrigLoose_MU_SF_Trigger_STAT_UP, &b_lepDataEffTrigLoose_MU_SF_Trigger_STAT_UP);
+   fChain->SetBranchAddress("lepDataEffTrigTight_MU_SF_Trigger_STAT_UP", &lepDataEffTrigTight_MU_SF_Trigger_STAT_UP, &b_lepDataEffTrigTight_MU_SF_Trigger_STAT_UP);
+   fChain->SetBranchAddress("lepDataEffTrigTightLoose_MU_SF_Trigger_STAT_UP", &lepDataEffTrigTightLoose_MU_SF_Trigger_STAT_UP, &b_lepDataEffTrigTightLoose_MU_SF_Trigger_STAT_UP);
+   fChain->SetBranchAddress("lepDataEffTrigLooseTight_MU_SF_Trigger_STAT_UP", &lepDataEffTrigLooseTight_MU_SF_Trigger_STAT_UP, &b_lepDataEffTrigLooseTight_MU_SF_Trigger_STAT_UP);
+   fChain->SetBranchAddress("lepSFTrigLoose_MU_SF_Trigger_STAT_DOWN", &lepSFTrigLoose_MU_SF_Trigger_STAT_DOWN, &b_lepSFTrigLoose_MU_SF_Trigger_STAT_DOWN);
+   fChain->SetBranchAddress("lepSFTrigTight_MU_SF_Trigger_STAT_DOWN", &lepSFTrigTight_MU_SF_Trigger_STAT_DOWN, &b_lepSFTrigTight_MU_SF_Trigger_STAT_DOWN);
+   fChain->SetBranchAddress("lepSFTrigTightLoose_MU_SF_Trigger_STAT_DOWN", &lepSFTrigTightLoose_MU_SF_Trigger_STAT_DOWN, &b_lepSFTrigTightLoose_MU_SF_Trigger_STAT_DOWN);
+   fChain->SetBranchAddress("lepSFTrigLooseTight_MU_SF_Trigger_STAT_DOWN", &lepSFTrigLooseTight_MU_SF_Trigger_STAT_DOWN, &b_lepSFTrigLooseTight_MU_SF_Trigger_STAT_DOWN);
+   fChain->SetBranchAddress("lepEffTrigLoose_MU_SF_Trigger_STAT_DOWN", &lepEffTrigLoose_MU_SF_Trigger_STAT_DOWN, &b_lepEffTrigLoose_MU_SF_Trigger_STAT_DOWN);
+   fChain->SetBranchAddress("lepEffTrigTight_MU_SF_Trigger_STAT_DOWN", &lepEffTrigTight_MU_SF_Trigger_STAT_DOWN, &b_lepEffTrigTight_MU_SF_Trigger_STAT_DOWN);
+   fChain->SetBranchAddress("lepEffTrigTightLoose_MU_SF_Trigger_STAT_DOWN", &lepEffTrigTightLoose_MU_SF_Trigger_STAT_DOWN, &b_lepEffTrigTightLoose_MU_SF_Trigger_STAT_DOWN);
+   fChain->SetBranchAddress("lepEffTrigLooseTight_MU_SF_Trigger_STAT_DOWN", &lepEffTrigLooseTight_MU_SF_Trigger_STAT_DOWN, &b_lepEffTrigLooseTight_MU_SF_Trigger_STAT_DOWN);
+   fChain->SetBranchAddress("lepDataEffTrigLoose_MU_SF_Trigger_STAT_DOWN", &lepDataEffTrigLoose_MU_SF_Trigger_STAT_DOWN, &b_lepDataEffTrigLoose_MU_SF_Trigger_STAT_DOWN);
+   fChain->SetBranchAddress("lepDataEffTrigTight_MU_SF_Trigger_STAT_DOWN", &lepDataEffTrigTight_MU_SF_Trigger_STAT_DOWN, &b_lepDataEffTrigTight_MU_SF_Trigger_STAT_DOWN);
+   fChain->SetBranchAddress("lepDataEffTrigTightLoose_MU_SF_Trigger_STAT_DOWN", &lepDataEffTrigTightLoose_MU_SF_Trigger_STAT_DOWN, &b_lepDataEffTrigTightLoose_MU_SF_Trigger_STAT_DOWN);
+   fChain->SetBranchAddress("lepDataEffTrigLooseTight_MU_SF_Trigger_STAT_DOWN", &lepDataEffTrigLooseTight_MU_SF_Trigger_STAT_DOWN, &b_lepDataEffTrigLooseTight_MU_SF_Trigger_STAT_DOWN);
+   fChain->SetBranchAddress("lepSFTrigLoose_EL_EFF_Trigger_UP", &lepSFTrigLoose_EL_EFF_Trigger_UP, &b_lepSFTrigLoose_EL_EFF_Trigger_UP);
+   fChain->SetBranchAddress("lepSFTrigTight_EL_EFF_Trigger_UP", &lepSFTrigTight_EL_EFF_Trigger_UP, &b_lepSFTrigTight_EL_EFF_Trigger_UP);
+   fChain->SetBranchAddress("lepSFTrigTightLoose_EL_EFF_Trigger_UP", &lepSFTrigTightLoose_EL_EFF_Trigger_UP, &b_lepSFTrigTightLoose_EL_EFF_Trigger_UP);
+   fChain->SetBranchAddress("lepSFTrigLooseTight_EL_EFF_Trigger_UP", &lepSFTrigLooseTight_EL_EFF_Trigger_UP, &b_lepSFTrigLooseTight_EL_EFF_Trigger_UP);
+   fChain->SetBranchAddress("lepEffTrigLoose_EL_EFF_Trigger_UP", &lepEffTrigLoose_EL_EFF_Trigger_UP, &b_lepEffTrigLoose_EL_EFF_Trigger_UP);
+   fChain->SetBranchAddress("lepEffTrigTight_EL_EFF_Trigger_UP", &lepEffTrigTight_EL_EFF_Trigger_UP, &b_lepEffTrigTight_EL_EFF_Trigger_UP);
+   fChain->SetBranchAddress("lepEffTrigTightLoose_EL_EFF_Trigger_UP", &lepEffTrigTightLoose_EL_EFF_Trigger_UP, &b_lepEffTrigTightLoose_EL_EFF_Trigger_UP);
+   fChain->SetBranchAddress("lepEffTrigLooseTight_EL_EFF_Trigger_UP", &lepEffTrigLooseTight_EL_EFF_Trigger_UP, &b_lepEffTrigLooseTight_EL_EFF_Trigger_UP);
+   fChain->SetBranchAddress("lepDataEffTrigLoose_EL_EFF_Trigger_UP", &lepDataEffTrigLoose_EL_EFF_Trigger_UP, &b_lepDataEffTrigLoose_EL_EFF_Trigger_UP);
+   fChain->SetBranchAddress("lepDataEffTrigTight_EL_EFF_Trigger_UP", &lepDataEffTrigTight_EL_EFF_Trigger_UP, &b_lepDataEffTrigTight_EL_EFF_Trigger_UP);
+   fChain->SetBranchAddress("lepDataEffTrigTightLoose_EL_EFF_Trigger_UP", &lepDataEffTrigTightLoose_EL_EFF_Trigger_UP, &b_lepDataEffTrigTightLoose_EL_EFF_Trigger_UP);
+   fChain->SetBranchAddress("lepDataEffTrigLooseTight_EL_EFF_Trigger_UP", &lepDataEffTrigLooseTight_EL_EFF_Trigger_UP, &b_lepDataEffTrigLooseTight_EL_EFF_Trigger_UP);
+   fChain->SetBranchAddress("lepSFTrigLoose_EL_EFF_Trigger_DOWN", &lepSFTrigLoose_EL_EFF_Trigger_DOWN, &b_lepSFTrigLoose_EL_EFF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepSFTrigTight_EL_EFF_Trigger_DOWN", &lepSFTrigTight_EL_EFF_Trigger_DOWN, &b_lepSFTrigTight_EL_EFF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepSFTrigTightLoose_EL_EFF_Trigger_DOWN", &lepSFTrigTightLoose_EL_EFF_Trigger_DOWN, &b_lepSFTrigTightLoose_EL_EFF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepSFTrigLooseTight_EL_EFF_Trigger_DOWN", &lepSFTrigLooseTight_EL_EFF_Trigger_DOWN, &b_lepSFTrigLooseTight_EL_EFF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepEffTrigLoose_EL_EFF_Trigger_DOWN", &lepEffTrigLoose_EL_EFF_Trigger_DOWN, &b_lepEffTrigLoose_EL_EFF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepEffTrigTight_EL_EFF_Trigger_DOWN", &lepEffTrigTight_EL_EFF_Trigger_DOWN, &b_lepEffTrigTight_EL_EFF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepEffTrigTightLoose_EL_EFF_Trigger_DOWN", &lepEffTrigTightLoose_EL_EFF_Trigger_DOWN, &b_lepEffTrigTightLoose_EL_EFF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepEffTrigLooseTight_EL_EFF_Trigger_DOWN", &lepEffTrigLooseTight_EL_EFF_Trigger_DOWN, &b_lepEffTrigLooseTight_EL_EFF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepDataEffTrigLoose_EL_EFF_Trigger_DOWN", &lepDataEffTrigLoose_EL_EFF_Trigger_DOWN, &b_lepDataEffTrigLoose_EL_EFF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepDataEffTrigTight_EL_EFF_Trigger_DOWN", &lepDataEffTrigTight_EL_EFF_Trigger_DOWN, &b_lepDataEffTrigTight_EL_EFF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepDataEffTrigTightLoose_EL_EFF_Trigger_DOWN", &lepDataEffTrigTightLoose_EL_EFF_Trigger_DOWN, &b_lepDataEffTrigTightLoose_EL_EFF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepDataEffTrigLooseTight_EL_EFF_Trigger_DOWN", &lepDataEffTrigLooseTight_EL_EFF_Trigger_DOWN, &b_lepDataEffTrigLooseTight_EL_EFF_Trigger_DOWN);
+   fChain->SetBranchAddress("lepSFObjLoose_EL_SF_Reco_UP", &lepSFObjLoose_EL_SF_Reco_UP, &b_lepSFObjLoose_EL_SF_Reco_UP);
+   fChain->SetBranchAddress("lepSFObjTight_EL_SF_Reco_UP", &lepSFObjTight_EL_SF_Reco_UP, &b_lepSFObjTight_EL_SF_Reco_UP);
+   fChain->SetBranchAddress("lepSFObjLoose_EL_SF_Reco_DOWN", &lepSFObjLoose_EL_SF_Reco_DOWN, &b_lepSFObjLoose_EL_SF_Reco_DOWN);
+   fChain->SetBranchAddress("lepSFObjTight_EL_SF_Reco_DOWN", &lepSFObjTight_EL_SF_Reco_DOWN, &b_lepSFObjTight_EL_SF_Reco_DOWN);
+   fChain->SetBranchAddress("lepSFObjLoose_EL_SF_ID_UP", &lepSFObjLoose_EL_SF_ID_UP, &b_lepSFObjLoose_EL_SF_ID_UP);
+   fChain->SetBranchAddress("lepSFObjTight_EL_SF_ID_UP", &lepSFObjTight_EL_SF_ID_UP, &b_lepSFObjTight_EL_SF_ID_UP);
+   fChain->SetBranchAddress("lepSFObjLoose_EL_SF_ID_DOWN", &lepSFObjLoose_EL_SF_ID_DOWN, &b_lepSFObjLoose_EL_SF_ID_DOWN);
+   fChain->SetBranchAddress("lepSFObjTight_EL_SF_ID_DOWN", &lepSFObjTight_EL_SF_ID_DOWN, &b_lepSFObjTight_EL_SF_ID_DOWN);
+   fChain->SetBranchAddress("lepSFObjLoose_EL_SF_Isol_UP", &lepSFObjLoose_EL_SF_Isol_UP, &b_lepSFObjLoose_EL_SF_Isol_UP);
+   fChain->SetBranchAddress("lepSFObjTight_EL_SF_Isol_UP", &lepSFObjTight_EL_SF_Isol_UP, &b_lepSFObjTight_EL_SF_Isol_UP);
+   fChain->SetBranchAddress("lepSFObjLoose_EL_SF_Isol_DOWN", &lepSFObjLoose_EL_SF_Isol_DOWN, &b_lepSFObjLoose_EL_SF_Isol_DOWN);
+   fChain->SetBranchAddress("lepSFObjTight_EL_SF_Isol_DOWN", &lepSFObjTight_EL_SF_Isol_DOWN, &b_lepSFObjTight_EL_SF_Isol_DOWN);
+   fChain->SetBranchAddress("lepSFObjLoose_MU_SF_ID_STAT_UP", &lepSFObjLoose_MU_SF_ID_STAT_UP, &b_lepSFObjLoose_MU_SF_ID_STAT_UP);
+   fChain->SetBranchAddress("lepSFObjTight_MU_SF_ID_STAT_UP", &lepSFObjTight_MU_SF_ID_STAT_UP, &b_lepSFObjTight_MU_SF_ID_STAT_UP);
+   fChain->SetBranchAddress("lepSFObjLoose_MU_SF_ID_STAT_DOWN", &lepSFObjLoose_MU_SF_ID_STAT_DOWN, &b_lepSFObjLoose_MU_SF_ID_STAT_DOWN);
+   fChain->SetBranchAddress("lepSFObjTight_MU_SF_ID_STAT_DOWN", &lepSFObjTight_MU_SF_ID_STAT_DOWN, &b_lepSFObjTight_MU_SF_ID_STAT_DOWN);
+   fChain->SetBranchAddress("lepSFObjLoose_MU_SF_ID_SYST_UP", &lepSFObjLoose_MU_SF_ID_SYST_UP, &b_lepSFObjLoose_MU_SF_ID_SYST_UP);
+   fChain->SetBranchAddress("lepSFObjTight_MU_SF_ID_SYST_UP", &lepSFObjTight_MU_SF_ID_SYST_UP, &b_lepSFObjTight_MU_SF_ID_SYST_UP);
+   fChain->SetBranchAddress("lepSFObjLoose_MU_SF_ID_SYST_DOWN", &lepSFObjLoose_MU_SF_ID_SYST_DOWN, &b_lepSFObjLoose_MU_SF_ID_SYST_DOWN);
+   fChain->SetBranchAddress("lepSFObjTight_MU_SF_ID_SYST_DOWN", &lepSFObjTight_MU_SF_ID_SYST_DOWN, &b_lepSFObjTight_MU_SF_ID_SYST_DOWN);
+   fChain->SetBranchAddress("lepSFObjLoose_MU_SF_ID_STAT_LOWPT_UP", &lepSFObjLoose_MU_SF_ID_STAT_LOWPT_UP, &b_lepSFObjLoose_MU_SF_ID_STAT_LOWPT_UP);
+   fChain->SetBranchAddress("lepSFObjTight_MU_SF_ID_STAT_LOWPT_UP", &lepSFObjTight_MU_SF_ID_STAT_LOWPT_UP, &b_lepSFObjTight_MU_SF_ID_STAT_LOWPT_UP);
+   fChain->SetBranchAddress("lepSFObjLoose_MU_SF_ID_STAT_LOWPT_DOWN", &lepSFObjLoose_MU_SF_ID_STAT_LOWPT_DOWN, &b_lepSFObjLoose_MU_SF_ID_STAT_LOWPT_DOWN);
+   fChain->SetBranchAddress("lepSFObjTight_MU_SF_ID_STAT_LOWPT_DOWN", &lepSFObjTight_MU_SF_ID_STAT_LOWPT_DOWN, &b_lepSFObjTight_MU_SF_ID_STAT_LOWPT_DOWN);
+   fChain->SetBranchAddress("lepSFObjLoose_MU_SF_ID_SYST_LOWPT_UP", &lepSFObjLoose_MU_SF_ID_SYST_LOWPT_UP, &b_lepSFObjLoose_MU_SF_ID_SYST_LOWPT_UP);
+   fChain->SetBranchAddress("lepSFObjTight_MU_SF_ID_SYST_LOWPT_UP", &lepSFObjTight_MU_SF_ID_SYST_LOWPT_UP, &b_lepSFObjTight_MU_SF_ID_SYST_LOWPT_UP);
+   fChain->SetBranchAddress("lepSFObjLoose_MU_SF_ID_SYST_LOWPT_DOWN", &lepSFObjLoose_MU_SF_ID_SYST_LOWPT_DOWN, &b_lepSFObjLoose_MU_SF_ID_SYST_LOWPT_DOWN);
+   fChain->SetBranchAddress("lepSFObjTight_MU_SF_ID_SYST_LOWPT_DOWN", &lepSFObjTight_MU_SF_ID_SYST_LOWPT_DOWN, &b_lepSFObjTight_MU_SF_ID_SYST_LOWPT_DOWN);
+   fChain->SetBranchAddress("lepSFObjLoose_MU_SF_Isol_STAT_UP", &lepSFObjLoose_MU_SF_Isol_STAT_UP, &b_lepSFObjLoose_MU_SF_Isol_STAT_UP);
+   fChain->SetBranchAddress("lepSFObjTight_MU_SF_Isol_STAT_UP", &lepSFObjTight_MU_SF_Isol_STAT_UP, &b_lepSFObjTight_MU_SF_Isol_STAT_UP);
+   fChain->SetBranchAddress("lepSFObjLoose_MU_SF_Isol_STAT_DOWN", &lepSFObjLoose_MU_SF_Isol_STAT_DOWN, &b_lepSFObjLoose_MU_SF_Isol_STAT_DOWN);
+   fChain->SetBranchAddress("lepSFObjTight_MU_SF_Isol_STAT_DOWN", &lepSFObjTight_MU_SF_Isol_STAT_DOWN, &b_lepSFObjTight_MU_SF_Isol_STAT_DOWN);
+   fChain->SetBranchAddress("lepSFObjLoose_MU_SF_Isol_SYST_UP", &lepSFObjLoose_MU_SF_Isol_SYST_UP, &b_lepSFObjLoose_MU_SF_Isol_SYST_UP);
+   fChain->SetBranchAddress("lepSFObjTight_MU_SF_Isol_SYST_UP", &lepSFObjTight_MU_SF_Isol_SYST_UP, &b_lepSFObjTight_MU_SF_Isol_SYST_UP);
+   fChain->SetBranchAddress("lepSFObjLoose_MU_SF_Isol_SYST_DOWN", &lepSFObjLoose_MU_SF_Isol_SYST_DOWN, &b_lepSFObjLoose_MU_SF_Isol_SYST_DOWN);
+   fChain->SetBranchAddress("lepSFObjTight_MU_SF_Isol_SYST_DOWN", &lepSFObjTight_MU_SF_Isol_SYST_DOWN, &b_lepSFObjTight_MU_SF_Isol_SYST_DOWN);
+   fChain->SetBranchAddress("lepSFObjLoose_MU_SF_TTVA_STAT_UP", &lepSFObjLoose_MU_SF_TTVA_STAT_UP, &b_lepSFObjLoose_MU_SF_TTVA_STAT_UP);
+   fChain->SetBranchAddress("lepSFObjTight_MU_SF_TTVA_STAT_UP", &lepSFObjTight_MU_SF_TTVA_STAT_UP, &b_lepSFObjTight_MU_SF_TTVA_STAT_UP);
+   fChain->SetBranchAddress("lepSFObjLoose_MU_SF_TTVA_STAT_DOWN", &lepSFObjLoose_MU_SF_TTVA_STAT_DOWN, &b_lepSFObjLoose_MU_SF_TTVA_STAT_DOWN);
+   fChain->SetBranchAddress("lepSFObjTight_MU_SF_TTVA_STAT_DOWN", &lepSFObjTight_MU_SF_TTVA_STAT_DOWN, &b_lepSFObjTight_MU_SF_TTVA_STAT_DOWN);
+   fChain->SetBranchAddress("lepSFObjLoose_MU_SF_TTVA_SYST_UP", &lepSFObjLoose_MU_SF_TTVA_SYST_UP, &b_lepSFObjLoose_MU_SF_TTVA_SYST_UP);
+   fChain->SetBranchAddress("lepSFObjTight_MU_SF_TTVA_SYST_UP", &lepSFObjTight_MU_SF_TTVA_SYST_UP, &b_lepSFObjTight_MU_SF_TTVA_SYST_UP);
+   fChain->SetBranchAddress("lepSFObjLoose_MU_SF_TTVA_SYST_DOWN", &lepSFObjLoose_MU_SF_TTVA_SYST_DOWN, &b_lepSFObjLoose_MU_SF_TTVA_SYST_DOWN);
+   fChain->SetBranchAddress("lepSFObjTight_MU_SF_TTVA_SYST_DOWN", &lepSFObjTight_MU_SF_TTVA_SYST_DOWN, &b_lepSFObjTight_MU_SF_TTVA_SYST_DOWN);
+   fChain->SetBranchAddress("tauSFTight_TAU_SF_ELEOLR_TOTAL_UP", &tauSFTight_TAU_SF_ELEOLR_TOTAL_UP, &b_tauSFTight_TAU_SF_ELEOLR_TOTAL_UP);
+   fChain->SetBranchAddress("tauSFLoose_TAU_SF_ELEOLR_TOTAL_UP", &tauSFLoose_TAU_SF_ELEOLR_TOTAL_UP, &b_tauSFLoose_TAU_SF_ELEOLR_TOTAL_UP);
+   fChain->SetBranchAddress("tauSFTight_TAU_SF_ELEOLR_TOTAL_DOWN", &tauSFTight_TAU_SF_ELEOLR_TOTAL_DOWN, &b_tauSFTight_TAU_SF_ELEOLR_TOTAL_DOWN);
+   fChain->SetBranchAddress("tauSFLoose_TAU_SF_ELEOLR_TOTAL_DOWN", &tauSFLoose_TAU_SF_ELEOLR_TOTAL_DOWN, &b_tauSFLoose_TAU_SF_ELEOLR_TOTAL_DOWN);
+   fChain->SetBranchAddress("tauSFTight_TAU_SF_JETID_TOTAL_UP", &tauSFTight_TAU_SF_JETID_TOTAL_UP, &b_tauSFTight_TAU_SF_JETID_TOTAL_UP);
+   fChain->SetBranchAddress("tauSFLoose_TAU_SF_JETID_TOTAL_UP", &tauSFLoose_TAU_SF_JETID_TOTAL_UP, &b_tauSFLoose_TAU_SF_JETID_TOTAL_UP);
+   fChain->SetBranchAddress("tauSFTight_TAU_SF_JETID_TOTAL_DOWN", &tauSFTight_TAU_SF_JETID_TOTAL_DOWN, &b_tauSFTight_TAU_SF_JETID_TOTAL_DOWN);
+   fChain->SetBranchAddress("tauSFLoose_TAU_SF_JETID_TOTAL_DOWN", &tauSFLoose_TAU_SF_JETID_TOTAL_DOWN, &b_tauSFLoose_TAU_SF_JETID_TOTAL_DOWN);
+   fChain->SetBranchAddress("tauSFTight_TAU_SF_RECO_TOTAL_UP", &tauSFTight_TAU_SF_RECO_TOTAL_UP, &b_tauSFTight_TAU_SF_RECO_TOTAL_UP);
+   fChain->SetBranchAddress("tauSFLoose_TAU_SF_RECO_TOTAL_UP", &tauSFLoose_TAU_SF_RECO_TOTAL_UP, &b_tauSFLoose_TAU_SF_RECO_TOTAL_UP);
+   fChain->SetBranchAddress("tauSFTight_TAU_SF_RECO_TOTAL_DOWN", &tauSFTight_TAU_SF_RECO_TOTAL_DOWN, &b_tauSFTight_TAU_SF_RECO_TOTAL_DOWN);
+   fChain->SetBranchAddress("tauSFLoose_TAU_SF_RECO_TOTAL_DOWN", &tauSFLoose_TAU_SF_RECO_TOTAL_DOWN, &b_tauSFLoose_TAU_SF_RECO_TOTAL_DOWN);
+   fChain->SetBranchAddress("tauSFTight_TAU_SF_JETID_HIGHPT_UP", &tauSFTight_TAU_SF_JETID_HIGHPT_UP, &b_tauSFTight_TAU_SF_JETID_HIGHPT_UP);
+   fChain->SetBranchAddress("tauSFLoose_TAU_SF_JETID_HIGHPT_UP", &tauSFLoose_TAU_SF_JETID_HIGHPT_UP, &b_tauSFLoose_TAU_SF_JETID_HIGHPT_UP);
+   fChain->SetBranchAddress("tauSFTight_TAU_SF_JETID_HIGHPT_DOWN", &tauSFTight_TAU_SF_JETID_HIGHPT_DOWN, &b_tauSFTight_TAU_SF_JETID_HIGHPT_DOWN);
+   fChain->SetBranchAddress("tauSFLoose_TAU_SF_JETID_HIGHPT_DOWN", &tauSFLoose_TAU_SF_JETID_HIGHPT_DOWN, &b_tauSFLoose_TAU_SF_JETID_HIGHPT_DOWN);
+   fChain->SetBranchAddress("tauSFTight_TAU_SF_RECO_HIGHPT_UP", &tauSFTight_TAU_SF_RECO_HIGHPT_UP, &b_tauSFTight_TAU_SF_RECO_HIGHPT_UP);
+   fChain->SetBranchAddress("tauSFLoose_TAU_SF_RECO_HIGHPT_UP", &tauSFLoose_TAU_SF_RECO_HIGHPT_UP, &b_tauSFLoose_TAU_SF_RECO_HIGHPT_UP);
+   fChain->SetBranchAddress("tauSFTight_TAU_SF_RECO_HIGHPT_DOWN", &tauSFTight_TAU_SF_RECO_HIGHPT_DOWN, &b_tauSFTight_TAU_SF_RECO_HIGHPT_DOWN);
+   fChain->SetBranchAddress("tauSFLoose_TAU_SF_RECO_HIGHPT_DOWN", &tauSFLoose_TAU_SF_RECO_HIGHPT_DOWN, &b_tauSFLoose_TAU_SF_RECO_HIGHPT_DOWN);
+   fChain->SetBranchAddress("tauSFTight_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_UP", &tauSFTight_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_UP, &b_tauSFTight_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_UP);
+   fChain->SetBranchAddress("tauSFLoose_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_UP", &tauSFLoose_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_UP, &b_tauSFLoose_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_UP);
+   fChain->SetBranchAddress("tauSFTight_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_DOWN", &tauSFTight_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_DOWN, &b_tauSFTight_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_DOWN);
+   fChain->SetBranchAddress("tauSFLoose_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_DOWN", &tauSFLoose_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_DOWN, &b_tauSFLoose_TAU_SF_TRUEELECTRON_ELEOLR_TOTAL_DOWN);
+   fChain->SetBranchAddress("forFit_promptSel", &forFit_promptSel, &b_forFit_promptSel);
+   fChain->SetBranchAddress("forFit_tightSel", &forFit_tightSel, &b_forFit_tightSel);
+   fChain->SetBranchAddress("forFit_3l0tauBaseLine", &forFit_3l0tauBaseLine, &b_forFit_3l0tauBaseLine);
+   fChain->SetBranchAddress("forFit_3l0tauFakesSel", &forFit_3l0tauFakesSel, &b_forFit_3l0tauFakesSel);
+   fChain->SetBranchAddress("forFit_2lss0tauBaseLine", &forFit_2lss0tauBaseLine, &b_forFit_2lss0tauBaseLine);
+   fChain->SetBranchAddress("forFit_2lssFakeQmisSel", &forFit_2lssFakeQmisSel, &b_forFit_2lssFakeQmisSel);
    fChain->SetBranchAddress("mcWeightOrg", &mcWeightOrg, &b_mcWeightOrg);
    fChain->SetBranchAddress("pileupEventWeight_090", &pileupEventWeight_090, &b_pileupEventWeight_090);
    fChain->SetBranchAddress("MV2c10_60_EventWeight", &MV2c10_60_EventWeight, &b_MV2c10_60_EventWeight);
@@ -1933,6 +2998,36 @@ void GN_v5::Init(TTree *tree)
    fChain->SetBranchAddress("HLT_mu26_ivarmedium", &HLT_mu26_ivarmedium, &b_HLT_mu26_ivarmedium);
    fChain->SetBranchAddress("HLT_mu50", &HLT_mu50, &b_HLT_mu50);
    fChain->SetBranchAddress("HLT_2e17_lhvloose_nod0_L12EM15VHI", &HLT_2e17_lhvloose_nod0_L12EM15VHI, &b_HLT_2e17_lhvloose_nod0_L12EM15VHI);
+   fChain->SetBranchAddress("lep_promptLeptonInput_sv1_jf_ntrkv_0", &lep_promptLeptonInput_sv1_jf_ntrkv_0, &b_lep_promptLeptonInput_sv1_jf_ntrkv_0);
+   fChain->SetBranchAddress("lep_promptLeptonInput_sv1_jf_ntrkv_1", &lep_promptLeptonInput_sv1_jf_ntrkv_1, &b_lep_promptLeptonInput_sv1_jf_ntrkv_1);
+   fChain->SetBranchAddress("lep_promptLeptonInput_sv1_jf_ntrkv_2", &lep_promptLeptonInput_sv1_jf_ntrkv_2, &b_lep_promptLeptonInput_sv1_jf_ntrkv_2);
+   fChain->SetBranchAddress("lep_promptLeptonInput_TrackJetNTrack_0", &lep_promptLeptonInput_TrackJetNTrack_0, &b_lep_promptLeptonInput_TrackJetNTrack_0);
+   fChain->SetBranchAddress("lep_promptLeptonInput_TrackJetNTrack_1", &lep_promptLeptonInput_TrackJetNTrack_1, &b_lep_promptLeptonInput_TrackJetNTrack_1);
+   fChain->SetBranchAddress("lep_promptLeptonInput_TrackJetNTrack_2", &lep_promptLeptonInput_TrackJetNTrack_2, &b_lep_promptLeptonInput_TrackJetNTrack_2);
+   fChain->SetBranchAddress("lep_promptLeptonInput_DL1mu_0", &lep_promptLeptonInput_DL1mu_0, &b_lep_promptLeptonInput_DL1mu_0);
+   fChain->SetBranchAddress("lep_promptLeptonInput_DL1mu_1", &lep_promptLeptonInput_DL1mu_1, &b_lep_promptLeptonInput_DL1mu_1);
+   fChain->SetBranchAddress("lep_promptLeptonInput_DL1mu_2", &lep_promptLeptonInput_DL1mu_2, &b_lep_promptLeptonInput_DL1mu_2);
+   fChain->SetBranchAddress("lep_promptLeptonInput_DRlj_0", &lep_promptLeptonInput_DRlj_0, &b_lep_promptLeptonInput_DRlj_0);
+   fChain->SetBranchAddress("lep_promptLeptonInput_DRlj_1", &lep_promptLeptonInput_DRlj_1, &b_lep_promptLeptonInput_DRlj_1);
+   fChain->SetBranchAddress("lep_promptLeptonInput_DRlj_2", &lep_promptLeptonInput_DRlj_2, &b_lep_promptLeptonInput_DRlj_2);
+   fChain->SetBranchAddress("lep_promptLeptonInput_LepJetPtFrac_0", &lep_promptLeptonInput_LepJetPtFrac_0, &b_lep_promptLeptonInput_LepJetPtFrac_0);
+   fChain->SetBranchAddress("lep_promptLeptonInput_LepJetPtFrac_1", &lep_promptLeptonInput_LepJetPtFrac_1, &b_lep_promptLeptonInput_LepJetPtFrac_1);
+   fChain->SetBranchAddress("lep_promptLeptonInput_LepJetPtFrac_2", &lep_promptLeptonInput_LepJetPtFrac_2, &b_lep_promptLeptonInput_LepJetPtFrac_2);
+   fChain->SetBranchAddress("lep_promptLeptonInput_PtFrac_0", &lep_promptLeptonInput_PtFrac_0, &b_lep_promptLeptonInput_PtFrac_0);
+   fChain->SetBranchAddress("lep_promptLeptonInput_PtFrac_1", &lep_promptLeptonInput_PtFrac_1, &b_lep_promptLeptonInput_PtFrac_1);
+   fChain->SetBranchAddress("lep_promptLeptonInput_PtFrac_2", &lep_promptLeptonInput_PtFrac_2, &b_lep_promptLeptonInput_PtFrac_2);
+   fChain->SetBranchAddress("lep_promptLeptonInput_PtRel_0", &lep_promptLeptonInput_PtRel_0, &b_lep_promptLeptonInput_PtRel_0);
+   fChain->SetBranchAddress("lep_promptLeptonInput_PtRel_1", &lep_promptLeptonInput_PtRel_1, &b_lep_promptLeptonInput_PtRel_1);
+   fChain->SetBranchAddress("lep_promptLeptonInput_PtRel_2", &lep_promptLeptonInput_PtRel_2, &b_lep_promptLeptonInput_PtRel_2);
+   fChain->SetBranchAddress("lep_promptLeptonInput_ip2_0", &lep_promptLeptonInput_ip2_0, &b_lep_promptLeptonInput_ip2_0);
+   fChain->SetBranchAddress("lep_promptLeptonInput_ip2_1", &lep_promptLeptonInput_ip2_1, &b_lep_promptLeptonInput_ip2_1);
+   fChain->SetBranchAddress("lep_promptLeptonInput_ip2_2", &lep_promptLeptonInput_ip2_2, &b_lep_promptLeptonInput_ip2_2);
+   fChain->SetBranchAddress("lep_promptLeptonInput_ip3_0", &lep_promptLeptonInput_ip3_0, &b_lep_promptLeptonInput_ip3_0);
+   fChain->SetBranchAddress("lep_promptLeptonInput_ip3_1", &lep_promptLeptonInput_ip3_1, &b_lep_promptLeptonInput_ip3_1);
+   fChain->SetBranchAddress("lep_promptLeptonInput_ip3_2", &lep_promptLeptonInput_ip3_2, &b_lep_promptLeptonInput_ip3_2);
+   fChain->SetBranchAddress("lep_promptLeptonInput_rnnip_0", &lep_promptLeptonInput_rnnip_0, &b_lep_promptLeptonInput_rnnip_0);
+   fChain->SetBranchAddress("lep_promptLeptonInput_rnnip_1", &lep_promptLeptonInput_rnnip_1, &b_lep_promptLeptonInput_rnnip_1);
+   fChain->SetBranchAddress("lep_promptLeptonInput_rnnip_2", &lep_promptLeptonInput_rnnip_2, &b_lep_promptLeptonInput_rnnip_2);
    fChain->SetBranchAddress("lep_ID_0", &lep_ID_0, &b_lep_ID_0);
    fChain->SetBranchAddress("lep_Index_0", &lep_Index_0, &b_lep_Index_0);
    fChain->SetBranchAddress("lep_ambiguityType_0", &lep_ambiguityType_0, &b_lep_ambiguityType_0);
@@ -2324,6 +3419,7 @@ void GN_v5::Init(TTree *tree)
    fChain->SetBranchAddress("matchDLTll23", &matchDLTll23, &b_matchDLTll23);
    fChain->SetBranchAddress("best_Z_Mll", &best_Z_Mll, &b_best_Z_Mll);
    fChain->SetBranchAddress("best_Z_other_Mll", &best_Z_other_Mll, &b_best_Z_other_Mll);
+   fChain->SetBranchAddress("best_Z_other_MtLepMet", &best_Z_other_MtLepMet, &b_best_Z_other_MtLepMet);
    fChain->SetBranchAddress("nJets_OR_T", &nJets_OR_T, &b_nJets_OR_T);
    fChain->SetBranchAddress("nJets_OR", &nJets_OR, &b_nJets_OR);
    fChain->SetBranchAddress("nJets_OR_T_MV2c20_60", &nJets_OR_T_MV2c20_60, &b_nJets_OR_T_MV2c20_60);
@@ -2371,34 +3467,15 @@ void GN_v5::Init(TTree *tree)
    fChain->SetBranchAddress("lepSFObjTight", &lepSFObjTight, &b_lepSFObjTight);
    fChain->SetBranchAddress("tauSFTight", &tauSFTight, &b_tauSFTight);
    fChain->SetBranchAddress("tauSFLoose", &tauSFLoose, &b_tauSFLoose);
-   fChain->SetBranchAddress("isMMSideband_TT", &isMMSideband_TT, &b_isMMSideband_TT);
-   fChain->SetBranchAddress("isMMSideband_TAntiT", &isMMSideband_TAntiT, &b_isMMSideband_TAntiT);
-   fChain->SetBranchAddress("isMMSideband_AntiTT", &isMMSideband_AntiTT, &b_isMMSideband_AntiTT);
-   fChain->SetBranchAddress("isMMSideband_AntiTAntiT", &isMMSideband_AntiTAntiT, &b_isMMSideband_AntiTAntiT);
-   fChain->SetBranchAddress("MM_EventWeight", &MM_EventWeight, &b_MM_EventWeight);
-   fChain->SetBranchAddress("MM_EventWeight_Real_El_Pt_Stat_Grouped_Up", &MM_EventWeight_Real_El_Pt_Stat_Grouped_Up, &b_MM_EventWeight_Real_El_Pt_Stat_Grouped_Up);
-   fChain->SetBranchAddress("MM_EventWeight_Real_El_Pt_Stat_Grouped_Dn", &MM_EventWeight_Real_El_Pt_Stat_Grouped_Dn, &b_MM_EventWeight_Real_El_Pt_Stat_Grouped_Dn);
-   fChain->SetBranchAddress("MM_EventWeight_Real_El_Pt_Sys_Grouped_Up", &MM_EventWeight_Real_El_Pt_Sys_Grouped_Up, &b_MM_EventWeight_Real_El_Pt_Sys_Grouped_Up);
-   fChain->SetBranchAddress("MM_EventWeight_Real_El_Pt_Sys_Grouped_Dn", &MM_EventWeight_Real_El_Pt_Sys_Grouped_Dn, &b_MM_EventWeight_Real_El_Pt_Sys_Grouped_Dn);
-   fChain->SetBranchAddress("MM_EventWeight_Real_Mu_Pt_Stat_Grouped_Up", &MM_EventWeight_Real_Mu_Pt_Stat_Grouped_Up, &b_MM_EventWeight_Real_Mu_Pt_Stat_Grouped_Up);
-   fChain->SetBranchAddress("MM_EventWeight_Real_Mu_Pt_Stat_Grouped_Dn", &MM_EventWeight_Real_Mu_Pt_Stat_Grouped_Dn, &b_MM_EventWeight_Real_Mu_Pt_Stat_Grouped_Dn);
-   fChain->SetBranchAddress("MM_EventWeight_Real_Mu_Pt_Sys_Grouped_Up", &MM_EventWeight_Real_Mu_Pt_Sys_Grouped_Up, &b_MM_EventWeight_Real_Mu_Pt_Sys_Grouped_Up);
-   fChain->SetBranchAddress("MM_EventWeight_Real_Mu_Pt_Sys_Grouped_Dn", &MM_EventWeight_Real_Mu_Pt_Sys_Grouped_Dn, &b_MM_EventWeight_Real_Mu_Pt_Sys_Grouped_Dn);
-   fChain->SetBranchAddress("MM_EventWeight_Fake_El_Pt_Stat_Grouped_Up", &MM_EventWeight_Fake_El_Pt_Stat_Grouped_Up, &b_MM_EventWeight_Fake_El_Pt_Stat_Grouped_Up);
-   fChain->SetBranchAddress("MM_EventWeight_Fake_El_Pt_Stat_Grouped_Dn", &MM_EventWeight_Fake_El_Pt_Stat_Grouped_Dn, &b_MM_EventWeight_Fake_El_Pt_Stat_Grouped_Dn);
-   fChain->SetBranchAddress("MM_EventWeight_Fake_El_Pt_Sys_Grouped_Up", &MM_EventWeight_Fake_El_Pt_Sys_Grouped_Up, &b_MM_EventWeight_Fake_El_Pt_Sys_Grouped_Up);
-   fChain->SetBranchAddress("MM_EventWeight_Fake_El_Pt_Sys_Grouped_Dn", &MM_EventWeight_Fake_El_Pt_Sys_Grouped_Dn, &b_MM_EventWeight_Fake_El_Pt_Sys_Grouped_Dn);
-   fChain->SetBranchAddress("MM_EventWeight_Fake_Mu_Pt_Stat_Grouped_Up", &MM_EventWeight_Fake_Mu_Pt_Stat_Grouped_Up, &b_MM_EventWeight_Fake_Mu_Pt_Stat_Grouped_Up);
-   fChain->SetBranchAddress("MM_EventWeight_Fake_Mu_Pt_Stat_Grouped_Dn", &MM_EventWeight_Fake_Mu_Pt_Stat_Grouped_Dn, &b_MM_EventWeight_Fake_Mu_Pt_Stat_Grouped_Dn);
-   fChain->SetBranchAddress("MM_EventWeight_Fake_Mu_Pt_Sys_Grouped_Up", &MM_EventWeight_Fake_Mu_Pt_Sys_Grouped_Up, &b_MM_EventWeight_Fake_Mu_Pt_Sys_Grouped_Up);
-   fChain->SetBranchAddress("MM_EventWeight_Fake_Mu_Pt_Sys_Grouped_Dn", &MM_EventWeight_Fake_Mu_Pt_Sys_Grouped_Dn, &b_MM_EventWeight_Fake_Mu_Pt_Sys_Grouped_Dn);
-   fChain->SetBranchAddress("QMisID_MM_EventWeight", &QMisID_MM_EventWeight, &b_QMisID_MM_EventWeight);
-   fChain->SetBranchAddress("QMisID_MM_EventWeight_Up", &QMisID_MM_EventWeight_Up, &b_QMisID_MM_EventWeight_Up);
-   fChain->SetBranchAddress("QMisID_MM_EventWeight_Dn", &QMisID_MM_EventWeight_Dn, &b_QMisID_MM_EventWeight_Dn);
+   fChain->SetBranchAddress("tauFakeSF_weight", &tauFakeSF_weight, &b_tauFakeSF_weight);
+   fChain->SetBranchAddress("tauFakeSF_weight_SYST_UP", &tauFakeSF_weight_SYST_UP, &b_tauFakeSF_weight_SYST_UP);
+   fChain->SetBranchAddress("tauFakeSF_weight_SYST_DOWN", &tauFakeSF_weight_SYST_DOWN, &b_tauFakeSF_weight_SYST_DOWN);
+   fChain->SetBranchAddress("tauFakeSF_weight_STAT_UP", &tauFakeSF_weight_STAT_UP, &b_tauFakeSF_weight_STAT_UP);
+   fChain->SetBranchAddress("tauFakeSF_weight_STAT_DOWN", &tauFakeSF_weight_STAT_DOWN, &b_tauFakeSF_weight_STAT_DOWN);
    Notify();
 }
 
-Bool_t GN_v5::Notify()
+Bool_t GN_v7::Notify()
 {
    // The Notify() function is called when a new file is opened. This
    // can be either for a new TTree in a TChain or when when a new TTree
@@ -2409,18 +3486,19 @@ Bool_t GN_v5::Notify()
    return kTRUE;
 }
 
-void GN_v5::Show(Long64_t entry)
+void GN_v7::Show(Long64_t entry)
 {
 // Print contents of entry.
 // If entry is not specified, print current entry
    if (!fChain) return;
    fChain->Show(entry);
 }
-Int_t GN_v5::Cut(Long64_t entry)
+Int_t GN_v7::Cut(Long64_t entry)
 {
 // This function may be called from Loop.
 // returns  1 if entry is accepted.
 // returns -1 otherwise.
    return 1;
 }
-#endif // #ifdef GN_v5_cxx
+#endif // #ifdef GN_v7_cxx
+

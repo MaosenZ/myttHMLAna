@@ -6,8 +6,8 @@ from ROOT import kBlue, kBlack, kRed
 import math, os
 from math import sqrt,log
 
-gROOT.LoadMacro("/Users/mason/Desktop/myWork/myttHMLAna/util/AtlasStyle.C")
-gROOT.LoadMacro("/Users/mason/Desktop/myWork/myttHMLAna/util/AtlasUtils.C")
+gROOT.LoadMacro("/Users/mason/Desktop/myWork/myttHMLAna/inc/AtlasStyle.C")
+gROOT.LoadMacro("/Users/mason/Desktop/myWork/myttHMLAna/inc/AtlasUtils.C")
 
 from ROOT import SetAtlasStyle, ATLAS_LABEL, myText
 

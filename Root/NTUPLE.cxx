@@ -1,6 +1,6 @@
 #define NTUPLE_cxx
-#include "../myttHAna/NTUPLE.h"
-#include "../myttHAna/BDTcalculation.h"
+#include "../inc/NTUPLE.h"
+#include "../inc/BDTcalculation.h"
 #include "TH2.h"
 #include "TStyle.h"
 #include "TCanvas.h"
@@ -10,23 +10,6 @@
 #include "commonSelections.cxx"
 #include "commonWeight.cxx"
 #include "applySelections.cxx"
-
-/*void NTUPLE::makeMiniTree(TTree &tree, regions)
-{
-  TFile *outfile=new TFile(mySample, "recreate");
-  TTree *tree=new TTree("tree","tree");
-  Int_t o_tau_truthType_0, o_tau_truthType_1, o_tau_truthOrigin_0, o_tau_truthOrigin_1;
-  tree->Branch("tau_truthType_0", &o_tau_truthType_0);
-  tree->Branch("tau_truthType_1", &o_tau_truthType_1);
-  tree->Branch("tau_truthOrigin_0", &o_tau_truthOrigin_0);
-  tree->Branch("tau_truthOrigin_1", &o_tau_truthOrigin_1);
-
-  std::map< std::string, Branch_Types > output_branches;
-  for(unsigned int i=0; i<regions.size();i++){
-      tree->Branch((regions[i]).c_str(), &output_branches[regions[i]].c)
-  }
-  
-}*/
 
 void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree){
 
@@ -93,7 +76,7 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
                   if(vartype=="D") {
                      TH1Fs[name]->Fill( input_branches[var].d, wt);
                      output_branches[var].d=input_branches[var].d;
-                     std::cout<<"Mybdtx: "<<input_branches["Mybdtx"].d<<std::endl;
+                     //std::cout<<"Mybdtx: "<<input_branches["Mybdtx"].d<<std::endl;
                   }
               }//end of loop hists map
            }//end of basic selections
@@ -171,9 +154,9 @@ void NTUPLE::applyBDT(){
   for(Long64_t jentry=0; jentry<nentries;jentry++){
 
       fChain->GetEntry(jentry);
-
-      tmva1l2tau_njets25 = input_branches["njets_1l2tau"].i ;
-      tmva1l2tau_nbjets25 = input_branches["nbjets_1l2tau"].i;
+      //std::cout<<" I am here event "<<jentry<<"/"<<nentries<<" Event "<< EventNumber<<" Run "<<RunNumber<<std::endl;
+      tmva1l2tau_njets25 = input_branches["njets_1l2tau"].f;
+      tmva1l2tau_nbjets25 = input_branches["nbjets_1l2tau"].f;
       tmva1l2tau_htjets = input_branches["htjets_1l2tau"].f;
       tmva1l2tau_leadtaupt = input_branches["tau_pt_0"].f/GeV;
       tmva1l2tau_subtaupt = input_branches["tau_pt_1"].f/GeV;
@@ -192,6 +175,15 @@ void NTUPLE::applyBDT(){
           myBDTx = reader_tth1l2tau->EvaluateMVA("BDT_tth1l2tauOdd");
           myBDTx =myBDTx<1.0?myBDTx:0.99;
       }
+      /*std::cout<<" njets_1l2tau: "<<tmva1l2tau_njets25<<std::endl;
+      std::cout<<" nbjets_1l2tau: "<<tmva1l2tau_nbjets25<<std::endl;
+      std::cout<<" htjets_1l2tau: "<<tmva1l2tau_htjets<<std::endl;
+      std::cout<<" tmva1l2tau_leadtaupt: "<<tmva1l2tau_leadtaupt<<std::endl;
+      std::cout<<" tmva1l2tau_subtaupt: "<<tmva1l2tau_subtaupt<<std::endl;
+      std::cout<<" tmva1l2tau_mtautau: "<<tmva1l2tau_mtautau<<std::endl;
+      std::cout<<" tmva1l2tau_jjdr: "<<tmva1l2tau_jjdr<<std::endl;
+      std::cout<<" tmva1l2tau_etamax: "<<tmva1l2tau_etamax<<std::endl;
+      std::cout<<" myBDTx: "<<myBDTx<<std::endl;*/
       outtree->Fill();
   }
   outtree->Write();
