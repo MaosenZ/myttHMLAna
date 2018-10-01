@@ -1,0 +1,9 @@
+#binary file
+/bin/myRun
+
+#lib
+*.o
+*.so
+*.d
+*.pcm
+*.pyc
