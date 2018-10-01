@@ -7,3 +7,6 @@
 *.d
 *.pcm
 *.pyc
+
+#output ntuples and hists root files
+hists/*.root
