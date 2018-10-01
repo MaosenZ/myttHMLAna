@@ -4,12 +4,14 @@
 #include "TH2.h"
 #include "TStyle.h"
 #include "TCanvas.h"
+#include "TLorentzVector.h"
 #include <string>
 #include <fstream>
 #include <sstream>
 #include "commonSelections.cxx"
 #include "commonWeight.cxx"
 #include "applySelections.cxx"
+#include "topMassReco.cxx"
 
 void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree){
 
@@ -20,10 +22,17 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
        if(debug||(jentry%10000==0))std::cout<<" I am here event "<<jentry<<"/"<<nentries<<" Event "<<
           EventNumber<<" Run "<<RunNumber<<" ismc "<<mc_channel_number<<std::endl;
 
+       //commons
        if(m_commonSelections && (!commonSelections())) continue;
        double wt;
        wt=commonWeight();
        if (mySample=="data") wt=1.0;
+
+       //define some variables here:
+         //top mass
+       float top1_mass(0), top2_mass(0);
+       topMassReco(top1_mass, top2_mass);
+
        //further selections
        string mySelection, regionname,name, var, vartype;
        size_t pos=0;
@@ -47,36 +56,106 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
                   var=name.substr(pos+1, name.length()-3-pos);//the name is defined as 'regionname_varname_vartype'
                   //if(var=="lep_Pt_0") TH1Fs[it->first]->Fill(lep_Pt_0/GeV,wt);
                   vartype=name.substr(name.length()-1);
-       
-                  if(vartype=="I") { 
-                     if(var.find("tagWeightBin")!=string::npos) 
-                        input_branches[var].i=input_branches[var].i<0?0:input_branches[var].i;
-                     TH1Fs[name]->Fill( input_branches[var].i, wt);
-                     output_branches[var].i=input_branches[var].i;
+      
+                  /*if(var=="MVA1l2tau_weight") {
+                     TH1Fs[name]->Fill( MVA1l2tau_weight, wt);
+                     output_branches[var].f=MVA1l2tau_weight;
                   }
-       
-                  if(vartype=="F") {
-                     if(var.find("weight")!=string::npos || var.find("dr")!=string::npos
-                        || var.find("nj")!=string::npos || var.find("nb")!=string::npos || 
-                        var.find("tight")!=string::npos || var.find("eta")!=string::npos ) 
-                        { if(var=="maxeta") {
-                             TH1Fs[name]->Fill(fabs(input_branches["tau_eta_0"].f)>fabs(input_branches["tau_eta_1"].f)?fabs(input_branches["tau_eta_0"].f):fabs(input_branches["tau_eta_1"].f), wt);
-                             output_branches[var].f=fabs(input_branches["tau_eta_0"].f)>fabs(input_branches["tau_eta_1"].f)?fabs(input_branches["tau_eta_0"].f):fabs(input_branches["tau_eta_1"].f);                                 
-                          }
-                          else{
-                             TH1Fs[name]->Fill( input_branches[var].f, wt);
-                             output_branches[var].f=input_branches[var].f;
-                          }
-			}
-                     else {TH1Fs[name]->Fill( (input_branches[var].f)/GeV, wt);
-                          output_branches[var].f=(input_branches[var].f)/GeV;
-		     }
+                  if(var=="Mybdt") {
+                     TH1Fs[name]->Fill( Mybdt, wt);
+                     output_branches[var].d=Mybdt;
                   }
-
-                  if(vartype=="D") {
-                     TH1Fs[name]->Fill( input_branches[var].d, wt);
-                     output_branches[var].d=input_branches[var].d;
-                     //std::cout<<"Mybdtx: "<<input_branches["Mybdtx"].d<<std::endl;
+                  if(var=="Mybdtx") {
+                     TH1Fs[name]->Fill( Mybdtx, wt);
+                     output_branches[var].d=Mybdtx;
+                  }*/
+                  if(var=="HT_jets") {
+                     TH1Fs[name]->Fill( HT_jets/GeV, wt);
+                     output_branches[var].f=HT_jets/GeV;
+                  }
+                  if(var=="nJets_OR_T") {
+                     TH1Fs[name]->Fill( nJets_OR_T, wt);
+                     output_branches[var].i=nJets_OR_T;
+                  }
+                  if(var=="nJets_OR_T_MV2c10_70") {
+                     TH1Fs[name]->Fill( nJets_OR_T_MV2c10_70, wt);
+                     output_branches[var].i=nJets_OR_T_MV2c10_70;
+                  }
+                  /*if(var=="jjdrmin_1l2tau") {
+                     TH1Fs[name]->Fill( jjdrmin_1l2tau, wt);
+                     output_branches[var].f=jjdrmin_1l2tau;
+                  }
+                  if(var=="mtautau_1l2tau") {
+                     TH1Fs[name]->Fill( mtautau_1l2tau/GeV, wt);
+                     output_branches[var].f=mtautau_1l2tau/GeV;
+                  }*/
+                  if(var=="tau_pt_0"){
+                     TH1Fs[name]->Fill( tau_pt_0/GeV, wt);
+                     output_branches[var].f=tau_pt_0/GeV;
+                  }
+                  if(var=="tau_pt_1") {
+                     TH1Fs[name]->Fill( tau_pt_1/GeV, wt);
+                     output_branches[var].f=tau_pt_1/GeV;
+                  }
+                  /*if(var=="njets_1l2tau") {
+                     TH1Fs[name]->Fill( njets_1l2tau, wt);
+                     output_branches[var].f=njets_1l2tau;
+                  }
+                  if(var=="nbjets_1l2tau") {
+                     TH1Fs[name]->Fill( nbjets_1l2tau, wt);
+                     output_branches[var].f=nbjets_1l2tau;
+                  }*/
+                  if(var=="tau_truthType_0") {
+                     TH1Fs[name]->Fill( tau_truthType_0, wt);
+                     output_branches[var].i=tau_truthType_0;
+                  }
+                  if(var=="tau_truthType_1") {
+                     TH1Fs[name]->Fill( tau_truthType_1, wt);
+                     output_branches[var].i=tau_truthType_1;
+                  }
+                  if(var=="tau_truthOrigin_0"){
+                     TH1Fs[name]->Fill( tau_truthOrigin_0, wt);
+                     output_branches[var].i=tau_truthOrigin_0;
+                  }
+                  if(var=="tau_truthOrigin_1") {
+                     TH1Fs[name]->Fill( tau_truthOrigin_1, wt);
+                     output_branches[var].i=tau_truthOrigin_1;
+                  }
+                  if(var=="tau_tight_0") {
+                     TH1Fs[name]->Fill( tau_tight_0, wt);
+                     output_branches[var].f=tau_tight_0;
+                  }
+                  if(var=="tau_tight_1") {
+                     TH1Fs[name]->Fill( tau_tight_1, wt);
+                     output_branches[var].f=tau_tight_1;
+                  }
+                  if(var=="tau_eta_0") {
+                     TH1Fs[name]->Fill( tau_eta_0, wt);
+                     output_branches[var].f=tau_eta_0;
+                  }
+                  if(var=="tau_eta_1") {
+                     TH1Fs[name]->Fill( tau_eta_1, wt);
+                     output_branches[var].f=tau_eta_1;
+                  }
+                  if(var=="tau_tagWeightBin_0") {
+                     TH1Fs[name]->Fill( tau_tagWeightBin_0, wt);
+                     output_branches[var].i=tau_tagWeightBin_0;
+                  }
+                  if(var=="tau_tagWeightBin_1") {
+                     TH1Fs[name]->Fill( tau_tagWeightBin_1, wt);
+                     output_branches[var].i=tau_tagWeightBin_1;
+                  }
+                  if(var=="maxeta") {
+                     TH1Fs[name]->Fill( fabs(tau_eta_0)>fabs(tau_eta_1)?fabs(tau_eta_0):fabs(tau_eta_1), wt);
+                     output_branches[var].f=fabs(tau_eta_0)>fabs(tau_eta_1)?fabs(tau_eta_0):fabs(tau_eta_1);
+                  }
+                  if(var=="top1_mass"){
+                     TH1Fs[name]->Fill(top1_mass/GeV, wt);
+                     output_branches[var].f=top1_mass/GeV;
+                  }
+                  if(var=="top2_mass"){
+                     TH1Fs[name]->Fill(top2_mass/GeV, wt);
+                     output_branches[var].f=top2_mass/GeV;
                   }
               }//end of loop hists map
            }//end of basic selections
@@ -108,16 +187,25 @@ void NTUPLE::cutFlow(){
           numevtcln++; numwtevtcln+=wt;
        if(m_commonSelections && (!commonSelections())) continue;
           numcomsel++; numwtcomsel+=wt; 
-       //if(!(onelep_type>0 && input_branches["lep_isolationFixedCutLoose_0"].i&&(abs(input_branches["lep_ID_0"].f)==13||((abs(input_branches["lep_ID_0"].f)==11)&&input_branches["lep_isTightLH_0"].c)))) continue;
+       //if(!(onelep_type>0 && lep_isolationFixedCutLoose_0&&(abs(lep_ID_0)==13||((abs(lep_ID_0)==11)&&lep_isTightLH_0)))) continue;
        if(!(onelep_type>0)) continue;
           numNlepton++; numwtNlepton+=wt;
        if(!lep_isTrigMatch_0) continue;
           numtrigmatch++; numwttrigmatch+=wt;
-       if(!(nTaus_OR_Pt25==2&&input_branches["tau_charge_0"].f*input_branches["tau_charge_1"].f<0)) continue;
+       //if(!(nTaus_OR_Pt25==2&&input_branches["tau_charge_0"].f*input_branches["tau_charge_1"].f<0)) continue;
+       if( !(nTaus_OR_Pt25==1 && tau_tight_0) ) continue;
+       if ( !(tau_passMuonOLR_0==1 && tau_passEleBDT_0==1 && tau_tagWeightBin_0 <4) ) continue;
           numNtau++; numwtNtau+=wt;
-       if(!((abs(input_branches["lep_ID_0"].f)==11&&input_branches["lep_isolationFixedCutLoose_0"].i&&input_branches["lep_isTightLH_0"].c&&input_branches["lep_promptLeptonVeto_TagWeight_0"].f<-0.7&&(int)(input_branches["lep_ambiguityType_0"].c)==0)||(abs(input_branches["lep_ID_0"].f)==13&&input_branches["lep_promptLeptonVeto_TagWeight_0"].f<-0.5&&input_branches["lep_isolationFixedCutLoose_0"].i))) continue;
+       //if(!((abs(lep_ID_0)==11&&lep_isolationFixedCutLoose_0&&lep_isTightLH_0&&input_branches["lep_promptLeptonVeto_TagWeight_0"].f<-0.7&&(int)(input_branches["lep_ambiguityType_0"].c)==0)||(abs(lep_ID_0)==13&&input_branches["lep_promptLeptonVeto_TagWeight_0"].f<-0.5&&lep_isolationFixedCutLoose_0))) continue;
+       if(!((abs(lep_ID_0)==11&&lep_isolationFixedCutLoose_0&&lep_isTightLH_0)||(abs(lep_ID_0)==13&&lep_isolationFixedCutLoose_0))) continue; //loose lepton
+       if (lep_Pt_0<27e3) continue;
           numTightL++; numwtTightL+=wt;
-          
+       //jets
+       if( !(nJets_OR_T>=4 && nJets_OR_T_MV2c10_70>=2) ) continue;
+       //top mass
+       float top_mass1(0), top_mass2(0);
+       topMassReco(top_mass1, top_mass2);
+
   }
   cout<<" Events "<<setw(20)<<" Events (weighted)"<<endl;
   cout<<numinput<<setw(20)<<numwtinput<<endl;
@@ -129,7 +217,7 @@ void NTUPLE::cutFlow(){
   cout<<numTightL<<setw(20)<<numwtTightL<<endl; 
 }
 
-void NTUPLE::applyBDT(){
+/*void NTUPLE::applyBDT(){
 
   TString BDT_tth1l2tau = "doc/TMVAClassification_BDTG.weights8varbtagtaupt25Triglept27tauTTbvetoWTfix_R21.xml";
   TString BDT_tth1l2tauEven ="doc/TMVAClassification_BDTG.weights8varbtagtaupt25Triglept27tauTTbvetoWTfixTrainEven_R21.xml";
@@ -175,7 +263,7 @@ void NTUPLE::applyBDT(){
           myBDTx = reader_tth1l2tau->EvaluateMVA("BDT_tth1l2tauOdd");
           myBDTx =myBDTx<1.0?myBDTx:0.99;
       }
-      /*std::cout<<" njets_1l2tau: "<<tmva1l2tau_njets25<<std::endl;
+      std::cout<<" njets_1l2tau: "<<tmva1l2tau_njets25<<std::endl;
       std::cout<<" nbjets_1l2tau: "<<tmva1l2tau_nbjets25<<std::endl;
       std::cout<<" htjets_1l2tau: "<<tmva1l2tau_htjets<<std::endl;
       std::cout<<" tmva1l2tau_leadtaupt: "<<tmva1l2tau_leadtaupt<<std::endl;
@@ -183,9 +271,9 @@ void NTUPLE::applyBDT(){
       std::cout<<" tmva1l2tau_mtautau: "<<tmva1l2tau_mtautau<<std::endl;
       std::cout<<" tmva1l2tau_jjdr: "<<tmva1l2tau_jjdr<<std::endl;
       std::cout<<" tmva1l2tau_etamax: "<<tmva1l2tau_etamax<<std::endl;
-      std::cout<<" myBDTx: "<<myBDTx<<std::endl;*/
+      std::cout<<" myBDTx: "<<myBDTx<<std::endl;
       outtree->Fill();
   }
   outtree->Write();
   outfile->Close();
-}
+}*/
