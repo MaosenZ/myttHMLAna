@@ -37,7 +37,9 @@ titles={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Events'), \
         'tau_eta_0':('#eta_{#tau0}',"Events"),\
         'tau_eta_1':('#eta_{#tau1}',"Events"),\
         'tau_tagWeightBin_0':("tau_tagWeightBin_0","Events"),\
-        'tau_tagWeightBin_1':("tau_tagWeightBin_1","Events")
+        'tau_tagWeightBin_1':("tau_tagWeightBin_1","Events"),\
+        'top1_mass':("Top1 Mass [GeV]", "Events"),\
+        'top2_mass':("Top2 Mass [GeV]", "Events")
          }
 
 titles_norm={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Normalized'), \
@@ -66,5 +68,7 @@ titles_norm={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Normalized'), \
         'tau_eta_0':('#eta_{#tau0}',"Normalized"),\
         'tau_eta_1':('#eta_{#tau1}',"Normalized"),\
         'tau_tagWeightBin_0':("tau_tagWeightBin_0","Normalized"),\
-        'tau_tagWeightBin_1':("tau_tagWeightBin_1","Normalized")
+        'tau_tagWeightBin_1':("tau_tagWeightBin_1","Normalized"),\
+        'top1_mass':("Top1 Mass [GeV]", "Normalized"),\
+        'top2_mass':("Top2 Mass [GeV]", "Normalized")
          }

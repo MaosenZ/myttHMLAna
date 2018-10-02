@@ -16,6 +16,15 @@ from array import array
 from mytools import getRegionsVars, createCanvasPads, createLabels, SetAtlasStyle 
 from commonPlotting import *
 
+DataIgnored=True
+processes={'ttbar':"ttbar",\
+           'ttbargamma':"ttbargamma",\
+           'diboson':"diboson",\
+           'tth':"tth",\
+           'Vjets':"Vjets",\
+           'ttV':"ttV",\
+           'rare':"rare"}
+
 isBlinded=True
 regions, variables=getRegionsVars("ttbar")
 regions=("ttbarCR", "OneL2tauSR","OneL1tau2b", "OneL1tau1b") 
@@ -30,14 +39,6 @@ def addHists(region, variable, components):
     fhistfile=TFile("hists/%s.root" % components)
     total_hist=fhistfile.Get("%s_%s" % (region, variable))
     total_hist.SetDirectory(0) #don't destroy histogram while closing root file
-    #then add the rest
-    '''index=0
-    for compo in components:
-      histfile=TFile("hists/%s.root" % compo)
-      hist=histfile.Get("%s_%s" % (region, variable))
-      hist.SetDirectory(0)
-      if index != 0: total_hist.Add(hist)
-      index += 1'''
     return total_hist
 
 def allHists():
@@ -103,14 +104,17 @@ def drawDataMC(region):
     hists=allHists()
     os.mkdir("plots/%s" % region)
     for variable in variables:
-        hist_data=hists[region+"_"+variable+"_data"]
-        hist_signal=hists[region+"_"+variable+"_tth"]
         mchists=[]
         for i in processes:
             if i != 'data' and i != 'tth':
                 temp=hists[region+"_"+variable+"_"+i]
                 mchists.append(temp)
         hs=makeStack(mchists)
+        #retrieve data and signal
+        hist_data=hs.GetStack().Last().Clone("hist_data")
+        if DataIgnored == False : hist_data=hists[region+"_"+variable+"_data"]
+        hist_signal=hists[region+"_"+variable+"_tth"]
+
         h_bkg, h_ratio, h_ratio_err, upArrowBins= makeRatio(hist_data, mchists, hs)
         c, pad1, pad2=createCanvasPads()
         XTitle, YTitle=(titles[variable[0:len(variable)-2]])[0], (titles[variable[0:len(variable)-2]])[1]
@@ -120,7 +124,7 @@ def drawDataMC(region):
         leg.SetNColumns(2)
         leg.SetFillStyle(0);
         leg.SetBorderSize(0);
-        leg.AddEntry(hist_data, "data", "pe")
+        if DataIgnored == False : leg.AddEntry(hist_data, "data", "pe")
         leg.AddEntry(hist_signal, "tth", "l")
         for i in processes:
              if i != 'data' and i != 'tth': leg.AddEntry(hists[region+"_"+variable+"_"+i], i, "f")
@@ -140,7 +144,7 @@ def drawDataMC(region):
         hist_data.SetMarkerStyle(20)
         hist_data.SetMarkerSize(0.8)
         if region != 'OneL2tauSR' or isBlinded == False :
-           hist_data.Draw("e x0 same")
+           if DataIgnored == False : hist_data.Draw("e x0 same")
         hist_signal.SetLineColor(kRed)
         hist_signal.SetLineStyle(kDashed)
         if hist_signal.Integral(0, hist_signal.GetNbinsX()+1) != 0:
@@ -170,7 +174,7 @@ def drawDataMC(region):
         h_ratio_err.SetFillColor(17)
         h_ratio_err.Draw("e2")
         if region != 'OneL2tauSR' or isBlinded == False :
-           h_ratio.Draw("E0 P X0 SAME")
+           if DataIgnored == False : h_ratio.Draw("E0 P X0 SAME")
            for iBin in upArrowBins :
              binCenter = h_ratio.GetBinCenter(iBin)
              a = TArrow(binCenter,1.7,binCenter,1.95,0.01,"|>")

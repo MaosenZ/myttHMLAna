@@ -1,6 +1,7 @@
 #Plan to submit jobs and run over samples in parallel, now it takes 6~8 hours to run all the samples in sequence.
 #It can run in RootCore or just plain root env
 source setup.sh
+(At lxplus, you need 'lsetup root')
 #add your selections in Root/applySelections.cxx and util/makehists.cfg (regions)
 #compile
 make
