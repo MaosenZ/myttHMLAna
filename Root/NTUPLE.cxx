@@ -11,7 +11,7 @@
 #include "commonSelections.cxx"
 #include "commonWeight.cxx"
 #include "applySelections.cxx"
-#include "topMassReco.cxx"
+#include "makeVariables.cxx"
 
 void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree){
 
@@ -31,8 +31,9 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
        //define some variables here:
          //top mass
        float top1_mass(0), top2_mass(0);
-       topMassReco(top1_mass, top2_mass);
-
+       //topMassReco(top1_mass, top2_mass);
+       float mT_lepmet(0), m_blepmin(0), dphi_ltaumet(0), wmass2(0), wmass1(0), pt_lepminustau(-100);
+       makeVariables(top1_mass, top2_mass, mT_lepmet, m_blepmin, dphi_ltaumet, wmass1, wmass2, pt_lepminustau);
        //further selections
        string mySelection, regionname,name, var, vartype;
        size_t pos=0;
@@ -145,6 +146,11 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
                      TH1Fs[name]->Fill( tau_tagWeightBin_1, wt);
                      output_branches[var].i=tau_tagWeightBin_1;
                   }
+                  if(var=="MET_RefFinal_et") {
+                     TH1Fs[name]->Fill(MET_RefFinal_et/GeV, wt);
+                     output_branches[var].f=MET_RefFinal_et/GeV;
+                  }
+                  //personal variables start from here
                   if(var=="maxeta") {
                      TH1Fs[name]->Fill( fabs(tau_eta_0)>fabs(tau_eta_1)?fabs(tau_eta_0):fabs(tau_eta_1), wt);
                      output_branches[var].f=fabs(tau_eta_0)>fabs(tau_eta_1)?fabs(tau_eta_0):fabs(tau_eta_1);
@@ -156,6 +162,30 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
                   if(var=="top2_mass"){
                      TH1Fs[name]->Fill(top2_mass/GeV, wt);
                      output_branches[var].f=top2_mass/GeV;
+                  }
+                  if(var=="mT_lepmet"){
+                     TH1Fs[name]->Fill(mT_lepmet/GeV, wt);
+                     output_branches[var].f=mT_lepmet/GeV;
+                  }
+                  if(var=="m_blepmin"){
+                     TH1Fs[name]->Fill(m_blepmin/GeV, wt);
+                     output_branches[var].f=m_blepmin/GeV;
+                  }
+                  if(var=="wmass1"){
+                     TH1Fs[name]->Fill(wmass1/GeV, wt);
+                     output_branches[var].f=wmass1/GeV;
+                  }
+                  if(var=="wmass2"){
+                     TH1Fs[name]->Fill(wmass2/GeV, wt);
+                     output_branches[var].f=wmass2/GeV;
+                  }
+                  if(var=="pt_lepminustau"){
+                     TH1Fs[name]->Fill(pt_lepminustau/GeV, wt);
+                     output_branches[var].f=pt_lepminustau/GeV;
+                  }
+                  if(var=="dphi_ltaumet"){
+                     TH1Fs[name]->Fill(dphi_ltaumet, wt);
+                     output_branches[var].f=dphi_ltaumet;
                   }
               }//end of loop hists map
            }//end of basic selections
@@ -203,8 +233,6 @@ void NTUPLE::cutFlow(){
        //jets
        if( !(nJets_OR_T>=4 && nJets_OR_T_MV2c10_70>=2) ) continue;
        //top mass
-       float top_mass1(0), top_mass2(0);
-       topMassReco(top_mass1, top_mass2);
 
   }
   cout<<" Events "<<setw(20)<<" Events (weighted)"<<endl;

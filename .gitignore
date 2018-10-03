@@ -7,3 +7,6 @@
 *.d
 *.pcm
 *.pyc
+
+#for batch
+sub*.sh

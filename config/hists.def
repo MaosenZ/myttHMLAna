@@ -28,3 +28,10 @@ tau_tagWeightBin_1 5 0 5 I
 maxeta 10 0 2.5 F
 top1_mass 20 0 500 F
 top2_mass 20 0 500 F
+MET_RefFinal_et 20 0 200 F
+mT_lepmet 20 0 200 F
+m_blepmin 20 0 200 F
+dphi_ltaumet 10 0 5 F
+wmass1 20 0 200 F
+wmass2 20 0 200 F
+pt_lepminustau 20 -100 100 F
