@@ -13,9 +13,10 @@ from ROOT import gROOT, gStyle
 import os, math, array
 from math import sqrt, isnan, fabs
 from array import array
-from mytools import getRegionsVars, createCanvasPads, createLabels, SetAtlasStyle 
+from mytools import getRegionsVars, createCanvasPads, createLabels, SetAtlasStyle, calentries
 from commonPlotting import *
 
+#if set true, data won't be plotted
 DataIgnored=True
 processes={'ttbar':"ttbar",\
            'ttbargamma':"ttbargamma",\
@@ -26,9 +27,10 @@ processes={'ttbar':"ttbar",\
            'rare':"rare"}
 
 isBlinded=True
-regions, variables=getRegionsVars("ttbar")
-regions=("ttbarCR", "OneL2tauSR","OneL1tau2b", "OneL1tau1b") 
-#regions=("OneL2tauSS", )
+regions, variables=getRegionsVars("tth")
+#regions=("ttbarCR", "OneL2tauSR","OneL1tau2b", "OneL1tau1b") 
+regions=("OneL1tau2b6j", "OneL1tau1b6j", "OneL1tau2b", "OneL1tau1b") 
+#regions=("OneL1tau2b6jHiggsLTau", )
 #variables=("mtautau_1l2tau_F",)
 
 SetAtlasStyle()
@@ -116,6 +118,7 @@ def drawDataMC(region):
         hist_signal=hists[region+"_"+variable+"_tth"]
 
         h_bkg, h_ratio, h_ratio_err, upArrowBins= makeRatio(hist_data, mchists, hs)
+        print calentries(hist_signal), calentries(h_bkg)
         c, pad1, pad2=createCanvasPads()
         XTitle, YTitle=(titles[variable[0:len(variable)-2]])[0], (titles[variable[0:len(variable)-2]])[1]
         #stack plot

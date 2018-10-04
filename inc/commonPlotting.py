@@ -43,10 +43,14 @@ titles={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Events'), \
         'MET_RefFinal_et':("MET [GeV]", "Events"),\
         'mT_lepmet':("mT(lep,met) [GeV]", "Events"),\
         'm_blepmin':("minM(bjet,lep) [GeV]", "Events"),\
-        'dphi_ltaumet':("#Delta#Phi(lep#tau_{had},met)"),\
+        'dphi_ltaumet':("#Delta#Phi(lep#tau_{had},met)", "Events"),\
         'wmass1':("W1 mass [GeV]","Events"),\
         'wmass2':("W2 mass [GeV]","Events"),\
-        'pt_lepminustau':("pT(lep)-pT(tau) [GeV]", "Events")
+        'pt_lepminustau':("pT(lep)-pT(tau) [GeV]", "Events"),\
+        'm_ltau':("M(lep,#tau_{had}) [GeV]", "Events"),\
+        'm_ltaumet':("M(lep,#tau_{had},met) [GeV]", "Events"),\
+        'pt_sum_all':("pT_sum_all [GeV]","Events"),\
+        'pt_sum_nonbjets':("pt_sum_nonbjets [GeV]","Events")
          }
 titles_norm={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Normalized'), \
         'tau_pt_0':('p^{T}_{#tau_{1}} [GeV]', 'Normalized'), \
@@ -76,12 +80,16 @@ titles_norm={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Normalized'), \
         'tau_tagWeightBin_0':("tau_tagWeightBin_0","Normalized"),\
         'tau_tagWeightBin_1':("tau_tagWeightBin_1","Normalized"),\
         'top1_mass':("Top1 Mass [GeV]", "Normalized"),\
-        'top2_mass':("Top2 Mass [GeV]", "Normalized")
+        'top2_mass':("Top2 Mass [GeV]", "Normalized"),\
         'MET_RefFinal_et':("MET [GeV]", "Normalized"),\
         'mT_lepmet':("mT(lep,met) [GeV]", "Normalized"),\
         'm_blepmin':("minM(bjet,lep) [GeV]", "Normalized"),\
-        'dphi_ltaumet':("#Delta#Phi(lep#tau_{had},met)"),\
+        'dphi_ltaumet':("#Delta#Phi(lep#tau_{had},met)", "Normalized"),\
         'wmass1':("W1 mass [GeV]","Normalized"),\
         'wmass2':("W2 mass [GeV]","Normalized"),\
-        'pt_lepminustau':("pT(lep)-pT(tau) [GeV]", "Normalized")
+        'pt_lepminustau':("pT(lep)-pT(tau) [GeV]", "Normalized"),\
+        'm_ltau':("M(lep,#tau_{had}) [GeV]", "Normalized"),\
+        'm_ltaumet':("M(lep,#tau_{had},met) [GeV]", "Normalized"),\
+        'pt_sum_all':("pT_sum_all [GeV]","Normalized"),\
+        'pt_sum_nonbjets':("pt_sum_nonbjets [GeV]","Normalized")
          }
