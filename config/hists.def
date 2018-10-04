@@ -7,7 +7,7 @@ Mybdt 10 -1 1 D
 Mybdtx 3 -1 0 0.6 1 D
 nJets_OR_T 8 0 8 I
 nJets_OR_T_MV2c10_70 5 0 5 I
-HT_jets 16 0 800 F
+HT_jets 20 0 1000 F
 jjdrmin_1l2tau 10 0 4 F
 mtautau_1l2tau 25 0 250 F
 tau_pt_0 6 0 150 F
@@ -35,3 +35,7 @@ dphi_ltaumet 10 0 5 F
 wmass1 20 0 200 F
 wmass2 20 0 200 F
 pt_lepminustau 20 -100 100 F
+m_ltau 20 0 200 F
+m_ltaumet 20 0 200 F
+pt_sum_all 20 0 1000 F
+pt_sum_nonbjets 20 0 1000 F

@@ -2765,7 +2765,9 @@ public :
    virtual bool     commonSelections();
    virtual double   commonWeight();
    virtual bool     applySelections(string selection);
-   virtual void     makeVariables(float &top_mass1, float &top_mass2, float & mT_lepmet, float &m_blepmin, float &dphi_ltaumet, float &wmass1,float &wmass2, float &pt_lepminustau);
+   virtual void     makeVariables(float &top_mass1, float &top_mass2, float & mT_lepmet, float &m_blepmin, 
+                    float &dphi_ltaumet, float &wmass1,float &wmass2, float &pt_lepminustau, float &m_ltau, 
+                    float &m_ltaumet, float &pt_sum_all, float &pt_sum_nonbjets);
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
 };

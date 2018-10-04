@@ -5,7 +5,9 @@
  Oct 2, 2018
  */
 
-void NTUPLE::makeVariables(float &top_mass1, float &top_mass2, float & mT_lepmet, float &m_blepmin, float &dphi_ltaumet, float &wmass1,float &wmass2, float &pt_lepminustau){
+void NTUPLE::makeVariables(float &top_mass1, float &top_mass2, float & mT_lepmet, float &m_blepmin, 
+          float &dphi_ltaumet, float &wmass1,float &wmass2, float &pt_lepminustau, float &m_ltau, 
+          float &m_ltaumet, float &pt_sum_all, float &pt_sum_nonbjets){
        //inits, just in case they won't be filled
        top_mass1=0;
        top_mass2=0;
@@ -15,6 +17,8 @@ void NTUPLE::makeVariables(float &top_mass1, float &top_mass2, float & mT_lepmet
        wmass1=0;
        wmass2=0;
        pt_lepminustau=-100;
+       m_ltau=0;
+       m_ltaumet=0;
        //define vectors here
        vector <TLorentzVector> jet_vecs; //store all jets
        vector <TLorentzVector> bjet_vecs; //b jets
@@ -82,7 +86,7 @@ void NTUPLE::makeVariables(float &top_mass1, float &top_mass2, float & mT_lepmet
                      W2mass_vecs.push_back(tmpW2_vec.M());
                  }//end of j loop
              }//end of i loop 
-             //sort W vectors, mass small-->big
+             //sort W mass vectors, mass small-->big
              float tmpW1mass, tmpW2mass;
              for(unsigned int i=0; i<W1mass_vecs.size()-1; i++) {
                  for(unsigned int j=0; j<W1mass_vecs.size()-1-i; j++){
@@ -97,6 +101,16 @@ void NTUPLE::makeVariables(float &top_mass1, float &top_mass2, float & mT_lepmet
           }//end of >2 non-btagged jets
           //$$$$$$$----------lepton pt minus tau pt: pt_lepminustau--------------$$$$$$$$$$
           pt_lepminustau=lep_Pt_0-tau_pt_0;
+          //$$$$$$$----------invariant mass of lepton, met and tauhad: m_ltau, m_ltaumet-------$$$$$$$$$
+          m_ltau=(lep_vec + tau_vec).M();
+          m_ltaumet=(lep_vec + tau_vec + met_vec).M();
+          //$$$$$$$----------Scalar sum of objects: pt_sum_all, pt_sum_nonbjets----------$$$$$$$$
+          float jet_pt_sum(0);
+          for(unsigned int i=0; i<jet_vecs.size(); i++){
+              jet_pt_sum +=(jet_vecs[i]).Pt();
+          }
+          pt_sum_all=tau_vec.Pt()+lep_vec.Pt()+jet_pt_sum+met_vec.Pt();
+          for(unsigned int i=0;i<nonbjet_vecs.size();i++) pt_sum_nonbjets += (nonbjet_vecs[i]).Pt();
        }//end of #jet selection 
      
 }

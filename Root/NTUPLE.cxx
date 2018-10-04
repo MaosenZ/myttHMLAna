@@ -32,8 +32,10 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
          //top mass
        float top1_mass(0), top2_mass(0);
        //topMassReco(top1_mass, top2_mass);
-       float mT_lepmet(0), m_blepmin(0), dphi_ltaumet(0), wmass2(0), wmass1(0), pt_lepminustau(-100);
-       makeVariables(top1_mass, top2_mass, mT_lepmet, m_blepmin, dphi_ltaumet, wmass1, wmass2, pt_lepminustau);
+       float mT_lepmet(0), m_blepmin(0), dphi_ltaumet(0), wmass2(0), wmass1(0), pt_lepminustau(-100),
+             m_ltau(0), m_ltaumet(0), pt_sum_all(0), pt_sum_nonbjets(0);
+       makeVariables(top1_mass, top2_mass, mT_lepmet, m_blepmin, dphi_ltaumet, wmass1, wmass2, pt_lepminustau, 
+                     m_ltau, m_ltaumet, pt_sum_all, pt_sum_nonbjets);
        //further selections
        string mySelection, regionname,name, var, vartype;
        size_t pos=0;
@@ -186,6 +188,22 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
                   if(var=="dphi_ltaumet"){
                      TH1Fs[name]->Fill(dphi_ltaumet, wt);
                      output_branches[var].f=dphi_ltaumet;
+                  }
+                  if(var=="m_ltau"){
+                     TH1Fs[name]->Fill(m_ltau/GeV, wt);
+                     output_branches[var].f=m_ltau/GeV;
+                  }
+                  if(var=="m_ltaumet"){
+                     TH1Fs[name]->Fill(m_ltaumet/GeV, wt);
+                     output_branches[var].f=m_ltaumet/GeV;
+                  }
+                  if(var=="pt_sum_all"){
+                     TH1Fs[name]->Fill(pt_sum_all/GeV, wt);
+                     output_branches[var].f=pt_sum_all/GeV;
+                  }
+                  if(var=="pt_sum_nonbjets"){
+                     TH1Fs[name]->Fill(pt_sum_nonbjets/GeV, wt);
+                     output_branches[var].f=pt_sum_nonbjets/GeV;
                   }
               }//end of loop hists map
            }//end of basic selections
