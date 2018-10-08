@@ -27,7 +27,7 @@ namespace Declarations{
    std::string         prefix("/global/homes/m/mszhou/work/ttHML/myttHMLAna/doc/"); //define prefix for input sample list
    //std::string         prepath("/eos/atlas/atlascerngroupdisk/phys-higgs/HSG8/multilepton_Run2_Summer18/GN2/v6_04/");
    //std::string         prepath("/global/projecta/projectdirs/atlas/weiming/testareaSL5/AxAODsData/tthAnaTop/Hist/25ns_R21SkimV6/");
-   std::string         prepath("/global/homes/m/mszhou/work/ttHML/GN1Samps/");
+   std::string         prepath("/global/homes/m/mszhou/work/ttHML/GN1Samps/dilep/");
    std::string	       outpath("/eos/atlas/user/m/mzhou/ttHMLSamps/v7_01/"); //skimed samples go here
    TString             m_treeName("nominal");
 
