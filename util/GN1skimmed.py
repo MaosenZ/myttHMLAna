@@ -29,7 +29,7 @@ processes={'ttbar':"ttbar",\
 isBlinded=True
 regions, variables=getRegionsVars("tth")
 #regions=("ttbarCR", "OneL2tauSR","OneL1tau2b", "OneL1tau1b") 
-regions=("OneL1tau2b6j", "OneL1tau1b6j", "OneL1tau2b", "OneL1tau1b") 
+regions=("SS1Lep1Tau5j1b", "SS1Lep1Tau5j2b", "SS1Lep1Tau6j1b", "SS1Lep1Tau6j2b") 
 #regions=("OneL1tau2b6jHiggsLTau", )
 #variables=("mtautau_1l2tau_F",)
 
