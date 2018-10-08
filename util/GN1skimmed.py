@@ -29,8 +29,8 @@ processes={'ttbar':"ttbar",\
 isBlinded=True
 regions, variables=getRegionsVars("tth")
 #regions=("ttbarCR", "OneL2tauSR","OneL1tau2b", "OneL1tau1b") 
-regions=("OneL1tau2b6j", "OneL1tau1b6j", "OneL1tau2b", "OneL1tau1b") 
-#regions=("OneL1tau2b6jHiggsLTau", )
+#regions=("OneL1tau2b6j", "OneL1tau1b6j", "OneL1tau2b", "OneL1tau1b") 
+regions=("TwoL2tau", )
 #variables=("mtautau_1l2tau_F",)
 
 SetAtlasStyle()
