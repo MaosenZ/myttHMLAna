@@ -287,6 +287,18 @@ bool NTUPLE::applySelections(string selection){
      passed=true;
   }
 
+  if(selection=="TwoL2tauLooseMedium"){
+     if(dilep_type>0 && (lep_ID_0*lep_ID_1<0) &&
+        (abs(lep_ID_0)==13 || (abs(lep_ID_0)==11&&lep_isTightLH_0)) &&
+        (abs(lep_ID_1)==13 || (abs(lep_ID_1)==11&&lep_isTightLH_1)) &&
+        lep_isolationFixedCutLoose_0 && lep_isolationFixedCutLoose_1 &&
+        nTaus_OR_Pt25==2 && tau_JetBDTSigMedium_0 && tau_JetBDTSigMedium_1 &&
+        nJets_OR_T_MV2c10_70>=1 && tau_charge_0*tau_charge_1<0 &&
+        (lep_isTrigMatch_0 || lep_isTrigMatch_1||matchDLTll01) &&
+        tau_passMuonOLR_0==1 && tau_passEleBDT_0==1 && tau_tagWeightBin_0 <4 &&
+        tau_passMuonOLR_1==1 && tau_passEleBDT_1==1 && tau_tagWeightBin_1 <4)
+     passed=true;   
+  }
   return passed;
 }
 #endif
