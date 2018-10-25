@@ -14,6 +14,8 @@ processes={'data':"data",\
 titles={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Events'), \
         'tau_pt_0':('p^{T}_{#tau_{1}} [GeV]', 'Events'), \
         'tau_pt_1':('p^{T}_{#tau_{2}} [GeV]', 'Events'), \
+        'lep_Pt_0':('p^{T}_{#lep_{1}} [GeV]', 'Events'), \
+        'lep_Pt_1':('p^{T}_{#lep_{2}} [GeV]', 'Events'), \
         'MVA1l2tau_weight':('BDT score', 'Events'), \
         'Mybdt':('BDT score', 'Events'), \
         'Mybdtx':('BDT score', 'Events'), \
@@ -50,11 +52,14 @@ titles={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Events'), \
         'm_ltau':("M(lep,#tau_{had}) [GeV]", "Events"),\
         'm_ltaumet':("M(lep,#tau_{had},met) [GeV]", "Events"),\
         'pt_sum_all':("pT_sum_all [GeV]","Events"),\
-        'pt_sum_nonbjets':("pt_sum_nonbjets [GeV]","Events")
+        'pt_sum_nonbjets':("pt_sum_nonbjets [GeV]","Events"),\
+        'Mll01':("Mll01 [GeV]", "Events")
          }
 titles_norm={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Normalized'), \
         'tau_pt_0':('p^{T}_{#tau_{1}} [GeV]', 'Normalized'), \
         'tau_pt_1':('p^{T}_{#tau_{2}} [GeV]', 'Normalized'), \
+        'lep_Pt_0':('p^{T}_{#lep_{1}} [GeV]', 'Normalized'), \
+        'lep_Pt_1':('p^{T}_{#lep_{2}} [GeV]', 'Normalized'), \
         'MVA1l2tau_weight':('BDT score', 'Normalized'), \
         'Mybdt':('BDT score', 'Normalized'), \
         'Mybdtx':('BDT score', 'Normalized'), \
@@ -91,5 +96,6 @@ titles_norm={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Normalized'), \
         'm_ltau':("M(lep,#tau_{had}) [GeV]", "Normalized"),\
         'm_ltaumet':("M(lep,#tau_{had},met) [GeV]", "Normalized"),\
         'pt_sum_all':("pT_sum_all [GeV]","Normalized"),\
-        'pt_sum_nonbjets':("pt_sum_nonbjets [GeV]","Normalized")
+        'pt_sum_nonbjets':("pt_sum_nonbjets [GeV]","Normalized"),\
+        'Mll01':("Mll01 [GeV]", "Normalized")
          }

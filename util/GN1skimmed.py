@@ -30,7 +30,7 @@ isBlinded=True
 regions, variables=getRegionsVars("tth")
 #regions=("ttbarCR", "OneL2tauSR","OneL1tau2b", "OneL1tau1b") 
 #regions=("OneL1tau2b6j", "OneL1tau1b6j", "OneL1tau2b", "OneL1tau1b") 
-regions=("TwoL2tau","TwoL2tauLooseMedium","TwoL2tauLooseMedium2b", )
+regions=("TwoL2tau","TwoL2tauLooseMedium","TwoL2tauLooseMedium2b", "TwoL2tauLooseTight2j1b",)
 #variables=("mtautau_1l2tau_F",)
 
 SetAtlasStyle()
@@ -49,6 +49,8 @@ def allHists():
     for variable in variables:
       for i in processes:
           all_hists[region+"_"+variable+"_"+i]=addHists(region, variable, processes[i])
+          if processes[i]=="ttV": 
+             print "ttV:",  calentries(all_hists[region+"_"+variable+"_"+i])
     return all_hists
 
 def makeStack(mchists):
