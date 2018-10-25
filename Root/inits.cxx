@@ -5,7 +5,7 @@
 #include <fstream>
 #include "TH1F.h"
 
-void initHists(std::map<string, TH1F* > & TH1Fs, std::vector<string> regions,  const char * histspath){
+void initHists(std::map<string, std::unique_ptr<TH1F> > & TH1Fs, std::vector<string> regions,  const char * histspath){
 
    //read in defined hists
    std::ifstream inhists(histspath, ifstream::in);
@@ -42,8 +42,10 @@ void initHists(std::map<string, TH1F* > & TH1Fs, std::vector<string> regions,  c
          //auto th1f=std::shared_ptr<TH1F>( new TH1F(var.c_str(),"",Nbins,Xmin,Xmax) );
          for(unsigned int i=0; i<regions.size();i++){
              name=regions[i]+"_"+var+"_"+vartype;
-             if (isVariedBins==true) TH1Fs[name]=new TH1F(name.c_str(),"", Nbins, bin_edges);
-             else TH1Fs[name]=new TH1F(name.c_str(),"",Nbins,Xmin,Xmax);
+             //if (isVariedBins==true) TH1Fs[name]=new TH1F(name.c_str(),"", Nbins, bin_edges);
+             //else TH1Fs[name]=new TH1F(name.c_str(),"",Nbins,Xmin,Xmax);
+             if (isVariedBins==true) TH1Fs[name]=std::make_unique<TH1F> (name.c_str(),"", Nbins, bin_edges);
+             else TH1Fs[name]=std::make_unique<TH1F> (name.c_str(),"",Nbins,Xmin,Xmax);
              //TH1Fs[var]=std::make_shared<TH1F>();
              TH1Fs[name]->Sumw2();
          }

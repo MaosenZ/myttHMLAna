@@ -2,11 +2,11 @@
 
 void ApplyBDT(){
   //string samps[]={"tth","diboson","rare","ttV"};
-  //string samps[]={"data","ttbar","Vjets","ttbargamma"};
+  string samps[]={"data","ttbar","Vjets","ttbargamma"};
   //string samps[]={"ttZ","tth_Gen","tth_af2","tth_aMChwg","tth_semiaf2"};
-  string samps[]={"tth_notaubveto","ttbar_notaubveto"};
+  //string samps[]={"tth_notaubveto","ttbar_notaubveto"};
 
-  for(unsigned int i=0;i<2;i++){
+  for(unsigned int i=0;i<1;i++){
       std::cout<<samps[i]<<std::endl;
       string samp=samps[i];
       string treenames[]={"nominal"};
@@ -97,7 +97,8 @@ void ApplyBDT(){
      
       //for (int index=0; index<84;index++){
       for (int index=0; index<1;index++){
-           NTUPLE *ntuple=new NTUPLE(samp, treenames[index]);
+           //NTUPLE *ntuple=new NTUPLE(samp, treenames[index]);
+           NTUPLE *ntuple=new NTUPLE(samp);
            std::cout<<" samp:   "<<samp<<"   Tree:  "<<treenames[index]<<std::endl; 
            ntuple->applyBDT();
     	   delete ntuple;

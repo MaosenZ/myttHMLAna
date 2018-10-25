@@ -128,6 +128,8 @@ public :
    Double_t        JVT_EventWeight;
    Double_t        pileupEventWeight_UP;
    Double_t        pileupEventWeight_DOWN;
+   Double_t        Mybdt;
+   Double_t        Mybdtx;
    Float_t         bTagSF_weight_MV2c10_Continuous_B0_up;
    Float_t         bTagSF_weight_MV2c10_Continuous_B0_down;
    Float_t         bTagSF_weight_MV2c10_Continuous_B1_up;
@@ -2759,9 +2761,10 @@ public :
    virtual Int_t    GetEntry(Long64_t entry);
    virtual Long64_t LoadTree(Long64_t entry);
    virtual void     Init(TTree *tree);
-   virtual void     fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree);
+   //virtual void     fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree);
+   virtual void     fillHistsMiniTree(std::map<string, std::unique_ptr<TH1F> > & TH1Fs, TTree *minitree);
    virtual void     cutFlow();
-   //virtual void     applyBDT();
+   virtual void     applyBDT();
    virtual bool     commonSelections();
    virtual double   commonWeight();
    virtual bool     applySelections(string selection);
@@ -2787,7 +2790,7 @@ NTUPLE::NTUPLE(string inputSample) : fChain(0)
    m_treeName=treename;
    TTree *chain=(TTree*)inputfile->Get(m_treeName);*/
    //m_treeName=treename;
-   string inputlist=prefix+inputSample+".list";
+   string inputlist=prefix+inputSample+".mylist";
    ifstream inputfile(inputlist.c_str(), ifstream::in);
    string line;
    while (getline(inputfile, line)){
@@ -3226,6 +3229,8 @@ void NTUPLE::Init(TTree *tree)
    fChain->SetBranchAddress("JVT_EventWeight", &JVT_EventWeight, &b_JVT_EventWeight);
    fChain->SetBranchAddress("pileupEventWeight_UP", &pileupEventWeight_UP, &b_pileupEventWeight_UP);
    fChain->SetBranchAddress("pileupEventWeight_DOWN", &pileupEventWeight_DOWN, &b_pileupEventWeight_DOWN);
+   fChain->SetBranchAddress("Mybdt",&Mybdt);
+   fChain->SetBranchAddress("Mybdtx",&Mybdtx);
    fChain->SetBranchAddress("bTagSF_weight_MV2c10_Continuous_B0_up", &bTagSF_weight_MV2c10_Continuous_B0_up, &b_bTagSF_weight_MV2c10_Continuous_B0_up);
    fChain->SetBranchAddress("bTagSF_weight_MV2c10_Continuous_B0_down", &bTagSF_weight_MV2c10_Continuous_B0_down, &b_bTagSF_weight_MV2c10_Continuous_B0_down);
    fChain->SetBranchAddress("bTagSF_weight_MV2c10_Continuous_B1_up", &bTagSF_weight_MV2c10_Continuous_B1_up, &b_bTagSF_weight_MV2c10_Continuous_B1_up);

@@ -16,7 +16,7 @@ int main(int argc, char** argv){
       cout<<"$$$$$$$$$$-------------------$$$$$$$$$$$$$$$"<<endl;
       NTUPLE *ntuple=new NTUPLE(m_Samples[i]);
 
-      map<string, TH1F*> TH1Fs;
+      map<string, std::unique_ptr<TH1F> > TH1Fs;//unique to avoid ROOT 'Replacing existing...warnings..'
       initHists(TH1Fs, m_Regions, histtxt);
      
       TTree *minitree=new TTree("minitree","minitree");
@@ -27,7 +27,7 @@ int main(int argc, char** argv){
       TString outputname("hists/"); outputname += m_Samples[i]+".root";
       TFile *output=new TFile(outputname,"recreate");
 
-      for(map<string, TH1F*>::iterator it=TH1Fs.begin(); it!=TH1Fs.end(); it++){
+      for(map<string, std::unique_ptr<TH1F> >::iterator it=TH1Fs.begin(); it!=TH1Fs.end(); it++){
           string var=it->first;
           TH1Fs[var]->Write();
       }

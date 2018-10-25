@@ -13,7 +13,8 @@
 #include "applySelections.cxx"
 #include "makeVariables.cxx"
 
-void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree){
+//void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree){
+void NTUPLE::fillHistsMiniTree(std::map<string, std::unique_ptr<TH1F> > & TH1Fs, TTree *minitree){
 
    Long64_t nentries = fChain->GetEntries();
    unsigned int numRegions=m_Regions.size();
@@ -48,7 +49,8 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
       
               output_branches[mySelection].i=1;
       
-              for(std::map<string, TH1F*>::iterator it=TH1Fs.begin();it!=TH1Fs.end();it++){ 
+              //for(std::map<string, TH1F*>::iterator it=TH1Fs.begin();it!=TH1Fs.end();it++){ 
+              for(std::map<string, std::unique_ptr<TH1F> >::iterator it=TH1Fs.begin();it!=TH1Fs.end();it++){ 
        
                   name=it->first;
                   pos=name.find("_");
@@ -63,7 +65,7 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
                   /*if(var=="MVA1l2tau_weight") {
                      TH1Fs[name]->Fill( MVA1l2tau_weight, wt);
                      output_branches[var].f=MVA1l2tau_weight;
-                  }
+                  }*/
                   if(var=="Mybdt") {
                      TH1Fs[name]->Fill( Mybdt, wt);
                      output_branches[var].d=Mybdt;
@@ -71,7 +73,7 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
                   if(var=="Mybdtx") {
                      TH1Fs[name]->Fill( Mybdtx, wt);
                      output_branches[var].d=Mybdtx;
-                  }*/
+                  }
                   if(var=="HT_jets") {
                      TH1Fs[name]->Fill( HT_jets/GeV, wt);
                      output_branches[var].f=HT_jets/GeV;
@@ -99,6 +101,14 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
                   if(var=="tau_pt_1") {
                      TH1Fs[name]->Fill( tau_pt_1/GeV, wt);
                      output_branches[var].f=tau_pt_1/GeV;
+                  }
+                  if(var=="lep_Pt_0"){
+                     TH1Fs[name]->Fill( lep_Pt_0/GeV, wt);
+                     output_branches[var].f=lep_Pt_0/GeV;
+                  }
+                  if(var=="lep_Pt_1") {
+                     TH1Fs[name]->Fill( lep_Pt_1/GeV, wt);
+                     output_branches[var].f=lep_Pt_1/GeV;
                   }
                   /*if(var=="njets_1l2tau") {
                      TH1Fs[name]->Fill( njets_1l2tau, wt);
@@ -151,6 +161,10 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
                   if(var=="MET_RefFinal_et") {
                      TH1Fs[name]->Fill(MET_RefFinal_et/GeV, wt);
                      output_branches[var].f=MET_RefFinal_et/GeV;
+                  }
+                  if(var=="Mll01"){
+                     TH1Fs[name]->Fill(Mll01/GeV, wt);
+                     output_branches[var].f=Mll01/GeV;
                   }
                   //personal variables start from here
                   if(var=="maxeta") {
@@ -207,7 +221,7 @@ void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree
                   }
               }//end of loop hists map
            }//end of basic selections
-       }
+       }//end of fill Regions
        minitree->Fill();
    }//end of event loop
 }
@@ -263,16 +277,16 @@ void NTUPLE::cutFlow(){
   cout<<numTightL<<setw(20)<<numwtTightL<<endl; 
 }
 
-/*void NTUPLE::applyBDT(){
+void NTUPLE::applyBDT(){
 
   TString BDT_tth1l2tau = "doc/TMVAClassification_BDTG.weights8varbtagtaupt25Triglept27tauTTbvetoWTfix_R21.xml";
   TString BDT_tth1l2tauEven ="doc/TMVAClassification_BDTG.weights8varbtagtaupt25Triglept27tauTTbvetoWTfixTrainEven_R21.xml";
   TString BDT_tth1l2tauOdd ="doc/TMVAClassification_BDTG.weights8varbtagtaupt25Triglept27tauTTbvetoWTfixTrainOdd_R21.xml";
   std::cout<<" which BDT ? "<<BDT_tth1l2tau<<std::endl;
   initialiseTMVA_tth1l2tau(BDT_tth1l2tau, BDT_tth1l2tauEven,BDT_tth1l2tauOdd);
-  TString path="/Users/mason/Desktop/myWork/ttHMLSamps/v7_01/all/";
+  TString path="/global/homes/m/mszhou/work/ttHML/GN1Samps/dilep_looseleps/";
   path += mySample+"_bdtx.root";
-  TFile *outfile=new TFile(path,"update");
+  TFile *outfile=new TFile(path,"recreate");
   TTree *outtree=new TTree(m_treeName,"");
   fChain->LoadTree(0);
   //outtree = fChain->GetTree()->CloneTree(0);
@@ -289,16 +303,36 @@ void NTUPLE::cutFlow(){
 
       fChain->GetEntry(jentry);
       //std::cout<<" I am here event "<<jentry<<"/"<<nentries<<" Event "<< EventNumber<<" Run "<<RunNumber<<std::endl;
-      tmva1l2tau_njets25 = input_branches["njets_1l2tau"].f;
-      tmva1l2tau_nbjets25 = input_branches["nbjets_1l2tau"].f;
-      tmva1l2tau_htjets = input_branches["htjets_1l2tau"].f;
-      tmva1l2tau_leadtaupt = input_branches["tau_pt_0"].f/GeV;
-      tmva1l2tau_subtaupt = input_branches["tau_pt_1"].f/GeV;
-      tmva1l2tau_mtautau = input_branches["mtautau_1l2tau"].f/GeV;
-      tmva1l2tau_jjdr = input_branches["jjdrmin_1l2tau"].f;
-      tmva1l2tau_etamax = fabs(input_branches["tau_eta_0"].f)>fabs(input_branches["tau_eta_1"].f)? fabs(input_branches["tau_eta_0"].f): fabs(input_branches["tau_eta_1"].f);
-      tmva1l2tau_leadtaubtagbin = input_branches["tau_tagWeightBin_0"].i;
-      tmva1l2tau_subtaubtagbin = input_branches["tau_tagWeightBin_1"].i;
+      float jjdrmin(99.);
+      float sumjets(0.), mtautau_1l2tau(0.), htjets_1l2tau(0);
+      int njets_1l2tau = selected_jets_T->size()>7?7:selected_jets_T->size();
+      int nbjets(0);
+      for(int index = 0; index < njets_1l2tau; index++) {
+          int index_jet = selected_jets_T->at(index);
+          sumjets +=m_jet_pt->at(index_jet);
+          if(m_jet_flavor_weight_MV2c10->at(index_jet)>0.83) ++nbjets;
+          for(int index2 = index+1; index2 < njets_1l2tau; index2++) {
+              int index2_jet = selected_jets_T->at(index2);
+              float this_DR = sqrt(pow((m_jet_eta->at(index_jet) - m_jet_eta->at(index2_jet)), 2.0) + pow((acos(cos(m_jet_phi->at(index_jet) - m_jet_phi->at(index2_jet)))), 2.0));
+              if (this_DR < jjdrmin)jjdrmin = this_DR;
+          }
+      }
+      htjets_1l2tau=sumjets;
+      TLorentzVector p4tau[2];
+      p4tau[0].SetPtEtaPhiE(tau_pt_0,tau_eta_0, tau_phi_0,tau_E_0);
+      p4tau[1].SetPtEtaPhiE(tau_pt_1,tau_eta_1, tau_phi_1,tau_E_1);
+      mtautau_1l2tau = (p4tau[0]+p4tau[1]).M();
+      
+      tmva1l2tau_njets25 = njets_1l2tau;
+      tmva1l2tau_nbjets25 = nbjets;
+      tmva1l2tau_htjets = htjets_1l2tau/GeV;
+      tmva1l2tau_leadtaupt = tau_pt_0/GeV;
+      tmva1l2tau_subtaupt = tau_pt_1/GeV;
+      tmva1l2tau_mtautau = mtautau_1l2tau/GeV;
+      tmva1l2tau_jjdr = jjdrmin;
+      tmva1l2tau_etamax = fabs(tau_eta_0)>fabs(tau_eta_1)? fabs(tau_eta_0): fabs(tau_eta_1);
+      tmva1l2tau_leadtaubtagbin = tau_tagWeightBin_0;
+      tmva1l2tau_subtaubtagbin = tau_tagWeightBin_1;
       myBDT = reader_tth1l2tau->EvaluateMVA("BDT_tth1l2tau");
       myBDT =myBDT<1.0?myBDT:0.99;
       if(EventNumber%2==1){ // odd events
@@ -309,7 +343,7 @@ void NTUPLE::cutFlow(){
           myBDTx = reader_tth1l2tau->EvaluateMVA("BDT_tth1l2tauOdd");
           myBDTx =myBDTx<1.0?myBDTx:0.99;
       }
-      std::cout<<" njets_1l2tau: "<<tmva1l2tau_njets25<<std::endl;
+      /*std::cout<<" njets_1l2tau: "<<tmva1l2tau_njets25<<std::endl;
       std::cout<<" nbjets_1l2tau: "<<tmva1l2tau_nbjets25<<std::endl;
       std::cout<<" htjets_1l2tau: "<<tmva1l2tau_htjets<<std::endl;
       std::cout<<" tmva1l2tau_leadtaupt: "<<tmva1l2tau_leadtaupt<<std::endl;
@@ -317,9 +351,9 @@ void NTUPLE::cutFlow(){
       std::cout<<" tmva1l2tau_mtautau: "<<tmva1l2tau_mtautau<<std::endl;
       std::cout<<" tmva1l2tau_jjdr: "<<tmva1l2tau_jjdr<<std::endl;
       std::cout<<" tmva1l2tau_etamax: "<<tmva1l2tau_etamax<<std::endl;
-      std::cout<<" myBDTx: "<<myBDTx<<std::endl;
+      std::cout<<" myBDTx: "<<myBDTx<<std::endl;*/
       outtree->Fill();
   }
   outtree->Write();
   outfile->Close();
-}*/
+}
