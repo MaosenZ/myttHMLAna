@@ -53,7 +53,13 @@ titles={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Events'), \
         'm_ltaumet':("M(lep,#tau_{had},met) [GeV]", "Events"),\
         'pt_sum_all':("pT_sum_all [GeV]","Events"),\
         'pt_sum_nonbjets':("pt_sum_nonbjets [GeV]","Events"),\
-        'Mll01':("Mll01 [GeV]", "Events")
+        'Mll01':("Mll01 [GeV]", "Events"),\
+        'm_minlepb':("M(minLepB) [GeV]", "Events"),\
+        'm_tautau':("M(#tau#tau) [GeV]", "Events"),\
+        'dR_minlepb_tautau':("#DeltaR(minLepB,#tau#tau)", "Events"),\
+        'dR_ll':("#DeltaR(ll)", "Events"),\
+        'dR_ll_tautau':("#DeltaR(ll,#tau#tau)", "Events"),\
+        'pt_sum_bjets':("pT_sum_bjets", "Events"),\
          }
 titles_norm={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Normalized'), \
         'tau_pt_0':('p^{T}_{#tau_{1}} [GeV]', 'Normalized'), \
@@ -97,5 +103,11 @@ titles_norm={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Normalized'), \
         'm_ltaumet':("M(lep,#tau_{had},met) [GeV]", "Normalized"),\
         'pt_sum_all':("pT_sum_all [GeV]","Normalized"),\
         'pt_sum_nonbjets':("pt_sum_nonbjets [GeV]","Normalized"),\
-        'Mll01':("Mll01 [GeV]", "Normalized")
+        'Mll01':("Mll01 [GeV]", "Normalized"),\
+        'm_minlepb':("M(minLepB) [GeV]", "Normalized"),\
+        'm_tautau':("M(#tau#tau) [GeV]", "Normalized"),\
+        'dR_minlepb_tautau':("#DeltaR(minLepB,#tau#tau)", "Normalized"),\
+        'dR_ll':("#DeltaR(ll)", "Normalized"),\
+        'dR_ll_tautau':("#DeltaR(ll,#tau#tau)", "Normalized"),\
+        'pt_sum_bjets':("pT_sum_bjets", "Normalized"),\
          }
