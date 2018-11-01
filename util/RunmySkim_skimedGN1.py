@@ -36,7 +36,7 @@ def Skim(dsid, treename):
 
 for tree in trees:
     #for samp in samps:
-        filename = "/global/homes/m/mszhou/work/ttHML/myttHMLAna/doc/%s.list" % samp
+        filename = "/global/homes/m/mszhou/work/ttHML/myttHMLAna/doc/%s.list~" % samp
         with open(filename, "r") as myfile:
              dsids=myfile.read().splitlines()
              for dsid in dsids:

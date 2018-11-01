@@ -2771,6 +2771,8 @@ public :
    virtual void     makeVariables(float &top_mass1, float &top_mass2, float & mT_lepmet, float &m_blepmin, 
                     float &dphi_ltaumet, float &wmass1,float &wmass2, float &pt_lepminustau, float &m_ltau, 
                     float &m_ltaumet, float &pt_sum_all, float &pt_sum_nonbjets);
+   virtual void     make2l2tauVariables(float & m_minlepb, float & dR_minlepb_tautau, float & m_tautau,
+                    float & dRll, float & dR_ll_tautau, float & pt_sum_bjets);
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
 };
@@ -2790,7 +2792,7 @@ NTUPLE::NTUPLE(string inputSample) : fChain(0)
    m_treeName=treename;
    TTree *chain=(TTree*)inputfile->Get(m_treeName);*/
    //m_treeName=treename;
-   string inputlist=prefix+inputSample+".mylist";
+   string inputlist=prefix+inputSample+".list~";
    ifstream inputfile(inputlist.c_str(), ifstream::in);
    string line;
    while (getline(inputfile, line)){

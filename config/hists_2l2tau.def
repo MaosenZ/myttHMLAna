@@ -1,0 +1,25 @@
+#define hists here. The names should correspond to the existing variables in nutples
+#variable Nbins Xmin Xmax type
+#or variable Nbins bin_edges type (for varied bin width)
+#currently only support TH1F
+MVA1l2tau_weight 4 -1 1 F
+Mybdt 10 -1 1 D
+Mybdtx 10 -1 1 D
+nJets_OR_T 8 0 8 I
+nJets_OR_T_MV2c10_70 5 0 5 I
+HT_jets 20 0 1000 F
+pt_sum_bjets 20 0 1000 F
+tau_pt_0 6 0 150 F
+tau_pt_1 6 0 150 F
+lep_Pt_0 10 0 200 F
+lep_Pt_1 10 0 200 F
+tau_eta_0 10 0 2.5 F
+tau_eta_1 10 0 2.5 F
+maxeta 10 0 2.5 F
+MET_RefFinal_et 20 0 200 F
+Mll01 15 0 150 F
+m_minlepb 25 0 250 F 
+m_tautau 25 0 250 F 
+dR_minlepb_tautau 10 0 2.5 F 
+dR_ll_tautau 10 0 2.5 F 
+dR_ll 10 0 2.5 F 

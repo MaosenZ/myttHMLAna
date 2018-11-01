@@ -12,6 +12,7 @@
 #include "commonWeight.cxx"
 #include "applySelections.cxx"
 #include "makeVariables.cxx"
+#include "make2l2tauVariables.cxx"
 
 //void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree){
 void NTUPLE::fillHistsMiniTree(std::map<string, std::unique_ptr<TH1F> > & TH1Fs, TTree *minitree){
@@ -37,6 +38,8 @@ void NTUPLE::fillHistsMiniTree(std::map<string, std::unique_ptr<TH1F> > & TH1Fs,
              m_ltau(0), m_ltaumet(0), pt_sum_all(0), pt_sum_nonbjets(0);
        makeVariables(top1_mass, top2_mass, mT_lepmet, m_blepmin, dphi_ltaumet, wmass1, wmass2, pt_lepminustau, 
                      m_ltau, m_ltaumet, pt_sum_all, pt_sum_nonbjets);
+       float m_minlepb, dR_minlepb_tautau,  m_tautau, dR_ll, dR_ll_tautau, pt_sum_bjets;
+       make2l2tauVariables( m_minlepb,  dR_minlepb_tautau,  m_tautau, dR_ll,  dR_ll_tautau, pt_sum_bjets);
        //further selections
        string mySelection, regionname,name, var, vartype;
        size_t pos=0;
@@ -218,6 +221,31 @@ void NTUPLE::fillHistsMiniTree(std::map<string, std::unique_ptr<TH1F> > & TH1Fs,
                   if(var=="pt_sum_nonbjets"){
                      TH1Fs[name]->Fill(pt_sum_nonbjets/GeV, wt);
                      output_branches[var].f=pt_sum_nonbjets/GeV;
+                  }
+                   //2l2tau vars
+                  if(var=="m_minlepb"){
+                     TH1Fs[name]->Fill(m_minlepb/GeV, wt);
+                     output_branches[var].f=m_minlepb/GeV;
+                  }
+                  if(var=="m_tautau"){
+                     TH1Fs[name]->Fill(m_tautau/GeV, wt);
+                     output_branches[var].f=m_tautau/GeV;
+                  }
+                  if(var=="dR_minlepb_tautau"){
+                     TH1Fs[name]->Fill(dR_minlepb_tautau, wt);
+                     output_branches[var].f=dR_minlepb_tautau;
+                  }
+                  if(var=="dR_ll"){
+                     TH1Fs[name]->Fill(dR_ll, wt);
+                     output_branches[var].f=dR_ll;
+                  }
+                  if(var=="dR_ll_tautau"){
+                     TH1Fs[name]->Fill(dR_ll_tautau, wt);
+                     output_branches[var].f=dR_ll_tautau;
+                  }
+                  if(var=="pt_sum_bjets"){
+                     TH1Fs[name]->Fill(pt_sum_bjets/GeV, wt);
+                     output_branches[var].f=pt_sum_bjets/GeV;
                   }
               }//end of loop hists map
            }//end of basic selections
