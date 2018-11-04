@@ -67,6 +67,15 @@ Float_t tmvafcnc_ptq;
 Float_t tmvafcnc_wiso;
 Float_t tmvafcnc_lepiso;
 
+// mimic 2l2tau 
+TMVA::Reader *reader_tth2l2tau;
+Float_t tmva2l2tau_htbjets;
+Float_t tmva2l2tau_leadtaupt;
+Float_t tmva2l2tau_subtaupt;
+Float_t tmva2l2tau_mtautau;
+Float_t tmva2l2tau_drlbditau;
+Float_t tmva2l2tau_etamax;
+
 
 void initialiseTMVA_tthssltau( TString weights, TString myMethodList = "" )
 {
@@ -590,4 +599,54 @@ void initialiseTMVA_thqvsttV3l24j( TString weights, TString myMethodList = "" )
   //reader_thqvsttV3l24j->AddVariable( "Wiso>-1?Wiso:-1"   ,&tmvafcnc_wiso );                                               
   //reader_thqvsttV3l24j->AddVariable( "Lepiso>-1?Lepiso:-1"   ,&tmvafcnc_lepiso );                                         
   reader_thqvsttV3l24j->BookMVA("BDT_thqvsttV3l24j", weights);
+}
+
+
+void initialiseTMVA_tth2l2tau( TString weights="",TString myMethodList = "" )
+{
+#ifdef __CINT__
+  gROOT->ProcessLine( ".O0" ); // turn off optimization in CINT
+#endif
+
+  // This loads the library
+  TMVA::Tools::Instance();
+
+  // Default MVA methods to be trained + tested
+  std::map<std::string,int> Use;
+  std::cout << std::endl;
+  std::cout << "==> Start TMVAClassificationApplication for combinatorial background" << std::endl;
+
+  // Select methods (don't look at this code - not of interest)
+  if (myMethodList != "") {
+    for (std::map<std::string,int>::iterator it = Use.begin(); it != Use.end(); it++) it->second = 0;
+
+    std::vector<TString> mlist = gTools().SplitString( myMethodList, ',' );
+    for (UInt_t i=0; i<mlist.size(); i++) {
+      std::string regMethod(mlist[i]);
+
+      if (Use.find(regMethod) == Use.end()) {
+	std::cout << "Method \"" << regMethod
+                  << "\" not known in TMVA under this name. Choose among the following:" << std::endl;
+        for (std::map<std::string,int>::iterator it = Use.begin(); it != Use.end(); it++) {
+	  std::cout << it->first << " ";
+        }
+	std::cout << std::endl;
+        return;
+      }
+      Use[regMethod] = 1;
+    }
+  }
+
+  // --- Create the Reader object
+  std::cout << "--- Create the Reader object" << endl;
+  reader_tth2l2tau= new TMVA::Reader( "!Color:!Silent" );
+
+  reader_tth2l2tau->AddVariable( "Htbjets"  ,&tmva2l2tau_htbjets );
+  reader_tth2l2tau->AddVariable( "Leadtaupt"  ,&tmva2l2tau_leadtaupt );
+  reader_tth2l2tau->AddVariable( "Subtaupt"    ,&tmva2l2tau_subtaupt );
+  reader_tth2l2tau->AddVariable( "Mtautau"   ,&tmva2l2tau_mtautau );
+  reader_tth2l2tau->AddVariable( "Drlbditau"   ,&tmva2l2tau_drlbditau );
+  reader_tth2l2tau->AddVariable( "fabs(Etamax)"   ,&tmva2l2tau_etamax );
+  //
+  reader_tth2l2tau->BookMVA("BDT_tth2l2tau", weights); // trained with random events 
 }

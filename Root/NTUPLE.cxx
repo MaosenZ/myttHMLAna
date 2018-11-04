@@ -307,23 +307,19 @@ void NTUPLE::cutFlow(){
 
 void NTUPLE::applyBDT(){
 
-  TString BDT_tth1l2tau = "doc/TMVAClassification_BDTG.weights8varbtagtaupt25Triglept27tauTTbvetoWTfix_R21.xml";
-  TString BDT_tth1l2tauEven ="doc/TMVAClassification_BDTG.weights8varbtagtaupt25Triglept27tauTTbvetoWTfixTrainEven_R21.xml";
-  TString BDT_tth1l2tauOdd ="doc/TMVAClassification_BDTG.weights8varbtagtaupt25Triglept27tauTTbvetoWTfixTrainOdd_R21.xml";
-  std::cout<<" which BDT ? "<<BDT_tth1l2tau<<std::endl;
-  initialiseTMVA_tth1l2tau(BDT_tth1l2tau, BDT_tth1l2tauEven,BDT_tth1l2tauOdd);
+  TString BDT_tth2l2tau = "doc/TMVAClassification_BDTG.weights6vartaupt25Triglept27tauMMbvetoTrainRandom_mimic2l2tau_R21.xml";
+  std::cout<<" which BDT ? "<<BDT_tth2l2tau<<std::endl;
+  initialiseTMVA_tth2l2tau(BDT_tth2l2tau);
   TString path="/global/homes/m/mszhou/work/ttHML/GN1Samps/dilep_looseleps/";
-  path += mySample+"_bdtx.root";
+  path += mySample+"_2l2taubdt.root";
   TFile *outfile=new TFile(path,"recreate");
   TTree *outtree=new TTree(m_treeName,"");
   fChain->LoadTree(0);
   //outtree = fChain->GetTree()->CloneTree(0);
   outtree = fChain->CloneTree(0);
-  Double_t myBDT, myBDTx;
+  Double_t myBDT;
   outtree->Branch("Mybdt", &myBDT);
-  outtree->Branch("Mybdtx", &myBDTx);
   myBDT = -2.;
-  myBDTx = -2.;
 
   Long64_t nentries = fChain->GetEntries();
  
@@ -331,55 +327,25 @@ void NTUPLE::applyBDT(){
 
       fChain->GetEntry(jentry);
       //std::cout<<" I am here event "<<jentry<<"/"<<nentries<<" Event "<< EventNumber<<" Run "<<RunNumber<<std::endl;
-      float jjdrmin(99.);
-      float sumjets(0.), mtautau_1l2tau(0.), htjets_1l2tau(0);
-      int njets_1l2tau = selected_jets_T->size()>7?7:selected_jets_T->size();
-      int nbjets(0);
-      for(int index = 0; index < njets_1l2tau; index++) {
-          int index_jet = selected_jets_T->at(index);
-          sumjets +=m_jet_pt->at(index_jet);
-          if(m_jet_flavor_weight_MV2c10->at(index_jet)>0.83) ++nbjets;
-          for(int index2 = index+1; index2 < njets_1l2tau; index2++) {
-              int index2_jet = selected_jets_T->at(index2);
-              float this_DR = sqrt(pow((m_jet_eta->at(index_jet) - m_jet_eta->at(index2_jet)), 2.0) + pow((acos(cos(m_jet_phi->at(index_jet) - m_jet_phi->at(index2_jet)))), 2.0));
-              if (this_DR < jjdrmin)jjdrmin = this_DR;
-          }
-      }
-      htjets_1l2tau=sumjets;
-      TLorentzVector p4tau[2];
-      p4tau[0].SetPtEtaPhiE(tau_pt_0,tau_eta_0, tau_phi_0,tau_E_0);
-      p4tau[1].SetPtEtaPhiE(tau_pt_1,tau_eta_1, tau_phi_1,tau_E_1);
-      mtautau_1l2tau = (p4tau[0]+p4tau[1]).M();
+      float m_minlepb, dR_minlepb_tautau,  m_tautau, dR_ll, dR_ll_tautau, pt_sum_bjets;
+      make2l2tauVariables( m_minlepb,  dR_minlepb_tautau,  m_tautau, dR_ll,  dR_ll_tautau, pt_sum_bjets);
+
+      tmva2l2tau_htbjets = pt_sum_bjets;
+      tmva2l2tau_leadtaupt = tau_pt_0/GeV;
+      tmva2l2tau_subtaupt = tau_pt_1/GeV;
+      tmva2l2tau_mtautau = m_tautau/GeV;
+      tmva2l2tau_drlbditau = dR_minlepb_tautau;
+      tmva2l2tau_etamax = fabs(tau_eta_0)>fabs(tau_eta_1)? fabs(tau_eta_0): fabs(tau_eta_1);
       
-      tmva1l2tau_njets25 = njets_1l2tau;
-      tmva1l2tau_nbjets25 = nbjets;
-      tmva1l2tau_htjets = htjets_1l2tau/GeV;
-      tmva1l2tau_leadtaupt = tau_pt_0/GeV;
-      tmva1l2tau_subtaupt = tau_pt_1/GeV;
-      tmva1l2tau_mtautau = mtautau_1l2tau/GeV;
-      tmva1l2tau_jjdr = jjdrmin;
-      tmva1l2tau_etamax = fabs(tau_eta_0)>fabs(tau_eta_1)? fabs(tau_eta_0): fabs(tau_eta_1);
-      tmva1l2tau_leadtaubtagbin = tau_tagWeightBin_0;
-      tmva1l2tau_subtaubtagbin = tau_tagWeightBin_1;
-      myBDT = reader_tth1l2tau->EvaluateMVA("BDT_tth1l2tau");
+      myBDT = reader_tth2l2tau->EvaluateMVA("BDT_tth2l2tau");
       myBDT =myBDT<1.0?myBDT:0.99;
-      if(EventNumber%2==1){ // odd events
-          myBDTx = reader_tth1l2tau->EvaluateMVA("BDT_tth1l2tauEven");
-          myBDTx =myBDTx<1.0?myBDTx:0.99;
-      }
-      else{ // even events
-          myBDTx = reader_tth1l2tau->EvaluateMVA("BDT_tth1l2tauOdd");
-          myBDTx =myBDTx<1.0?myBDTx:0.99;
-      }
-      /*std::cout<<" njets_1l2tau: "<<tmva1l2tau_njets25<<std::endl;
-      std::cout<<" nbjets_1l2tau: "<<tmva1l2tau_nbjets25<<std::endl;
-      std::cout<<" htjets_1l2tau: "<<tmva1l2tau_htjets<<std::endl;
-      std::cout<<" tmva1l2tau_leadtaupt: "<<tmva1l2tau_leadtaupt<<std::endl;
-      std::cout<<" tmva1l2tau_subtaupt: "<<tmva1l2tau_subtaupt<<std::endl;
-      std::cout<<" tmva1l2tau_mtautau: "<<tmva1l2tau_mtautau<<std::endl;
-      std::cout<<" tmva1l2tau_jjdr: "<<tmva1l2tau_jjdr<<std::endl;
-      std::cout<<" tmva1l2tau_etamax: "<<tmva1l2tau_etamax<<std::endl;
-      std::cout<<" myBDTx: "<<myBDTx<<std::endl;*/
+      std::cout<<" htbjets_2l2tau: "<<tmva2l2tau_htbjets<<std::endl;
+      std::cout<<" tmva2l2tau_leadtaupt: "<<tmva2l2tau_leadtaupt<<std::endl;
+      std::cout<<" tmva2l2tau_subtaupt: "<<tmva2l2tau_subtaupt<<std::endl;
+      std::cout<<" tmva2l2tau_mtautau: "<<tmva2l2tau_mtautau<<std::endl;
+      std::cout<<" tmva2l2tau_etamax: "<<tmva2l2tau_etamax<<std::endl;
+      std::cout<<" tmva2l2tau_drlbditau: "<<tmva2l2tau_drlbditau<<std::endl;
+      std::cout<<" myBDT: "<<myBDT<<std::endl;
       outtree->Fill();
   }
   outtree->Write();

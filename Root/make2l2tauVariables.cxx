@@ -40,7 +40,7 @@ void NTUPLE::make2l2tauVariables(float & m_minlepb, float & dR_minlepb_tautau, f
           //
           TLorentzVector bjet_vec1=bjet_vecs[0];
           //
-          float tmp_dR=99;
+          /*float tmp_dR=99;
           for(unsigned int i=0; i<bjet_vecs.size(); i++) {
               float tmp_tmp_dR=lep1_vec.DeltaR(bjet_vecs[i]) > lep2_vec.DeltaR(bjet_vecs[i])?
                     lep2_vec.DeltaR(bjet_vecs[i]):lep1_vec.DeltaR(bjet_vecs[i]);
@@ -54,6 +54,18 @@ void NTUPLE::make2l2tauVariables(float & m_minlepb, float & dR_minlepb_tautau, f
                  dR_minlepb_tautau=tmp_tmp_dRtautau;
               }
               pt_sum_bjets += bjet_vecs[i].Pt();
+          }//end of i*/
+          float tmp_mass=9999e3;
+          for(unsigned int i=0; i<bjet_vecs.size(); i++) {
+              float tmp_tmp_mass=(lep1_vec + bjet_vecs[i]).M() > (lep2_vec + bjet_vecs[i]).M()?
+                    (lep2_vec + bjet_vecs[i]).M():(lep1_vec + bjet_vecs[i]).M();
+              float tmp_tmp_dRtautau=(lep1_vec + bjet_vecs[i]).M() > (lep2_vec + bjet_vecs[i]).M()?
+                    (lep2_vec + bjet_vecs[i]).DeltaR(tau1_vec + tau2_vec):(lep1_vec + bjet_vecs[i]).DeltaR(tau1_vec + tau2_vec);
+              if(tmp_tmp_mass < tmp_mass){
+                 tmp_mass=tmp_tmp_mass;
+                 m_minlepb=tmp_tmp_mass;
+                 dR_minlepb_tautau=tmp_tmp_dRtautau;
+              }
           }//end of i
           
           m_tautau=(tau1_vec + tau2_vec).M();

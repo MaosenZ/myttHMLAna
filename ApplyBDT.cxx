@@ -1,8 +1,8 @@
 #include "Root/NTUPLE.cxx"
 
 void ApplyBDT(){
-  //string samps[]={"tth","diboson","rare","ttV"};
-  string samps[]={"data","ttbar","Vjets","ttbargamma"};
+  string samps[]={"tth","diboson","rare","ttV"};
+  //string samps[]={"data","ttbar","Vjets","ttbargamma"};
   //string samps[]={"ttZ","tth_Gen","tth_af2","tth_aMChwg","tth_semiaf2"};
   //string samps[]={"tth_notaubveto","ttbar_notaubveto"};
 
