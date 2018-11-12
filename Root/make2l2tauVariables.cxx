@@ -56,18 +56,24 @@ void NTUPLE::make2l2tauVariables(float & m_minlepb, float & dR_minlepb_tautau, f
               pt_sum_bjets += bjet_vecs[i].Pt();
           }//end of i*/
           float tmp_mass=9999e3;
+          cout<<"start here"<<endl;
+          cout<<RunNumber<<endl;
           for(unsigned int i=0; i<bjet_vecs.size(); i++) {
               float tmp_tmp_mass=(lep1_vec + bjet_vecs[i]).M() > (lep2_vec + bjet_vecs[i]).M()?
                     (lep2_vec + bjet_vecs[i]).M():(lep1_vec + bjet_vecs[i]).M();
               float tmp_tmp_dRtautau=(lep1_vec + bjet_vecs[i]).M() > (lep2_vec + bjet_vecs[i]).M()?
                     (lep2_vec + bjet_vecs[i]).DeltaR(tau1_vec + tau2_vec):(lep1_vec + bjet_vecs[i]).DeltaR(tau1_vec + tau2_vec);
+              cout<<(lep2_vec + bjet_vecs[i]).M()<<" "<<(lep1_vec + bjet_vecs[i]).M()<<endl; 
+              cout<< (lep2_vec + bjet_vecs[i]).DeltaR(tau1_vec + tau2_vec) <<" "<<(lep1_vec + bjet_vecs[i]).DeltaR(tau1_vec + tau2_vec)<<endl; 
               if(tmp_tmp_mass < tmp_mass){
                  tmp_mass=tmp_tmp_mass;
                  m_minlepb=tmp_tmp_mass;
                  dR_minlepb_tautau=tmp_tmp_dRtautau;
+                 cout<<"m_minlepb: "<<m_minlepb<<"  dR_minlepb_tautau: "<<dR_minlepb_tautau<<endl;
               }
+              pt_sum_bjets += bjet_vecs[i].Pt();
           }//end of i
-          
+          cout<<"end here"<<endl; 
           m_tautau=(tau1_vec + tau2_vec).M();
           dR_ll=lep1_vec.DeltaR(lep2_vec);
           dR_ll_tautau=(lep1_vec+lep2_vec).DeltaR(tau1_vec + tau2_vec);

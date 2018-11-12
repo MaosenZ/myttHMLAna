@@ -4,7 +4,7 @@
 #currently only support TH1F
 MVA1l2tau_weight 4 -1 1 F
 Mybdt 10 -1 1 D
-Mybdtx 10 -1 1 D
+#Mybdtx 10 -1 1 D
 nJets_OR_T 8 0 8 I
 nJets_OR_T_MV2c10_70 5 0 5 I
 HT_jets 20 0 1000 F

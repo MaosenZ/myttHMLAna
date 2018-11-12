@@ -44,6 +44,8 @@ void NTUPLE::fillHistsMiniTree(std::map<string, std::unique_ptr<TH1F> > & TH1Fs,
        string mySelection, regionname,name, var, vartype;
        size_t pos=0;
        output_branches["weight"].d=wt;
+       output_branches["EventNumber"].i=EventNumber;
+       output_branches["RunNumber"].i=RunNumber;
        for(unsigned int ir=0;ir<numRegions;ir++){//fill various regions/selections
       
            mySelection=m_Regions[ir];
@@ -339,13 +341,13 @@ void NTUPLE::applyBDT(){
       
       myBDT = reader_tth2l2tau->EvaluateMVA("BDT_tth2l2tau");
       myBDT =myBDT<1.0?myBDT:0.99;
-      std::cout<<" htbjets_2l2tau: "<<tmva2l2tau_htbjets<<std::endl;
+      /*std::cout<<" htbjets_2l2tau: "<<tmva2l2tau_htbjets<<std::endl;
       std::cout<<" tmva2l2tau_leadtaupt: "<<tmva2l2tau_leadtaupt<<std::endl;
       std::cout<<" tmva2l2tau_subtaupt: "<<tmva2l2tau_subtaupt<<std::endl;
       std::cout<<" tmva2l2tau_mtautau: "<<tmva2l2tau_mtautau<<std::endl;
       std::cout<<" tmva2l2tau_etamax: "<<tmva2l2tau_etamax<<std::endl;
       std::cout<<" tmva2l2tau_drlbditau: "<<tmva2l2tau_drlbditau<<std::endl;
-      std::cout<<" myBDT: "<<myBDT<<std::endl;
+      std::cout<<" myBDT: "<<myBDT<<std::endl;*/
       outtree->Fill();
   }
   outtree->Write();

@@ -294,11 +294,83 @@ bool NTUPLE::applySelections(string selection){
         lep_isolationFixedCutLoose_0 && lep_isolationFixedCutLoose_1 &&
         nTaus_OR_Pt25==2 && tau_JetBDTSigMedium_0 && tau_JetBDTSigMedium_1 &&
         nJets_OR_T_MV2c10_70>=1 && tau_charge_0*tau_charge_1<0 &&
-        ((lep_ID_0*lep_ID_1==-121 || lep_ID_0*lep_ID_1==-169)?Mll01-91000>10000:1) &&
+        ((lep_ID_0*lep_ID_1==-121 || lep_ID_0*lep_ID_1==-169)?fabs(Mll01-91000)>10000:1) &&
         (lep_isTrigMatch_0 || lep_isTrigMatch_1||matchDLTll01) &&
         tau_passMuonOLR_0==1 && tau_passEleBDT_0==1 && tau_tagWeightBin_0 <4 &&
         tau_passMuonOLR_1==1 && tau_passEleBDT_1==1 && tau_tagWeightBin_1 <4)
      passed=true;   
+  }
+
+  if(selection=="TwoL2tauLooseMediumlowBDTOS"){
+     if(dilep_type>0 && (lep_ID_0*lep_ID_1<0) &&
+        (abs(lep_ID_0)==13 || (abs(lep_ID_0)==11&&lep_isTightLH_0)) &&
+        (abs(lep_ID_1)==13 || (abs(lep_ID_1)==11&&lep_isTightLH_1)) &&
+        lep_isolationFixedCutLoose_0 && lep_isolationFixedCutLoose_1 &&
+        nTaus_OR_Pt25==2 && tau_JetBDTSigMedium_0 && tau_JetBDTSigMedium_1 &&
+        nJets_OR_T_MV2c10_70>=1 && tau_charge_0*tau_charge_1<0 &&
+        ((lep_ID_0*lep_ID_1==-121 || lep_ID_0*lep_ID_1==-169)?fabs(Mll01-91000)>10000:1) &&
+        (lep_isTrigMatch_0 || lep_isTrigMatch_1||matchDLTll01) &&
+        tau_passMuonOLR_0==1 && tau_passEleBDT_0==1 && tau_tagWeightBin_0 <4 && Mybdt <0. &&
+        tau_passMuonOLR_1==1 && tau_passEleBDT_1==1 && tau_tagWeightBin_1 <4)
+     passed=true;
+  }
+
+  if(selection=="TwoL2tauLooseMediumlowBDTOStruth"){
+     if(dilep_type>0 && (lep_ID_0*lep_ID_1<0) &&
+        (abs(lep_ID_0)==13 || (abs(lep_ID_0)==11&&lep_isTightLH_0)) &&
+        (abs(lep_ID_1)==13 || (abs(lep_ID_1)==11&&lep_isTightLH_1)) &&
+        lep_isolationFixedCutLoose_0 && lep_isolationFixedCutLoose_1 &&
+        nTaus_OR_Pt25==2 && tau_JetBDTSigMedium_0 && tau_JetBDTSigMedium_1 &&
+        nJets_OR_T_MV2c10_70>=1 && tau_charge_0*tau_charge_1<0 &&
+        ((lep_ID_0*lep_ID_1==-121 || lep_ID_0*lep_ID_1==-169)?fabs(Mll01-91000)>10000:1) &&
+        (lep_isTrigMatch_0 || lep_isTrigMatch_1||matchDLTll01) &&
+        tau_passMuonOLR_0==1 && tau_passEleBDT_0==1 && tau_tagWeightBin_0 <4 && Mybdt < 0. &&
+        tau_truthType_0==10 && tau_truthType_1==10 && 
+        tau_passMuonOLR_1==1 && tau_passEleBDT_1==1 && tau_tagWeightBin_1 <4)
+     passed=true;
+  }
+
+  if(selection=="TwoL2tauLooseMediumlowBDTSStruth"){
+     if(dilep_type>0 && (lep_ID_0*lep_ID_1<0) &&
+        (abs(lep_ID_0)==13 || (abs(lep_ID_0)==11&&lep_isTightLH_0)) &&
+        (abs(lep_ID_1)==13 || (abs(lep_ID_1)==11&&lep_isTightLH_1)) &&
+        lep_isolationFixedCutLoose_0 && lep_isolationFixedCutLoose_1 &&
+        nTaus_OR_Pt25==2 && tau_JetBDTSigMedium_0 && tau_JetBDTSigMedium_1 &&
+        nJets_OR_T_MV2c10_70>=1 && tau_charge_0*tau_charge_1>0 &&
+        ((lep_ID_0*lep_ID_1==-121 || lep_ID_0*lep_ID_1==-169)?fabs(Mll01-91000)>10000:1) &&
+        (lep_isTrigMatch_0 || lep_isTrigMatch_1||matchDLTll01) &&
+        tau_passMuonOLR_0==1 && tau_passEleBDT_0==1 && tau_tagWeightBin_0 <4 && Mybdt < 0. &&
+        tau_truthType_0==10 && tau_truthType_1==10 &&
+        tau_passMuonOLR_1==1 && tau_passEleBDT_1==1 && tau_tagWeightBin_1 <4)
+     passed=true;
+  }
+
+  if(selection=="TwoL2tauLooseMediumlowBDTSS"){
+     if(dilep_type>0 && (lep_ID_0*lep_ID_1<0) &&
+        (abs(lep_ID_0)==13 || (abs(lep_ID_0)==11&&lep_isTightLH_0)) &&
+        (abs(lep_ID_1)==13 || (abs(lep_ID_1)==11&&lep_isTightLH_1)) &&
+        lep_isolationFixedCutLoose_0 && lep_isolationFixedCutLoose_1 &&
+        nTaus_OR_Pt25==2 && tau_JetBDTSigMedium_0 && tau_JetBDTSigMedium_1 &&
+        nJets_OR_T_MV2c10_70>=1 && tau_charge_0*tau_charge_1>0 &&
+        ((lep_ID_0*lep_ID_1==-121 || lep_ID_0*lep_ID_1==-169)?fabs(Mll01-91000)>10000:1) &&
+        (lep_isTrigMatch_0 || lep_isTrigMatch_1||matchDLTll01) &&
+        tau_passMuonOLR_0==1 && tau_passEleBDT_0==1 && tau_tagWeightBin_0 <4 && Mybdt <0. &&
+        tau_passMuonOLR_1==1 && tau_passEleBDT_1==1 && tau_tagWeightBin_1 <4)
+     passed=true;
+  }
+
+  if(selection=="TwoL2tauLooseMediumSS"){
+     if(dilep_type>0 && (lep_ID_0*lep_ID_1<0) &&
+        (abs(lep_ID_0)==13 || (abs(lep_ID_0)==11&&lep_isTightLH_0)) &&
+        (abs(lep_ID_1)==13 || (abs(lep_ID_1)==11&&lep_isTightLH_1)) &&
+        lep_isolationFixedCutLoose_0 && lep_isolationFixedCutLoose_1 &&
+        nTaus_OR_Pt25==2 && tau_JetBDTSigMedium_0 && tau_JetBDTSigMedium_1 &&
+        nJets_OR_T_MV2c10_70>=1 && tau_charge_0*tau_charge_1>0 &&
+        ((lep_ID_0*lep_ID_1==-121 || lep_ID_0*lep_ID_1==-169)?fabs(Mll01-91000)>10000:1) &&
+        (lep_isTrigMatch_0 || lep_isTrigMatch_1||matchDLTll01) &&
+        tau_passMuonOLR_0==1 && tau_passEleBDT_0==1 && tau_tagWeightBin_0 <4 && 
+        tau_passMuonOLR_1==1 && tau_passEleBDT_1==1 && tau_tagWeightBin_1 <4)
+     passed=true;
   }
 
   if(selection=="TwoL2tauLooseTight2j1b"){
@@ -308,7 +380,7 @@ bool NTUPLE::applySelections(string selection){
         lep_isolationFixedCutLoose_0 && lep_isolationFixedCutLoose_1 &&
         nTaus_OR_Pt25==2 && tau_JetBDTSigTight_0 && tau_JetBDTSigTight_1 &&
         nJets_OR_T_MV2c10_70>=1 && tau_charge_0*tau_charge_1<0 &&
-        nJets_OR_T>=2 && ((lep_ID_0*lep_ID_1==-121 || lep_ID_0*lep_ID_1==-169)?Mll01-91000>10000:1) &&
+        nJets_OR_T>=2 && ((lep_ID_0*lep_ID_1==-121 || lep_ID_0*lep_ID_1==-169)?fabs(Mll01-91000)>10000:1) &&
         (lep_isTrigMatch_0 || lep_isTrigMatch_1||matchDLTll01) &&
         tau_passMuonOLR_0==1 && tau_passEleBDT_0==1 && tau_tagWeightBin_0 <4 &&
         tau_passMuonOLR_1==1 && tau_passEleBDT_1==1 && tau_tagWeightBin_1 <4)
@@ -322,7 +394,7 @@ bool NTUPLE::applySelections(string selection){
         lep_isolationFixedCutLoose_0 && lep_isolationFixedCutLoose_1 &&
         nTaus_OR_Pt25==2 && tau_JetBDTSigTight_0 && tau_JetBDTSigTight_1 &&
         nJets_OR_T_MV2c10_70>=1 && tau_charge_0*tau_charge_1<0 &&
-        nJets_OR_T>=2 && ((lep_ID_0*lep_ID_1==-121 || lep_ID_0*lep_ID_1==-169)?Mll01-91000>10000:1) &&
+        nJets_OR_T>=2 && ((lep_ID_0*lep_ID_1==-121 || lep_ID_0*lep_ID_1==-169)?fabs(Mll01-91000)>10000:1) &&
         (lep_isTrigMatch_0 || lep_isTrigMatch_1||matchDLTll01) &&
         tau_passMuonOLR_0==1 && tau_passEleBDT_0==1  &&
         tau_passMuonOLR_1==1 && tau_passEleBDT_1==1 )
@@ -336,7 +408,7 @@ bool NTUPLE::applySelections(string selection){
         lep_isolationFixedCutLoose_0 && lep_isolationFixedCutLoose_1 &&
         nTaus_OR_Pt25==2 && tau_JetBDTSigMedium_0 && tau_JetBDTSigMedium_1 &&
         nJets_OR_T_MV2c10_70>=2 && tau_charge_0*tau_charge_1<0 &&
-        ((lep_ID_0*lep_ID_1==-121 || lep_ID_0*lep_ID_1==-169)?Mll01-91000>10000:1) &&
+        ((lep_ID_0*lep_ID_1==-121 || lep_ID_0*lep_ID_1==-169)?fabs(Mll01-91000)>10000:1) &&
         (lep_isTrigMatch_0 || lep_isTrigMatch_1||matchDLTll01) &&
         tau_passMuonOLR_0==1 && tau_passEleBDT_0==1 && tau_tagWeightBin_0 <4 &&
         tau_passMuonOLR_1==1 && tau_passEleBDT_1==1 && tau_tagWeightBin_1 <4)
