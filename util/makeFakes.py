@@ -6,12 +6,12 @@ from mytools import *
 
 #fakes = SS(data)-SS(real)+OS(real)
 #regions={'SS':'OneL2tauSS','truthSS':'OneL2tauSStruth','truthOS':'OneL2tauSRtruth','OS':'OneL2tauSR'}
-regions={'SS':'OneL2taulowBDTSS','truthSS':'OneL2taulowBDTSStruth','truthOS':'OneL2taulowBDTOStruth','OS':'OneL2taulowBDTOS'}
+#regions={'SS':'OneL2taulowBDTSS','truthSS':'OneL2taulowBDTSStruth','truthOS':'OneL2taulowBDTOStruth','OS':'OneL2taulowBDTOS'}
+regions={'SS':'TwoL2tauLooseMediumlowBDTSS','truthSS':'TwoL2tauLooseMediumlowBDTSStruth','truthOS':'TwoL2tauLooseMediumlowBDTOStruth','OS':'TwoL2tauLooseMediumlowBDTOS'}
 
 bkgs=("ttbar","ttbargamma","diboson","Vjets","ttV","rare")
 
 another_regions, variables=getRegionsVars("ttbar")
-
 def getHists(samp,region):
     '''get all hists in one region of stored sample'''
     fdata=TFile("hists/%s.root" %samp)
@@ -68,4 +68,3 @@ print '&SSData     &SSMC     &SStruth      &OSMC       &OStruth	     &Exp.	&OSDa
 print '&%.2f$\pm$%.2f    &%.2f$\pm$%.2f    &%.2f$\pm$%.2f    &%.2f$\pm$%.2f     & %.2f$\pm$%.2f      &%.2f$\pm$%.2f      &%s         & %.2f$\pm$%.2f \\\\' \
        %(num_ssdata, err_ssdata, num_ssmc, err_ssmc, num_sstruth, err_sstruth, num_osmc, err_osmc, \
          num_ostruth, err_ostruth, num_exp, err_exp, num_osdata, num_ratio, err_ratio)
-

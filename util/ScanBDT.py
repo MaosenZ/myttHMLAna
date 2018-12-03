@@ -40,7 +40,7 @@ def scan(samp, bdt):
         #      if evt.Mll01-91000>10000:
         #         passed += weight
         #   else: passed += weight 
-        if evt.Mybdtx>bdt and evt.TwoL2tauLooseTight2j1b : passed += evt.weight
+        if evt.Mybdt>bdt and evt.TwoL2tauLooseMedium : passed += evt.weight
     return passed
 
 bdts=(-1.0, -0.9,-0.8,-0.7,-0.6,-0.5,-0.4,-0.3,-0.2,-0.1,0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9)
@@ -69,7 +69,7 @@ gr.SetMaximum(2.0)
 gr.SetLineColor(kBlue)
 createLabels()
 myText(0.60,0.85, kBlack,"t#bar{t}H vs. All bkg (MC)")
-c.SaveAs("plots/bdtx2l2tau_scan.pdf")
-outfile=TFile("scanbdtx2l2tau.root","update")
+c.SaveAs("plots/bdt2l2tauLooseMedium_scan.pdf")
+outfile=TFile("scanbdt2l2tauLooseMedium.root","update")
 gr.Write()
 outfile.Close()
