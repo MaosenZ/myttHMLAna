@@ -227,6 +227,17 @@ bool NTUPLE::applySelections(string selection){
        passed=true;
   }
 
+  if(selection=="OneL2tauLMM"){//loose lepton and two medium taus
+     if(onelep_type>0 && ( abs(lep_ID_0)==13 ||
+     ((abs(lep_ID_0)==11)&&lep_isTightLH_0)) &&
+     lep_isTrigMatch_0 && lep_Pt_0>27e3 && lep_isolationFixedCutLoose_0&&
+     tau_charge_0*tau_charge_1<0 && nTaus_OR_Pt25==2 &&
+     tau_btag70_0==0 && tau_btag70_1==0 &&
+     nJets_OR_T>=3 && nJets_OR_T_MV2c10_70>=1 &&
+     tau_passMuonOLR_0==1&&tau_passEleBDT_0==1&&tau_passMuonOLR_1==1&&tau_passEleBDT_1==1)
+       passed=true;
+  }
+
   if(selection=="OneL2tauTTT"){//tight lepton and two tight taus
      if(onelep_type>0 && ( (abs(lep_ID_0)==13 && 
         lep_promptLeptonVeto_TagWeight_0<-0.5)||
