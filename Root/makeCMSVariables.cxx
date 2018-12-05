@@ -63,6 +63,7 @@ void NTUPLE::makeCMSVariables(float & mindR_lepj, float & mT_l1, float & avdR_jj
               //$$$---avdR_jj, average dR of jj---$$$
               for(unsigned int j=i+1;j<jet_vecs.size();j++){
                   dRjj+=jet_vecs[i].DeltaR(jet_vecs[j]);
+                  counts += 1;
               }
           }//end of jet loop i
           avdR_jj=dRjj/counts;
