@@ -6,7 +6,7 @@ inline double NTUPLE::commonWeight(){
    
   //double wt=scale_nom*pileupEventWeight_090 *JVT_EventWeight*MV2c10_Continuous_EventWeight*SherpaNJetWeight*( 36074.6*(RunYear < 2016.5) +  43813.7*(RunYear > 2016.5) );//v5
   // double wt=scale_nom*pileupEventWeight_090 *JVT_EventWeight*MV2c10_70_EventWeight*SherpaNJetWeight* ((dilep_type||trilep_type)*lepSFObjTight+(onelep_type||quadlep_type)*lepSFObjLoose)*(nTaus_OR_Pt25>0?tauSFTight:1.0)*( 36074.6*(RunYear < 2016.5) +  43813.7*(RunYear > 2016.5) );
-  double wt=mc_channel_number>0?mc_norm*mcWeightOrg*pileupEventWeight_090*MV2c10_70_EventWeight*JVT_EventWeight*SherpaNJetWeight*((dilep_type||trilep_type)*lepSFObjTight+(onelep_type||quadlep_type)*lepSFObjLoose)*(nTaus_OR_Pt25>0?tauSFTight:1.0):1.0;
+  double wt=mc_channel_number>0?mc_norm*mcWeightOrg*pileupEventWeight_090*MV2c10_70_EventWeight*JVT_EventWeight*SherpaNJetWeight*((dilep_type||trilep_type)*lepSFObjTight+(onelep_type||quadlep_type)*lepSFObjLoose*lepSFTrigLoose)*(nTaus_OR_Pt25>0?tauSFLoose:1.0):1.0;
 
   return wt;
 }
