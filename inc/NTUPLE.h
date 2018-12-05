@@ -128,8 +128,9 @@ public :
    Double_t        JVT_EventWeight;
    Double_t        pileupEventWeight_UP;
    Double_t        pileupEventWeight_DOWN;
-   Double_t        Mybdt;
-   Double_t        Mybdtx;
+   //Double_t        Mybdt;
+   //Double_t        Mybdtx;
+   Float_t         MVA1l2tau_weight;
    Float_t         bTagSF_weight_MV2c10_Continuous_B0_up;
    Float_t         bTagSF_weight_MV2c10_Continuous_B0_down;
    Float_t         bTagSF_weight_MV2c10_Continuous_B1_up;
@@ -2764,15 +2765,18 @@ public :
    //virtual void     fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree);
    virtual void     fillHistsMiniTree(std::map<string, std::unique_ptr<TH1F> > & TH1Fs, TTree *minitree);
    virtual void     cutFlow();
-   virtual void     applyBDT();
+   //virtual void     applyBDT();
    virtual bool     commonSelections();
    virtual double   commonWeight();
    virtual bool     applySelections(string selection);
-   virtual void     makeVariables(float &top_mass1, float &top_mass2, float & mT_lepmet, float &m_blepmin, 
-                    float &dphi_ltaumet, float &wmass1,float &wmass2, float &pt_lepminustau, float &m_ltau, 
-                    float &m_ltaumet, float &pt_sum_all, float &pt_sum_nonbjets);
-   virtual void     make2l2tauVariables(float & m_minlepb, float & dR_minlepb_tautau, float & m_tautau,
-                    float & dRll, float & dR_ll_tautau, float & pt_sum_bjets);
+   //virtual void     makeVariables(float &top_mass1, float &top_mass2, float & mT_lepmet, float &m_blepmin, 
+   //                 float &dphi_ltaumet, float &wmass1,float &wmass2, float &pt_lepminustau, float &m_ltau, 
+   //                 float &m_ltaumet, float &pt_sum_all, float &pt_sum_nonbjets);
+   //virtual void     make2l2tauVariables(float & m_minlepb, float & dR_minlepb_tautau, float & m_tautau,
+   //                 float & dRll, float & dR_ll_tautau, float & pt_sum_bjets);
+   virtual void     makeCMSVariables(float & mindR_lepj, float & mT_l1, float & avdR_jj,
+	            float & pT_top, float & dR_tautau, float & costheta_tautau, float & mindR_tau1j,
+        	    float & mindR_tau2j, float & dR_leptau1, float & dR_ssleptau, float & m_top);
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
 };
@@ -2792,7 +2796,7 @@ NTUPLE::NTUPLE(string inputSample) : fChain(0)
    m_treeName=treename;
    TTree *chain=(TTree*)inputfile->Get(m_treeName);*/
    //m_treeName=treename;
-   string inputlist=prefix+inputSample+".mylist";
+   string inputlist=prefix+inputSample+".list";
    ifstream inputfile(inputlist.c_str(), ifstream::in);
    string line;
    while (getline(inputfile, line)){
@@ -3231,8 +3235,9 @@ void NTUPLE::Init(TTree *tree)
    fChain->SetBranchAddress("JVT_EventWeight", &JVT_EventWeight, &b_JVT_EventWeight);
    fChain->SetBranchAddress("pileupEventWeight_UP", &pileupEventWeight_UP, &b_pileupEventWeight_UP);
    fChain->SetBranchAddress("pileupEventWeight_DOWN", &pileupEventWeight_DOWN, &b_pileupEventWeight_DOWN);
-   fChain->SetBranchAddress("Mybdt",&Mybdt);
-   fChain->SetBranchAddress("Mybdtx",&Mybdtx);
+   //fChain->SetBranchAddress("Mybdt",&Mybdt);
+   //fChain->SetBranchAddress("Mybdtx",&Mybdtx);
+   fChain->SetBranchAddress("MVA1l2tau_weight",&MVA1l2tau_weight);
    fChain->SetBranchAddress("bTagSF_weight_MV2c10_Continuous_B0_up", &bTagSF_weight_MV2c10_Continuous_B0_up, &b_bTagSF_weight_MV2c10_Continuous_B0_up);
    fChain->SetBranchAddress("bTagSF_weight_MV2c10_Continuous_B0_down", &bTagSF_weight_MV2c10_Continuous_B0_down, &b_bTagSF_weight_MV2c10_Continuous_B0_down);
    fChain->SetBranchAddress("bTagSF_weight_MV2c10_Continuous_B1_up", &bTagSF_weight_MV2c10_Continuous_B1_up, &b_bTagSF_weight_MV2c10_Continuous_B1_up);

@@ -11,8 +11,7 @@
 #include "commonSelections.cxx"
 #include "commonWeight.cxx"
 #include "applySelections.cxx"
-#include "makeVariables.cxx"
-#include "make2l2tauVariables.cxx"
+#include "makeCMSVariables.cxx"
 
 //void NTUPLE::fillHistsMiniTree(std::map<string, TH1F* > & TH1Fs, TTree *minitree){
 void NTUPLE::fillHistsMiniTree(std::map<string, std::unique_ptr<TH1F> > & TH1Fs, TTree *minitree){
@@ -31,15 +30,10 @@ void NTUPLE::fillHistsMiniTree(std::map<string, std::unique_ptr<TH1F> > & TH1Fs,
        if (mySample=="data") wt=1.0;
 
        //define some variables here:
-         //top mass
-       float top1_mass(0), top2_mass(0);
-       //topMassReco(top1_mass, top2_mass);
-       float mT_lepmet(0), m_blepmin(0), dphi_ltaumet(0), wmass2(0), wmass1(0), pt_lepminustau(-100),
-             m_ltau(0), m_ltaumet(0), pt_sum_all(0), pt_sum_nonbjets(0);
-       makeVariables(top1_mass, top2_mass, mT_lepmet, m_blepmin, dphi_ltaumet, wmass1, wmass2, pt_lepminustau, 
-                     m_ltau, m_ltaumet, pt_sum_all, pt_sum_nonbjets);
-       float m_minlepb, dR_minlepb_tautau,  m_tautau, dR_ll, dR_ll_tautau, pt_sum_bjets;
-       make2l2tauVariables( m_minlepb,  dR_minlepb_tautau,  m_tautau, dR_ll,  dR_ll_tautau, pt_sum_bjets);
+       float mindR_lepj,mT_l1,avdR_jj,pT_top,dR_tautau,costheta_tautau, 
+             mindR_tau1j, mindR_tau2j, dR_leptau1, dR_ssleptau, m_top;
+       makeCMSVariables( mindR_lepj,  mT_l1,  avdR_jj, pT_top,  dR_tautau,  costheta_tautau,  mindR_tau1j,
+	                 mindR_tau2j,  dR_leptau1,  dR_ssleptau,  m_top);
        //further selections
        string mySelection, regionname,name, var, vartype;
        size_t pos=0;
@@ -67,18 +61,14 @@ void NTUPLE::fillHistsMiniTree(std::map<string, std::unique_ptr<TH1F> > & TH1Fs,
                   //if(var=="lep_Pt_0") TH1Fs[it->first]->Fill(lep_Pt_0/GeV,wt);
                   vartype=name.substr(name.length()-1);
       
-                  /*if(var=="MVA1l2tau_weight") {
+                  if(var=="MVA1l2tau_weight") {
                      TH1Fs[name]->Fill( MVA1l2tau_weight, wt);
                      output_branches[var].f=MVA1l2tau_weight;
-                  }*/
-                  if(var=="Mybdt") {
+                  }
+                  /*if(var=="Mybdt") {
                      TH1Fs[name]->Fill( Mybdt, wt);
                      output_branches[var].d=Mybdt;
-                  }
-                  if(var=="Mybdtx") {
-                     TH1Fs[name]->Fill( Mybdtx, wt);
-                     output_branches[var].d=Mybdtx;
-                  }
+                  }*/
                   if(var=="HT_jets") {
                      TH1Fs[name]->Fill( HT_jets/GeV, wt);
                      output_branches[var].f=HT_jets/GeV;
@@ -176,78 +166,50 @@ void NTUPLE::fillHistsMiniTree(std::map<string, std::unique_ptr<TH1F> > & TH1Fs,
                      TH1Fs[name]->Fill( fabs(tau_eta_0)>fabs(tau_eta_1)?fabs(tau_eta_0):fabs(tau_eta_1), wt);
                      output_branches[var].f=fabs(tau_eta_0)>fabs(tau_eta_1)?fabs(tau_eta_0):fabs(tau_eta_1);
                   }
-                  if(var=="top1_mass"){
-                     TH1Fs[name]->Fill(top1_mass/GeV, wt);
-                     output_branches[var].f=top1_mass/GeV;
+                   //cms vars for 1l2tau
+                  if(var=="mindR_lepj"){
+                     TH1Fs[name]->Fill(mindR_lepj, wt);
+                     output_branches[var].f=mindR_lepj;
                   }
-                  if(var=="top2_mass"){
-                     TH1Fs[name]->Fill(top2_mass/GeV, wt);
-                     output_branches[var].f=top2_mass/GeV;
+                  if(var=="mT_l1"){
+                     TH1Fs[name]->Fill(mT_l1/GeV, wt);
+                     output_branches[var].f=mT_l1/GeV;
                   }
-                  if(var=="mT_lepmet"){
-                     TH1Fs[name]->Fill(mT_lepmet/GeV, wt);
-                     output_branches[var].f=mT_lepmet/GeV;
+                  if(var=="avdR_jj"){
+                     TH1Fs[name]->Fill(avdR_jj, wt);
+                     output_branches[var].f=avdR_jj;
                   }
-                  if(var=="m_blepmin"){
-                     TH1Fs[name]->Fill(m_blepmin/GeV, wt);
-                     output_branches[var].f=m_blepmin/GeV;
+                  if(var=="pT_top"){
+                     TH1Fs[name]->Fill(pT_top/GeV, wt);
+                     output_branches[var].f=pT_top/GeV;
                   }
-                  if(var=="wmass1"){
-                     TH1Fs[name]->Fill(wmass1/GeV, wt);
-                     output_branches[var].f=wmass1/GeV;
+                  if(var=="dR_tautau"){
+                     TH1Fs[name]->Fill(dR_tautau, wt);
+                     output_branches[var].f=dR_tautau;
                   }
-                  if(var=="wmass2"){
-                     TH1Fs[name]->Fill(wmass2/GeV, wt);
-                     output_branches[var].f=wmass2/GeV;
+                  if(var=="costheta_tautau"){
+                     TH1Fs[name]->Fill(costheta_tautau, wt);
+                     output_branches[var].f=costheta_tautau;
                   }
-                  if(var=="pt_lepminustau"){
-                     TH1Fs[name]->Fill(pt_lepminustau/GeV, wt);
-                     output_branches[var].f=pt_lepminustau/GeV;
+                  if(var=="mindR_tau1j"){
+                     TH1Fs[name]->Fill(mindR_tau1j, wt);
+                     output_branches[var].f=mindR_tau1j;
                   }
-                  if(var=="dphi_ltaumet"){
-                     TH1Fs[name]->Fill(dphi_ltaumet, wt);
-                     output_branches[var].f=dphi_ltaumet;
+                  if(var=="mindR_tau2j"){
+                     TH1Fs[name]->Fill(mindR_tau2j, wt);
+                     output_branches[var].f=mindR_tau2j;
                   }
-                  if(var=="m_ltau"){
-                     TH1Fs[name]->Fill(m_ltau/GeV, wt);
-                     output_branches[var].f=m_ltau/GeV;
+                  if(var=="dR_leptau1"){
+                     TH1Fs[name]->Fill(dR_leptau1, wt);
+                     output_branches[var].f=dR_leptau1;
                   }
-                  if(var=="m_ltaumet"){
-                     TH1Fs[name]->Fill(m_ltaumet/GeV, wt);
-                     output_branches[var].f=m_ltaumet/GeV;
+                  if(var=="dR_ssleptau"){
+                     TH1Fs[name]->Fill(dR_ssleptau, wt);
+                     output_branches[var].f=dR_ssleptau;
                   }
-                  if(var=="pt_sum_all"){
-                     TH1Fs[name]->Fill(pt_sum_all/GeV, wt);
-                     output_branches[var].f=pt_sum_all/GeV;
-                  }
-                  if(var=="pt_sum_nonbjets"){
-                     TH1Fs[name]->Fill(pt_sum_nonbjets/GeV, wt);
-                     output_branches[var].f=pt_sum_nonbjets/GeV;
-                  }
-                   //2l2tau vars
-                  if(var=="m_minlepb"){
-                     TH1Fs[name]->Fill(m_minlepb/GeV, wt);
-                     output_branches[var].f=m_minlepb/GeV;
-                  }
-                  if(var=="m_tautau"){
-                     TH1Fs[name]->Fill(m_tautau/GeV, wt);
-                     output_branches[var].f=m_tautau/GeV;
-                  }
-                  if(var=="dR_minlepb_tautau"){
-                     TH1Fs[name]->Fill(dR_minlepb_tautau, wt);
-                     output_branches[var].f=dR_minlepb_tautau;
-                  }
-                  if(var=="dR_ll"){
-                     TH1Fs[name]->Fill(dR_ll, wt);
-                     output_branches[var].f=dR_ll;
-                  }
-                  if(var=="dR_ll_tautau"){
-                     TH1Fs[name]->Fill(dR_ll_tautau, wt);
-                     output_branches[var].f=dR_ll_tautau;
-                  }
-                  if(var=="pt_sum_bjets"){
-                     TH1Fs[name]->Fill(pt_sum_bjets/GeV, wt);
-                     output_branches[var].f=pt_sum_bjets/GeV;
+                  if(var=="m_top"){
+                     TH1Fs[name]->Fill(m_top/GeV, wt);
+                     output_branches[var].f=m_top/GeV;
                   }
               }//end of loop hists map
            }//end of basic selections
@@ -307,6 +269,7 @@ void NTUPLE::cutFlow(){
   cout<<numTightL<<setw(20)<<numwtTightL<<endl; 
 }
 
+/*
 void NTUPLE::applyBDT(){
 
   TString BDT_tth2l2tau = "doc/TMVAClassification_BDTG.weights6vartaupt25Triglept27tauMMbvetoTrainRandom_mimic2l2tau_R21.xml";
@@ -341,15 +304,15 @@ void NTUPLE::applyBDT(){
       
       myBDT = reader_tth2l2tau->EvaluateMVA("BDT_tth2l2tau");
       myBDT =myBDT<1.0?myBDT:0.99;
-      /*std::cout<<" htbjets_2l2tau: "<<tmva2l2tau_htbjets<<std::endl;
+      std::cout<<" htbjets_2l2tau: "<<tmva2l2tau_htbjets<<std::endl;
       std::cout<<" tmva2l2tau_leadtaupt: "<<tmva2l2tau_leadtaupt<<std::endl;
       std::cout<<" tmva2l2tau_subtaupt: "<<tmva2l2tau_subtaupt<<std::endl;
       std::cout<<" tmva2l2tau_mtautau: "<<tmva2l2tau_mtautau<<std::endl;
       std::cout<<" tmva2l2tau_etamax: "<<tmva2l2tau_etamax<<std::endl;
       std::cout<<" tmva2l2tau_drlbditau: "<<tmva2l2tau_drlbditau<<std::endl;
-      std::cout<<" myBDT: "<<myBDT<<std::endl;*/
+      std::cout<<" myBDT: "<<myBDT<<std::endl;
       outtree->Fill();
   }
   outtree->Write();
   outfile->Close();
-}
+}*/
