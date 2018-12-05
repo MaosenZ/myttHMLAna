@@ -17,7 +17,7 @@ from mytools import getRegionsVars, createCanvasPads, createLabels, SetAtlasStyl
 from commonPlotting import *
 
 #if set true, data won't be plotted
-DataIgnored=False
+DataIgnored=True
 processes={'data':"data",\
            'ttbar':"ttbar",\
            'ttbargamma':"ttbargamma",\
@@ -32,7 +32,7 @@ regions, variables=getRegionsVars("tth")
 #regions=("ttbarCR", "OneL2tauSR","OneL1tau2b", "OneL1tau1b") 
 #regions=("OneL1tau2b6j", "OneL1tau1b6j", "OneL1tau2b", "OneL1tau1b") 
 #regions=("TwoL2tau","TwoL2tauLooseMedium","TwoL2tauLooseMedium2b", "TwoL2tauLooseTight2j1b","TwoL2tauLooseMediumSS",)
-regions=("TwoL2tauLooseMediumlowBDTOS",)
+regions=("OneL2tauOSnoBDT",)
 #variables=("mtautau_1l2tau_F",)
 
 SetAtlasStyle()
@@ -52,9 +52,10 @@ def allHists():
       for i in processes:
           '''if processes[i]=="ttV": 
              print "ttV:",  calentries(all_hists[region+"_"+variable+"_"+i])'''
-          if processes[i]=="data": 
-             all_hists[region+"_"+variable+"_"+i]=addHists("TwoL2tauLooseMediumlowBDTOS", variable, processes[i])
-          else: all_hists[region+"_"+variable+"_"+i]=addHists(region, variable, processes[i])
+          #if processes[i]=="data": 
+          #   all_hists[region+"_"+variable+"_"+i]=addHists("TwoL2tauLooseMediumlowBDTOS", variable, processes[i])
+          #else: all_hists[region+"_"+variable+"_"+i]=addHists(region, variable, processes[i])
+          all_hists[region+"_"+variable+"_"+i]=addHists(region, variable, processes[i])
     return all_hists
 
 def makeStack(mchists):

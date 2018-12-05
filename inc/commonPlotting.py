@@ -14,8 +14,8 @@ processes={'data':"data",\
 titles={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Events'), \
         'tau_pt_0':('p^{T}_{#tau_{1}} [GeV]', 'Events'), \
         'tau_pt_1':('p^{T}_{#tau_{2}} [GeV]', 'Events'), \
-        'lep_Pt_0':('p^{T}_{#lep_{1}} [GeV]', 'Events'), \
-        'lep_Pt_1':('p^{T}_{#lep_{2}} [GeV]', 'Events'), \
+        'lep_Pt_0':('p^{T}_{lep_{1}} [GeV]', 'Events'), \
+        'lep_Pt_1':('p^{T}_{lep_{2}} [GeV]', 'Events'), \
         'MVA1l2tau_weight':('BDT score', 'Events'), \
         'Mybdt':('BDT score', 'Events'), \
         'Mybdtx':('BDT score', 'Events'), \
@@ -60,12 +60,23 @@ titles={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Events'), \
         'dR_ll':("#DeltaR(ll)", "Events"),\
         'dR_ll_tautau':("#DeltaR(ll,#tau#tau)", "Events"),\
         'pt_sum_bjets':("pT_sum_bjets", "Events"),\
+        'mindR_lepj':("min#DeltaR(lepj)", "Events"),\
+        'avdR_jj':("average#DeltaR(jj)", "Events"),\
+        'dR_tautau':("#DeltaR(#tau#tau)", "Events"),\
+        'mindR_tau1j':("min#DeltaR(#tau_{1}j)", "Events"),\
+        'mindR_tau2j':("min#DeltaR(#tau_{2}j)", "Events"),\
+        'dR_leptau1':("#DeltaR(lep#tau_{1})", "Events"),\
+        'dR_ssleptau':("#DeltaR(sslep#tau)", "Events"),\
+        'mT_l1':("m^{T}_{l1} [GeV]", "Events"),\
+        'pT_top':("p^{T}_{top} [GeV]", "Events"),\
+        'm_top':("m_top [GeV]", "Events"),\
+        'costheta_tautau':("|cos#theta^{*}(#tau#tau)|", "Events"),\
          }
 titles_norm={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Normalized'), \
         'tau_pt_0':('p^{T}_{#tau_{1}} [GeV]', 'Normalized'), \
         'tau_pt_1':('p^{T}_{#tau_{2}} [GeV]', 'Normalized'), \
-        'lep_Pt_0':('p^{T}_{#lep_{1}} [GeV]', 'Normalized'), \
-        'lep_Pt_1':('p^{T}_{#lep_{2}} [GeV]', 'Normalized'), \
+        'lep_Pt_0':('p^{T}_{lep_{1}} [GeV]', 'Normalized'), \
+        'lep_Pt_1':('p^{T}_{lep_{2}} [GeV]', 'Normalized'), \
         'MVA1l2tau_weight':('BDT score', 'Normalized'), \
         'Mybdt':('BDT score', 'Normalized'), \
         'Mybdtx':('BDT score', 'Normalized'), \
@@ -110,4 +121,15 @@ titles_norm={'lep_Pt_0':('p^{T}_{l1} [GeV]', 'Normalized'), \
         'dR_ll':("#DeltaR(ll)", "Normalized"),\
         'dR_ll_tautau':("#DeltaR(ll,#tau#tau)", "Normalized"),\
         'pt_sum_bjets':("pT_sum_bjets", "Normalized"),\
+        'mindR_lepj':("min#DeltaR(lepj)", "Normalized"),\
+        'avdR_jj':("average#DeltaR(jj)", "Normalized"),\
+        'dR_tautau':("#DeltaR(#tau#tau)", "Normalized"),\
+        'mindR_tau1j':("min#DeltaR(#tau_{1}j)", "Normalized"),\
+        'mindR_tau2j':("min#DeltaR(#tau_{2}j)", "Normalized"),\
+        'dR_leptau1':("#DeltaR(lep#tau_{1})", "Normalized"),\
+        'dR_ssleptau':("#DeltaR(sslep#tau)", "Normalized"),\
+        'mT_l1':("m^{T}_{l1} [GeV]", "Normalized"),\
+        'pT_top':("p^{T}_{top} [GeV]", "Normalized"),\
+        'm_top':("m_top [GeV]", "Normalized"),\
+        'costheta_tautau':("|cos#theta^{*}(#tau#tau)|", "Normalized"),\
          }

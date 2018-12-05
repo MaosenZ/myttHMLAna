@@ -13,17 +13,21 @@ bkgs=["ttbar",\
 
 def scan(samp, bdt):
 
-    inputfile=TFile("/Users/mason/Desktop/myWork/myttHMLAna/hists/%s.root" %samp)
-    tree=inputfile.Get("minitree")
+    inputfile=TFile("/Users/mason/Desktop/myWork/ttHMLSamps/v8_02/%s.root" %samp)
+    tree=inputfile.Get("nominal")
     passed=0
+    print samp
     for evt in tree:
         lumi=1.0
-        #if evt.RunYear < 2016.5: lumi=36074.6
-        #if evt.RunYear > 2016.5: lumi=43813.7
+        if evt.RunYear < 2016.5: lumi=36074.6
+        if evt.RunYear > 2016.5: lumi=43813.7
         #weight=evt.scale_nom*evt.pileupEventWeight_090 *evt.JVT_EventWeight*evt.MV2c10_70_EventWeight*evt.SherpaNJetWeight*( 36074.6*(evt.RunYear < 2016.5) +  43813.7*(evt.RunYear > 2016.5) )
         #if evt.nTaus_OR_Pt25<=0 : evt.tauSFTight=1.0
-        #weight=evt.scale_nom*evt.pileupEventWeight_090 *evt.JVT_EventWeight*evt.MV2c10_70_EventWeight*evt.SherpaNJetWeight*evt.lepSFObjLoose*evt.tauSFTight*lumi
-        #if evt.MVA1l2tau_weight>bdt and evt.tau_charge_0*evt.tau_charge_1<0:
+        weight=evt.scale_nom*evt.pileupEventWeight_090 *evt.JVT_EventWeight*evt.MV2c10_70_EventWeight*evt.SherpaNJetWeight*evt.lepSFObjLoose*evt.tauSFLoose*lumi*evt.lepSFTrigLoose
+        if evt.MVA1l2tau_weight>bdt and evt.tau_charge_0*evt.tau_charge_1<0 and (abs(evt.lep_ID_0)==13 or (abs(evt.lep_ID_0)==11 and evt.lep_isTightLH_0)) and \
+           evt.tau_passMuonOLR_0==1 and evt.tau_passEleBDT_0==1 and evt.tau_btag70_0 ==0 \
+           and evt.tau_passMuonOLR_1==1 and evt.tau_passEleBDT_1==1 and evt.tau_btag70_1 ==0 and \
+           evt.tau_tight_0 and evt.tau_tight_1:
         #if evt.Mybdtx>bdt and evt.tau_charge_0*evt.tau_charge_1<0 and evt.tau_passMuonOLR_0==1 and evt.tau_passMuonOLR_1==1:
         #weight=evt.mc_norm*evt.mcWeightOrg*evt.pileupEventWeight_090 *evt.JVT_EventWeight*evt.MV2c10_70_EventWeight*evt.SherpaNJetWeight*evt.lepSFObjLoose*evt.tauSFTight
         #if evt.Mybdtx>bdt and evt.dilep_type>0 and evt.lep_ID_0*evt.lep_ID_1<0 and \
@@ -38,9 +42,9 @@ def scan(samp, bdt):
         #evt.tau_passMuonOLR_1==1 and evt.tau_passEleBDT_1==1 and evt.tau_tagWeightBin_1 <4:
         #   if evt.lep_ID_0*evt.lep_ID_1==-121 or evt.lep_ID_0*evt.lep_ID_1==-169:
         #      if evt.Mll01-91000>10000:
-        #         passed += weight
+                 passed += weight
         #   else: passed += weight 
-        if evt.Mybdt>bdt and evt.TwoL2tauLooseMedium : passed += evt.weight
+        #if evt.Mybdt>bdt and evt.TwoL2tauLooseMedium : passed += evt.weight
     return passed
 
 bdts=(-1.0, -0.9,-0.8,-0.7,-0.6,-0.5,-0.4,-0.3,-0.2,-0.1,0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9)
@@ -69,7 +73,7 @@ gr.SetMaximum(2.0)
 gr.SetLineColor(kBlue)
 createLabels()
 myText(0.60,0.85, kBlack,"t#bar{t}H vs. All bkg (MC)")
-c.SaveAs("plots/bdt2l2tauLooseMedium_scan.pdf")
-outfile=TFile("scanbdt2l2tauLooseMedium.root","update")
+c.SaveAs("plots/bdtl2tauTight_scan.pdf")
+outfile=TFile("scanbdtl2tauTight.root","update")
 gr.Write()
 outfile.Close()
