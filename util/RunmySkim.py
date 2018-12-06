@@ -13,8 +13,8 @@ outpath="/eos/atlas/user/m/mzhou/ttHMLSamps/v8_02/"
 
 #samps=('tth','diboson','rare','ttV','ttbar')
 #samps=('Vjets',"ttbar",'ttbargamma')
-#trees=("nominal",)
-trees=("nominal",\
+trees=("nominal",)
+'''trees=("nominal",\
  "EG_RESOLUTION_ALL__1down",\
  "EG_RESOLUTION_ALL__1up",\
  "EG_SCALE_AF2__1down",\
@@ -97,7 +97,7 @@ trees=("nominal",\
  "TAUS_TRUEHADTAU_SME_TES_INSITU__1down",\
  "TAUS_TRUEHADTAU_SME_TES_INSITU__1up",\
  "TAUS_TRUEHADTAU_SME_TES_MODEL__1down",\
- "TAUS_TRUEHADTAU_SME_TES_MODEL__1up")	
+ "TAUS_TRUEHADTAU_SME_TES_MODEL__1up")'''	
 Noexists=[]
 
 def Skim(dsid, treename):

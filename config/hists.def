@@ -2,7 +2,7 @@
 #variable Nbins Xmin Xmax type
 #or variable Nbins bin_edges type (for varied bin width)
 #currently only support TH1F
-MVA1l2tau_weight 4 -1 1 F
+MVA1l2tau_weight 3 -1 0 0.6 1 F
 Mybdt 10 -1 1 D
 Mybdtx 10 -1 1 D
 nJets_OR_T 8 0 8 I

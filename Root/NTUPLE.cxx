@@ -32,8 +32,8 @@ void NTUPLE::fillHistsMiniTree(std::map<string, std::unique_ptr<TH1F> > & TH1Fs,
        //define some variables here:
        float mindR_lepj,mT_l1,avdR_jj,pT_top,dR_tautau,costheta_tautau, 
              mindR_tau1j, mindR_tau2j, dR_leptau1, dR_ssleptau, m_top;
-       makeCMSVariables( mindR_lepj,  mT_l1,  avdR_jj, pT_top,  dR_tautau,  costheta_tautau,  mindR_tau1j,
-	                 mindR_tau2j,  dR_leptau1,  dR_ssleptau,  m_top);
+       //makeCMSVariables( mindR_lepj,  mT_l1,  avdR_jj, pT_top,  dR_tautau,  costheta_tautau,  mindR_tau1j,
+//	                 mindR_tau2j,  dR_leptau1,  dR_ssleptau,  m_top);
        //further selections
        string mySelection, regionname,name, var, vartype;
        size_t pos=0;
