@@ -58,7 +58,7 @@ def createCanvas():
 
 def createLabels():
   ATLAS_LABEL(0.2,0.85,kBlack)
-  myText(0.35,0.85, kBlack,"Internal")
+  myText(0.40,0.85, kBlack,"Internal")
   myText(0.20,0.75,kBlack,"#int Ldt = 80 fb^{-1}, #sqrt{s}=13 TeV")
 
 def getRegionsVars(samp):

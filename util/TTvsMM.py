@@ -48,7 +48,7 @@ for variable in variables:
     h_TT.DrawNormalized("e same")
     #h_TT.SetMaximum(3*h_MM.GetBinContent(h_MM.GetMaximumBin()))
     h_MM.DrawNormalized("e same")
-    leg=TLegend(0.70,0.70,0.95,0.90)
+    leg=TLegend(0.75,0.75,0.95,0.90)
     leg.SetFillStyle(0);
     leg.SetBorderSize(0);
     leg.AddEntry(h_TT,"TT","l") 
