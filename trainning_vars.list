@@ -1,0 +1,21 @@
+##CMS vars
+#mindR_lepj
+#avdR_jj
+#dR_tautau
+##mindR_tau1j
+##mindR_tau2j
+#dR_leptau1
+#dR_ssleptau
+##mT_l1
+##pT_top
+##m_top
+#costheta_tautau
+###WM vars
+njets_1l2tau
+nbjets_1l2tau
+tau_pt_0
+tau_pt_1
+maxeta
+htjets_1l2tau
+jjdrmin_1l2tau
+mtautau_1l2tau

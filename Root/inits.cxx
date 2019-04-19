@@ -64,7 +64,7 @@ void initTree(TTree * tree, std::vector<string> regions, const char* histspath){
     //weight, EventNumber, RunNumber
     tree->Branch("weight", &output_branches["weight"].d);
     tree->Branch("EventNumber", &output_branches["EventNumber"].i);
-    tree->Branch("RunNumber", &output_branches["RunNumber"].i);
+    tree->Branch("RunNumber", &output_branches["RunNumber"].ul64);
    //read in defined variables in hists
    std::ifstream inhists(histspath, ifstream::in);
    string line, var, name, vartype;

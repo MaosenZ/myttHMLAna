@@ -5,6 +5,8 @@
 MVA1l2tau_weight 3 -1 0 0.6 1 F
 nJets_OR_T 8 0 8 I
 nJets_OR_T_MV2c10_70 5 0 5 I
+njets_1l2tau 5 0 5 F
+nbjets_1l2tau 3 0 3 F
 HT_jets 20 0 1000 F
 tau_pt_0 6 0 150 F
 tau_pt_1 6 0 150 F
@@ -15,6 +17,9 @@ tau_eta_1 10 0 2.5 F
 maxeta 10 0 2.5 F
 MET_RefFinal_et 20 0 200 F
 Mll01 15 0 150 F
+htjets_1l2tau 16 0 800 F
+mtautau_1l2tau 25 0 250 F
+jjdrmin_1l2tau 10 0 4 F
 #cms vars
 mindR_lepj 10 0 10 F
 avdR_jj 10 0 10 F

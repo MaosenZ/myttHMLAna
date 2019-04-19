@@ -8,8 +8,8 @@ from ROOT import TFile, TTree, gSystem, kFileExists
 import sys
 
 samp=sys.argv[1]
-prepath="/global/projecta/projectdirs/atlas/weiming/testareaSL5/AxAODsData/tthAnaTop/Hist/25ns_R21SkimV6/"
-outpath="/global/homes/m/mszhou/work/ttHML/GN1Samps/onelep_looseleps/"
+prepath="/scratchfs/atlas/zhoums/"
+outpath="/scratchfs/atlas/zhoums/GN1Samps/onelep_looseleps/"
 
 #samps=('tth','diboson','rare','ttV','ttbar')
 #samps=("data",)
@@ -36,7 +36,7 @@ def Skim(dsid, treename):
 
 for tree in trees:
     #for samp in samps:
-        filename = "/global/homes/m/mszhou/work/ttHML/myttHMLAna/doc/%s.list~" % samp
+        filename = "/scratchfs/atlas/zhoums/myttHMLAna/doc/%s.list~" % samp
         with open(filename, "r") as myfile:
              dsids=myfile.read().splitlines()
              for dsid in dsids:

@@ -32,8 +32,8 @@ void NTUPLE::fillHistsMiniTree(std::map<string, std::unique_ptr<TH1F> > & TH1Fs,
        //define some variables here:
        float mindR_lepj,mT_l1,avdR_jj,pT_top,dR_tautau,costheta_tautau, 
              mindR_tau1j, mindR_tau2j, dR_leptau1, dR_ssleptau, m_top;
-       //makeCMSVariables( mindR_lepj,  mT_l1,  avdR_jj, pT_top,  dR_tautau,  costheta_tautau,  mindR_tau1j,
-//	                 mindR_tau2j,  dR_leptau1,  dR_ssleptau,  m_top);
+       makeCMSVariables( mindR_lepj,  mT_l1,  avdR_jj, pT_top,  dR_tautau,  costheta_tautau,  mindR_tau1j,
+	                 mindR_tau2j,  dR_leptau1,  dR_ssleptau,  m_top);
        //further selections
        string mySelection, regionname,name, var, vartype;
        size_t pos=0;
@@ -81,14 +81,26 @@ void NTUPLE::fillHistsMiniTree(std::map<string, std::unique_ptr<TH1F> > & TH1Fs,
                      TH1Fs[name]->Fill( nJets_OR_T_MV2c10_70, wt);
                      output_branches[var].i=nJets_OR_T_MV2c10_70;
                   }
-                  /*if(var=="jjdrmin_1l2tau") {
-                     TH1Fs[name]->Fill( jjdrmin_1l2tau, wt);
-                     output_branches[var].f=jjdrmin_1l2tau;
+                  if(var=="njets_1l2tau"){
+                     TH1Fs[name]->Fill( nJets_OR_T>5?5:nJets_OR_T, wt);
+                     output_branches[var].f=nJets_OR_T>5?5:nJets_OR_T;
+		  }
+                  if(var=="nbjets_1l2tau"){
+                     TH1Fs[name]->Fill( nJets_OR_T_MV2c10_70>3?3:nJets_OR_T_MV2c10_70, wt);
+                     output_branches[var].f=nJets_OR_T_MV2c10_70>3?3:nJets_OR_T_MV2c10_70;
+                  }
+                  if(var=="jjdrmin_1l2tau") {
+                     TH1Fs[name]->Fill( l2tau_jjdr, wt);
+                     output_branches[var].f=l2tau_jjdr;
                   }
                   if(var=="mtautau_1l2tau") {
-                     TH1Fs[name]->Fill( mtautau_1l2tau/GeV, wt);
-                     output_branches[var].f=mtautau_1l2tau/GeV;
-                  }*/
+                     TH1Fs[name]->Fill( l2tau_mtautau, wt);
+                     output_branches[var].f=l2tau_mtautau;
+                  }
+		  if(var=="htjets_1l2tau"){
+                     TH1Fs[name]->Fill( l2tau_htjets/GeV, wt);
+                     output_branches[var].f=l2tau_htjets;
+		  }
                   if(var=="tau_pt_0"){
                      TH1Fs[name]->Fill( tau_pt_0/GeV, wt);
                      output_branches[var].f=tau_pt_0/GeV;
