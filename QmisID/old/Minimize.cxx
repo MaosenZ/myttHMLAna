@@ -4,10 +4,10 @@
 
 extern void myLikelihood(int & npar, double* gout, double & func, double *par, int flg){
  
-  double sf_os=0.957913, sf_ss=0.947161;
+  double sf_os=0.957752, sf_ss=0.964547;
   double counts_os[36][16], counts_ss[36][16];
   //retrive counts
-  TFile *f=new TFile("Hists_data_QmisIDBDT.root");
+  TFile *f=new TFile("Hists_mini.root");
   TH2 *hist_os=(TH2*)f->Get("hist_os");
   TH2 *hist_ss=(TH2*)f->Get("hist_ss");
   

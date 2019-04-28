@@ -13,7 +13,7 @@ void CalSideband(){
   Float_t alow_os=54.7, blow_os=78.5, clow_os=102.3, cup_os=126;
   double sf_os, sf_ss;
  
-  TFile *f=new TFile("mini_Zjets_QmisID.root");
+  TFile *f=new TFile("output/mini.root");
   TTree *tree=(TTree*)f->Get("minitree");
 
   Double_t weight;
@@ -31,7 +31,7 @@ void CalSideband(){
   Double_t bcount_ss(0),acount_ss(0),ccount_ss(0),nbcount_ss(0);
   Double_t bcount_os(0),acount_os(0),ccount_os(0),nbcount_os(0);
   //book outbut root
-  TFile *outfile=new TFile("Hists_Zjets_QmisIDBDT.root","recreate");
+  TFile *outfile=new TFile("Hists_mini.root","recreate");
   Float_t eta_bins[7]={0,0.6,1.1,1.37,1.52,2.0,2.47};
   Float_t pt_bins[5]={10,60,90,130,1000};
 

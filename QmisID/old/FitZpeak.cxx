@@ -12,7 +12,7 @@ using namespace RooFit;
 
 void FitZpeak(){
   
-  TFile *f=new TFile("mini.root");
+  TFile *f=new TFile("output/mini.root");
   TTree *tree=(TTree*)f->Get("minitree");
   RooRealVar mass("mass","mass",50,130);
   RooRealVar wt("wt","wt",-100,100);
@@ -30,7 +30,7 @@ void FitZpeak(){
   for(Int_t entry=0;entry<tree->GetEntries();entry++){
       tree->GetEntry(entry);
       if(fabs(weight)>100) continue;
-      if(fabs(total_charge)==0) continue; 
+      if(fabs(total_charge)==2) continue; 
       mass.setVal(Mll01);
       wt.setVal(weight);
       ds1->add(argset);
