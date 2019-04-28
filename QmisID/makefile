@@ -18,7 +18,7 @@ CXXFLAGS    += $(INCDIR)
 LIBS        += $(ROOTLIBS)
 
 # Analysis tools and main code
-CXXSRCS     +=  runQmisID.cxx
+CXXSRCS     += util/runQmisID.cxx
 
 CXXOBJS      = $(CXXSRCS:.cxx=.o)
 TARGETS      = $(CXXSRCS:.cxx=)
@@ -27,7 +27,7 @@ GARBAGE      = lib/*.so lib/*.o ./*/*.o ./*.o
 ############################################################################
 # Build main.c compiling only the first prereq: ($<) means main.c
 ############################################################################
-${TARGETS}                       :        ${CXXOBJS} 
+${TARGETS}                       :        ${CXXOBJS}
 ##########################################################################
 # General rules. The first two need not be specified due to implicit rules, 
 # but redefined for the "echo"
@@ -41,9 +41,11 @@ ${TARGETS}                       :        ${CXXOBJS}
 	@$(CXX) $(CXXFLAGS) -c $<
 %    : %.o
 	@echo "compiling and linking $@"
+	@if [ `ls | grep "\.o"$ | wc -l` != 0 ]; then mv *.o util/; fi
 	@$(CXX) $(LDFLAGS) $^ $(ROOTLIBS) -o $@
 	@if [ `ls | grep "\.so"$ | wc -l` != 0 ]; then mv *.so lib/; fi
 	@if [ `ls | grep "\.o"$  | wc -l` != 0 ]; then mv *.o  lib/; fi
+	@if [ `ls util | grep "\.o"$  | wc -l` != 0 ]; then mv util/*.o  lib/; fi
 	@mv $@ bin/
 
 ############################################################################
