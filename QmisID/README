@@ -1,0 +1,40 @@
+###This little package is used to estimate electron charge mis-identification rates using likelihood method
+###Maosen Zhou <maosen.zhou@cern.ch>
+###The input samples are dumped from ttHML
+
+###This package was tested with root 6.14, a quick tutorial follows:
+
+#env
+setupATLAS
+lsetup "root 6.14.04-x86_64-slc6-gcc62-opt"
+make
+
+#Fit Z peak, this step is to find the mean and sigma of Z peak
+./bin/runQmisID --in config/Inexample.txt --conf config/Example.conf --sp f
+#Then you will see the print-outs, and pick the fitted mean, sigma values of SS(OS) 
+#and calculate m_SS(OS)boundaries in conf/Example.conf.
+#You might check the fitting goodness from the print-outs and stored graphes in Example/
+#Once Z peak is well chosen, probably it's not necessary to run this step in every run.
+#That's why I set m_SS(OS)boundaries explicitly in config file, although this is not configuration
+
+#Fill the SS(OS) maps
+#The idea is to count every electron combination in terms of id,eta,pt, and store them in a map.
+./bin/runQmisID --in config/Inexample.txt --conf config/Example.conf --sp w
+#After run, yields_SS(OS).txt and sf_SS(OS).txt (and yields_truthZ.root if doTruthMatching is set) 
+#are created in Example/. These files will be used in next step.
+
+#Minimization
+./bin/runQmisID --in config/Inexample.txt --conf config/Example.conf --sp m
+#After run, QmisID_Rates.root (and QmisID_TruthRates.root if doTruthMatching is set) are created in Example/
+#There are two (if there are two electron id defitions, otherwise only one) hists stored inside.
+#hist_QmisID_0(1) corresponds to tight(anti-tight) electron. 
+#Notice! If you only use anti-tight electrons for estimation 
+#(which might not happen since the statistics are very low), hist_QmisID_0 corresponds to anti-tight electron.
+
+###Tips
+1. The defitions of tight, anti-tight and event selections are set in inc/mySpace.h
+2. The Z fitting range is hardcoded in src/FitZpeak.cxx, currently is (50, 130). This range should be consistent 
+  with the 'FitZEvtSelString' set in inc/mySpace.h, otherwise there might be under(over)-flow in fitting range.
+3. The Z fitting is performed after loose selections. If you want to follow the same electron selections used in
+  later steps. Un-comment 'passElectronsCase(ElectronsCombIdx(), m_ElectronsCase)' in src/FitZpeak.cxx.
+4. You may need change the scan range and steps of minimization in Minimization function.

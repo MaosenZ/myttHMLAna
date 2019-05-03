@@ -1,5 +1,5 @@
 #binary file
-#/bin/myRun
+/bin/myRun
 QmisID/bin/*
 #lib
 *.o

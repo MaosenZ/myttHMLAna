@@ -1,0 +1,2 @@
+/publicfs/atlas/atlasnew/higgs/hgg/zhoums/ttHML/slimmed/group.phys-higgs.364123.Sherpa.DAOD_HIGG8D1.e5299_s3126_r9364_r9315_p3480.v9_nom_mc16a_output.root.slimmed.root
+/publicfs/atlas/atlasnew/higgs/hgg/zhoums/ttHML/slimmed/group.phys-higgs.364124.Sherpa.DAOD_HIGG8D1.e5299_s3126_r9364_r9315_p3480.v9_nom_mc16a_output.root.slimmed.root

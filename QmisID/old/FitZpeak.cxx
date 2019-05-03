@@ -12,7 +12,7 @@ using namespace RooFit;
 
 void FitZpeak(){
   
-  TFile *f=new TFile("output/mini.root");
+  TFile *f=new TFile("../output/mini.root");
   TTree *tree=(TTree*)f->Get("minitree");
   RooRealVar mass("mass","mass",50,130);
   RooRealVar wt("wt","wt",-100,100);

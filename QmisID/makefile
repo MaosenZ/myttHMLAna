@@ -4,7 +4,7 @@
 
 # Root variables
 ROOTCFLAGS   := $(shell root-config --cflags)
-ROOTLIBS     := $(shell root-config --libs) -lHtml -lMinuit -lTMVA
+ROOTLIBS     := $(shell root-config --libs) -lHtml -lMinuit -lTMVA -lRooFit -lRooFitCore
 # Programs
 CXX          = g++
 CXXFLAGS     = -g -Wall -fPIC -Wno-deprecated 
