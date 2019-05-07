@@ -23,10 +23,10 @@ namespace Declarations{
    float                 GeV(1000);
    bool                debug(false);
    TString             mySample;
-   //std::string         prefix("/afs/cern.ch/user/m/mzhou/work/private/myttHAna/doc/"); //define prefix for input sample list
-   std::string         prefix("/Users/mason/Desktop/myWork/myttHMLAna/doc/"); //define prefix for input sample list
-   //std::string         prepath("/eos/atlas/atlascerngroupdisk/phys-higgs/HSG8/multilepton_Run2_Summer18/GN2/v6_04/");
-   std::string         prepath("/Users/mason/Desktop/myWork/ttHMLSamps/v7_01/");
+   std::string         prefix("/afs/cern.ch/user/m/mzhou/work/private/myttHAna/doc/"); //define prefix for input sample list
+   //std::string         prefix("/Users/mason/Desktop/myWork/myttHMLAna/doc/"); //define prefix for input sample list
+   std::string         prepath("/eos/atlas/atlascerngroupdisk/phys-higgs/HSG8/multilepton_Run2_Summer18/GN2/v7_04/");
+   //std::string         prepath("/Users/mason/Desktop/myWork/ttHMLSamps/v7_01/");
    std::string	       outpath("/eos/atlas/user/m/mzhou/ttHMLSamps/v7_01/"); //skimed samples go here
    TString             m_treeName("nominal");
 

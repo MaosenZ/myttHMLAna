@@ -222,7 +222,7 @@ NTUPLE::NTUPLE(string inputSample) : fChain(0)
    m_treeName=treename;
    TTree *chain=(TTree*)inputfile->Get(m_treeName);*/
    //m_treeName=treename;
-   string inputlist=prefix+inputSample+".list";
+   string inputlist=prefix+inputSample+".list~";
    ifstream inputfile(inputlist.c_str(), ifstream::in);
    string line;
    while (getline(inputfile, line)){
