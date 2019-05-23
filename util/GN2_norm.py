@@ -62,7 +62,7 @@ def drawNorm():
         hs=makeStack(mchists)
         h_bkg=hs.GetStack().Last().Clone("h_bkg")
         c=createCanvas()
-        XTitle, YTitle=(titles[variable[0:len(variable)-2]])[0], (titles[variable[0:len(variable)-2]])[1]
+        XTitle, YTitle=(titles[variable[0:len(variable)-2]])[0], (titles_norm[variable[0:len(variable)-2]])[1]
         leg=TLegend(0.60,0.70,0.90,0.90)
         leg.SetNColumns(2)
         leg.SetFillStyle(0);

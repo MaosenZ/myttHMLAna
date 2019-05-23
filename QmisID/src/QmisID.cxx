@@ -180,6 +180,8 @@ void QmisID::FillCells(){
       if(passElectronsCase(elecsidx,5)) nElectronsCase5++;
       //remove crack region
       if( (fabs(lep_Eta_0)>1.37&&fabs(lep_Eta_0)<1.52) || (fabs(lep_Eta_1)>1.37&&fabs(lep_Eta_1)<1.52)) continue;
+      //only focus on ee events
+      if((abs(lep_ID_0)!=11) || (abs(lep_ID_1)!=11) ) continue;
 
       Float_t tmp_eta0=lep_Eta_0;
       Float_t tmp_eta1=lep_Eta_1;
@@ -187,12 +189,10 @@ void QmisID::FillCells(){
           tmp_eta0=fabs(lep_Eta_0);
           tmp_eta1=fabs(lep_Eta_1);
       }
+      if(lep_Pt_0/GeV >= m_pt_edges[m_pt_edges.size()-1] ) lep_Pt_0=lep_Pt_0*0.99;
+      if(lep_Pt_1/GeV >= m_pt_edges[m_pt_edges.size()-1] ) lep_Pt_1=lep_Pt_1*0.99;
       //for truthmatching, the idea is counting. Store all the electrons in total hist, and 
       //count the misid electrons based on truthId.
-      //first remove those problematic events
-      if(m_doTruthMatching && (!m_isData) && 
-         //((abs(lep_ID_0)!=11) || (abs(lep_ID_1)!=11) || (abs(lep_truthPdgId_0)!= 11) || (abs(lep_truthPdgId_1)!=11))) continue;
-         ((abs(lep_ID_0)!=11) || (abs(lep_ID_1)!=11) )) continue;
       if(m_doTruthMatching){//truthmatching (in principle, for sure you can argue) doesn't rely on Z peak choice
          if(m_isData) {
             cout<<"Error: You are running Truth-Matching on Data!! Exiting.."<<endl;

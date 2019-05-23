@@ -71,7 +71,7 @@ for variable in variables:
     h_SS.DrawNormalized("e same")
     #h_SS.SetMaximum(3*h_OS.GetBinContent(h_OS.GetMaximumBin()))
     h_OS.DrawNormalized("e same")
-    leg=TLegend(0.70,0.70,0.95,0.90)
+    leg=TLegend(0.75,0.75,0.95,0.90)
     leg.SetFillStyle(0);
     leg.SetBorderSize(0);
     leg.AddEntry(h_SS,"SS","l") 

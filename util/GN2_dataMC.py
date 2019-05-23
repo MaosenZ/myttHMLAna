@@ -18,8 +18,8 @@ from commonPlotting import *
 
 isBlinded=True
 regions, variables=getRegionsVars("ttbar")
-regions=("ttbarCR", "OneL2tauSR", "OneL2tauSSnoBDT", "OneL2tauSS", "OneL2taulowBDTOS", "OneL2taulowBDTSS", "OneL2tauleptau0OS", "OneL2tauleptau1OS", "OneL2taulowNjet", "OneL2tauLTT", "OneL2tauLTM", "OneL2tauTTT", "OneL2tauTTM")
-#regions=("OneL2tauSS", )
+#regions=("ttbarCR", "OneL2tauSR", "OneL2tauSSnoBDT", "OneL2tauSS", "OneL2taulowBDTOS", "OneL2taulowBDTSS", "OneL2tauleptau0OS", "OneL2tauleptau1OS", "OneL2taulowNjet", "OneL2tauLTT", "OneL2tauLTM", "OneL2tauTTT", "OneL2tauTTM")
+regions=("OneL2taulowBDTOS", )
 #variables=("mtautau_1l2tau_F",)
 
 SetAtlasStyle()
