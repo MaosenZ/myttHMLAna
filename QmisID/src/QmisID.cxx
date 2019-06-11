@@ -163,6 +163,7 @@ void QmisID::FillCells(){
       //if(entry%500000==0) cout<<entry<<"/"<<nentries<<" Events processed"<<endl;
       if(entry%500000==0) cout<<entry<<" Events processed"<<endl;
       if (m_isData) weight=1;
+      weight=weight/1000.;
       //event selections set in config 
       if ( !EventSelections() ) continue;
       yy++;
