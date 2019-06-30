@@ -13,5 +13,11 @@ https://gitlab.cern.ch/atlasHTop/ttHMultiAna?nav_source=navbar
 Open mc config file, modify 'PRWConfigFiles' and add all the to-be-checked triggers in 'TRIGDEC' 
 (Since these special samples are mc16e and have very low statistics, to make GN1 working, I had to use mc16d pileup reweighting root file. But if new samples have more statistics, you may follow https://twiki.cern.ch/twiki/bin/view/AtlasProtected/ExtendedPileupReweighting#GenerateMC16 and make right pile-up reweighting files. However! We don'tcare about pile-up reweighting at all! All of this is only to make GN1 working, in fact, we need a flat pile-up distribution (in pricinple we can make one), so in final yields counting, 'pileupEventWeight_090' should be removed)
 
-3.Get the GN1 ntuples and get the macro. Run it and log the results here:
+3.Get the GN1 ntuples and run the macro.
+python TrigCheck_moresimcuts.py (before run edit the path and sample names inside the script)
 
+And post results in google sheet:
+https://docs.google.com/spreadsheets/d/1KRwRoND5-edoGb7qNjLgUDG2EQEhB4_SwNDmL-bWiWU/edit?usp=sharing
+
+--Thanks.
+--Maosen Zhou
