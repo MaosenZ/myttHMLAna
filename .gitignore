@@ -7,3 +7,4 @@ QmisID/bin/*
 *.d
 *.pcm
 *.pyc
+hists/*
